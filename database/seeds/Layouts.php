@@ -31,6 +31,8 @@ class Layouts extends Seeder
         $allUsersGroupId = $thisGroup->returnAllUserGroupId();
         $newLayoutGroupId = $thisGroup->addNewLayoutGroup($newLayoutId, $layoutName, $layoutDescription);
         $thisGroup->addOrgToGroup($rootOrgId, $newLayoutGroupId);
+        $thisGroup->addOrgToGroup($rootOrgId, $personalGroupId);
+        $thisGroup->addOrgToGroup($rootOrgId, $allUsersGroupId);
         $layoutInstance->editPermForGroup($newLayoutGroupId, $newLayoutId, 'view', 1);
         $userPersonalGroupId = $personalGroupId;
         $layoutInstance->editPermForGroup($userPersonalGroupId, $newLayoutId, 'view', 1);
