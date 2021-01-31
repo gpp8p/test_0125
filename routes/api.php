@@ -40,5 +40,9 @@ Route::group([
     Route::get('testGet','testController@returnRequest');
     Route::post('testPost', 'testController@returnPost');
     Route::post('fileUpload', 'FileUploadController@recieveFile')->name('fileUpload');
+    Route::get('getLayout', 'cardInstanceController@getLayoutById');
+    Route::post('/saveCardOnly', 'cardInstanceController@saveCardOnly')->name('saveCardOnly');
+    Route::post('/saveCardParameters','cardInstanceController@saveCardParameters')->name('saveCardParameters');
+    Route::post('/saveCardContent','cardInstanceController@saveCardContent')->name('saveCardContent');
 });
 

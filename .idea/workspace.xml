@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/GroupsController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/LayoutController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/OrgController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/userController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Groups.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/Layouts.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/Layouts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +154,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -167,10 +171,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Http/Controllers" />
       <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/database/seeds" />
       <recent name="$PROJECT_DIR$/database/migrations" />
-      <recent name="$PROJECT_DIR$/app/Http/Controllers" />
     </key>
   </component>
   <component name="RunManager" selected="PHP Web Page.Unnamed">
@@ -221,11 +225,25 @@
       <workItem from="1611845201042" duration="3337000" />
       <workItem from="1611850472953" duration="882000" />
       <workItem from="1611935848605" duration="2178000" />
+      <workItem from="1611974123361" duration="184000" />
+      <workItem from="1612112709793" duration="1299000" />
     </task>
+    <task id="LOCAL-00001" summary="changes to layouts seeder to fix perms problem">
+      <created>1611974194033</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1611974194033</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="changes to layouts seeder to fix perms problem" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes to layouts seeder to fix perms problem" />
   </component>
   <component name="WindowStateProjectService">
     <state x="608" y="222" key="#Servers" timestamp="1611615347672">
@@ -244,6 +262,10 @@
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
     <state x="705" y="260" key="#xdebugger.evaluate/0.23.1920.1008@0.23.1920.1008" timestamp="1611850977303" />
+    <state x="628" y="182" key="CommitChangelistDialog2" timestamp="1611974193875">
+      <screen x="0" y="23" width="1920" height="1008" />
+    </state>
+    <state x="628" y="182" key="CommitChangelistDialog2/0.23.1920.1008@0.23.1920.1008" timestamp="1611974193875" />
     <state x="818" y="453" key="Github.ShareDialog" timestamp="1611851167735">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
@@ -292,6 +314,10 @@
     </state>
     <state width="1398" height="252" key="GridCell.Tab.1.right/0.23.1920.1008@0.23.1920.1008" timestamp="1611853479024" />
     <state width="1398" height="252" key="GridCell.Tab.1.right/0.23.1920.1009@0.23.1920.1009" timestamp="1611946157959" />
+    <state x="621" y="246" key="Vcs.Push.Dialog.v2" timestamp="1611974197537">
+      <screen x="0" y="23" width="1920" height="1008" />
+    </state>
+    <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1008@0.23.1920.1008" timestamp="1611974197537" />
     <state x="1005" y="295" width="586" height="490" key="find.popup" timestamp="1611849236998">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
