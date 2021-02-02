@@ -44,5 +44,6 @@ Route::group([
     Route::post('/saveCardOnly', 'cardInstanceController@saveCardOnly')->name('saveCardOnly');
     Route::post('/saveCardParameters','cardInstanceController@saveCardParameters')->name('saveCardParameters');
     Route::post('/saveCardContent','cardInstanceController@saveCardContent')->name('saveCardContent');
+    Route::get('/getCardDataById', 'cardInstanceController@getCardDataById')->name('getCardDataById');
 });
 

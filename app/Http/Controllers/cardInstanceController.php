@@ -212,9 +212,19 @@ class cardInstanceController extends Controller
         $inData =  $request->all();
         $decodedPost = json_decode($inData['cardParams']);
         $thisInstanceParams = new InstanceParams;
-        DB::beginTransaction();
+//        DB::beginTransaction();
         DB::table('instance_params')->where('card_instance_id', '=', $decodedPost[0])->sharedLock()->get();
-        DB::table('instance_params')->where('card_instance_id', '=', $decodedPost[0])->delete();
+//      DB::table('instance_params')->where('card_instance_id', '=', $decodedPost[0])->delete();
+//        DB::table('instance_params')->where([
+//            ['card_instance_id', '=', $decodedPost[0]],
+//            ['isCss','<', 1]
+//        ])->delete();
+        $query = "delete from instance_params where card_instance_id = ? and isCss = 1";
+        try {
+            DB::select($query, [$decodedPost[0]]);
+        } catch (Exception $e) {
+            throw new Exception('error - could not clean out existing params');
+        }
         try {
             foreach ($decodedPost[1] as $key => $value) {
                 $thisInstanceParams->createInstanceParam($key, $value, $decodedPost[0], true);
@@ -225,9 +235,9 @@ class cardInstanceController extends Controller
                 //            print "$key => $value\n";
             }
         } catch (Exception $e) {
-            DB::rollBack();
+//            DB::rollBack();
         }
-        DB::commit();
+//        DB::commit();
 
         return "Ok";
     }
@@ -241,10 +251,18 @@ class cardInstanceController extends Controller
             ['card_instance_id', '=', $decodedPost[0]],
             ['isCss','=',0]
         ])->sharedLock()->get();
+/*
         DB::table('instance_params')->where([
             ['card_instance_id', '=', $decodedPost[0]],
             ['isCss','=',0]
         ])->delete();
+*/
+        $query = "delete from instance_params where card_instance_id = ? and isCss = 0";
+        try {
+            DB::select($query, [$decodedPost[0]]);
+        } catch (Exception $e) {
+            throw new Exception('error - could not clean out existing params');
+        }
         try {
             foreach ($decodedPost[1] as $key => $value) {
                 $thisInstanceParams->createInstanceParam($key, $value, $decodedPost[0], false);
