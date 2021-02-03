@@ -45,5 +45,7 @@ Route::group([
     Route::post('/saveCardParameters','cardInstanceController@saveCardParameters')->name('saveCardParameters');
     Route::post('/saveCardContent','cardInstanceController@saveCardContent')->name('saveCardContent');
     Route::get('/getCardDataById', 'cardInstanceController@getCardDataById')->name('getCardDataById');
+    Route::post('/createLayoutNoBlanks', 'LayoutController@createNewLayoutNoBlanks')->name('newlayoutNoBlanks');
+    Route::get('getMySpaces', 'LayoutController@getMySpaces');
 });
 
