@@ -230,10 +230,12 @@ class cardInstanceController extends Controller
                 $thisInstanceParams->createInstanceParam($key, $value, $decodedPost[0], true);
                 //            print "$key => $value\n";
             }
+/*
             foreach ($decodedPost[2] as $key => $value) {
                 $thisInstanceParams->createInstanceParam($key, $value, $decodedPost[0], false);
                 //            print "$key => $value\n";
             }
+*/
         } catch (Exception $e) {
 //            DB::rollBack();
         }
