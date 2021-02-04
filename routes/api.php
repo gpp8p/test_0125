@@ -47,5 +47,17 @@ Route::group([
     Route::get('/getCardDataById', 'cardInstanceController@getCardDataById')->name('getCardDataById');
     Route::post('/createLayoutNoBlanks', 'LayoutController@createNewLayoutNoBlanks')->name('newlayoutNoBlanks');
     Route::get('getMySpaces', 'LayoutController@getMySpaces');
+    Route::get('orgList', 'OrgController@getOrgList');
+    Route::get('orgUsers', 'OrgController@getOrgUsers');
+    Route::get('availableOrgUsers', 'OrgController@getAvailableOrgUsers');
+    Route::get('availableUsers', 'OrgController@getAvailableUsers');
+    Route::get('orgLayouts', 'LayoutController@getOrgLayouts');
+    Route::get('allUsers', 'OrgController@getAllUsers');
+    Route::post('newOrg', 'OrgController@newOrg');
+    Route::get('orgGroups', 'GroupsController@getOrgGroups');
+    Route::get('layoutPerms', 'LayoutController@getLayoutPerms');
+    Route::post('setLayoutPerms', 'LayoutController@setLayoutPerms');
+
+
 });
 

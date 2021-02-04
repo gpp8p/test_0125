@@ -56,7 +56,7 @@ class cardInstanceController extends Controller
         $thisLayoutWidth = $layoutInfo[0]->width;
         $thisLayoutHeight = $layoutInfo[0]->height;
         $thisLayoutBackgroundColor = $layoutInfo[0]->backgroundColor;
-        $thisLayoutImageUrl=$layoutInfo[0]->backgrounUrl;
+        $thisLayoutImageUrl=$layoutInfo[0]->backgroundUrl;
         $thisLayoutBackgroundType=$layoutInfo[0]->backgroundType;
         $thisLayoutLabel = $layoutInfo[0]->menu_label;
         $thisCardInstance = new CardInstances;
