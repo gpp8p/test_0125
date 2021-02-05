@@ -15,7 +15,10 @@ class FileUploadController extends Controller
 
     function recieveFileCk(Request $request){
         $inData =  $request->all();
-        $path['url'] = 'http://localhost:8000/storage/'.$request->file('upload')->store('file');
+        $pth = 'http://localhost:8000/storage/'.$request->file('upload')->store('file');
+        $pth = str_replace('/file', '', $pth);
+        $path['url'] = $pth;
+
         $rval = json_encode($path);
         return $rval;
     }

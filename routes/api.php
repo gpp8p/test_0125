@@ -40,6 +40,7 @@ Route::group([
     Route::get('testGet','testController@returnRequest');
     Route::post('testPost', 'testController@returnPost');
     Route::post('fileUpload', 'FileUploadController@recieveFile')->name('fileUpload');
+    Route::post('/imageUploadCk', 'FileUploadController@recieveFileCk')->name('imageUploadCk');
     Route::get('getLayout', 'cardInstanceController@getLayoutById');
     Route::post('/saveCardOnly', 'cardInstanceController@saveCardOnly')->name('saveCardOnly');
     Route::post('/saveCardParameters','cardInstanceController@saveCardParameters')->name('saveCardParameters');
