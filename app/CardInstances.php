@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use App\ViewType;
+use Storage;
 
 class CardInstances extends Model
 {
@@ -43,6 +44,30 @@ class CardInstances extends Model
             "order by instance.id";
 
         $retrievedCardInstances  =  DB::select($query, [$layoutId]);
+
+        foreach( $retrievedCardInstances as $thisCardInstance){
+            if($thisCardInstance->parameter_key=='cardText'){
+                $contentFileName = '/rtcontent/content'.$thisCardInstance->id;
+ //               $rtContents = Storage::get('/rtcontent/content5');
+                try {
+                    $rtContents = Storage::get($contentFileName);
+                } catch (\Exception $e) {
+                }
+//                $rtContent = Storage::disk('local')->get($contentFileName);
+            }
+        }
+        for($c=0; $c<count($retrievedCardInstances); $c++){
+            $thisCardInstance = $retrievedCardInstances[$c];
+            if($thisCardInstance->parameter_key=='cardText'){
+                try {
+                    $rtContents = Storage::get($contentFileName);
+                    $retrievedCardInstances[$c]->parameter_value=$rtContents;
+                } catch (\Exception $e) {
+                }
+            }
+        }
+
+
         if(count($retrievedCardInstances)>0) {
             return $retrievedCardInstances;
         }else{

@@ -8,6 +8,7 @@ use App\InstanceParams;
 use App\layout;
 use Illuminate\Support\Facades\DB;
 use Exception;
+use Storage;
 
 class cardInstanceController extends Controller
 {
@@ -267,7 +268,12 @@ class cardInstanceController extends Controller
         }
         try {
             foreach ($decodedPost[1] as $key => $value) {
-                $thisInstanceParams->createInstanceParam($key, $value, $decodedPost[0], false);
+
+                if($key=='cardText'){
+                    $contentFileName = '/rtcontent/content'.$decodedPost[0];
+                    Storage::disk('local')->put($contentFileName, $value);
+                }
+                $thisInstanceParams->createInstanceParam($key, $contentFileName, $decodedPost[0], false);
                 //            print "$key => $value\n";
             }
         } catch (Exception $e) {
