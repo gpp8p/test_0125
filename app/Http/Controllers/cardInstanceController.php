@@ -9,6 +9,7 @@ use App\layout;
 use Illuminate\Support\Facades\DB;
 use Exception;
 use Storage;
+use File;
 
 class cardInstanceController extends Controller
 {
@@ -248,6 +249,7 @@ class cardInstanceController extends Controller
     public function saveCardContent(Request $request){
         $inData =  $request->all();
         $decodedPost = json_decode($inData['cardParams']);
+        $org = $inData['org'];
         $thisInstanceParams = new InstanceParams;
         DB::beginTransaction();
         DB::table('instance_params')->where([
@@ -270,6 +272,11 @@ class cardInstanceController extends Controller
             foreach ($decodedPost[1] as $key => $value) {
 
                 if($key=='cardText'){
+                    $orgDirectory = '/'.$org;
+                    if(!Storage::exists($orgDirectory)) {
+                        Storage::makeDirectory($orgDirectory);
+                        Storage::makeDirectory($orgDirectory.'/rtcontent');
+                    }
                     $contentFileName = '/rtcontent/content'.$decodedPost[0];
                     Storage::disk('local')->put($contentFileName, $value);
                 }
