@@ -5,6 +5,7 @@ use App\Layout;
 use App\Group;
 
 
+
 class Layouts extends Seeder
 {
     /**
@@ -39,6 +40,12 @@ class Layouts extends Seeder
         $layoutInstance->editPermForGroup($userPersonalGroupId, $newLayoutId, 'author', 1);
         $layoutInstance->editPermForGroup($userPersonalGroupId, $newLayoutId, 'admin', 1);
         $layoutInstance->editPermForGroup($allUsersGroupId, $newLayoutId, 'view', 1);
+        $contentDirectory = '/spcontent';
+        Storage::deleteDirectory($contentDirectory);
+        Storage::makeDirectory($contentDirectory);
+
+
+
 
     }
 }

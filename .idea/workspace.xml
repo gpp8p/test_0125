@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/CardInstances.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/CardInstances.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/Layouts.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/Layouts.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,7 +230,9 @@
       <workItem from="1612453433032" duration="949000" />
       <workItem from="1612488117743" duration="1609000" />
       <workItem from="1612537719579" duration="6399000" />
-      <workItem from="1612624748237" duration="2410000" />
+      <workItem from="1612624748237" duration="2511000" />
+      <workItem from="1612666387331" duration="293000" />
+      <workItem from="1612710162047" duration="4390000" />
     </task>
     <task id="LOCAL-00001" summary="changes to layouts seeder to fix perms problem">
       <created>1611974194033</created>
@@ -286,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612557546331</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="create org directories if not present for card data storage">
+      <created>1612628975613</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1612628975613</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,7 +312,8 @@
     <MESSAGE value="background image fix for layouts.  Added additional api's for org stuff" />
     <MESSAGE value="fix to url passed back by ckimage upload api" />
     <MESSAGE value="started saving rt-content as a file so it can be indexed" />
-    <option name="LAST_COMMIT_MESSAGE" value="started saving rt-content as a file so it can be indexed" />
+    <MESSAGE value="create org directories if not present for card data storage" />
+    <option name="LAST_COMMIT_MESSAGE" value="create org directories if not present for card data storage" />
   </component>
   <component name="WindowStateProjectService">
     <state x="608" y="222" key="#Servers" timestamp="1611615347672">
@@ -320,10 +332,10 @@
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
     <state x="671" y="452" key="#xdebugger.evaluate/0.23.1920.1008@0.23.1920.1008" timestamp="1612628044186" />
-    <state x="628" y="182" key="CommitChangelistDialog2" timestamp="1612557546182">
+    <state x="628" y="182" key="CommitChangelistDialog2" timestamp="1612628975476">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
-    <state x="628" y="182" key="CommitChangelistDialog2/0.23.1920.1008@0.23.1920.1008" timestamp="1612557546182" />
+    <state x="628" y="182" key="CommitChangelistDialog2/0.23.1920.1008@0.23.1920.1008" timestamp="1612628975476" />
     <state x="628" y="182" key="CommitChangelistDialog2/0.23.1920.1009@0.23.1920.1009" timestamp="1612383025188" />
     <state x="818" y="453" key="Github.ShareDialog" timestamp="1611851167735">
       <screen x="0" y="23" width="1920" height="1008" />
@@ -333,59 +345,59 @@
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
     <state x="700" y="261" key="Github.UntrackedFilesDialog/0.23.1920.1008@0.23.1920.1008" timestamp="1611851185994" />
-    <state width="1398" height="252" key="GridCell.Tab.0.bottom" timestamp="1612628645937">
+    <state width="1398" height="252" key="GridCell.Tab.0.bottom" timestamp="1612729818495">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
-    <state width="1398" height="252" key="GridCell.Tab.0.bottom/0.23.1920.1008@0.23.1920.1008" timestamp="1612628645937" />
+    <state width="1398" height="252" key="GridCell.Tab.0.bottom/0.23.1920.1008@0.23.1920.1008" timestamp="1612729818495" />
     <state width="1398" height="252" key="GridCell.Tab.0.bottom/0.23.1920.1009@0.23.1920.1009" timestamp="1612383103420" />
-    <state width="1398" height="252" key="GridCell.Tab.0.center" timestamp="1612628645936">
+    <state width="1398" height="252" key="GridCell.Tab.0.center" timestamp="1612729818494">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
-    <state width="1398" height="252" key="GridCell.Tab.0.center/0.23.1920.1008@0.23.1920.1008" timestamp="1612628645936" />
+    <state width="1398" height="252" key="GridCell.Tab.0.center/0.23.1920.1008@0.23.1920.1008" timestamp="1612729818494" />
     <state width="1398" height="252" key="GridCell.Tab.0.center/0.23.1920.1009@0.23.1920.1009" timestamp="1612383103420" />
-    <state width="1398" height="252" key="GridCell.Tab.0.left" timestamp="1612628645936">
+    <state width="1398" height="252" key="GridCell.Tab.0.left" timestamp="1612729818494">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
-    <state width="1398" height="252" key="GridCell.Tab.0.left/0.23.1920.1008@0.23.1920.1008" timestamp="1612628645936" />
+    <state width="1398" height="252" key="GridCell.Tab.0.left/0.23.1920.1008@0.23.1920.1008" timestamp="1612729818494" />
     <state width="1398" height="252" key="GridCell.Tab.0.left/0.23.1920.1009@0.23.1920.1009" timestamp="1612383103420" />
-    <state width="1398" height="252" key="GridCell.Tab.0.right" timestamp="1612628645937">
+    <state width="1398" height="252" key="GridCell.Tab.0.right" timestamp="1612729818495">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
-    <state width="1398" height="252" key="GridCell.Tab.0.right/0.23.1920.1008@0.23.1920.1008" timestamp="1612628645937" />
+    <state width="1398" height="252" key="GridCell.Tab.0.right/0.23.1920.1008@0.23.1920.1008" timestamp="1612729818495" />
     <state width="1398" height="252" key="GridCell.Tab.0.right/0.23.1920.1009@0.23.1920.1009" timestamp="1612383103420" />
-    <state width="1398" height="252" key="GridCell.Tab.1.bottom" timestamp="1612628645938">
+    <state width="1398" height="252" key="GridCell.Tab.1.bottom" timestamp="1612729818496">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
-    <state width="1398" height="252" key="GridCell.Tab.1.bottom/0.23.1920.1008@0.23.1920.1008" timestamp="1612628645938" />
+    <state width="1398" height="252" key="GridCell.Tab.1.bottom/0.23.1920.1008@0.23.1920.1008" timestamp="1612729818496" />
     <state width="1398" height="252" key="GridCell.Tab.1.bottom/0.23.1920.1009@0.23.1920.1009" timestamp="1612383103421" />
-    <state width="1398" height="252" key="GridCell.Tab.1.center" timestamp="1612628645937">
+    <state width="1398" height="252" key="GridCell.Tab.1.center" timestamp="1612729818495">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
-    <state width="1398" height="252" key="GridCell.Tab.1.center/0.23.1920.1008@0.23.1920.1008" timestamp="1612628645937" />
+    <state width="1398" height="252" key="GridCell.Tab.1.center/0.23.1920.1008@0.23.1920.1008" timestamp="1612729818495" />
     <state width="1398" height="252" key="GridCell.Tab.1.center/0.23.1920.1009@0.23.1920.1009" timestamp="1612383103421" />
-    <state width="1398" height="252" key="GridCell.Tab.1.left" timestamp="1612628645937">
+    <state width="1398" height="252" key="GridCell.Tab.1.left" timestamp="1612729818495">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
-    <state width="1398" height="252" key="GridCell.Tab.1.left/0.23.1920.1008@0.23.1920.1008" timestamp="1612628645937" />
+    <state width="1398" height="252" key="GridCell.Tab.1.left/0.23.1920.1008@0.23.1920.1008" timestamp="1612729818495" />
     <state width="1398" height="252" key="GridCell.Tab.1.left/0.23.1920.1009@0.23.1920.1009" timestamp="1612383103421" />
-    <state width="1398" height="252" key="GridCell.Tab.1.right" timestamp="1612628645937">
+    <state width="1398" height="252" key="GridCell.Tab.1.right" timestamp="1612729818495">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
-    <state width="1398" height="252" key="GridCell.Tab.1.right/0.23.1920.1008@0.23.1920.1008" timestamp="1612628645937" />
+    <state width="1398" height="252" key="GridCell.Tab.1.right/0.23.1920.1008@0.23.1920.1008" timestamp="1612729818495" />
     <state width="1398" height="252" key="GridCell.Tab.1.right/0.23.1920.1009@0.23.1920.1009" timestamp="1612383103421" />
-    <state x="621" y="246" key="Vcs.Push.Dialog.v2" timestamp="1612557549137">
+    <state x="621" y="246" key="Vcs.Push.Dialog.v2" timestamp="1612628979001">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
-    <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1008@0.23.1920.1008" timestamp="1612557549137" />
+    <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1008@0.23.1920.1008" timestamp="1612628979001" />
     <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1009@0.23.1920.1009" timestamp="1612383028225" />
     <state x="390" y="283" width="1240" height="593" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1612547583328">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
     <state x="390" y="283" width="1240" height="593" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1920.1008@0.23.1920.1008" timestamp="1612547583328" />
-    <state x="1005" y="295" width="586" height="490" key="find.popup" timestamp="1612455244934">
+    <state x="1005" y="295" width="586" height="490" key="find.popup" timestamp="1612713554643">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
-    <state x="1005" y="295" width="586" height="490" key="find.popup/0.23.1920.1008@0.23.1920.1008" timestamp="1612455244934" />
+    <state x="1005" y="295" width="586" height="490" key="find.popup/0.23.1920.1008@0.23.1920.1008" timestamp="1612713554643" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -437,18 +449,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/CardInstances.php</url>
-          <line>45</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/CardInstances.php</url>
-          <line>71</line>
+          <line>62</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
           <line>273</line>
           <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
+          <line>64</line>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

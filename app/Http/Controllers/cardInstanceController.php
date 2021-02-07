@@ -62,7 +62,7 @@ class cardInstanceController extends Controller
         $thisLayoutBackgroundType=$layoutInfo[0]->backgroundType;
         $thisLayoutLabel = $layoutInfo[0]->menu_label;
         $thisCardInstance = new CardInstances;
-        $thisLayoutCardInstances = $thisCardInstance->getLayoutCardInstancesById($layoutId);
+        $thisLayoutCardInstances = $thisCardInstance->getLayoutCardInstancesById($layoutId, $orgId);
         if($thisLayoutCardInstances==null){
             $layoutProperties =array('description'=>$thisLayoutDescription, 'menu_label'=>$thisLayoutLabel, 'height'=>$thisLayoutHeight, 'width'=>$thisLayoutHeight, 'backgroundColor'=>$thisLayoutBackgroundColor, 'backGroundImageUrl'=>$thisLayoutImageUrl, 'backgroundType'=>$thisLayoutBackgroundType);
             $thisLayoutPerms = $layoutInstance->summaryPermsForLayout($userId, $orgId, $layoutId);
@@ -272,12 +272,12 @@ class cardInstanceController extends Controller
             foreach ($decodedPost[1] as $key => $value) {
 
                 if($key=='cardText'){
-                    $orgDirectory = '/'.$org;
+                    $orgDirectory = '/spcontent/'.$org;
                     if(!Storage::exists($orgDirectory)) {
                         Storage::makeDirectory($orgDirectory);
-                        Storage::makeDirectory($orgDirectory.'/rtcontent');
+                        Storage::makeDirectory($orgDirectory.'/cardText');
                     }
-                    $contentFileName = '/rtcontent/content'.$decodedPost[0];
+                    $contentFileName = '/spcontent/'.$org.'/cardText/rtcontent'.$decodedPost[0];
                     Storage::disk('local')->put($contentFileName, $value);
                 }
                 $thisInstanceParams->createInstanceParam($key, $contentFileName, $decodedPost[0], false);

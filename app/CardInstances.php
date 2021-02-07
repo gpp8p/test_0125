@@ -34,7 +34,7 @@ class CardInstances extends Model
         }
     }
 
-    public function getLayoutCardInstancesById($layoutId){
+    public function getLayoutCardInstancesById($layoutId, $orgId){
         $query = "select instance.id,parameter_key, parameter_value, card_component, isCss, ".
             "instance.col, instance.row, instance.height, instance.width ".
             "from card_instances as instance, instance_params as params, layouts as layouts ".
@@ -45,29 +45,20 @@ class CardInstances extends Model
 
         $retrievedCardInstances  =  DB::select($query, [$layoutId]);
 
-        foreach( $retrievedCardInstances as $thisCardInstance){
-            if($thisCardInstance->parameter_key=='cardText'){
-                $contentFileName = '/rtcontent/content'.$thisCardInstance->id;
- //               $rtContents = Storage::get('/rtcontent/content5');
-                try {
-                    $rtContents = Storage::get($contentFileName);
-                } catch (\Exception $e) {
-                }
-//                $rtContent = Storage::disk('local')->get($contentFileName);
-            }
-        }
-        for($c=0; $c<count($retrievedCardInstances); $c++){
+        for($c=0;$c<count($retrievedCardInstances);$c++){
             $thisCardInstance = $retrievedCardInstances[$c];
             if($thisCardInstance->parameter_key=='cardText'){
+
+
+                $orgDirectory = '/spcontent/'.$orgId;
+                $contentFileName = $thisCardInstance->parameter_value;
                 try {
-                    $rtContents = Storage::get($contentFileName);
-                    $retrievedCardInstances[$c]->parameter_value=$rtContents;
+                    $retrievedCardInstances[$c]->parameter_value = Storage::get($contentFileName);
                 } catch (\Exception $e) {
+                    $retrievedCardInstances[$c]->parameter_value = 'Error fetching content file:'.$contentFileName;
                 }
             }
         }
-
-
         if(count($retrievedCardInstances)>0) {
             return $retrievedCardInstances;
         }else{
