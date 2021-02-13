@@ -135,7 +135,7 @@ class cardInstanceController extends Controller
         $cardWidth = ($bottomRightCol-$topLeftCol)+1;
         $cardHeight = ($bottomRightRow-$topLeftRow)+1;
         $thisCardInstance->createCardInstance($layoutId, $cardParams, $topLeftRow,$topLeftCol, $cardHeight, $cardWidth,$cardType);
- //       return $this->getLayoutById($request);
+        //       return $this->getLayoutById($request);
         return "ok";
 
     }
@@ -232,12 +232,12 @@ class cardInstanceController extends Controller
                 $thisInstanceParams->createInstanceParam($key, $value, $decodedPost[0], true);
                 //            print "$key => $value\n";
             }
-/*
-            foreach ($decodedPost[2] as $key => $value) {
-                $thisInstanceParams->createInstanceParam($key, $value, $decodedPost[0], false);
-                //            print "$key => $value\n";
-            }
-*/
+            /*
+                        foreach ($decodedPost[2] as $key => $value) {
+                            $thisInstanceParams->createInstanceParam($key, $value, $decodedPost[0], false);
+                            //            print "$key => $value\n";
+                        }
+            */
         } catch (Exception $e) {
 //            DB::rollBack();
         }
@@ -256,12 +256,12 @@ class cardInstanceController extends Controller
             ['card_instance_id', '=', $decodedPost[0]],
             ['isCss','=',0]
         ])->sharedLock()->get();
-/*
-        DB::table('instance_params')->where([
-            ['card_instance_id', '=', $decodedPost[0]],
-            ['isCss','=',0]
-        ])->delete();
-*/
+        /*
+                DB::table('instance_params')->where([
+                    ['card_instance_id', '=', $decodedPost[0]],
+                    ['isCss','=',0]
+                ])->delete();
+        */
         $query = "delete from instance_params where card_instance_id = ? and isCss = 0";
         try {
             DB::select($query, [$decodedPost[0]]);
@@ -279,8 +279,11 @@ class cardInstanceController extends Controller
                     }
                     $contentFileName = '/spcontent/'.$org.'/cardText/rtcontent'.$decodedPost[0];
                     Storage::disk('local')->put($contentFileName, $value);
+                    $thisInstanceParams->createInstanceParam($key, $contentFileName, $decodedPost[0], false);
+                }elseif ($key=='title'){
+                    $thisInstanceParams->createInstanceParam($key, $value, $decodedPost[0], false);
                 }
-                $thisInstanceParams->createInstanceParam($key, $contentFileName, $decodedPost[0], false);
+
                 //            print "$key => $value\n";
             }
         } catch (Exception $e) {
