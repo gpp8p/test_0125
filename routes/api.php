@@ -58,6 +58,12 @@ Route::group([
     Route::get('orgGroups', 'GroupsController@getOrgGroups');
     Route::get('layoutPerms', 'LayoutController@getLayoutPerms');
     Route::post('setLayoutPerms', 'LayoutController@setLayoutPerms');
+    Route::get('groupMembers', 'GroupsController@getGroupMembers');
+    Route::get('orgGroups', 'GroupsController@getOrgGroups');
+    Route::post('removePerm', 'LayoutController@removePerm');
+    Route::post('removeUserFromGroup', 'GroupsController@removeUserFromGroup');
+    Route::post('addUserToGroup', 'GroupsController@addUserToGroup');
+    Route::post('addAccess', 'LayoutController@addAccessForGroupToLayout');
 
 
 });
