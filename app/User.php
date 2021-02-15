@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
@@ -53,4 +55,43 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    public function getAllUsers(){
+        $query = "select name, email, id from users";
+        $allUsers = DB::select($query);
+        return $allUsers;
+    }
+
+    public function createUser($userEmail, $userName, $userPassword){
+        $newUserId=DB::table('users')->insertGetId([
+            'name'=>    $userName,
+            'email'=>   $userEmail,
+//           'password'=> Hash::make($userPassword),
+            'password'=> Hash::make('n1tad0g'),
+            'is_admin'=>false,
+            'created_at'=>\Carbon\Carbon::now(),
+            'updated_at'=>\Carbon\Carbon::now()
+        ]);
+        return $newUserId;
+
+
+    }
+
+    public function findUserByEmail($email){
+        $query = "Select name, email, id, is_admin from users where email = ?";
+        $thisUser = DB::select($query, [$email]);
+        return $thisUser;
+    }
+
+    public function checkUserOrgMembership($email){
+        $query="select users.id as userId, org.id as orgId, org.description from users, userorg, org ".
+            "where users.id = userorg.user_id ".
+            "and org.id=userorg.org_id ".
+            "and users.email=?";
+
+
+        $thisUserInfo = DB::select($query, [$email]);
+        return $thisUserInfo;
+    }
+
 }

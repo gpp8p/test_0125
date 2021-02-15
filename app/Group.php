@@ -36,10 +36,11 @@ class Group extends Model
 
     }
 
-    public function addUserToGroup($userId, $groupId){
+    public function addUserToGroup($userId, $groupId, $isAdmin){
         DB::table('usergroup')->insert([
             'group_id'=>$groupId,
             'user_id'=>$userId,
+            'is_admin'=>$isAdmin,
             'created_at'=>\Carbon\Carbon::now(),
             'updated_at'=>\Carbon\Carbon::now()
         ]);

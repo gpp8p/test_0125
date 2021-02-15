@@ -53,6 +53,8 @@ class userController extends Controller
         }
 */
         $newUserId=null;
+        $userIsAdmin = 1;
+        $userNotAdmin = 0;
         DB::beginTransaction();
         try {
             try {
@@ -67,13 +69,13 @@ class userController extends Controller
                 throw $e;
             }
             try {
-                $thisGroupInstance->addUserToGroup($newUserId, $newPersonalGroupId);
+                $thisGroupInstance->addUserToGroup($newUserId, $newPersonalGroupId, $userIsAdmin);
             } catch (Exception $e) {
                 throw $e;
             }
             $allUserGroupId = DB::table('groups')->where('group_label', 'AllUsers')->first()->id;
             try {
-                $thisGroupInstance->addUserToGroup($newUserId, $allUserGroupId);
+                $thisGroupInstance->addUserToGroup($newUserId, $allUserGroupId, $userNotAdmin);
             } catch (Exception $e) {
                 throw $e;
             }
