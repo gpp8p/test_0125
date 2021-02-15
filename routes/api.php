@@ -65,6 +65,7 @@ Route::group([
     Route::post('addUserToGroup', 'GroupsController@addUserToGroup');
     Route::post('addAccess', 'LayoutController@addAccessForGroupToLayout');
     Route::post('setupNewUser', 'UserController@setupNewUser');
+    Route::post('createUser', 'userController@createUser');
 
 
 });

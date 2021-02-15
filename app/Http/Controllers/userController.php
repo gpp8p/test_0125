@@ -120,10 +120,12 @@ class userController extends Controller
     }
     public function createUser(Request $request){
         $inData = $request->all();
-        $userName = $inData['name'];
-        $userEmail = $inData['email'];
-        $userPassword = $inData['password'];
+        $userName = $inData['params']['name'];
+        $userEmail = $inData['params']['email'];
+        $userPassword = $inData['params']['password'];
         $thisUserInstance = new User;
+        $userIsAdmin = 1;
+        $userNotAdmin = 0;
         try {
             try {
                 $newUserId = $thisUserInstance->createUser($userEmail, $userName, $userPassword);
@@ -145,13 +147,13 @@ class userController extends Controller
                 throw $e;
             }
             try {
-                $thisGroupInstance->addUserToGroup($newUserId, $newPersonalGroupId);
+                $thisGroupInstance->addUserToGroup($newUserId, $newPersonalGroupId,$userIsAdmin);
             } catch (Exception $e) {
                 throw $e;
             }
             $allUserGroupId = DB::table('groups')->where('group_label', 'AllUsers')->first()->id;
             try {
-                $thisGroupInstance->addUserToGroup($newUserId, $allUserGroupId);
+                $thisGroupInstance->addUserToGroup($newUserId, $allUserGroupId,$userNotAdmin);
             } catch (Exception $e) {
                 throw $e;
             }
@@ -165,7 +167,7 @@ class userController extends Controller
 */
             return response()->json([
                 'result'=>'ok',
-                'description'=>$userEmail,
+                'email'=>$userEmail,
                 'userId'=>$newUserId,
                 'userName'=>$userName
             ]);
