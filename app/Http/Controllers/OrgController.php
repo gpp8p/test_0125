@@ -145,6 +145,8 @@ class OrgController extends Controller
          $adminUserEmail = $inData['params']['adminUserEmail'];
          $adminUserName = $inData['params']['adminUserName'];
          $backgroundType = $inData['params']['backgroundType'];
+         $userIsAdmin = 1;
+         $userNotAdmin = 0;
          if($backgroundType=='I'){
              $backgroundColor = '';
              $backgroundImage = $inData['params']['backgroundImage'];
@@ -201,7 +203,7 @@ class OrgController extends Controller
              }
 
              try {
-                 $thisGroup->addUserToGroup($adminUserId, $newLayoutGroupId);
+                 $thisGroup->addUserToGroup($adminUserId, $newLayoutGroupId, $userIsAdmin);
              } catch (\Exception $e) {
                  throw $e;
              }
