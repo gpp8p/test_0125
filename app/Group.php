@@ -118,7 +118,7 @@ class Group extends Model
         return $groups;
     }
     public function allUserId(){
-        $query = "select id from groups where description='All users of system'";
+        $query = "select id from groups where description='All Users'";
         $allUserGroupId  =  DB::select($query);
         return $allUserGroupId[0]->id;
     }

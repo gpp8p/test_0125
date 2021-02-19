@@ -75,8 +75,9 @@ class JWTAuthController extends Controller
         $thisUserId =auth()->user()->id;
         $thisUserIsAdmin = auth()->user()->is_admin;
 
-//        $defaultOrg = $inData['default_org'];
-        $defaultOrg = 'root';
+        $inData = $request->all();
+        $defaultOrg = $inData['default_org'];
+//        $defaultOrg = 'root';
         $thisOrgInstance = new Org;
         $orgInfo = $thisOrgInstance->getOrgHome($defaultOrg);
 
