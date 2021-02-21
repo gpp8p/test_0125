@@ -63,9 +63,15 @@ class LayoutController extends Controller
         $newLayoutId = $layoutInstance->createLayoutWithoutBlanks($layoutName, $layoutHeight, $layoutWidth, $layoutDescription, $layoutBackgroundColor, $backgroundImage, $backgroundType);
 
         $thisGroup = new Group;
+        try {
+            $allUserGroupId = $thisGroup->returnAllUserGroupId();
+        } catch (\Exception $e) {
+            throw new \Exception('error identifying all user group');
+        }
         $personalGroupId = $thisGroup->returnPersonalGroupId($userId);
         $newLayoutGroupId = $thisGroup->addNewLayoutGroup($newLayoutId, $layoutName, $layoutDescription);
         $thisGroup->addOrgToGroup($orgId, $newLayoutGroupId);
+        $layoutInstance->editPermForGroup($allUserGroupId, $newLayoutId, 'view', 1);
         $layoutInstance->editPermForGroup($newLayoutGroupId, $newLayoutId, 'view', 1);
         $userPersonalGroupId = $personalGroupId;
         $layoutInstance->editPermForGroup($userPersonalGroupId, $newLayoutId, 'view', 1);
