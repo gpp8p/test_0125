@@ -143,6 +143,7 @@ class Layout extends Model
             "select distinct layouts.id from layouts, groups, usergroup, users, userorg, org, perms ".
             "where perms.layout_id = layouts.id ".
             "and perms.group_id = groups.id ".
+            "and groups.id > 1 ".
             "and usergroup.group_id = groups.id ".
             "and usergroup.user_id = users.id ".
             "and userorg.user_id = users.id ".
