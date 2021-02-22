@@ -47,6 +47,9 @@ class LayoutController extends Controller
         $layoutName = $inData['name'];
         $layoutHeight = $inData['height'];
         $layoutWidth = $inData['width'];
+        $userIsAdmin = 1;
+        $userNotAdmin = 0;
+
 
         $layoutDescription = $inData['description'];
         $userId = $inData['userId'];
@@ -71,6 +74,7 @@ class LayoutController extends Controller
         $personalGroupId = $thisGroup->returnPersonalGroupId($userId);
         $newLayoutGroupId = $thisGroup->addNewLayoutGroup($newLayoutId, $layoutName, $layoutDescription);
         $thisGroup->addOrgToGroup($orgId, $newLayoutGroupId);
+        $thisGroup->addUserToGroup($userId, $newLayoutGroupId,$userIsAdmin);
         $layoutInstance->editPermForGroup($allUserGroupId, $newLayoutId, 'view', 1);
         $layoutInstance->editPermForGroup($newLayoutGroupId, $newLayoutId, 'view', 1);
         $userPersonalGroupId = $personalGroupId;

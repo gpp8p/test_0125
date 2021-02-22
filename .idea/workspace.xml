@@ -240,7 +240,7 @@
       <workItem from="1613667810427" duration="630000" />
       <workItem from="1613750859269" duration="2824000" />
       <workItem from="1613872401011" duration="154000" />
-      <workItem from="1613920251976" duration="2652000" />
+      <workItem from="1613920251976" duration="3638000" />
     </task>
     <task id="LOCAL-00001" summary="changes to layouts seeder to fix perms problem">
       <created>1611974194033</created>
@@ -361,7 +361,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613941067515</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="newly created spaces give access by all users">
+      <created>1613945010757</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1613945010757</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,7 +392,8 @@
     <MESSAGE value="work on organizations" />
     <MESSAGE value="fix organization home page issue" />
     <MESSAGE value="Fixed layout query to only return a specific org's layouts.  May need to include an option in the ui to gather All Users permitted layouts, but not there now" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed layout query to only return a specific org's layouts.  May need to include an option in the ui to gather All Users permitted layouts, but not there now" />
+    <MESSAGE value="newly created spaces give access by all users" />
+    <option name="LAST_COMMIT_MESSAGE" value="newly created spaces give access by all users" />
   </component>
   <component name="WindowStateProjectService">
     <state x="608" y="222" key="#Servers" timestamp="1611615347672">
@@ -404,10 +412,10 @@
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
     <state x="671" y="452" key="#xdebugger.evaluate/0.23.1920.1008@0.23.1920.1008" timestamp="1613409580089" />
-    <state x="527" y="182" key="CommitChangelistDialog2" timestamp="1613941067371">
+    <state x="271" y="182" key="CommitChangelistDialog2" timestamp="1613945010657">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
-    <state x="527" y="182" key="CommitChangelistDialog2/0.23.1920.1008@0.23.1920.1008" timestamp="1613941067371" />
+    <state x="271" y="182" key="CommitChangelistDialog2/0.23.1920.1008@0.23.1920.1008" timestamp="1613945010657" />
     <state x="628" y="182" key="CommitChangelistDialog2/0.23.1920.1009@0.23.1920.1009" timestamp="1612383025188" />
     <state x="527" y="182" key="CommitChangelistDialog2/0.23.1920.1010@0.23.1920.1010" timestamp="1613768220819" />
     <state x="818" y="453" key="Github.ShareDialog" timestamp="1611851167735">
@@ -466,10 +474,10 @@
     <state width="1398" height="252" key="GridCell.Tab.1.right/0.23.1920.1008@0.23.1920.1008" timestamp="1613934678002" />
     <state width="1398" height="252" key="GridCell.Tab.1.right/0.23.1920.1009@0.23.1920.1009" timestamp="1613940459785" />
     <state width="1398" height="252" key="GridCell.Tab.1.right/0.23.1920.1010@0.23.1920.1010" timestamp="1613767743872" />
-    <state x="621" y="246" key="Vcs.Push.Dialog.v2" timestamp="1613941071064">
+    <state x="621" y="246" key="Vcs.Push.Dialog.v2" timestamp="1613945013478">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
-    <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1008@0.23.1920.1008" timestamp="1613941071064" />
+    <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1008@0.23.1920.1008" timestamp="1613945013478" />
     <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1009@0.23.1920.1009" timestamp="1612383028225" />
     <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1010@0.23.1920.1010" timestamp="1613768224377" />
     <state x="390" y="283" width="1240" height="593" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1613187064780">
@@ -570,7 +578,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/LayoutController.php</url>
-          <line>146</line>
+          <line>150</line>
           <option name="timeStamp" value="29" />
         </line-breakpoint>
       </breakpoints>
