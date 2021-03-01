@@ -147,6 +147,7 @@ class cardInstanceController extends Controller
         $cardParams = $thisCardInstanceParams->getCardInstanceParams($cardId);
         $configParameters=array();
         $contentParameters=array();
+        $subElementArray=array();
         foreach($cardParams as $thisCardParam){
             $thisCardParameterElement = $thisCardParam->parameter_key;
             if($thisCardParam->parameter_value=='checked'){
@@ -164,12 +165,19 @@ class cardInstanceController extends Controller
 //            $thisCardParameterElementCombo = [$thisCardParameterElement,$thisCardParameterValue];
             $thisCardParameterElementCombo = [$thisCardParam->parameter_key, $thisCardParam->parameter_value ];
             if($thisCardParam->isCss){
-                array_push($configParameters, $thisCardParameterElementCombo);
+                if($thisCardParam->dom_element=='main'){
+                    array_push($configParameters, $thisCardParameterElementCombo);
+                }else{
+                    if(!isset($subElementArray[$thisCardParam->dom_element])){
+                        $subElementArray[$thisCardParam->dom_element] = array();
+                    }
+                    array_push($subElementArray[$thisCardParam->dom_element],$thisCardParameterElementCombo);
+                }
             }else{
                 array_push($contentParameters, $thisCardParameterElementCombo);
             }
         }
-        $returnData = [$configParameters, $contentParameters];
+        $returnData = [$configParameters, $contentParameters, $subElementArray];
         return json_encode($returnData);
 
     }
