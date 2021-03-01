@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class InstanceParams extends Model
 {
-    function createInstanceParam($key, $value, $instanceId, $isCss){
+    function createInstanceParam($key, $value, $instanceId, $isCss, $domElement){
 //        $newParam = new InstanceParams;
 //        $newParam->card_instance_id = $instanceId;
 //        $newParam->parameter_key=$key;
@@ -21,6 +21,7 @@ class InstanceParams extends Model
                 'parameter_key'=>$key,
                 'card_instance_id'=>$instanceId,
                 'isCss'=>$isCss,
+                'dom_element'=>$domElement,
                 'created_at'=>\Carbon\Carbon::now(),
                 'updated_at'=>\Carbon\Carbon::now()
             ]);

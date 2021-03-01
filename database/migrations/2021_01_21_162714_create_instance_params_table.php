@@ -15,6 +15,7 @@ class CreateInstanceParamsTable extends Migration
     {
         Schema::create('instance_params', function (Blueprint $table) {
             $table->id();
+            $table->string('dom_element', 32);
             $table->string('parameter_key', 32);
             $table->mediumText('parameter_value');
             $table->unsignedBigInteger("card_instance_id");

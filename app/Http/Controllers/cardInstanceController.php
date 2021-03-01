@@ -213,15 +213,12 @@ class cardInstanceController extends Controller
     public function saveCardParameters(Request $request){
         $inData =  $request->all();
         $decodedPost = json_decode($inData['cardParams']);
+        $domElements = $decodedPost[3];
         $thisInstanceParams = new InstanceParams;
-//        DB::beginTransaction();
+
         DB::table('instance_params')->where('card_instance_id', '=', $decodedPost[0])->sharedLock()->get();
-//      DB::table('instance_params')->where('card_instance_id', '=', $decodedPost[0])->delete();
-//        DB::table('instance_params')->where([
-//            ['card_instance_id', '=', $decodedPost[0]],
-//            ['isCss','<', 1]
-//        ])->delete();
-        $query = "delete from instance_params where card_instance_id = ? and isCss = 1";
+        $query = "delete from instance_params where card_instance_id = ? and isCss = 1 and dom_element = 'main'";
+        DB::beginTransaction();
         try {
             DB::select($query, [$decodedPost[0]]);
         } catch (Exception $e) {
@@ -229,19 +226,39 @@ class cardInstanceController extends Controller
         }
         try {
             foreach ($decodedPost[1] as $key => $value) {
-                $thisInstanceParams->createInstanceParam($key, $value, $decodedPost[0], true);
-                //            print "$key => $value\n";
+                $thisInstanceParams->createInstanceParam($key, $value, $decodedPost[0], true, 'main');
             }
-            /*
-                        foreach ($decodedPost[2] as $key => $value) {
-                            $thisInstanceParams->createInstanceParam($key, $value, $decodedPost[0], false);
-                            //            print "$key => $value\n";
-                        }
-            */
         } catch (Exception $e) {
-//            DB::rollBack();
+            DB::rollBack();
         }
-//        DB::commit();
+        DB::commit();
+        if(count($domElements)>0){
+            foreach($domElements as $key => $value){
+                $thisDomElementName  = $value->elementName;
+                $thisDomElementParameters = $value->elementStyles;
+                $query = "delete from instance_params where card_instance_id = ? and isCss = 1 and dom_element = ?";
+
+                DB::beginTransaction();
+                try {
+                    DB::select($query, [$decodedPost[0], $thisDomElementName]);
+                } catch (Exception $e) {
+                    DB::rollBack();
+                    throw new Exception('error - could not clean out existing params');
+                }
+
+                foreach($thisDomElementParameters as $key => $value){
+                    $thisKey = $key;
+                    $thisValue = $value;
+                    try {
+                        $thisInstanceParams->createInstanceParam($key, $value, $decodedPost[0], true, $thisDomElementName);
+                    } catch (Exception $e) {
+                        DB::rollBack();
+                        throw new Exception('error - could not create new param - '.$thisKey.'-'.$thisValue);
+                    }
+                }
+                DB::commit();
+            }
+        }
 
         return "Ok";
     }
