@@ -122,16 +122,29 @@ class cardInstanceController extends Controller
             );
             array_push($allCardInstances, $thisCardData);
         }
+        $subElementStyles = array();
         foreach($cardSubElementProperties as $key=>$value){
             $cardSubElement = $value;
             $cardId = $key;
-            $subElementStyles = array();
             $thisSubElementStyle = '';
             foreach($cardSubElement as $key=>$value){
                 foreach($value as $styleElement){
                     $thisSubElementStyle = $thisSubElementStyle.$styleElement[1];
                 }
-                $subElementStyles[$key]= $thisSubElementStyle;
+                if(!array_key_exists($cardId, $subElementStyles)){
+                    $subElementStyles[$cardId][$key] = array();
+                    array_push($subElementStyles[$cardId][$key], $thisSubElementStyle);
+                }else{
+                    array_push($subElementStyles[$cardId][$key], $thisSubElementStyle);
+                }
+            }
+        }
+        foreach($allCardInstances as $key=>$value){
+            $thisCardId = $key;
+            foreach($subElementStyles as $key=>$value){
+                if($allCardInstances[$thisCardId]['id']==$key){
+                    $allCardInstances[$thisCardId]['elementStyles'] = $value;
+                }
             }
         }
         $thisLayoutPerms = $layoutInstance->summaryPermsForLayout($userId, $orgId, $layoutId);
