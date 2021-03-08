@@ -70,14 +70,24 @@ class cardInstanceController extends Controller
             return json_encode($returnData);
         }
         $cardsReadIn = array();
+        $cardSubElementProperties = array();
         $allCardInstances = array();
         foreach($thisLayoutCardInstances as $card) {
             $thisId = strval($card->id);
             $thisCardData = array($card->parameter_key, $card->parameter_value, $card->isCss, $card->card_component, $card->col, $card->row, $card->height, $card->width, $card->id);
-            if(!array_key_exists($thisId, $cardsReadIn)){
-                $cardsReadIn[$thisId] = [$thisCardData];
-            } else {
-                array_push($cardsReadIn[$thisId], $thisCardData);
+            if($card->dom_element=='main'){
+                if(!array_key_exists($thisId, $cardsReadIn)){
+                    $cardsReadIn[$thisId] = [$thisCardData];
+                } else {
+                    array_push($cardsReadIn[$thisId], $thisCardData);
+                }
+            }else{
+                if(!array_key_exists($thisId, $cardSubElementProperties)){
+                    $cardSubElementProperties[$thisId][$card->dom_element]=array();
+                    array_push($cardSubElementProperties[$thisId][$card->dom_element],$thisCardData);
+                }else{
+                    array_push($cardSubElementProperties[$thisId][$card->dom_element],$thisCardData);
+                }
             }
         }
         foreach($cardsReadIn as $thisCardArray){
@@ -111,6 +121,18 @@ class cardInstanceController extends Controller
                 'card_position'=>$thisCardPosition
             );
             array_push($allCardInstances, $thisCardData);
+        }
+        foreach($cardSubElementProperties as $key=>$value){
+            $cardSubElement = $value;
+            $cardId = $key;
+            $subElementStyles = array();
+            $thisSubElementStyle = '';
+            foreach($cardSubElement as $key=>$value){
+                foreach($value as $styleElement){
+                    $thisSubElementStyle = $thisSubElementStyle.$styleElement[1];
+                }
+                $subElementStyles[$key]= $thisSubElementStyle;
+            }
         }
         $thisLayoutPerms = $layoutInstance->summaryPermsForLayout($userId, $orgId, $layoutId);
         $layoutProperties =array('description'=>$thisLayoutDescription, 'menu_label'=>$thisLayoutLabel, 'height'=>$thisLayoutHeight, 'width'=>$thisLayoutHeight, 'backgroundColor'=>$thisLayoutBackgroundColor, 'backGroundImageUrl'=>$thisLayoutImageUrl, 'backgroundType'=>$thisLayoutBackgroundType);

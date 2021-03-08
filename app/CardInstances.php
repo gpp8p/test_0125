@@ -35,13 +35,13 @@ class CardInstances extends Model
     }
 
     public function getLayoutCardInstancesById($layoutId, $orgId){
-        $query = "select instance.id,parameter_key, parameter_value, card_component, isCss, ".
+        $query = "select instance.id,parameter_key, parameter_value, card_component, isCss, dom_element, ".
             "instance.col, instance.row, instance.height, instance.width ".
             "from card_instances as instance, instance_params as params, layouts as layouts ".
             "where params.card_instance_id = instance.id ".
             "and instance.layout_id = layouts.id ".
             "and layouts.id = ? ".
-            "order by instance.id";
+            "order by instance.id, dom_element";
 
         $retrievedCardInstances  =  DB::select($query, [$layoutId]);
 
