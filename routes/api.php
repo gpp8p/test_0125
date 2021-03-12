@@ -68,6 +68,7 @@ Route::group([
     Route::post('createUser', 'userController@createUser');
     Route::post('addUserToOrg','userController@addUserToOrg' );
     Route::get('removeUserFromOrg', 'GroupsController@removeUserFromOrg');
+    Route::get('getLinks', 'linksController@getLinksByCardId');
 
 
 
