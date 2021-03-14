@@ -91,7 +91,7 @@ class CardInstances extends Model
 //        $newCardInstanceId = $thisCardInstance->id;
         foreach($cardParams as $thisParam){
             $thisInstanceParams = new InstanceParams;
-            $thisInstanceParams->createInstanceParam($thisParam[0], $thisParam[1],$newCardInstanceId, $thisParam[2]);
+            $thisInstanceParams->createInstanceParam($thisParam[0], $thisParam[1],$newCardInstanceId, $thisParam[2], 'main');
         }
         return $newCardInstanceId;
 

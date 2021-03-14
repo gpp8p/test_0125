@@ -309,6 +309,7 @@ class cardInstanceController extends Controller
     public function saveCardContent(Request $request){
         $inData =  $request->all();
         $decodedPost = json_decode($inData['cardParams']);
+        $domElement = $inData['domElement'];
         $org = $inData['org'];
         $thisInstanceParams = new InstanceParams;
         DB::beginTransaction();
@@ -339,7 +340,7 @@ class cardInstanceController extends Controller
                     }
                     $contentFileName = '/spcontent/'.$org.'/cardText/rtcontent'.$decodedPost[0];
                     Storage::disk('local')->put($contentFileName, $value);
-                    $thisInstanceParams->createInstanceParam($key, $contentFileName, $decodedPost[0], false);
+                    $thisInstanceParams->createInstanceParam($key, $contentFileName, $decodedPost[0], false, $domElement);
                 }elseif ($key=='title'){
                     $thisInstanceParams->createInstanceParam($key, $value, $decodedPost[0], false);
                 }
