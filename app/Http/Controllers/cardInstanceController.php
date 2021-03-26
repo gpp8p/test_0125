@@ -341,8 +341,8 @@ class cardInstanceController extends Controller
                     $contentFileName = '/spcontent/'.$org.'/cardText/rtcontent'.$decodedPost[0];
                     Storage::disk('local')->put($contentFileName, $value);
                     $thisInstanceParams->createInstanceParam($key, $contentFileName, $decodedPost[0], false, $domElement);
-                }elseif ($key=='title'){
-                    $thisInstanceParams->createInstanceParam($key, $value, $decodedPost[0], false);
+                }else {
+                    $thisInstanceParams->createInstanceParam($key, $value, $decodedPost[0], false, $domElement);
                 }
 
                 //            print "$key => $value\n";

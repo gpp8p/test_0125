@@ -13,4 +13,22 @@ class linkController extends Controller
         $thisLink = new link();
         return $thisLink->getLinksForCardId($thisCardId);
     }
+
+    public function createNewLink(Request $request){
+        $inData =  $request->all();
+        $thisCardId = $inData['card_instance_id'];
+        $thisOrgId = $inData['org_id'];
+        $thisLayoutId = $inData['layout_id'];
+        $thisDescription = $inData['description'];
+        $thisIsExternal = $inData['is_external'];
+        $thisLinkUrl = $inData['linkUrl'];
+        $thisLayoutLinkTo = $inData['layout_link_to'];
+        $thisLinkInstance = new link;
+        try {
+            $thisLinkInstance->saveLink($thisOrgId, $thisLayoutId, $thisCardId, $thisDescription, $thisLinkUrl, $thisIsExternal, $thisLayoutLinkTo);
+            return "ok";
+        } catch (\Exception $e) {
+            return "Error ".$e;
+        }
+    }
 }

@@ -16,4 +16,22 @@ class link extends Model
             throw new Exception('error ".$e.getMessage()."loading links for'.$cardId);
         }
     }
+
+    public function saveLink($orgId, $layoutId, $cardInstanceId, $description, $linkUrl, $isExternal, $layoutLinkTo){
+        try {
+            $thisOrgId = DB::table('links')->insertGetId([
+                'org_id' => 1,
+                'layout_id' => $layoutId,
+                'card_instance_id' => $cardInstanceId,
+                'description' => $description,
+                'isExternal' => $isExternal,
+                'link_url' => $linkUrl,
+                'layout_link_to' => $layoutLinkTo,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now()
+            ]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
 }
