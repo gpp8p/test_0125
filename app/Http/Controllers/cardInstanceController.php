@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\CardInstances;
 use App\InstanceParams;
 use App\layout;
+use App\link;
 use Illuminate\Support\Facades\DB;
 use Exception;
 use Storage;
@@ -93,15 +94,22 @@ class cardInstanceController extends Controller
         foreach($cardsReadIn as $thisCardArray){
             $thisCardCss="";
             $thisCardProperties="";
+            $thisCardContent = array();
             foreach($thisCardArray as $thisCard){
                 if($thisCard[2]==1){
                     $thisCardCss=$thisCardCss.$thisCard[1];
                 }else{
                     $thisCardProperties=$thisCardProperties.$thisCard[1];
+                    $thisCardContent[$thisCard[0]]=$thisCard[1];
                 }
                 $thisCardIsCss = $thisCard[2];
                 $thisCardParameterKey = $thisCard[0];
                 $thisCardComponent = $thisCard[3];
+                if($thisCardComponent=="linkMenu"){
+                    $thisLink = new link();
+                    $cardLinks = $thisLink->getLinksForCardId($thisCard[8]);
+                    $thisCardContent['availableLinks']=$cardLinks;
+                }
                 $thisCardCol = $thisCard[4];
                 $thisCardRow = $thisCard[5];
                 $thisCardHeight = $thisCard[6];
@@ -111,7 +119,8 @@ class cardInstanceController extends Controller
             $cssGridParams = $this->computeGridCss($thisCardRow, $thisCardCol, $thisCardHeight, $thisCardWidth).";";
             $thisCardParameters = array(
                 'style'=>$cssGridParams.$thisCardCss,
-                'properties'=>$thisCardProperties
+                'properties'=>$thisCardProperties,
+                'content'=>$thisCardContent
             );
             $thisCardPosition = array($thisCardRow,$thisCardCol,$thisCardHeight,$thisCardWidth);
             $thisCardData = array(
