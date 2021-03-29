@@ -218,7 +218,8 @@ class cardInstanceController extends Controller
                     array_push($subElementArray[$thisCardParam->dom_element],$thisCardParameterElementCombo);
                 }
             }else{
-                array_push($contentParameters, $thisCardParameterElementCombo);
+//                array_push($contentParameters, $thisCardParameterElementCombo);
+                $contentParameters[$thisCardParameterElementCombo[0]]=$thisCardParameterElementCombo[1];
             }
         }
         $returnData = [$configParameters, $contentParameters, $subElementArray];
