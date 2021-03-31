@@ -222,7 +222,14 @@ class cardInstanceController extends Controller
                 $contentParameters[$thisCardParameterElementCombo[0]]=$thisCardParameterElementCombo[1];
             }
         }
-        $returnData = [$configParameters, $contentParameters, $subElementArray];
+        $thisLink = new link();
+        $thisCardContent = array();
+        $cardLinks = $thisLink->getLinksForCardId($cardId);
+        if(length($cardLinks)>0){
+            $thisCardContent['availableLinks']=$cardLinks;
+        }
+
+        $returnData = [$configParameters, $contentParameters, $subElementArray,$thisCardContent];
         return json_encode($returnData);
 
     }
