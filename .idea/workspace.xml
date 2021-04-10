@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="">
+    <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="fix for show menu links during edit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php" afterDir="false" />
     </list>
@@ -24,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpDebugGeneral" break_at_first_line="true" />
+  <component name="PhpDebugGeneral" break_at_first_line="true" listening_started="true" />
   <component name="PhpServers">
     <servers>
       <server host="localhost" id="c10bb1c5-894d-47ee-93ce-511a8f3c7051" name="Artisan" port="8000" />
@@ -267,7 +267,10 @@
       <workItem from="1616807923422" duration="3141000" />
       <workItem from="1616850156231" duration="1242000" />
       <workItem from="1616947845289" duration="1591000" />
-      <workItem from="1617223863490" duration="1501000" />
+      <workItem from="1617223863490" duration="1589000" />
+      <workItem from="1617373927036" duration="799000" />
+      <workItem from="1617475313047" duration="1033000" />
+      <workItem from="1618088805708" duration="371000" />
     </task>
     <task id="LOCAL-00001" summary="changes to layouts seeder to fix perms problem">
       <created>1611974194033</created>
@@ -472,14 +475,20 @@
       <option name="project" value="LOCAL" />
       <updated>1616985342413</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="fix for show menu links during edit">
+      <created>1617226615073</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1617226615073</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="changes to layouts seeder to fix perms problem" />
     <MESSAGE value="got to headline card create" />
     <MESSAGE value="fixing the content/configuration isssue" />
     <MESSAGE value="&#10;fix for the configuration double write of content in headline cards" />
@@ -504,7 +513,8 @@
     <MESSAGE value="fix regressions related to dom-element arg missing" />
     <MESSAGE value="link api" />
     <MESSAGE value="fixes for sub-elemnt regressions" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixes for sub-elemnt regressions" />
+    <MESSAGE value="fix for show menu links during edit" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix for show menu links during edit" />
   </component>
   <component name="WindowStateProjectService">
     <state x="608" y="222" key="#Servers" timestamp="1611615347672">
@@ -529,10 +539,10 @@
     </state>
     <state x="1265" y="451" key="#xdebugger.evaluate/0.23.1920.1008@0.23.1920.1008" timestamp="1615226689456" />
     <state x="671" y="452" key="#xdebugger.evaluate/0.23.1920.1009@0.23.1920.1009" timestamp="1615171155052" />
-    <state x="271" y="182" key="CommitChangelistDialog2" timestamp="1616985342276">
+    <state x="271" y="182" key="CommitChangelistDialog2" timestamp="1617376975252">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
-    <state x="271" y="182" key="CommitChangelistDialog2/0.23.1920.1008@0.23.1920.1008" timestamp="1616985342276" />
+    <state x="271" y="182" key="CommitChangelistDialog2/0.23.1920.1008@0.23.1920.1008" timestamp="1617376975252" />
     <state x="628" y="182" key="CommitChangelistDialog2/0.23.1920.1009@0.23.1920.1009" timestamp="1616778282102" />
     <state x="527" y="182" key="CommitChangelistDialog2/0.23.1920.1010@0.23.1920.1010" timestamp="1613768220819" />
     <state x="818" y="453" key="Github.ShareDialog" timestamp="1611851167735">
@@ -543,58 +553,58 @@
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
     <state x="700" y="261" key="Github.UntrackedFilesDialog/0.23.1920.1008@0.23.1920.1008" timestamp="1611851185994" />
-    <state width="1556" height="228" key="GridCell.Tab.0.bottom" timestamp="1617225138710">
+    <state width="1556" height="228" key="GridCell.Tab.0.bottom" timestamp="1618089256993">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
-    <state width="1556" height="228" key="GridCell.Tab.0.bottom/0.23.1920.1008@0.23.1920.1008" timestamp="1617225138710" />
+    <state width="1556" height="228" key="GridCell.Tab.0.bottom/0.23.1920.1008@0.23.1920.1008" timestamp="1618089256993" />
     <state width="1556" height="228" key="GridCell.Tab.0.bottom/0.23.1920.1009@0.23.1920.1009" timestamp="1616775379144" />
     <state width="1398" height="252" key="GridCell.Tab.0.bottom/0.23.1920.1010@0.23.1920.1010" timestamp="1613767743871" />
-    <state width="1556" height="228" key="GridCell.Tab.0.center" timestamp="1617225138710">
+    <state width="1556" height="228" key="GridCell.Tab.0.center" timestamp="1618089256993">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
-    <state width="1556" height="228" key="GridCell.Tab.0.center/0.23.1920.1008@0.23.1920.1008" timestamp="1617225138710" />
+    <state width="1556" height="228" key="GridCell.Tab.0.center/0.23.1920.1008@0.23.1920.1008" timestamp="1618089256992" />
     <state width="1556" height="228" key="GridCell.Tab.0.center/0.23.1920.1009@0.23.1920.1009" timestamp="1616775379143" />
     <state width="1398" height="252" key="GridCell.Tab.0.center/0.23.1920.1010@0.23.1920.1010" timestamp="1613767743870" />
-    <state width="1556" height="228" key="GridCell.Tab.0.left" timestamp="1617225138710">
+    <state width="1556" height="228" key="GridCell.Tab.0.left" timestamp="1618089256992">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
-    <state width="1556" height="228" key="GridCell.Tab.0.left/0.23.1920.1008@0.23.1920.1008" timestamp="1617225138710" />
+    <state width="1556" height="228" key="GridCell.Tab.0.left/0.23.1920.1008@0.23.1920.1008" timestamp="1618089256992" />
     <state width="1556" height="228" key="GridCell.Tab.0.left/0.23.1920.1009@0.23.1920.1009" timestamp="1616775379143" />
     <state width="1398" height="252" key="GridCell.Tab.0.left/0.23.1920.1010@0.23.1920.1010" timestamp="1613767743870" />
-    <state width="1556" height="228" key="GridCell.Tab.0.right" timestamp="1617225138710">
+    <state width="1556" height="228" key="GridCell.Tab.0.right" timestamp="1618089256993">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
-    <state width="1556" height="228" key="GridCell.Tab.0.right/0.23.1920.1008@0.23.1920.1008" timestamp="1617225138710" />
+    <state width="1556" height="228" key="GridCell.Tab.0.right/0.23.1920.1008@0.23.1920.1008" timestamp="1618089256993" />
     <state width="1556" height="228" key="GridCell.Tab.0.right/0.23.1920.1009@0.23.1920.1009" timestamp="1616775379144" />
     <state width="1398" height="252" key="GridCell.Tab.0.right/0.23.1920.1010@0.23.1920.1010" timestamp="1613767743871" />
-    <state width="1556" height="228" key="GridCell.Tab.1.bottom" timestamp="1617225138711">
+    <state width="1556" height="228" key="GridCell.Tab.1.bottom" timestamp="1618089256994">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
-    <state width="1556" height="228" key="GridCell.Tab.1.bottom/0.23.1920.1008@0.23.1920.1008" timestamp="1617225138711" />
+    <state width="1556" height="228" key="GridCell.Tab.1.bottom/0.23.1920.1008@0.23.1920.1008" timestamp="1618089256994" />
     <state width="1556" height="228" key="GridCell.Tab.1.bottom/0.23.1920.1009@0.23.1920.1009" timestamp="1616775379145" />
     <state width="1398" height="252" key="GridCell.Tab.1.bottom/0.23.1920.1010@0.23.1920.1010" timestamp="1613767743872" />
-    <state width="1556" height="228" key="GridCell.Tab.1.center" timestamp="1617225138711">
+    <state width="1556" height="228" key="GridCell.Tab.1.center" timestamp="1618089256994">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
-    <state width="1556" height="228" key="GridCell.Tab.1.center/0.23.1920.1008@0.23.1920.1008" timestamp="1617225138711" />
+    <state width="1556" height="228" key="GridCell.Tab.1.center/0.23.1920.1008@0.23.1920.1008" timestamp="1618089256994" />
     <state width="1556" height="228" key="GridCell.Tab.1.center/0.23.1920.1009@0.23.1920.1009" timestamp="1616775379144" />
     <state width="1398" height="252" key="GridCell.Tab.1.center/0.23.1920.1010@0.23.1920.1010" timestamp="1613767743872" />
-    <state width="1556" height="228" key="GridCell.Tab.1.left" timestamp="1617225138711">
+    <state width="1556" height="228" key="GridCell.Tab.1.left" timestamp="1618089256993">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
-    <state width="1556" height="228" key="GridCell.Tab.1.left/0.23.1920.1008@0.23.1920.1008" timestamp="1617225138711" />
+    <state width="1556" height="228" key="GridCell.Tab.1.left/0.23.1920.1008@0.23.1920.1008" timestamp="1618089256993" />
     <state width="1556" height="228" key="GridCell.Tab.1.left/0.23.1920.1009@0.23.1920.1009" timestamp="1616775379144" />
     <state width="1398" height="252" key="GridCell.Tab.1.left/0.23.1920.1010@0.23.1920.1010" timestamp="1613767743872" />
-    <state width="1556" height="228" key="GridCell.Tab.1.right" timestamp="1617225138711">
+    <state width="1556" height="228" key="GridCell.Tab.1.right" timestamp="1618089256994">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
-    <state width="1556" height="228" key="GridCell.Tab.1.right/0.23.1920.1008@0.23.1920.1008" timestamp="1617225138711" />
+    <state width="1556" height="228" key="GridCell.Tab.1.right/0.23.1920.1008@0.23.1920.1008" timestamp="1618089256994" />
     <state width="1556" height="228" key="GridCell.Tab.1.right/0.23.1920.1009@0.23.1920.1009" timestamp="1616775379144" />
     <state width="1398" height="252" key="GridCell.Tab.1.right/0.23.1920.1010@0.23.1920.1010" timestamp="1613767743872" />
-    <state x="621" y="246" key="Vcs.Push.Dialog.v2" timestamp="1616985371141">
+    <state x="621" y="246" key="Vcs.Push.Dialog.v2" timestamp="1617226618040">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
-    <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1008@0.23.1920.1008" timestamp="1616985371141" />
+    <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1008@0.23.1920.1008" timestamp="1617226618040" />
     <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1009@0.23.1920.1009" timestamp="1615520923002" />
     <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1010@0.23.1920.1010" timestamp="1613768224377" />
     <state x="390" y="283" width="1240" height="593" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1613187064780">
@@ -620,23 +630,13 @@
         </line-breakpoint>
         <line-breakpoint type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
-          <line>326</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
           <line>348</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
-          <line>361</line>
+          <line>364</line>
           <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
-          <line>187</line>
-          <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
@@ -652,6 +652,21 @@
           <url>file://$PROJECT_DIR$/app/Http/Controllers/LayoutController.php</url>
           <line>150</line>
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
+          <line>187</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
+          <line>224</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
+          <line>326</line>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

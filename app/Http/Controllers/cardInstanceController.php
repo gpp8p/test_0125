@@ -225,7 +225,7 @@ class cardInstanceController extends Controller
         $thisLink = new link();
         $thisCardContent = array();
         $cardLinks = $thisLink->getLinksForCardId($cardId);
-        if(length($cardLinks)>0){
+        if(count($cardLinks)>0){
             $thisCardContent['availableLinks']=$cardLinks;
         }
 
@@ -349,7 +349,10 @@ class cardInstanceController extends Controller
         try {
             foreach ($decodedPost[1] as $key => $value) {
 
-                if($key=='cardText'){
+                if($key=='availableLinks'){
+
+                }
+                elseif($key=='cardText'){
                     $orgDirectory = '/spcontent/'.$org;
                     if(!Storage::exists($orgDirectory)) {
                         Storage::makeDirectory($orgDirectory);
