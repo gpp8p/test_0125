@@ -70,6 +70,7 @@ Route::group([
     Route::get('removeUserFromOrg', 'GroupsController@removeUserFromOrg');
     Route::get('getLinks', 'linkController@getLinksByCardId');
     Route::post('createNewLink', 'linkController@createNewLink');
+    Route::post('resizeCard', 'cardInstanceController@resizeCard');
 
 
 

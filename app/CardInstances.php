@@ -97,6 +97,16 @@ class CardInstances extends Model
 
     }
 
+    public function updateCardSize($cardId, $row, $column, $height, $width){
+        $affected = DB::table('card_instances')
+            ->where('id', $cardId)
+            ->update(['row' =>$row,
+                       'col' => $column,
+                        'height'=>$height,
+                        'width'=>$width]);
+        return $affected;
+    }
+
 
 
 

@@ -183,6 +183,24 @@ class cardInstanceController extends Controller
         return "ok";
 
     }
+    public function resizeCard(Request $request){
+        $inData =  $request->all();
+        $cardId = $inData['cardId'];
+        $row = $inData['row'];
+        $col = $inData['col'];
+        $height = $inData['height'];
+        $width = $inData['width'];
+        $thisCardInstance = new CardInstances();
+
+        try {
+            $updated = $thisCardInstance->updateCardSize($cardId, $row, $col, $height, $width);
+        } catch (Exception $e) {
+            abort(500, 'Server error while resizing component:'.$e->getMessage());
+        }
+
+        return "ok";
+
+    }
 
     public function getCardDataById(Request $request){
         $inData =  $request->all();
