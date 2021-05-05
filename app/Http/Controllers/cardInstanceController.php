@@ -371,6 +371,21 @@ class cardInstanceController extends Controller
 
                 }
                 elseif($key=='cardText'){
+                    $pattern = "displayLayout/";
+                    $patternFoundAt=0;
+                    $linkAt = strpos($value, $pattern, $patternFoundAt);
+                    if($linkAt!=false){
+                        $documentLinks=array();
+                        $nextLink=$this->findNextLink($value,0);
+                        array_push($documentLinks,$nextLink[0]);
+                        while($nextLink!=false){
+                            $nextLink=$this->findNextLink($value,$nextLink[1]);
+                            if($nextLink==false)break;
+                            array_push($documentLinks,$nextLink[0]);
+                        }
+                    }
+
+
                     $orgDirectory = '/spcontent/'.$org;
                     if(!Storage::exists($orgDirectory)) {
                         Storage::makeDirectory($orgDirectory);
@@ -391,6 +406,21 @@ class cardInstanceController extends Controller
         DB::commit();
 
         return "Ok";
+    }
+    private function findNextLink($content,$startingAt){
+        $pattern = "displayLayout/";
+        $patternFoundAt=0;
+        $linkAt = strpos($content, $pattern, $startingAt);
+        if($linkAt==false){
+            return false;
+        }
+        $endQuote = chr(34);
+        $endQuoteAt = strpos($content, $endQuote, $linkAt+14);
+        $idLength = $endQuoteAt-($linkAt+14);
+        $linkId = substr($content, $linkAt+14, $idLength);
+        $nextPos = $endQuoteAt+1;
+        return array($linkId, $nextPos);
+
     }
 
     public function getCsrf(Request $request){
