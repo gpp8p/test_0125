@@ -346,6 +346,8 @@ class cardInstanceController extends Controller
         $decodedPost = json_decode($inData['cardParams']);
         $domElement = $inData['domElement'];
         $org = $inData['org'];
+        $layoutId = $inData['layoutId'];
+        $cardId = $decodedPost[0];
         $thisInstanceParams = new InstanceParams;
         DB::beginTransaction();
         DB::table('instance_params')->where([
@@ -383,6 +385,15 @@ class cardInstanceController extends Controller
                             if($nextLink==false)break;
                             array_push($documentLinks,$nextLink[0]);
                         }
+                    }
+                    $thisLink = new Link;
+                    $thisLink->removeLinksForCardId($cardId);
+                    foreach($documentLinks as $thisDocumentLink){
+                        $thisDescription = 'link from card:'.$cardId.' to card:'.$thisDocumentLink;
+                        $linkUrl = 'http://localhost:8080/displayLayout/'.$thisDocumentLink;
+                        $isExternal=0;
+                        $layoutLinkTo = $thisDocumentLink;
+                        $thisLink->saveLink($org, $layoutId, $cardId, $thisDescription, $linkUrl, $isExternal, $layoutLinkTo);
                     }
 
 
