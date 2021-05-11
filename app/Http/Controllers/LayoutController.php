@@ -8,6 +8,7 @@ use App\CardInstances;
 use App\Group;
 use App\Org;
 use Illuminate\Support\Facades\DB;
+use App\User;
 
 class LayoutController extends Controller
 {
@@ -173,7 +174,24 @@ class LayoutController extends Controller
         $viewableLayouts = $thisLayout->getViewableLayoutIds($userId, $orgId);
         return json_encode($viewableLayouts);
     }
+    public function publishOrg(Request $request){
+        $inData =  $request->all();
+        $orgId = $inData['orgId'];
+        $groupInstance = new Group;
+        try {
+            $allUserGroupId = $groupInstance->allUserId();
+        } catch (\Exception $e) {
+            abort(500, 'could not find all user group id');
+        }
+        $thisLayout = new Layout;
+        $returnedLayouts = $thisLayout->getPublishableLayoutsForOrg($orgId, $allUserGroupId);
+        $viewableLayouts=array();
+        foreach($returnedLayouts as $thisLayout){
+            array_push($viewableLayouts, $thisLayout->layout_id);
+        }
+        return 'Ok';
 
+    }
     public function getLayoutPerms(Request $request){
         if(auth()->user()==null){
             abort(401, 'Unauthorized action.');

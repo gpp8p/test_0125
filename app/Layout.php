@@ -208,6 +208,16 @@ class Layout extends Model
         $retrievedLayouts  =  DB::select($query, [$orgId]);
         return $retrievedLayouts;
     }
+    public function getPublishableLayoutsForOrg($orgId, $allUserGroup){
+        $query = "select perms.layout_id from perms, grouporg ".
+            "where perms.group_id = grouporg.group_id ".
+            "and grouporg.org_id = ? ".
+            "and perms.view=1 ".
+            "and perms.group_id=?";
+        $retrievedLayouts  =  DB::select($query, [$orgId, $allUserGroup]);
+        return $retrievedLayouts;
+
+    }
 
     public function summaryPermsForLayout($userId, $orgId, $layoutId){
 /*

@@ -71,6 +71,7 @@ Route::group([
     Route::get('getLinks', 'linkController@getLinksByCardId');
     Route::post('createNewLink', 'linkController@createNewLink');
     Route::post('resizeCard', 'cardInstanceController@resizeCard');
+    Route::get('publishOrg', 'layoutController@publishOrg');
 
 
 
