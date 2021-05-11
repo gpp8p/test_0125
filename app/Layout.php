@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use App\CardInstances;
 
 
 
@@ -272,8 +273,4 @@ class Layout extends Model
         }
         return $returnPerms;
     }
-
-
-
-
 }

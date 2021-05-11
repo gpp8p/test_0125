@@ -8,6 +8,7 @@ use App\CardInstances;
 use App\Group;
 use App\Org;
 use Illuminate\Support\Facades\DB;
+use Storage;
 use App\User;
 
 class LayoutController extends Controller
@@ -189,6 +190,11 @@ class LayoutController extends Controller
         foreach($returnedLayouts as $thisLayout){
             array_push($viewableLayouts, $thisLayout->layout_id);
         }
+        $orgDirectory = '/published/'.$orgId;
+        if(!Storage::exists($orgDirectory)) {
+            Storage::makeDirectory($orgDirectory);
+        }
+
         return 'Ok';
 
     }

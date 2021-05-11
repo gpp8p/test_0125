@@ -48,11 +48,12 @@ class cardInstanceController extends Controller
 
         return json_encode($allCardInstances);
     }
-    public function getLayoutById(Request $request){
-        $inData =  $request->all();
-        $layoutId = $inData['layoutId'];
-        $orgId = $inData['orgId'];
-        $userId = $inData['userId'];
+    public function getThisLayout($layoutId, $orgId, $userId){
+//    public function getLayoutById(Request $request){
+//        $inData =  $request->all();
+//        $layoutId = $inData['layoutId'];
+//        $orgId = $inData['orgId'];
+//        $userId = $inData['userId'];
         $layoutInstance = new Layout;
         $layoutInfo = $layoutInstance->where('id', $layoutId)->get();
         $thisLayoutDescription = $layoutInfo[0]->description;
@@ -159,9 +160,19 @@ class cardInstanceController extends Controller
         $thisLayoutPerms = $layoutInstance->summaryPermsForLayout($userId, $orgId, $layoutId);
         $layoutProperties =array('description'=>$thisLayoutDescription, 'menu_label'=>$thisLayoutLabel, 'height'=>$thisLayoutHeight, 'width'=>$thisLayoutHeight, 'backgroundColor'=>$thisLayoutBackgroundColor, 'backGroundImageUrl'=>$thisLayoutImageUrl, 'backgroundType'=>$thisLayoutBackgroundType);
         $returnData = array('cards'=>$allCardInstances, 'layout'=>$layoutProperties, 'perms'=>$thisLayoutPerms);
-
-        return json_encode($returnData);
+        return $returnData;
+//        return json_encode($returnData);
     }
+
+    public function getLayoutById(Request $request){
+        $inData =  $request->all();
+        $layoutId = $inData['layoutId'];
+        $orgId = $inData['orgId'];
+        $userId = $inData['userId'];
+        $thisLayoutData = $this->getThisLayout($layoutId, $orgId, $userId);
+        return json_encode($thisLayoutData);
+    }
+
 
     public function saveCardOnly(Request $request){
         $inData =  $request->all();
