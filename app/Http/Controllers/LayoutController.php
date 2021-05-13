@@ -184,8 +184,13 @@ class LayoutController extends Controller
         } catch (\Exception $e) {
             abort(500, 'could not find all user group id');
         }
-        $thisLayout = new Layout;
-        $returnedLayouts = $thisLayout->getPublishableLayoutsForOrg($orgId, $allUserGroupId);
+        $userInstance = new User;
+        $userFound = $userInstance->findUserByEmail('GuestUser@nomail.com');
+        $guestUserId = $userFound[0]->id;
+
+
+        $thisLayoutInstance = new Layout;
+        $returnedLayouts = $thisLayoutInstance->getPublishableLayoutsForOrg($orgId, $allUserGroupId);
         $viewableLayouts=array();
         foreach($returnedLayouts as $thisLayout){
             array_push($viewableLayouts, $thisLayout->layout_id);
@@ -194,8 +199,53 @@ class LayoutController extends Controller
         if(!Storage::exists($orgDirectory)) {
             Storage::makeDirectory($orgDirectory);
         }
+        foreach($viewableLayouts as $thisViewableLayout){
+            $layoutData = $thisLayoutInstance->getThisLayout($thisViewableLayout, $orgId, $guestUserId);
+            $height = $layoutData['layout']['height'];
+            $width = $layoutData['layout']['width'];
+            if(isset($layoutData['layout']['backgroundColor'])){
+                $backgroundColor = $layoutData['layout']['backgroundColor'];
+            }else{
+                $backgroundColor = '';
+            }
+            if(isset($layoutData['layout']['backGroundImageUrl'])){
+                $backgroundImageUrl = $layoutData['layout']['backGroundImageUrl'];
+            }else{
+                $backgroundImageUrl = '';
+            }
 
+            $backgroundType = $layoutData['layout']['backgroundType'];
+            $thisLayoutCss = $this->layoutCss($height, $width, $backgroundColor, $backgroundImageUrl, $backgroundType, $orgId);
+            $viewHtml = view('layout', ['layoutId' => $thisViewableLayout])->render();
+        }
         return 'Ok';
+
+    }
+    private function layoutCss($height, $width, $backgroundColor, $backgroundImageUrl, $backgroundType, $orgId){
+        $urlBase = "http://localhost/spaces/".$orgId;
+        $imageBase = $urlBase."/images/";
+        $contentBase = $urlBase."/content/";
+        $heightSize = number_format((100 / $height) ,2);
+        $widthSize = number_format((100 / $width), 2);
+        $gridHeightCss = "grid-template-rows: ";
+        $gridWidthCss = "grid-template-columns: ";
+        $x = 0;
+        for($x = 0; $x < $height; $x++) {
+            $gridHeightCss = $gridHeightCss.$heightSize."% ";
+        }
+        for ($y = 0; $y < $width; $y++) {
+            $gridWidthCss = $gridWidthCss.$widthSize."% ";
+        }
+        if($backgroundType=='C'){
+            $gridCss =
+                "display: grid; grid-gap: 3px; background-color: ".$backgroundColor."; height: 90vh; color: #ffcd90; ".$gridHeightCss.";".$gridWidthCss.";";
+
+        }else{
+            $backgroundUrl = $imageBase.$backgroundImageUrl;
+            $gridCss = "display: grid; grid-gap: 3px; background-image:".$backgroundUrl."; background-size: cover; background-repeat: no-repeat; background-position: center; height: 90vh; color: #ffcd90; ". $gridHeightCss.";".$gridWidthCss.";";
+        }
+        return $gridCss;
+
 
     }
     public function getLayoutPerms(Request $request){

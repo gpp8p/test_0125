@@ -2,9 +2,10 @@
 
 namespace App;
 
+use App\CardInstances;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use App\CardInstances;
+
 
 
 
@@ -273,4 +274,138 @@ class Layout extends Model
         }
         return $returnPerms;
     }
+
+    public function getThisLayout($layoutId, $orgId, $userId)
+    {
+//    public function getLayoutById(Request $request){
+//        $inData =  $request->all();
+//        $layoutId = $inData['layoutId'];
+//        $orgId = $inData['orgId'];
+//        $userId = $inData['userId'];
+        $layoutInstance = new Layout;
+        $layoutInfo = $layoutInstance->where('id', $layoutId)->get();
+        $thisLayoutDescription = $layoutInfo[0]->description;
+        $thisLayoutWidth = $layoutInfo[0]->width;
+        $thisLayoutHeight = $layoutInfo[0]->height;
+        $thisLayoutBackgroundColor = $layoutInfo[0]->backgroundColor;
+        $thisLayoutImageUrl = $layoutInfo[0]->backgroundUrl;
+        $thisLayoutBackgroundType = $layoutInfo[0]->backgroundType;
+        $thisLayoutLabel = $layoutInfo[0]->menu_label;
+        $thisCardInstance = new CardInstances;
+        $thisLayoutCardInstances = $thisCardInstance->getLayoutCardInstancesById($layoutId, $orgId);
+        if ($thisLayoutCardInstances == null) {
+            $layoutProperties = array('description' => $thisLayoutDescription, 'menu_label' => $thisLayoutLabel, 'height' => $thisLayoutHeight, 'width' => $thisLayoutHeight, 'backgroundColor' => $thisLayoutBackgroundColor, 'backGroundImageUrl' => $thisLayoutImageUrl, 'backgroundType' => $thisLayoutBackgroundType);
+            $thisLayoutPerms = $layoutInstance->summaryPermsForLayout($userId, $orgId, $layoutId);
+            $returnData = array('cards' => [], 'layout' => $layoutProperties, 'perms' => $thisLayoutPerms);
+            return $returnData;
+        }
+        $cardsReadIn = array();
+        $cardSubElementProperties = array();
+        $allCardInstances = array();
+        foreach ($thisLayoutCardInstances as $card) {
+            $thisId = strval($card->id);
+            $thisCardData = array($card->parameter_key, $card->parameter_value, $card->isCss, $card->card_component, $card->col, $card->row, $card->height, $card->width, $card->id);
+            if ($card->dom_element == 'main') {
+                if (!array_key_exists($thisId, $cardsReadIn)) {
+                    $cardsReadIn[$thisId] = [$thisCardData];
+                } else {
+                    array_push($cardsReadIn[$thisId], $thisCardData);
+                }
+            } else {
+                if (!array_key_exists($thisId, $cardSubElementProperties)) {
+                    $cardSubElementProperties[$thisId][$card->dom_element] = array();
+                    array_push($cardSubElementProperties[$thisId][$card->dom_element], $thisCardData);
+                } else {
+                    array_push($cardSubElementProperties[$thisId][$card->dom_element], $thisCardData);
+                }
+            }
+        }
+        foreach ($cardsReadIn as $thisCardArray) {
+            $thisCardCss = "";
+            $thisCardProperties = "";
+            $thisCardContent = array();
+            foreach ($thisCardArray as $thisCard) {
+                if ($thisCard[2] == 1) {
+                    $thisCardCss = $thisCardCss . $thisCard[1];
+                } else {
+                    $thisCardProperties = $thisCardProperties . $thisCard[1];
+                    $thisCardContent[$thisCard[0]] = $thisCard[1];
+                }
+                $thisCardIsCss = $thisCard[2];
+                $thisCardParameterKey = $thisCard[0];
+                $thisCardComponent = $thisCard[3];
+                if ($thisCardComponent == "linkMenu") {
+                    $thisLink = new link();
+                    $cardLinks = $thisLink->getLinksForCardId($thisCard[8]);
+                    $thisCardContent['availableLinks'] = $cardLinks;
+                }
+                $thisCardCol = $thisCard[4];
+                $thisCardRow = $thisCard[5];
+                $thisCardHeight = $thisCard[6];
+                $thisCardWidth = $thisCard[7];
+                $thisCardId = $thisCard[8];
+            }
+            $cssGridParams = $this->computeGridCss($thisCardRow, $thisCardCol, $thisCardHeight, $thisCardWidth) . ";";
+            $thisCardParameters = array(
+                'style' => $cssGridParams . $thisCardCss,
+                'properties' => $thisCardProperties,
+                'content' => $thisCardContent
+            );
+            $thisCardPosition = array($thisCardRow, $thisCardCol, $thisCardHeight, $thisCardWidth);
+            $thisCardData = array(
+                'id' => $thisCardId,
+                'card_component' => $thisCardComponent,
+                'card_parameters' => $thisCardParameters,
+                'card_position' => $thisCardPosition
+            );
+            array_push($allCardInstances, $thisCardData);
+        }
+        $subElementStyles = array();
+        foreach ($cardSubElementProperties as $key => $value) {
+            $cardSubElement = $value;
+            $cardId = $key;
+            $thisSubElementStyle = '';
+            foreach ($cardSubElement as $key => $value) {
+                foreach ($value as $styleElement) {
+                    $thisSubElementStyle = $thisSubElementStyle . $styleElement[1];
+                }
+                if (!array_key_exists($cardId, $subElementStyles)) {
+                    $subElementStyles[$cardId][$key] = array();
+                    array_push($subElementStyles[$cardId][$key], $thisSubElementStyle);
+                } else {
+                    array_push($subElementStyles[$cardId][$key], $thisSubElementStyle);
+                }
+            }
+        }
+        foreach ($allCardInstances as $key => $value) {
+            $thisCardId = $key;
+            foreach ($subElementStyles as $key => $value) {
+                if ($allCardInstances[$thisCardId]['id'] == $key) {
+                    $allCardInstances[$thisCardId]['elementStyles'] = $value;
+                }
+            }
+        }
+        $thisLayoutPerms = $layoutInstance->summaryPermsForLayout($userId, $orgId, $layoutId);
+        $layoutProperties = array('description' => $thisLayoutDescription, 'menu_label' => $thisLayoutLabel, 'height' => $thisLayoutHeight, 'width' => $thisLayoutHeight, 'backgroundColor' => $thisLayoutBackgroundColor, 'backGroundImageUrl' => $thisLayoutImageUrl, 'backgroundType' => $thisLayoutBackgroundType);
+        $returnData = array('cards' => $allCardInstances, 'layout' => $layoutProperties, 'perms' => $thisLayoutPerms);
+        return $returnData;
+    }
+
+    private function computeGridCss($row, $col, $height, $width){
+        $startRow = $row;
+        $startColumn = $col;
+        $endRow=0;
+        $endCol = 0;
+
+        if($height==1){
+            $endRow = $row;
+        }else{
+            $endRow = $row+$height;
+        }
+        $endCol=$startColumn+$width;
+        $thisCss = "grid-area:".$startRow."/".$startColumn."/".$endRow."/".$endCol;
+        return $thisCss;
+
+    }
+
 }

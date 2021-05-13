@@ -48,6 +48,7 @@ class cardInstanceController extends Controller
 
         return json_encode($allCardInstances);
     }
+    /*
     public function getThisLayout($layoutId, $orgId, $userId){
 //    public function getLayoutById(Request $request){
 //        $inData =  $request->all();
@@ -163,13 +164,14 @@ class cardInstanceController extends Controller
         return $returnData;
 //        return json_encode($returnData);
     }
-
+*/
     public function getLayoutById(Request $request){
         $inData =  $request->all();
         $layoutId = $inData['layoutId'];
         $orgId = $inData['orgId'];
         $userId = $inData['userId'];
-        $thisLayoutData = $this->getThisLayout($layoutId, $orgId, $userId);
+        $layoutInstance = new Layout;
+        $thisLayoutData = $layoutInstance->getThisLayout($layoutId, $orgId, $userId);
         return json_encode($thisLayoutData);
     }
 
