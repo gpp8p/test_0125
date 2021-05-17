@@ -216,7 +216,23 @@ class LayoutController extends Controller
 
             $backgroundType = $layoutData['layout']['backgroundType'];
             $thisLayoutCss = $this->layoutCss($height, $width, $backgroundColor, $backgroundImageUrl, $backgroundType, $orgId);
-            $viewHtml = view('layout', ['layoutId' => $thisViewableLayout])->render();
+/*
+            foreach($layoutData['cards'] as $thisCard){
+                $cardType = $thisCard['card_component'];
+                switch($cardType){
+                    case 'Headline':{
+                        break;
+                    }
+                    case 'RichText':{
+                        break;
+                    }
+                    case 'linkMenu':{
+                        break;
+                    }
+                }
+            }
+*/
+            $viewHtml = view('layout', ['layoutId' => $thisViewableLayout, 'layoutCss'=>$thisLayoutCss, 'cards'=>$layoutData['cards']])->render();
         }
         return 'Ok';
 
