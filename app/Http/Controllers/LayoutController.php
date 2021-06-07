@@ -9,6 +9,7 @@ use App\Group;
 use App\Org;
 use Illuminate\Support\Facades\DB;
 use Storage;
+use File;
 use App\User;
 
 class LayoutController extends Controller
@@ -233,6 +234,8 @@ class LayoutController extends Controller
             }
 */
             $viewHtml = view('layout', ['layoutId' => $thisViewableLayout, 'layoutCss'=>$thisLayoutCss, 'cards'=>$layoutData['cards']])->render();
+            $thisOutPutFile = 'published/'.$orgId.'/'.$thisViewableLayout.'.html';
+            Storage::put($thisOutPutFile, $viewHtml);
         }
         return 'Ok';
 
