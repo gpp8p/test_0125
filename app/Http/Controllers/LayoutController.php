@@ -201,6 +201,9 @@ class LayoutController extends Controller
             Storage::makeDirectory($orgDirectory);
         }
         foreach($viewableLayouts as $thisViewableLayout){
+            if($thisViewableLayout==38){
+                $a=0;
+            }
             $layoutData = $thisLayoutInstance->getThisLayout($thisViewableLayout, $orgId, $guestUserId);
             $height = $layoutData['layout']['height'];
             $width = $layoutData['layout']['width'];
