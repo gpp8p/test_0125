@@ -204,7 +204,7 @@ class LayoutController extends Controller
             if($thisViewableLayout==38){
                 $a=0;
             }
-            $layoutData = $thisLayoutInstance->getThisLayout($thisViewableLayout, $orgId, $guestUserId);
+            $layoutData = $thisLayoutInstance->publishThisLayout($thisViewableLayout, $orgId, $guestUserId);
             $height = $layoutData['layout']['height'];
             $width = $layoutData['layout']['width'];
             if(isset($layoutData['layout']['backgroundColor'])){
