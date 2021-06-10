@@ -25,7 +25,7 @@ class link extends Model
         }
     }
 
-    public function saveLink($orgId, $layoutId, $cardInstanceId, $description, $linkUrl, $isExternal, $layoutLinkTo){
+    public function saveLink($orgId, $layoutId, $cardInstanceId, $description, $linkUrl, $isExternal, $layoutLinkTo, $linkType){
         try {
             $thisOrgId = DB::table('links')->insertGetId([
                 'org_id' => 1,
@@ -35,6 +35,7 @@ class link extends Model
                 'isExternal' => $isExternal,
                 'link_url' => $linkUrl,
                 'layout_link_to' => $layoutLinkTo,
+                'type'=>$linkType,
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now()
             ]);

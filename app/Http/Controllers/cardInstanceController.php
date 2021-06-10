@@ -388,9 +388,9 @@ class cardInstanceController extends Controller
                 elseif($key=='cardText'){
                     $pattern = "displayLayout/";
                     $patternFoundAt=0;
+                    $documentLinks=array();
                     $linkAt = strpos($value, $pattern, $patternFoundAt);
                     if($linkAt!=false){
-                        $documentLinks=array();
                         $nextLink=$this->findNextLink($value,0);
                         array_push($documentLinks,$nextLink[0]);
                         while($nextLink!=false){
@@ -406,7 +406,7 @@ class cardInstanceController extends Controller
                         $linkUrl = 'http://localhost:8080/displayLayout/'.$thisDocumentLink;
                         $isExternal=0;
                         $layoutLinkTo = $thisDocumentLink;
-                        $thisLink->saveLink($org, $layoutId, $cardId, $thisDescription, $linkUrl, $isExternal, $layoutLinkTo);
+                        $thisLink->saveLink($org, $layoutId, $cardId, $thisDescription, $linkUrl, $isExternal, $layoutLinkTo, 'U');
                     }
 
 
