@@ -465,12 +465,18 @@ class Layout extends Model
             if($thisCardComponent=='RichText'){
                 $thisLink = new link();
                 $cardLinks = $thisLink->getLinksForCardId($thisCard[8]);
-                $content = $thisCardContent['cardText'];
-                foreach($cardLinks as $thisCardLink){
-                    $newLink = 'http://localhost/spaces/'.$orgId.'/'.$thisCardLink->layout_link_to.'.html';
-                    $content = str_replace($thisCardLink->link_url, $newLink, $content);
+                if(isset($thisCardContent['cardText'])){
+                    $content = $thisCardContent['cardText'];
+                    foreach($cardLinks as $thisCardLink){
+                        $newLink = 'http://localhost/spaces/'.$orgId.'/'.$thisCardLink->layout_link_to.'.html';
+                        $content = str_replace($thisCardLink->link_url, $newLink, $content);
+                    }
+                    $thisCardContent['cardText']= $content;
+
+                }else{
+                    $thisCardContent['cardText']='';
                 }
-                $thisCardContent['cardText']= $content;
+
             }
             $cssGridParams = $this->computeGridCss($thisCardRow, $thisCardCol, $thisCardHeight, $thisCardWidth) . ";";
             $thisCardParameters = array(

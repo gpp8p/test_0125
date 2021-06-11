@@ -400,7 +400,7 @@ class cardInstanceController extends Controller
                         }
                     }
                     $thisLink = new Link;
-                    $thisLink->removeLinksForCardId($cardId);
+                    $thisLink->removeLinksForCardId($cardId, 'U');
                     foreach($documentLinks as $thisDocumentLink){
                         $thisDescription = 'link from card:'.$cardId.' to card:'.$thisDocumentLink;
                         $linkUrl = 'http://localhost:8080/displayLayout/'.$thisDocumentLink;

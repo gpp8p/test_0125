@@ -16,10 +16,10 @@ class link extends Model
             throw new Exception('error ".$e.getMessage()."loading links for'.$cardId);
         }
     }
-    public function removeLinksForCardId($cardId){
-        $query = 'delete from links where card_instance_id = ?';
+    public function removeLinksForCardId($cardId, $linkType){
+        $query = 'delete from links where card_instance_id = ? and type = ?';
         try {
-            DB::select($query, [$cardId]);
+            DB::select($query, [$cardId, $linkType]);
         }catch (Exception $e){
             throw new Exception('error '.$e.getMessage().' removing old links from '. $cardId);
         }

@@ -201,7 +201,7 @@ class LayoutController extends Controller
             Storage::makeDirectory($orgDirectory);
         }
         foreach($viewableLayouts as $thisViewableLayout){
-            if($thisViewableLayout==38){
+            if($thisViewableLayout==35){
                 $a=0;
             }
             $layoutData = $thisLayoutInstance->publishThisLayout($thisViewableLayout, $orgId, $guestUserId);
