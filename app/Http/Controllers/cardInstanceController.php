@@ -391,10 +391,10 @@ class cardInstanceController extends Controller
                     $documentLinks=array();
                     $linkAt = strpos($value, $pattern, $patternFoundAt);
                     if($linkAt!=false){
-                        $nextLink=$this->findNextLink($value,0);
+                        $nextLink=$this->findNextLink($value,0, $pattern);
                         array_push($documentLinks,$nextLink[0]);
                         while($nextLink!=false){
-                            $nextLink=$this->findNextLink($value,$nextLink[1]);
+                            $nextLink=$this->findNextLink($value,$nextLink[1], $pattern);
                             if($nextLink==false)break;
                             array_push($documentLinks,$nextLink[0]);
                         }
@@ -408,6 +408,25 @@ class cardInstanceController extends Controller
                         $layoutLinkTo = $thisDocumentLink;
                         $thisLink->saveLink($org, $layoutId, $cardId, $thisDescription, $linkUrl, $isExternal, $layoutLinkTo, 'U');
                     }
+                    $pattern = "<img src=\"http://localhost:8000/storage/";
+                    $patternFoundAt=0;
+                    $imageLinks = array();
+                    $imageLinkAt = strpos($value, $pattern, $patternFoundAt);
+                    if($imageLinkAt!=false){
+                        $nextLink=$this->findNextLink($value,0, $pattern);
+                        array_push($imageLinks,$nextLink[0]);
+                        while($nextLink!=false){
+                            $nextLink=$this->findNextLink($value,$nextLink[1], $pattern);
+                            if($nextLink==false)break;
+                            array_push($imageLinks,$nextLink[0]);
+                        }
+                    }
+                    $orgDirectory = '/images/'.$org;
+                    if(!Storage::exists($orgDirectory)) {
+                        Storage::makeDirectory($orgDirectory);
+                    }
+
+
 
 
                     $orgDirectory = '/spcontent/'.$org;
@@ -431,21 +450,23 @@ class cardInstanceController extends Controller
 
         return "Ok";
     }
-    private function findNextLink($content,$startingAt){
-        $pattern = "displayLayout/";
+    private function findNextLink($content,$startingAt, $pattern){
+//        $pattern = "displayLayout/";
         $patternFoundAt=0;
+        $patternLength = strlen($pattern);
         $linkAt = strpos($content, $pattern, $startingAt);
         if($linkAt==false){
             return false;
         }
         $endQuote = chr(34);
-        $endQuoteAt = strpos($content, $endQuote, $linkAt+14);
-        $idLength = $endQuoteAt-($linkAt+14);
-        $linkId = substr($content, $linkAt+14, $idLength);
+        $endQuoteAt = strpos($content, $endQuote, $linkAt+$patternLength);
+        $idLength = $endQuoteAt-($linkAt+$patternLength);
+        $linkId = substr($content, $linkAt+$patternLength, $idLength);
         $nextPos = $endQuoteAt+1;
         return array($linkId, $nextPos);
 
     }
+
 
     public function getCsrf(Request $request){
         return $request->session()->token();
