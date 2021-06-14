@@ -425,6 +425,12 @@ class cardInstanceController extends Controller
                     if(!Storage::exists($orgDirectory)) {
                         Storage::makeDirectory($orgDirectory);
                     }
+                    foreach($imageLinks as $thisImageLink){
+                        $copyToLocation = $orgDirectory.'/'.$thisImageLink;
+                        Storage::copy('file/'.$thisImageLink, $copyToLocation);
+                    }
+
+
 
 
 
