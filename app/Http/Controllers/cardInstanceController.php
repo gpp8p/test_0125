@@ -428,6 +428,14 @@ class cardInstanceController extends Controller
                     foreach($imageLinks as $thisImageLink){
                         $copyToLocation = $orgDirectory.'/'.$thisImageLink;
                         Storage::copy('file/'.$thisImageLink, $copyToLocation);
+                        $tempFileReference = "http://localhost:8000/storage/".$thisImageLink;
+                        $newImageLink = "http://localhost:8000/images/".$org."/".$thisImageLink;
+                        $value = str_replace($tempFileReference,$newImageLink, $value );
+                        $imgDescription = "Link to image";
+                        $linkUrl = $newImageLink;
+                        $isExternal = false;
+                        $layoutLinkTo = $layoutId;
+                        $thisLink->saveLink($org, $layoutId, $cardId, $imgDescription, $linkUrl, $isExternal, $layoutLinkTo, 'I');
                     }
 
 
