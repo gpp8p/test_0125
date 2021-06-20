@@ -5,6 +5,9 @@ namespace App;
 use App\CardInstances;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Storage;
+use File;
+
 
 
 
@@ -392,7 +395,7 @@ class Layout extends Model
     }
 
 
-    public function publishThisLayout($layoutId, $orgId, $userId)
+    public function publishThisLayout($layoutId, $orgId, $userId, $imageDirectory)
     {
 //    public function getLayoutById(Request $request){
 //        $inData =  $request->all();
@@ -463,13 +466,28 @@ class Layout extends Model
                 $thisCardId = $thisCard[8];
             }
             if($thisCardComponent=='RichText'){
+                $orgDirectory = '/images/'.$orgId;
                 $thisLink = new link();
                 $cardLinks = $thisLink->getLinksForCardId($thisCard[8]);
                 if(isset($thisCardContent['cardText'])){
                     $content = $thisCardContent['cardText'];
                     foreach($cardLinks as $thisCardLink){
-                        $newLink = 'http://localhost/spaces/'.$orgId.'/'.$thisCardLink->layout_link_to.'.html';
-                        $content = str_replace($thisCardLink->link_url, $newLink, $content);
+                        if($thisCardLink->type=="U"){
+                            $newLink = 'http://localhost/spaces/'.$orgId.'/'.$thisCardLink->layout_link_to.'.html';
+                            $content = str_replace($thisCardLink->link_url, $newLink, $content);
+                        }else if($thisCardLink->type=="I"){
+                            $imageLink = $thisCardLink->link_url;
+                            $imageFileNameAt = strpos($imageLink, 'images/'.$orgId.'/');
+                            if($imageFileNameAt!=false){
+                                $imageFileNameAt = strlen('http://localhost:8000/images/'.$orgId.'/');
+                                $imageFileName = substr($imageLink, $imageFileNameAt);
+                                $imageSource = $orgDirectory.'/'.$imageFileName;
+                                $copyToLocation = '/published/'.$orgId.'/images'.'/'.$imageFileName;
+                                Storage::copy($imageSource, $copyToLocation);
+
+                            }
+
+                        }
                     }
                     $thisCardContent['cardText']= $content;
 

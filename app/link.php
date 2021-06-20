@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class link extends Model
 {
     public function getLinksForCardId($cardId){
-        $query = "select isExternal, link_url, layout_link_to, description from links where card_instance_id = ?";
+        $query = "select isExternal, link_url, layout_link_to, description, type from links where card_instance_id = ?";
         try {
             $linkInfo = DB::select($query, [$cardId]);
             return $linkInfo;

@@ -200,11 +200,15 @@ class LayoutController extends Controller
         if(!Storage::exists($orgDirectory)) {
             Storage::makeDirectory($orgDirectory);
         }
+        $orgImageDirectory = '/published/'.$orgId.'/images';
+        if(!Storage::exists($orgImageDirectory)) {
+            Storage::makeDirectory($orgImageDirectory);
+        }
         foreach($viewableLayouts as $thisViewableLayout){
-            if($thisViewableLayout==54){
+            if($thisViewableLayout==55){
                 $a=0;
             }
-            $layoutData = $thisLayoutInstance->publishThisLayout($thisViewableLayout, $orgId, $guestUserId);
+            $layoutData = $thisLayoutInstance->publishThisLayout($thisViewableLayout, $orgId, $guestUserId, $orgImageDirectory);
             $height = $layoutData['layout']['height'];
             $width = $layoutData['layout']['width'];
             if(isset($layoutData['layout']['backgroundColor'])){
