@@ -72,6 +72,7 @@ Route::group([
     Route::post('createNewLink', 'linkController@createNewLink');
     Route::post('resizeCard', 'cardInstanceController@resizeCard');
     Route::get('publishOrg', 'layoutController@publishOrg');
+    Route::get('userOrgPerms','OrgController@userOrgPerms' );
 
 
 
