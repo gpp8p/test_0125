@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="start on delete layout api">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LayoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LayoutController.php" afterDir="false" />
-    </list>
+    <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -306,21 +304,7 @@
       <workItem from="1624478172694" duration="130000" />
       <workItem from="1624549278928" duration="1637000" />
       <workItem from="1625059648256" duration="323000" />
-      <workItem from="1625062407290" duration="4428000" />
-    </task>
-    <task id="LOCAL-00002" summary="got to headline card create">
-      <created>1612133883421</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1612133883421</updated>
-    </task>
-    <task id="LOCAL-00003" summary="fixing the content/configuration isssue">
-      <created>1612231394491</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1612231394492</updated>
+      <workItem from="1625062407290" duration="4778000" />
     </task>
     <task id="LOCAL-00004" summary="&#10;fix for the configuration double write of content in headline cards">
       <created>1612372770242</created>
@@ -651,7 +635,21 @@
       <option name="project" value="LOCAL" />
       <updated>1625072358117</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="start on delete layout api">
+      <created>1625072577177</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1625072577177</updated>
+    </task>
+    <task id="LOCAL-00052" summary="start on delete layout api">
+      <created>1625072807614</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1625072807614</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -695,10 +693,10 @@
     </state>
     <state x="1181" y="469" key="#xdebugger.evaluate/0.23.1792.1051@0.23.1792.1051" timestamp="1625070586992" />
     <state x="1265" y="451" key="#xdebugger.evaluate/0.23.1920.1008@0.23.1920.1008" timestamp="1623680226505" />
-    <state x="253" y="189" key="CommitChangelistDialog2" timestamp="1625072469389">
+    <state x="253" y="189" key="CommitChangelistDialog2" timestamp="1625072807511">
       <screen x="0" y="23" width="1792" height="1051" />
     </state>
-    <state x="253" y="189" key="CommitChangelistDialog2/0.23.1792.1051@0.23.1792.1051" timestamp="1625072469389" />
+    <state x="253" y="189" key="CommitChangelistDialog2/0.23.1792.1051@0.23.1792.1051" timestamp="1625072807511" />
     <state x="271" y="182" key="CommitChangelistDialog2/0.23.1920.1008@0.23.1920.1008" timestamp="1624555942496" />
     <state x="628" y="182" key="CommitChangelistDialog2/0.23.1920.1009@0.23.1920.1009" timestamp="1616778282102" />
     <state width="1556" height="320" key="GridCell.Tab.0.bottom" timestamp="1625071096236">
@@ -761,14 +759,14 @@
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
     <state x="785" y="458" key="NewPhpFileDialog/0.23.1920.1008@0.23.1920.1008" timestamp="1620919530274" />
-    <state x="460" y="165" key="SettingsEditor" timestamp="1625072550629">
+    <state x="460" y="165" key="SettingsEditor" timestamp="1625072953910">
       <screen x="0" y="23" width="1792" height="1051" />
     </state>
-    <state x="460" y="165" key="SettingsEditor/0.23.1792.1051@0.23.1792.1051" timestamp="1625072550629" />
-    <state x="580" y="256" key="Vcs.Push.Dialog.v2" timestamp="1625072363452">
+    <state x="460" y="165" key="SettingsEditor/0.23.1792.1051@0.23.1792.1051" timestamp="1625072953910" />
+    <state x="580" y="256" key="Vcs.Push.Dialog.v2" timestamp="1625072812824">
       <screen x="0" y="23" width="1792" height="1051" />
     </state>
-    <state x="580" y="256" key="Vcs.Push.Dialog.v2/0.23.1792.1051@0.23.1792.1051" timestamp="1625072363452" />
+    <state x="580" y="256" key="Vcs.Push.Dialog.v2/0.23.1792.1051@0.23.1792.1051" timestamp="1625072812824" />
     <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1008@0.23.1920.1008" timestamp="1624380547939" />
     <state width="720" height="378" key="XDebugger.FullValuePopup" timestamp="1622943735586">
       <screen x="0" y="23" width="1920" height="1008" />
