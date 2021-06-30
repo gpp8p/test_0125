@@ -73,6 +73,7 @@ Route::group([
     Route::post('resizeCard', 'cardInstanceController@resizeCard');
     Route::get('publishOrg', 'layoutController@publishOrg');
     Route::get('userOrgPerms','OrgController@userOrgPerms' );
+    Route::get('deleteLayout', 'layoutController@deleteLayout');
 
 
 

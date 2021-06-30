@@ -542,6 +542,9 @@ class Layout extends Model
         return $returnData;
     }
 
+    public function isTopLayout($layoutId){
+
+    }
 
     private function computeGridCss($row, $col, $height, $width){
         $startRow = $row;
