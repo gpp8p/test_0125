@@ -304,14 +304,7 @@
       <workItem from="1624478172694" duration="130000" />
       <workItem from="1624549278928" duration="1637000" />
       <workItem from="1625059648256" duration="323000" />
-      <workItem from="1625062407290" duration="4778000" />
-    </task>
-    <task id="LOCAL-00004" summary="&#10;fix for the configuration double write of content in headline cards">
-      <created>1612372770242</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1612372770242</updated>
+      <workItem from="1625062407290" duration="5212000" />
     </task>
     <task id="LOCAL-00005" summary="rich text editor added - supporting api's">
       <created>1612383025291</created>
@@ -649,7 +642,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625072807614</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="start on delete layout api">
+      <created>1625072968847</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1625072968847</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -693,10 +693,10 @@
     </state>
     <state x="1181" y="469" key="#xdebugger.evaluate/0.23.1792.1051@0.23.1792.1051" timestamp="1625070586992" />
     <state x="1265" y="451" key="#xdebugger.evaluate/0.23.1920.1008@0.23.1920.1008" timestamp="1623680226505" />
-    <state x="253" y="189" key="CommitChangelistDialog2" timestamp="1625072807511">
+    <state x="253" y="189" key="CommitChangelistDialog2" timestamp="1625072968758">
       <screen x="0" y="23" width="1792" height="1051" />
     </state>
-    <state x="253" y="189" key="CommitChangelistDialog2/0.23.1792.1051@0.23.1792.1051" timestamp="1625072807511" />
+    <state x="253" y="189" key="CommitChangelistDialog2/0.23.1792.1051@0.23.1792.1051" timestamp="1625072968758" />
     <state x="271" y="182" key="CommitChangelistDialog2/0.23.1920.1008@0.23.1920.1008" timestamp="1624555942496" />
     <state x="628" y="182" key="CommitChangelistDialog2/0.23.1920.1009@0.23.1920.1009" timestamp="1616778282102" />
     <state width="1556" height="320" key="GridCell.Tab.0.bottom" timestamp="1625071096236">
@@ -759,14 +759,14 @@
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
     <state x="785" y="458" key="NewPhpFileDialog/0.23.1920.1008@0.23.1920.1008" timestamp="1620919530274" />
-    <state x="460" y="165" key="SettingsEditor" timestamp="1625072953910">
+    <state x="460" y="165" key="SettingsEditor" timestamp="1625073728385">
       <screen x="0" y="23" width="1792" height="1051" />
     </state>
-    <state x="460" y="165" key="SettingsEditor/0.23.1792.1051@0.23.1792.1051" timestamp="1625072953910" />
-    <state x="580" y="256" key="Vcs.Push.Dialog.v2" timestamp="1625072812824">
+    <state x="460" y="165" key="SettingsEditor/0.23.1792.1051@0.23.1792.1051" timestamp="1625073728385" />
+    <state x="580" y="256" key="Vcs.Push.Dialog.v2" timestamp="1625072972419">
       <screen x="0" y="23" width="1792" height="1051" />
     </state>
-    <state x="580" y="256" key="Vcs.Push.Dialog.v2/0.23.1792.1051@0.23.1792.1051" timestamp="1625072812824" />
+    <state x="580" y="256" key="Vcs.Push.Dialog.v2/0.23.1792.1051@0.23.1792.1051" timestamp="1625072972419" />
     <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1008@0.23.1920.1008" timestamp="1624380547939" />
     <state width="720" height="378" key="XDebugger.FullValuePopup" timestamp="1622943735586">
       <screen x="0" y="23" width="1920" height="1008" />
