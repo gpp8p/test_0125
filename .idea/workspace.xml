@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="start on delete layout api">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LayoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LayoutController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -306,14 +306,7 @@
       <workItem from="1624478172694" duration="130000" />
       <workItem from="1624549278928" duration="1637000" />
       <workItem from="1625059648256" duration="323000" />
-      <workItem from="1625062407290" duration="4223000" />
-    </task>
-    <task id="LOCAL-00001" summary="changes to layouts seeder to fix perms problem">
-      <created>1611974194033</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1611974194033</updated>
+      <workItem from="1625062407290" duration="4428000" />
     </task>
     <task id="LOCAL-00002" summary="got to headline card create">
       <created>1612133883421</created>
@@ -651,7 +644,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625071073051</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="start on delete layout api">
+      <created>1625072358117</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1625072358117</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -695,10 +695,10 @@
     </state>
     <state x="1181" y="469" key="#xdebugger.evaluate/0.23.1792.1051@0.23.1792.1051" timestamp="1625070586992" />
     <state x="1265" y="451" key="#xdebugger.evaluate/0.23.1920.1008@0.23.1920.1008" timestamp="1623680226505" />
-    <state x="253" y="189" key="CommitChangelistDialog2" timestamp="1625071405293">
+    <state x="253" y="189" key="CommitChangelistDialog2" timestamp="1625072469389">
       <screen x="0" y="23" width="1792" height="1051" />
     </state>
-    <state x="253" y="189" key="CommitChangelistDialog2/0.23.1792.1051@0.23.1792.1051" timestamp="1625071405293" />
+    <state x="253" y="189" key="CommitChangelistDialog2/0.23.1792.1051@0.23.1792.1051" timestamp="1625072469389" />
     <state x="271" y="182" key="CommitChangelistDialog2/0.23.1920.1008@0.23.1920.1008" timestamp="1624555942496" />
     <state x="628" y="182" key="CommitChangelistDialog2/0.23.1920.1009@0.23.1920.1009" timestamp="1616778282102" />
     <state width="1556" height="320" key="GridCell.Tab.0.bottom" timestamp="1625071096236">
@@ -761,14 +761,14 @@
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
     <state x="785" y="458" key="NewPhpFileDialog/0.23.1920.1008@0.23.1920.1008" timestamp="1620919530274" />
-    <state x="460" y="165" key="SettingsEditor" timestamp="1625072344494">
+    <state x="460" y="165" key="SettingsEditor" timestamp="1625072550629">
       <screen x="0" y="23" width="1792" height="1051" />
     </state>
-    <state x="460" y="165" key="SettingsEditor/0.23.1792.1051@0.23.1792.1051" timestamp="1625072344494" />
-    <state x="580" y="256" key="Vcs.Push.Dialog.v2" timestamp="1625071076245">
+    <state x="460" y="165" key="SettingsEditor/0.23.1792.1051@0.23.1792.1051" timestamp="1625072550629" />
+    <state x="580" y="256" key="Vcs.Push.Dialog.v2" timestamp="1625072363452">
       <screen x="0" y="23" width="1792" height="1051" />
     </state>
-    <state x="580" y="256" key="Vcs.Push.Dialog.v2/0.23.1792.1051@0.23.1792.1051" timestamp="1625071076245" />
+    <state x="580" y="256" key="Vcs.Push.Dialog.v2/0.23.1792.1051@0.23.1792.1051" timestamp="1625072363452" />
     <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1008@0.23.1920.1008" timestamp="1624380547939" />
     <state width="720" height="378" key="XDebugger.FullValuePopup" timestamp="1622943735586">
       <screen x="0" y="23" width="1920" height="1008" />
@@ -853,17 +853,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/LayoutController.php</url>
-          <line>345</line>
+          <line>346</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/LayoutController.php</url>
-          <line>337</line>
+          <line>338</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/LayoutController.php</url>
-          <line>348</line>
+          <line>349</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>

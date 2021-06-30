@@ -334,6 +334,7 @@ class LayoutController extends Controller
         $returnPerms = $layoutInstance->summaryPermsForLayout($userId, $orgId, $layoutId);
         return json_encode($returnPerms);
     }
+    
     public function deleteLayout(Request $request){
         if(auth()->user()==null){
             abort(401, 'Unauthorized action.');
