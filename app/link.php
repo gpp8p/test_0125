@@ -43,4 +43,14 @@ class link extends Model
             throw $e;
         }
     }
+
+    public function getLinksToLayout($toLayoutId){
+        $query = "select org_id, layout_id, card_instance_id, link_url from links where layout_link_to = ?";
+        try {
+            $selectedToLinks = DB::select($query, [$toLayoutId]);
+        }catch (Exception $e){
+            throw new Exception('error '.$e.getMessage().' removing old links from '. $cardId);
+        }
+        return $selectedToLinks;
+    }
 }

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Storage;
 use File;
 use App\User;
+use App\link;
 
 class LayoutController extends Controller
 {
@@ -349,10 +350,33 @@ class LayoutController extends Controller
         if(!$layoutInfo['perms']['admin']){
             return 'noAuth';
         }
-        $a=0;
+
+
+        $thisLinkInstance = new Link;
+        $selectedToLinks = $thisLinkInstance->getLinksToLayout($layoutId);
+        $thisCardInstance = new CardInstances;
+        foreach($selectedToLinks as $thisSelectedLink){
+            $cardType = $thisCardInstance->getCardTypeById($thisSelectedLink->card_instance_id);
+            if($cardType[0]->card_component == 'RichText'){
+                $orgDirectory = '/spcontent/'.$orgId;
+                $contentFileName = '/spcontent/'.$orgId.'/cardText/rtcontent'.$thisSelectedLink->card_instance_id;
+                $thisRtContent = Storage::get($contentFileName);
+                $textWithLinkRemoved = $this->removeLinkFromRichText($thisRtContent, $thisSelectedLink->link_url);
+            }
+        }
 
 
 
+    }
+
+    private function removeLinkFromRichText($text, $link){
+        $linkReferenceLocation = strpos($text, $link);
+        $closingTagLocation = strpos($text, '</a>', $linkReferenceLocation);
+        $remainingStringCount = strlen($text)-$closingTagLocation;
+        $textStartLocation = strpos($text, '>', $linkReferenceLocation);
+        $linkTextLength = strlen($text)-$textStartLocation-$remainingStringCount;
+        $linkTextContent = substr($text,$textStartLocation,$linkTextLength );
+        return $linkTextContent;
     }
 
 }

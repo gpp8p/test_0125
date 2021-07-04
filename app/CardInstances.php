@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\ViewType;
 use Storage;
 
+
 class CardInstances extends Model
 {
     public function viewType()
@@ -107,6 +108,16 @@ class CardInstances extends Model
         return $affected;
     }
 
+    public function getCardTypeById($cardId){
+        $query = "select card_component from card_instances where id = ?";
+        try {
+            $cardType = DB::select($query, [$cardId]);
+            return $cardType;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+
+    }
 
 
 
