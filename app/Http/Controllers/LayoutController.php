@@ -375,7 +375,13 @@ class LayoutController extends Controller
         $remainingStringCount = strlen($text)-$closingTagLocation;
         $textStartLocation = strpos($text, '>', $linkReferenceLocation);
         $linkTextLength = strlen($text)-$textStartLocation-$remainingStringCount;
-        $linkTextContent = substr($text,$textStartLocation,$linkTextLength );
+        $linkTextContent = substr($text,$textStartLocation+1,$linkTextLength-1 );
+        $tagStart = $linkReferenceLocation-9;
+        $tagEnd = $closingTagLocation+4;
+        $entireTagLength = ($closingTagLocation-$tagStart)+4;
+        $entireTag = substr($text, $tagStart,$entireTagLength);
+        $replacementText = '['.$linkTextContent.']';
+        $newText = substr_replace($text, $replacementText, $tagStart);
         return $linkTextContent;
     }
 
