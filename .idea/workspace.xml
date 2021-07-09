@@ -25,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpDebugGeneral" break_at_first_line="true" listening_started="true" />
+  <component name="PhpDebugGeneral" break_at_first_line="true" />
   <component name="PhpServers">
     <servers>
       <server host="localhost" id="c10bb1c5-894d-47ee-93ce-511a8f3c7051" name="Artisan" port="8000" />
@@ -311,14 +311,8 @@
       <workItem from="1625074149870" duration="301000" />
       <workItem from="1625272166470" duration="671000" />
       <workItem from="1625415485892" duration="7012000" />
-      <workItem from="1625663214142" duration="2945000" />
-    </task>
-    <task id="LOCAL-00009" summary="create org directories if not present for card data storage">
-      <created>1612628975613</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1612628975613</updated>
+      <workItem from="1625663214142" duration="3093000" />
+      <workItem from="1625843714679" duration="1701000" />
     </task>
     <task id="LOCAL-00010" summary="save and fetch from appropriate storage locations">
       <created>1612730221763</created>
@@ -656,14 +650,20 @@
       <option name="project" value="LOCAL" />
       <updated>1625432708366</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="further link deletion work">
+      <created>1625666836429</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1625666836429</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="work on organizations" />
     <MESSAGE value="fix organization home page issue" />
     <MESSAGE value="Fixed layout query to only return a specific org's layouts.  May need to include an option in the ui to gather All Users permitted layouts, but not there now" />
     <MESSAGE value="newly created spaces give access by all users" />
@@ -688,7 +688,8 @@
     <MESSAGE value="further work on publishing and images" />
     <MESSAGE value="added orgMemberPerms api" />
     <MESSAGE value="start on delete layout api" />
-    <option name="LAST_COMMIT_MESSAGE" value="start on delete layout api" />
+    <MESSAGE value="further link deletion work" />
+    <option name="LAST_COMMIT_MESSAGE" value="further link deletion work" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1036" y="301" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1623249711724">
@@ -700,57 +701,57 @@
     </state>
     <state x="1181" y="469" key="#xdebugger.evaluate/0.23.1792.1051@0.23.1792.1051" timestamp="1625432447085" />
     <state x="1265" y="451" key="#xdebugger.evaluate/0.23.1920.1008@0.23.1920.1008" timestamp="1623680226505" />
-    <state x="253" y="189" key="CommitChangelistDialog2" timestamp="1625432708157">
+    <state x="253" y="189" key="CommitChangelistDialog2" timestamp="1625666836204">
       <screen x="0" y="23" width="1792" height="1051" />
     </state>
-    <state x="253" y="189" key="CommitChangelistDialog2/0.23.1792.1051@0.23.1792.1051" timestamp="1625432708157" />
+    <state x="253" y="189" key="CommitChangelistDialog2/0.23.1792.1051@0.23.1792.1051" timestamp="1625666836204" />
     <state x="271" y="182" key="CommitChangelistDialog2/0.23.1920.1008@0.23.1920.1008" timestamp="1624555942496" />
-    <state width="1521" height="179" key="GridCell.Tab.0.bottom" timestamp="1625666523356">
+    <state width="1521" height="179" key="GridCell.Tab.0.bottom" timestamp="1625845545191">
       <screen x="0" y="23" width="1792" height="1051" />
     </state>
-    <state width="1521" height="179" key="GridCell.Tab.0.bottom/0.23.1792.1051@0.23.1792.1051" timestamp="1625666523356" />
+    <state width="1521" height="179" key="GridCell.Tab.0.bottom/0.23.1792.1051@0.23.1792.1051" timestamp="1625845545191" />
     <state width="1556" height="320" key="GridCell.Tab.0.bottom/0.23.1920.1008@0.23.1920.1008" timestamp="1624555946874" />
     <state width="1556" height="228" key="GridCell.Tab.0.bottom/1792.63.1920.1008/0.23.1792.1097@1792.63.1920.1008" timestamp="1619983350110" />
-    <state width="1521" height="179" key="GridCell.Tab.0.center" timestamp="1625666523355">
+    <state width="1521" height="179" key="GridCell.Tab.0.center" timestamp="1625845545191">
       <screen x="0" y="23" width="1792" height="1051" />
     </state>
-    <state width="1521" height="179" key="GridCell.Tab.0.center/0.23.1792.1051@0.23.1792.1051" timestamp="1625666523355" />
+    <state width="1521" height="179" key="GridCell.Tab.0.center/0.23.1792.1051@0.23.1792.1051" timestamp="1625845545191" />
     <state width="1556" height="320" key="GridCell.Tab.0.center/0.23.1920.1008@0.23.1920.1008" timestamp="1624555946873" />
     <state width="1556" height="228" key="GridCell.Tab.0.center/1792.63.1920.1008/0.23.1792.1097@1792.63.1920.1008" timestamp="1619983350109" />
-    <state width="1521" height="179" key="GridCell.Tab.0.left" timestamp="1625666523355">
+    <state width="1521" height="179" key="GridCell.Tab.0.left" timestamp="1625845545190">
       <screen x="0" y="23" width="1792" height="1051" />
     </state>
-    <state width="1521" height="179" key="GridCell.Tab.0.left/0.23.1792.1051@0.23.1792.1051" timestamp="1625666523355" />
+    <state width="1521" height="179" key="GridCell.Tab.0.left/0.23.1792.1051@0.23.1792.1051" timestamp="1625845545190" />
     <state width="1556" height="320" key="GridCell.Tab.0.left/0.23.1920.1008@0.23.1920.1008" timestamp="1624555946873" />
     <state width="1556" height="228" key="GridCell.Tab.0.left/1792.63.1920.1008/0.23.1792.1097@1792.63.1920.1008" timestamp="1619983350108" />
-    <state width="1521" height="179" key="GridCell.Tab.0.right" timestamp="1625666523356">
+    <state width="1521" height="179" key="GridCell.Tab.0.right" timestamp="1625845545191">
       <screen x="0" y="23" width="1792" height="1051" />
     </state>
-    <state width="1521" height="179" key="GridCell.Tab.0.right/0.23.1792.1051@0.23.1792.1051" timestamp="1625666523356" />
+    <state width="1521" height="179" key="GridCell.Tab.0.right/0.23.1792.1051@0.23.1792.1051" timestamp="1625845545191" />
     <state width="1556" height="320" key="GridCell.Tab.0.right/0.23.1920.1008@0.23.1920.1008" timestamp="1624555946874" />
     <state width="1556" height="228" key="GridCell.Tab.0.right/1792.63.1920.1008/0.23.1792.1097@1792.63.1920.1008" timestamp="1619983350109" />
-    <state width="1521" height="179" key="GridCell.Tab.1.bottom" timestamp="1625666523357">
+    <state width="1521" height="179" key="GridCell.Tab.1.bottom" timestamp="1625845545192">
       <screen x="0" y="23" width="1792" height="1051" />
     </state>
-    <state width="1521" height="179" key="GridCell.Tab.1.bottom/0.23.1792.1051@0.23.1792.1051" timestamp="1625666523357" />
+    <state width="1521" height="179" key="GridCell.Tab.1.bottom/0.23.1792.1051@0.23.1792.1051" timestamp="1625845545192" />
     <state width="1556" height="320" key="GridCell.Tab.1.bottom/0.23.1920.1008@0.23.1920.1008" timestamp="1624555946874" />
     <state width="1556" height="228" key="GridCell.Tab.1.bottom/1792.63.1920.1008/0.23.1792.1097@1792.63.1920.1008" timestamp="1619983350110" />
-    <state width="1521" height="179" key="GridCell.Tab.1.center" timestamp="1625666523357">
+    <state width="1521" height="179" key="GridCell.Tab.1.center" timestamp="1625845545192">
       <screen x="0" y="23" width="1792" height="1051" />
     </state>
-    <state width="1521" height="179" key="GridCell.Tab.1.center/0.23.1792.1051@0.23.1792.1051" timestamp="1625666523357" />
+    <state width="1521" height="179" key="GridCell.Tab.1.center/0.23.1792.1051@0.23.1792.1051" timestamp="1625845545192" />
     <state width="1556" height="320" key="GridCell.Tab.1.center/0.23.1920.1008@0.23.1920.1008" timestamp="1624555946874" />
     <state width="1556" height="228" key="GridCell.Tab.1.center/1792.63.1920.1008/0.23.1792.1097@1792.63.1920.1008" timestamp="1619983350110" />
-    <state width="1521" height="179" key="GridCell.Tab.1.left" timestamp="1625666523356">
+    <state width="1521" height="179" key="GridCell.Tab.1.left" timestamp="1625845545192">
       <screen x="0" y="23" width="1792" height="1051" />
     </state>
-    <state width="1521" height="179" key="GridCell.Tab.1.left/0.23.1792.1051@0.23.1792.1051" timestamp="1625666523356" />
+    <state width="1521" height="179" key="GridCell.Tab.1.left/0.23.1792.1051@0.23.1792.1051" timestamp="1625845545192" />
     <state width="1556" height="320" key="GridCell.Tab.1.left/0.23.1920.1008@0.23.1920.1008" timestamp="1624555946874" />
     <state width="1556" height="228" key="GridCell.Tab.1.left/1792.63.1920.1008/0.23.1792.1097@1792.63.1920.1008" timestamp="1619983350110" />
-    <state width="1521" height="179" key="GridCell.Tab.1.right" timestamp="1625666523357">
+    <state width="1521" height="179" key="GridCell.Tab.1.right" timestamp="1625845545192">
       <screen x="0" y="23" width="1792" height="1051" />
     </state>
-    <state width="1521" height="179" key="GridCell.Tab.1.right/0.23.1792.1051@0.23.1792.1051" timestamp="1625666523357" />
+    <state width="1521" height="179" key="GridCell.Tab.1.right/0.23.1792.1051@0.23.1792.1051" timestamp="1625845545192" />
     <state width="1556" height="320" key="GridCell.Tab.1.right/0.23.1920.1008@0.23.1920.1008" timestamp="1624555946874" />
     <state width="1556" height="228" key="GridCell.Tab.1.right/1792.63.1920.1008/0.23.1792.1097@1792.63.1920.1008" timestamp="1619983350110" />
     <state x="785" y="458" key="NewPhpFileDialog" timestamp="1620919530274">
@@ -761,29 +762,34 @@
       <screen x="0" y="23" width="1792" height="1051" />
     </state>
     <state x="460" y="165" key="SettingsEditor/0.23.1792.1051@0.23.1792.1051" timestamp="1625074699946" />
-    <state x="580" y="256" key="Vcs.Push.Dialog.v2" timestamp="1625432711674">
+    <state x="580" y="256" key="Vcs.Push.Dialog.v2" timestamp="1625666839532">
       <screen x="0" y="23" width="1792" height="1051" />
     </state>
-    <state x="580" y="256" key="Vcs.Push.Dialog.v2/0.23.1792.1051@0.23.1792.1051" timestamp="1625432711674" />
+    <state x="580" y="256" key="Vcs.Push.Dialog.v2/0.23.1792.1051@0.23.1792.1051" timestamp="1625666839532" />
     <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1008@0.23.1920.1008" timestamp="1624380547939" />
     <state width="720" height="378" key="XDebugger.FullValuePopup" timestamp="1622943735586">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
     <state width="720" height="378" key="XDebugger.FullValuePopup/0.23.1920.1008@0.23.1920.1008" timestamp="1622943735586" />
-    <state x="390" y="283" width="1240" height="593" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1621264905419">
-      <screen x="0" y="23" width="1920" height="1008" />
+    <state x="364" y="294" width="1158" height="619" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1625846462893">
+      <screen x="0" y="23" width="1792" height="1051" />
     </state>
+    <state x="364" y="294" width="1158" height="619" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1792.1051@0.23.1792.1051" timestamp="1625846462893" />
     <state x="390" y="283" width="1240" height="593" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1920.1008@0.23.1920.1008" timestamp="1621264905419" />
     <state x="2182" y="336" width="1240" height="622" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1792.63.1920.1008/0.23.1792.1097@1792.63.1920.1008" timestamp="1619979086962" />
+    <state x="740" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1625844809853">
+      <screen x="0" y="23" width="1792" height="1051" />
+    </state>
+    <state x="740" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1792.1051@0.23.1792.1051" timestamp="1625844809853" />
     <state x="540" y="448" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1625665687295">
       <screen x="0" y="23" width="1792" height="1051" />
     </state>
     <state x="540" y="448" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.23.1792.1051@0.23.1792.1051" timestamp="1625665687295" />
     <state x="579" y="431" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.23.1920.1008@0.23.1920.1008" timestamp="1623250529470" />
-    <state x="938" y="307" width="574" height="511" key="find.popup" timestamp="1625665708893">
+    <state x="938" y="307" width="574" height="511" key="find.popup" timestamp="1625846352951">
       <screen x="0" y="23" width="1792" height="1051" />
     </state>
-    <state x="938" y="307" width="574" height="511" key="find.popup/0.23.1792.1051@0.23.1792.1051" timestamp="1625665708893" />
+    <state x="938" y="307" width="574" height="511" key="find.popup/0.23.1792.1051@0.23.1792.1051" timestamp="1625846352951" />
     <state x="1005" y="295" width="586" height="490" key="find.popup/0.23.1920.1008@0.23.1920.1008" timestamp="1624207431289" />
   </component>
   <component name="XDebuggerManager">
@@ -871,8 +877,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/LayoutController.php</url>
-          <line>372</line>
+          <line>373</line>
           <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/LayoutController.php</url>
+          <line>387</line>
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

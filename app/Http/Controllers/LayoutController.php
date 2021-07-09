@@ -362,6 +362,7 @@ class LayoutController extends Controller
                 $contentFileName = '/spcontent/'.$orgId.'/cardText/rtcontent'.$thisSelectedLink->card_instance_id;
                 $thisRtContent = Storage::get($contentFileName);
                 $textWithLinkRemoved = $this->removeLinkFromRichText($thisRtContent, $thisSelectedLink->link_url);
+                Storage::put($contentFileName, $textWithLinkRemoved);
             }
         }
 
@@ -381,8 +382,10 @@ class LayoutController extends Controller
         $entireTagLength = ($closingTagLocation-$tagStart)+4;
         $entireTag = substr($text, $tagStart,$entireTagLength);
         $replacementText = '['.$linkTextContent.']';
-        $newText = substr_replace($text, $replacementText, $tagStart);
-        return $linkTextContent;
+        $newText = substr($text, 0, $tagStart);
+        $newText = $newText.'['.$linkTextContent.']';
+        $newText = $newText.substr($text,$tagEnd);
+        return $newText;
     }
 
 }
