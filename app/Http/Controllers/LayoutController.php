@@ -364,6 +364,7 @@ class LayoutController extends Controller
                 $textWithLinkRemoved = $this->removeLinkFromRichText($thisRtContent, $thisSelectedLink->link_url);
                 Storage::put($contentFileName, $textWithLinkRemoved);
             }
+            $thisLinkInstance->deleteLinksToLayout($layoutId);
         }
 
 

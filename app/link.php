@@ -49,8 +49,17 @@ class link extends Model
         try {
             $selectedToLinks = DB::select($query, [$toLayoutId]);
         }catch (Exception $e){
-            throw new Exception('error '.$e.getMessage().' removing old links from '. $cardId);
+            throw new Exception('error '.$e.getMessage().' removing old links to '. $toLayoutId);
         }
         return $selectedToLinks;
+    }
+    public function deleteLinksToLayout($toLayoutId){
+        $query = "delete from links where layout_link_to = ?";
+        try {
+            $selectedToLinks = DB::select($query, [$toLayoutId]);
+        }catch (Exception $e){
+            throw new Exception('error '.$e.getMessage().' removing old links to '. $toLayoutId);
+        }
+
     }
 }
