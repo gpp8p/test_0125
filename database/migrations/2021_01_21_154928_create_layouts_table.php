@@ -23,6 +23,7 @@ class CreateLayoutsTable extends Migration
             $table->char('backgroundType', 1);
             $table->string('backgroundColor',10);
             $table->string('backgroundUrl', 80);
+            $table->char('deleted',1)->nullable($value = true);
         });
     }
 

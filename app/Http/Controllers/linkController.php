@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Layout;
 use Illuminate\Http\Request;
 use App\link;
 
@@ -24,9 +25,11 @@ class linkController extends Controller
         $thisLinkUrl = $inData['linkUrl'];
         $thisLayoutLinkTo = $inData['layout_link_to'];
         $linkType = $inData['type'];
+        $thisLayout = new Layout;
         $thisLinkInstance = new link;
         try {
             $thisLinkInstance->saveLink($thisOrgId, $thisLayoutId, $thisCardId, $thisDescription, $thisLinkUrl, $thisIsExternal, $thisLayoutLinkTo, $linkType);
+            $thisLayout->setUnDelete($thisLayoutId);
             return "ok";
         } catch (\Exception $e) {
             return "Error ".$e;

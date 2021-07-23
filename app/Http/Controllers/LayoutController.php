@@ -200,15 +200,22 @@ class LayoutController extends Controller
         $orgDirectory = '/published/'.$orgId;
         if(!Storage::exists($orgDirectory)) {
             Storage::makeDirectory($orgDirectory);
+        }else{
+            $existingFiles =   Storage::allFiles($orgDirectory);
+            Storage::delete($existingFiles);
         }
         $orgImageDirectory = '/published/'.$orgId.'/images';
         if(!Storage::exists($orgImageDirectory)) {
             Storage::makeDirectory($orgImageDirectory);
+        }else{
+            $existingImageFiles = Storage::allFiles($orgImageDirectory);
+            Storage::delete($existingImageFiles);
         }
         foreach($viewableLayouts as $thisViewableLayout){
-            if($thisViewableLayout==55){
+            if($thisViewableLayout==64){
                 $a=0;
             }
+            if(!$thisLayoutInstance->isDeleted($thisViewableLayout)) continue;
             $layoutData = $thisLayoutInstance->publishThisLayout($thisViewableLayout, $orgId, $guestUserId, $orgImageDirectory);
             $height = $layoutData['layout']['height'];
             $width = $layoutData['layout']['width'];
@@ -366,6 +373,7 @@ class LayoutController extends Controller
             }
             $thisLinkInstance->deleteLinksToLayout($layoutId);
         }
+        $thisLayout->setDelete($layoutId);
 
 
 

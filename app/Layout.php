@@ -542,9 +542,41 @@ class Layout extends Model
         return $returnData;
     }
 
-    public function isTopLayout($layoutId){
+    public function setDelete($layoutId){
+        $query = "update layouts set deleted = 'Y' where id=?";
+
+        try {
+            DB::select($query, [$layoutId]);
+        } catch (\Exception $e) {
+
+        }
 
     }
+
+    public function setUnDelete($layoutId){
+        $query = "update layouts set deleted = ' ' where id=?";
+
+        try {
+            DB::select($query, [$layoutId]);
+        } catch (\Exception $e) {
+
+        }
+    }
+
+    public function isDeleted($layoutId){
+        $query = "select deleted from layouts where id=?";
+        try {
+            $layoutIsDeleted = DB::select($query, [$layoutId]);
+        } catch (\Exception $e) {
+
+        }
+        if($layoutIsDeleted[0]->deleted == 'Y'){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 
     private function computeGridCss($row, $col, $height, $width){
         $startRow = $row;
