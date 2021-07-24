@@ -29,7 +29,6 @@ class linkController extends Controller
         $thisLinkInstance = new link;
         try {
             $thisLinkInstance->saveLink($thisOrgId, $thisLayoutId, $thisCardId, $thisDescription, $thisLinkUrl, $thisIsExternal, $thisLayoutLinkTo, $linkType);
-            $thisLayout->setUnDelete($thisLayoutId);
             return "ok";
         } catch (\Exception $e) {
             return "Error ".$e;

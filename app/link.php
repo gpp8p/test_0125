@@ -27,6 +27,7 @@ class link extends Model
 
     public function saveLink($orgId, $layoutId, $cardInstanceId, $description, $linkUrl, $isExternal, $layoutLinkTo, $linkType){
         try {
+            $thisLayout = new Layout;
             $thisOrgId = DB::table('links')->insertGetId([
                 'org_id' => 1,
                 'layout_id' => $layoutId,
@@ -39,6 +40,7 @@ class link extends Model
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now()
             ]);
+            $thisLayout->setUnDelete($layoutLinkTo);
         } catch (\Exception $e) {
             throw $e;
         }
