@@ -34,4 +34,13 @@ class linkController extends Controller
             return "Error ".$e;
         }
     }
+
+    public function deleteLink(Request $request){
+        $inData =  $request->all();
+        $linkIdToDelete = $inData['linkId'];
+        $thisLinkInstance = new link;
+        $thisLinkInstance->deleteLink($linkIdToDelete);
+        return "ok";
+
+    }
 }

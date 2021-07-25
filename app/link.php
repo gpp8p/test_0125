@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class link extends Model
 {
     public function getLinksForCardId($cardId){
-        $query = "select isExternal, link_url, layout_link_to, description, type from links where card_instance_id = ?";
+        $query = "select id, isExternal, link_url, layout_link_to, description, type from links where card_instance_id = ?";
         try {
             $linkInfo = DB::select($query, [$cardId]);
             return $linkInfo;
@@ -43,6 +43,15 @@ class link extends Model
             $thisLayout->setUnDelete($layoutLinkTo);
         } catch (\Exception $e) {
             throw $e;
+        }
+    }
+
+    public function deleteLink($linkId){
+        $query = 'delete from links where id = ?';
+        try {
+            DB::select($query, [$linkId]);
+        }catch (Exception $e){
+            throw new Exception('error '.$e.getMessage().' deleting links from '. $linkId);
         }
     }
 

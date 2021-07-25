@@ -74,6 +74,7 @@ Route::group([
     Route::get('publishOrg', 'layoutController@publishOrg');
     Route::get('userOrgPerms','OrgController@userOrgPerms' );
     Route::get('deleteLayout', 'layoutController@deleteLayout');
+    Route::get('deleteLink', 'linkController@deleteLink');
 
 
 
