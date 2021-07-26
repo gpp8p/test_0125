@@ -38,6 +38,7 @@ Route::group([
     'prefix' => 'shan',
 ], function($router){
     Route::get('testGet','testController@returnRequest');
+    Route::get('layoutTest', 'layoutController@layoutTest');
     Route::post('testPost', 'testController@returnPost');
     Route::post('fileUpload', 'FileUploadController@recieveFile')->name('fileUpload');
     Route::post('/imageUploadCk', 'FileUploadController@recieveFileCk')->name('imageUploadCk');

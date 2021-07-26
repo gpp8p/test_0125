@@ -595,4 +595,33 @@ class Layout extends Model
 
     }
 
+    public function updateCardInLayout(){
+        return;   // don't want to run this again
+        $query = "select * from card_instances";
+        try {
+            $allCardInstances = DB::select($query);
+            foreach($allCardInstances as $thisCardInstance){
+                $cardId = $thisCardInstance->id;
+                $row = $thisCardInstance->row;
+                $col = $thisCardInstance->col;
+                $height = $thisCardInstance->height;
+                $width = $thisCardInstance->width;
+                $layout_id = $thisCardInstance->layout_id;
+                $thisCardInLayoutId = DB::table('card_in_layout')->insertGetId([
+                    'card_instance_id'=>$cardId,
+                    'layout_id'=>$layout_id,
+                    'width'=>$width,
+                    'height'=>$height,
+                    'col'=>$col,
+                    'row'=>$row,
+                    'created_at'=>\Carbon\Carbon::now(),
+                    'updated_at'=>\Carbon\Carbon::now()
+                ]);
+            }
+
+        } catch (\Exception $e) {
+
+        }
+    }
+
 }

@@ -378,6 +378,11 @@ class LayoutController extends Controller
 
 
     }
+    public function layoutTest(Request $request){
+        $layoutInstance = new Layout;
+        $layoutInstance->updateCardInLayout();
+        return 'ok';
+    }
 
     private function removeLinkFromRichText($text, $link){
         $linkReferenceLocation = strpos($text, $link);
