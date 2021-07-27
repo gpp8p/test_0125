@@ -1,0 +1,12 @@
+new cards in layout query:
+
+select distinct instance.id,parameter_key, parameter_value, card_component, isCss, dom_element, instance.col, instance.row, instance.height, instance.width
+from card_instances as instance,
+instance_params as params,
+layouts as layouts,
+card_in_layout as cardlayout
+where params.card_instance_id = instance.id
+and instance.id = cardlayout.card_instance_id
+and instance.layout_id = cardlayout.layout_id
+and instance.layout_id = 27
+order by instance.id, dom_element;
