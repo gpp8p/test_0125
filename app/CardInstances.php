@@ -36,6 +36,18 @@ class CardInstances extends Model
     }
 
     public function getLayoutCardInstancesById($layoutId, $orgId){
+
+        $query = "select distinct instance.id,parameter_key, parameter_value, card_component, isCss, dom_element, cardlayout.col, cardlayout.row, cardlayout.height, cardlayout.width ".
+                "from card_instances as instance, ".
+                "instance_params as params, ".
+                "layouts as layouts, ".
+                "card_in_layout as cardlayout ".
+                "where params.card_instance_id = instance.id ".
+                "and instance.id = cardlayout.card_instance_id ".
+                "and cardlayout.layout_id = ? ".
+                "order by instance.id, dom_element";
+
+/*
         $query = "select instance.id,parameter_key, parameter_value, card_component, isCss, dom_element, ".
             "instance.col, instance.row, instance.height, instance.width ".
             "from card_instances as instance, instance_params as params, layouts as layouts ".
@@ -43,7 +55,7 @@ class CardInstances extends Model
             "and instance.layout_id = layouts.id ".
             "and layouts.id = ? ".
             "order by instance.id, dom_element";
-
+*/
         $retrievedCardInstances  =  DB::select($query, [$layoutId]);
 
         for($c=0;$c<count($retrievedCardInstances);$c++){
@@ -72,16 +84,27 @@ class CardInstances extends Model
 
 
         $viewType = ViewType::where('view_type_label', 'Web Browser')->first()->id;
+
         $newCardInstanceId =DB::table('card_instances')->insertGetId([
             'col'=>$column,
             'row'=>$row,
             'height'=>$height,
             'width'=>$width,
-            'layout_id'=>$layoutId,
+//            'layout_id'=>$layoutId,
             'card_component'=>$cardType,
             'view_type_id'=>$viewType,
             'card_component'=>$cardType,
 
+            'created_at'=>\Carbon\Carbon::now(),
+            'updated_at'=>\Carbon\Carbon::now()
+        ]);
+        $newCardLayoutId = DB::table('card_in_layout')->insertGetId([
+            'col'=>$column,
+            'row'=>$row,
+            'height'=>$height,
+            'width'=>$width,
+            'card_instance_id'=>$newCardInstanceId,
+            'layout_id'=>$layoutId,
             'created_at'=>\Carbon\Carbon::now(),
             'updated_at'=>\Carbon\Carbon::now()
         ]);
@@ -98,13 +121,36 @@ class CardInstances extends Model
 
     }
 
-    public function updateCardSize($cardId, $row, $column, $height, $width){
-        $affected = DB::table('card_instances')
-            ->where('id', $cardId)
-            ->update(['row' =>$row,
-                       'col' => $column,
-                        'height'=>$height,
-                        'width'=>$width]);
+    public function updateCardSize($cardId, $row, $column, $height, $width, $layoutId){
+        $query = "update card_in_layout set row = ?, col = ?, height = ?, width = ? where layout_id = ? and card_instance_id = ?";
+
+        try {
+            $affected = DB::select($query, [$row, $column, $height, $width, $layoutId, $cardId]);
+        } catch (\Exception $e) {
+            throw new Exception($e);
+        }
+
+
+        /*
+                $affected = DB::table('card_in_layout')
+                    ->where([
+                        ['layout_id','=', $layoutId],
+                        ['card_instance_id','=',$cardId]
+                    ])->update(['row' =>$row,
+                            'col' => $column,
+                            'height'=>$height,
+                            'width'=>$width]
+                    );
+
+
+
+                $affected = DB::table('card_instances')
+                    ->where('id', $cardId)
+                    ->update(['row' =>$row,
+                               'col' => $column,
+                                'height'=>$height,
+                                'width'=>$width]);
+        */
         return $affected;
     }
 

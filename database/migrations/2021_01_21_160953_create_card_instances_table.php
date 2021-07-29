@@ -20,7 +20,7 @@ class CreateCardInstancesTable extends Migration
             $table->integer('col');
             $table->integer('height');
             $table->integer('width');
-            $table->unsignedBigInteger('layout_id');
+            $table->unsignedBigInteger('layout_id')->nullable($value = true);
             $table->unsignedBigInteger('view_type_id');
             $table->string('card_component', 32);
         });

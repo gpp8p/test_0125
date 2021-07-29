@@ -203,10 +203,11 @@ class cardInstanceController extends Controller
         $col = $inData['col'];
         $height = $inData['height'];
         $width = $inData['width'];
+        $layoutId = $inData['layoutId'];
         $thisCardInstance = new CardInstances();
 
         try {
-            $updated = $thisCardInstance->updateCardSize($cardId, $row, $col, $height, $width);
+            $updated = $thisCardInstance->updateCardSize($cardId, $row, $col, $height, $width, $layoutId);
         } catch (Exception $e) {
             abort(500, 'Server error while resizing component:'.$e->getMessage());
         }
