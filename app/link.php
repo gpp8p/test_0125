@@ -29,8 +29,8 @@ class link extends Model
         try {
             $thisLayout = new Layout;
             $thisOrgId = DB::table('links')->insertGetId([
-                'org_id' => 1,
-                'layout_id' => $layoutId,
+                'org_id' => $orgId,
+//                'layout_id' => $layoutId,
                 'card_instance_id' => $cardInstanceId,
                 'description' => $description,
                 'isExternal' => $isExternal,

@@ -12,6 +12,7 @@ use Storage;
 use File;
 use App\User;
 use App\link;
+use App\Card;
 
 class LayoutController extends Controller
 {
@@ -376,6 +377,73 @@ class LayoutController extends Controller
         $thisLayout->setDelete($layoutId);
 
 
+
+    }
+    public function removeCardFromLayout(Request $request){
+        if(auth()->user()==null){
+            abort(401, 'Unauthorized action.');
+        }else{
+            $userId = auth()->user()->id;
+        }
+        $inData =  $request->all();
+        $layoutId = $inData['layoutId'];
+        $orgId = $inData['orgId'];
+        $cardId = $inData['cardId'];
+        $thisLayout = new Layout;
+        $userPerms = $thisLayout->getUserPermsForLayout($layoutId, $orgId, $userId);
+        $hasPermission = false;
+        foreach($userPerms as $thisPerm){
+            if($thisPerm->author>0){
+                $hasPermission=true;
+            }
+            if($thisPerm->admin>0){
+                $hasPermission=true;
+            }
+        }
+        if(!$hasPermission){
+            return ('not permitted');
+        }
+        $cardInstance = new CardInstances;
+        try {
+            $cardInstance->removeCardFromLayout($cardId, $layoutId);
+            return 'ok';
+        } catch (\Exception $e) {
+            return 'error removing card from layout';
+        }
+
+
+    }
+    public function deleteCard(Request $request){
+        if(auth()->user()==null){
+            abort(401, 'Unauthorized action.');
+        }else{
+            $userId = auth()->user()->id;
+        }
+        $inData =  $request->all();
+        $layoutId = $inData['layoutId'];
+        $orgId = $inData['orgId'];
+        $cardId = $inData['cardId'];
+        $thisLayout = new Layout;
+        $userPerms = $thisLayout->getUserPermsForLayout($layoutId, $orgId, $userId);
+        $hasPermission = false;
+        foreach($userPerms as $thisPerm){
+            if($thisPerm->author>0){
+                $hasPermission=true;
+            }
+            if($thisPerm->admin>0){
+                $hasPermission=true;
+            }
+        }
+        if(!$hasPermission){
+            return ('not permitted');
+        }
+        $cardInstance = new CardInstances;
+        try {
+            $cardInstance->deleteCard($cardId);
+            return 'ok';
+        } catch (\Exception $e) {
+            return 'error deleting card';
+        }
 
     }
     public function layoutTest(Request $request){

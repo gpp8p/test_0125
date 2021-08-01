@@ -76,6 +76,8 @@ Route::group([
     Route::get('userOrgPerms','OrgController@userOrgPerms' );
     Route::get('deleteLayout', 'layoutController@deleteLayout');
     Route::get('deleteLink', 'linkController@deleteLink');
+    Route::get('rmvlay', 'layoutController@removeCardFromLayout');
+    Route::get('deleteCard', 'layoutController@deleteCard');
 
 
 

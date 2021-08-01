@@ -154,6 +154,7 @@ class CardInstances extends Model
         return $affected;
     }
 
+
     public function getCardTypeById($cardId){
         $query = "select card_component from card_instances where id = ?";
         try {
@@ -162,6 +163,41 @@ class CardInstances extends Model
         } catch (\Exception $e) {
             throw $e;
         }
+
+    }
+    public function removeCardFromLayout($cardId, $layoutId){
+        $query = 'delete from card_in_layout where card_instance_id = ? and layout_id = ? ';
+        try {
+            $affected = DB::select($query, [$cardId, $layoutId]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    public function deleteCard($cardId){
+        DB::beginTransaction();
+        $query = "delete from card_in_layout where card_instance_id = ?";
+        try {
+            $affected = DB::select($query, [$cardId]);
+        } catch (\Exception $e) {
+            DB::rollback();
+            throw $e;
+        }
+        $query = "delete from instance_params where card_instance_id = ?";
+        try {
+            $affected = DB::select($query, [$cardId]);
+        } catch (\Exception $e) {
+            DB::rollback();
+            throw $e;
+        }
+        $query = "delete from card_instances where id = ?";
+        try {
+            $affected = DB::select($query, [$cardId]);
+        } catch (\Exception $e) {
+            DB::rollback();
+            throw $e;
+        }
+        DB::commit();
 
     }
 
