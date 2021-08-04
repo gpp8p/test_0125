@@ -7,6 +7,7 @@ use App\CardInstances;
 use App\InstanceParams;
 use App\layout;
 use App\link;
+use App\Org;
 use Illuminate\Support\Facades\DB;
 use Exception;
 use Storage;
@@ -173,6 +174,27 @@ class cardInstanceController extends Controller
         $layoutInstance = new Layout;
         $thisLayoutData = $layoutInstance->getThisLayout($layoutId, $orgId, $userId);
         return json_encode($thisLayoutData);
+    }
+    public function getOrgCards(Request $request){
+        $inData = $request->all();
+        if(auth()->user()==null){
+            abort(401, 'Unauthorized action.');
+        }else{
+            $userId = auth()->user()->id;
+        }
+        $orgId = $inData['orgId'];
+        $orgInstance = new Org();
+        $orgHomeId = $orgInstance->getOrgHomeFromOrgId($orgId);
+        $layoutInstance = new Layout();
+        $returnPerms = $layoutInstance->summaryPermsForLayout($userId, $orgId, $orgHomeId[0]->top_layout_id);
+        $thisCardInstance = new CardInstances();
+        if($returnPerms['admin']==1){
+            $allCardsForThisOrg = $thisCardInstance->getCardsForOrg($orgId, true);
+
+        }else{
+            $allCardsForThisOrg = $thisCardInstance->getCardsForOrg($orgId, false);
+        }
+
     }
 
 

@@ -201,6 +201,30 @@ class CardInstances extends Model
         DB::commit();
 
     }
+    public function getCardsForOrg($orgId, $restricted){
+        if(!$restricted){
+            $query = "select id, card_name from card_instances where layout_id in (select distinct layouts.id from layouts, perms, groups, org, grouporg ".
+                "where layouts.id = perms.layout_id ".
+                "and perms.admin=1 ".
+                "and perms.group_id = groups.id ".
+                "and grouporg.group_id = groups.id ".
+                "and grouporg.org_id = ?)
+                and restricted = 'F'";
+        }else{
+            $query = "select id, card_name from card_instances where layout_id in (select distinct layouts.id from layouts, perms, groups, org, grouporg ".
+                "where layouts.id = perms.layout_id ".
+                "and perms.admin=1 ".
+                "and perms.group_id = groups.id ".
+                "and grouporg.group_id = groups.id ".
+                "and grouporg.org_id = ?)";
+        }
+        try {
+            $affected = DB::select($query, [$orgId, $restricted]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+
+    }
 
 
 

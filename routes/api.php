@@ -78,6 +78,7 @@ Route::group([
     Route::get('deleteLink', 'linkController@deleteLink');
     Route::get('rmvlay', 'layoutController@removeCardFromLayout');
     Route::get('deleteCard', 'layoutController@deleteCard');
+    Route::get('cardList', 'cardInstanceController@getOrgCards');
 
 
 
