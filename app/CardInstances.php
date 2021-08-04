@@ -80,7 +80,7 @@ class CardInstances extends Model
     }
 
 
-    public function createCardInstance($layoutId, $cardParams, $row, $column, $height, $width, $cardType){
+    public function createCardInstance($layoutId, $cardParams, $row, $column, $height, $width, $cardType, $cardName, $restricted){
 
 
         $viewType = ViewType::where('view_type_label', 'Web Browser')->first()->id;
@@ -90,11 +90,12 @@ class CardInstances extends Model
             'row'=>$row,
             'height'=>$height,
             'width'=>$width,
-//            'layout_id'=>$layoutId,
+            'layout_id'=>$layoutId,
             'card_component'=>$cardType,
             'view_type_id'=>$viewType,
             'card_component'=>$cardType,
-
+            'card_name'=>$cardName,
+            'restricted'=>$restricted,
             'created_at'=>\Carbon\Carbon::now(),
             'updated_at'=>\Carbon\Carbon::now()
         ]);

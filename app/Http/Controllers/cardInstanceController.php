@@ -180,6 +180,7 @@ class cardInstanceController extends Controller
         $inData =  $request->all();
         $layoutId = $inData['layoutId'];
         $cardTitle = $inData['cardTitle'];
+        $restricted = $inData['restricted'];
         $cardType = $inData['cardType'];
         $topLeftRow = $inData['topLeftRow'];
         $topLeftCol = $inData['topLeftCol'];
@@ -191,7 +192,7 @@ class cardInstanceController extends Controller
         $thisCardInstance = new CardInstances();
         $cardWidth = ($bottomRightCol-$topLeftCol)+1;
         $cardHeight = ($bottomRightRow-$topLeftRow)+1;
-        $thisCardInstance->createCardInstance($layoutId, $cardParams, $topLeftRow,$topLeftCol, $cardHeight, $cardWidth,$cardType);
+        $thisCardInstance->createCardInstance($layoutId, $cardParams, $topLeftRow,$topLeftCol, $cardHeight, $cardWidth,$cardType, $cardTitle, $restricted);
         //       return $this->getLayoutById($request);
         return "ok";
 
