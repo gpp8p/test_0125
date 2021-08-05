@@ -203,26 +203,16 @@ class CardInstances extends Model
     }
     public function getCardsForOrg($orgId, $restricted){
         if(!$restricted){
-            $query = "select id, card_name from card_instances where layout_id in (select distinct layouts.id from layouts, perms, groups, org, grouporg ".
-                "where layouts.id = perms.layout_id ".
-                "and perms.admin=1 ".
-                "and perms.group_id = groups.id ".
-                "and grouporg.group_id = groups.id ".
-                "and grouporg.org_id = ?)
-                and restricted = 'F'";
+            $query = "select id, card_name, card_component from card_instances where layout_id in (select id from layouts where org_id = ?)";
         }else{
-            $query = "select id, card_name from card_instances where layout_id in (select distinct layouts.id from layouts, perms, groups, org, grouporg ".
-                "where layouts.id = perms.layout_id ".
-                "and perms.admin=1 ".
-                "and perms.group_id = groups.id ".
-                "and grouporg.group_id = groups.id ".
-                "and grouporg.org_id = ?)";
+            $query = "select id, card_name, card_component from card_instances where layout_id in (select id from layouts where org_id = ?) and restricted = 'F'";
         }
         try {
-            $affected = DB::select($query, [$orgId, $restricted]);
+            $selectedCards = DB::select($query, [$orgId]);
         } catch (\Exception $e) {
             throw $e;
         }
+        return $selectedCards;
 
     }
 

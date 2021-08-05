@@ -194,7 +194,7 @@ class cardInstanceController extends Controller
         }else{
             $allCardsForThisOrg = $thisCardInstance->getCardsForOrg($orgId, false);
         }
-
+        return $allCardsForThisOrg;
     }
 
 

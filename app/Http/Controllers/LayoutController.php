@@ -68,7 +68,7 @@ class LayoutController extends Controller
             $layoutBackgroundColor = $inData['backgroundColor'];
         }
         $layoutInstance = new Layout;
-        $newLayoutId = $layoutInstance->createLayoutWithoutBlanks($layoutName, $layoutHeight, $layoutWidth, $layoutDescription, $layoutBackgroundColor, $backgroundImage, $backgroundType);
+        $newLayoutId = $layoutInstance->createLayoutWithoutBlanks($layoutName, $layoutHeight, $layoutWidth, $layoutDescription, $layoutBackgroundColor, $backgroundImage, $backgroundType, $orgId);
 
         $thisGroup = new Group;
         try {

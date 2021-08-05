@@ -19,7 +19,7 @@ class Layout extends Model
         return $this->hasMany(CardInstances::class);
     }
 
-    public function createLayoutWithoutBlanks($layoutName, $layoutHeight, $layoutWidth, $layoutDescription, $backgroundColor, $backgroundImage, $backgroundType){
+    public function createLayoutWithoutBlanks($layoutName, $layoutHeight, $layoutWidth, $layoutDescription, $backgroundColor, $backgroundImage, $backgroundType, $orgId){
         $newlayoutId =db::table('layouts')->insertgetid([
             'menu_label'=>$layoutName,
             'description'=>$layoutDescription,
@@ -28,6 +28,7 @@ class Layout extends Model
             'backgroundColor'=>$backgroundColor,
             'backgroundUrl'=>$backgroundImage,
             'backgroundType'=>$backgroundType,
+            'org_id'=>$orgId,
             'created_at'=>\carbon\carbon::now(),
             'updated_at'=>\carbon\carbon::now()
         ]);
@@ -76,6 +77,15 @@ class Layout extends Model
             }
         }
         return $newLayoutId;
+    }
+    public function updateLayoutOrg($layoutId, $orgId){
+        $query = "update layouts set org_id = ? where id = ?";
+
+        try {
+            DB::select($query, [$orgId, $layoutId]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
     }
 
     public function getLayoutList(){

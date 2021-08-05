@@ -157,9 +157,14 @@ class OrgController extends Controller
          $orgInstance = new Org;
          DB::beginTransaction();
          try {
-             $newLayoutId = $layoutInstance->createLayoutWithoutBlanks($name, $height, $width, $description, $backgroundColor, $backgroundImage, $backgroundType);
+             $newLayoutId = $layoutInstance->createLayoutWithoutBlanks($name, $height, $width, $description, $backgroundColor, $backgroundImage, $backgroundType, 0);
              try {
                  $newOrgId = $orgInstance->createNewOrg($name, $description, $newLayoutId);
+             } catch (\Exception $e) {
+                 throw $e;
+             }
+             try {
+                 $layoutInstance->updateLayoutOrg($newLayoutId, $newOrgId);
              } catch (\Exception $e) {
                  throw $e;
              }
