@@ -79,6 +79,7 @@ Route::group([
     Route::get('rmvlay', 'layoutController@removeCardFromLayout');
     Route::get('deleteCard', 'layoutController@deleteCard');
     Route::get('cardList', 'cardInstanceController@getOrgCards');
+    Route::post('cardInsert', 'cardInstanceController@cardInsert');
 
 
 

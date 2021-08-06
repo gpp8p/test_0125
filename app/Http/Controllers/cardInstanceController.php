@@ -196,7 +196,17 @@ class cardInstanceController extends Controller
         }
         return $allCardsForThisOrg;
     }
+    public function cardInsert(Request $request){
+        $inData = $request->all();
+        if(auth()->user()==null){
+            abort(401, 'Unauthorized action.');
+        }else{
+            $userId = auth()->user()->id;
+        }
+        $toLayout = $inData['params']['toLayout'];
+        $cardId = $inData['params']['cardId'];
 
+    }
 
     public function saveCardOnly(Request $request){
         $inData =  $request->all();
