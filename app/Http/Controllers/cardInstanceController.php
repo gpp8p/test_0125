@@ -205,6 +205,13 @@ class cardInstanceController extends Controller
         }
         $toLayout = $inData['params']['toLayout'];
         $cardId = $inData['params']['cardId'];
+        $cardInstance = new CardInstances();
+        try {
+            $cardInstance->insertCard($cardId, $toLayout);
+        } catch (Exception $e) {
+            $msg = 'Could not insert card:'.$e->getMessage();
+            abort(500, $msg);
+        }
 
     }
 
