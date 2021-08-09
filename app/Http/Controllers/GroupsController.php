@@ -47,12 +47,19 @@ class GroupsController extends Controller
         }else{
             $userId = auth()->user()->id;
         }
+        $superAdmin = auth()->user()->is_admin;
+        $notAdmin = 0;
         $inData =  $request->all();
         $groupId = $inData['params']['groupId'];
+//        $orgId = $inData['params']['orgId'];
         $selectedUserId = $inData['params']['selectedUserId'];
         $groupInstance = new Group;
+        $isAdmin = $groupInstance->isUserGroupAdmin($userId, $groupId);
+        if(!$isAdmin && !$superAdmin){
+            abort(401, "Not permitted -".$userId." must be group admin");
+        }
         try {
-            $groupInstance->addUserToGroup($selectedUserId, $groupId);
+            $groupInstance->addUserToGroup($selectedUserId, $groupId, $notAdmin);
             return "ok";
         }catch (Throwable $e) {
             abort(500, 'Server error: '.$e->getMessage());

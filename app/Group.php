@@ -128,4 +128,13 @@ class Group extends Model
         $orgGroups = DB::select($query, [$orgId]);
         return $orgGroups;
     }
+    public function isUserGroupAdmin($userId, $groupId){
+        $query = "select is_admin from usergroup where user_id = ? and group_id = ?";
+        try {
+            $isAdmin = DB::select($query, [$userId, $groupId]);
+        } catch (\Exception $e) {
+            throw new Exception($e);
+        }
+        return $isAdmin;
+    }
 }
