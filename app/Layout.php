@@ -172,6 +172,15 @@ class Layout extends Model
         return $retrievedLayouts;
 
     }
+    public function getViewableOrgLayouts($orgLayouts, $allUserGroupId){
+        $query = "select layout_id from perms where group_id = ? and layout_id in (".$orgLayouts.") and view=1";
+        try {
+            $viewableOrgLayoutIds  =  DB::select($query, [$allUserGroupId]);
+        } catch (Exception $e) {
+            throw $e;
+        }
+        return $viewableOrgLayoutIds;
+    }
 
     public function getLayoutGroups($layoutId, $orgId, $userId){
         $query = "select groups.description, groups.id, perms.view, perms.author, perms.admin, perms.opt1, perms.opt2, perms.opt3 from groups, perms, users, usergroup, userorg, org ".
@@ -413,7 +422,7 @@ class Layout extends Model
 //        $orgId = $inData['orgId'];
 //        $userId = $inData['userId'];
         $layoutInstance = new Layout;
-        $layoutInfo = $layoutInstance->where('id', $layoutId)->get();
+        $layoutInfo = $layoutInstance->where('id', $layoutId->layout_id)->get();
         $thisLayoutDescription = $layoutInfo[0]->description;
         $thisLayoutWidth = $layoutInfo[0]->width;
         $thisLayoutHeight = $layoutInfo[0]->height;
@@ -422,10 +431,10 @@ class Layout extends Model
         $thisLayoutBackgroundType = $layoutInfo[0]->backgroundType;
         $thisLayoutLabel = $layoutInfo[0]->menu_label;
         $thisCardInstance = new CardInstances;
-        $thisLayoutCardInstances = $thisCardInstance->getLayoutCardInstancesById($layoutId, $orgId);
+        $thisLayoutCardInstances = $thisCardInstance->getLayoutCardInstancesById($layoutId->layout_id, $orgId);
         if ($thisLayoutCardInstances == null) {
             $layoutProperties = array('description' => $thisLayoutDescription, 'menu_label' => $thisLayoutLabel, 'height' => $thisLayoutHeight, 'width' => $thisLayoutHeight, 'backgroundColor' => $thisLayoutBackgroundColor, 'backGroundImageUrl' => $thisLayoutImageUrl, 'backgroundType' => $thisLayoutBackgroundType);
-            $thisLayoutPerms = $layoutInstance->summaryPermsForLayout($userId, $orgId, $layoutId);
+            $thisLayoutPerms = $layoutInstance->summaryPermsForLayout($userId, $orgId, $layoutId->layout_id);
             $returnData = array('cards' => [], 'layout' => $layoutProperties, 'perms' => $thisLayoutPerms);
             return $returnData;
         }
@@ -546,7 +555,7 @@ class Layout extends Model
                 }
             }
         }
-        $thisLayoutPerms = $layoutInstance->summaryPermsForLayout($userId, $orgId, $layoutId);
+        $thisLayoutPerms = $layoutInstance->summaryPermsForLayout($userId, $orgId, $layoutId->layout_id);
         $layoutProperties = array('description' => $thisLayoutDescription, 'menu_label' => $thisLayoutLabel, 'height' => $thisLayoutHeight, 'width' => $thisLayoutHeight, 'backgroundColor' => $thisLayoutBackgroundColor, 'backGroundImageUrl' => $thisLayoutImageUrl, 'backgroundType' => $thisLayoutBackgroundType);
         $returnData = array('cards' => $allCardInstances, 'layout' => $layoutProperties, 'perms' => $thisLayoutPerms);
         return $returnData;
@@ -579,6 +588,12 @@ class Layout extends Model
             $layoutIsDeleted = DB::select($query, [$layoutId]);
         } catch (\Exception $e) {
 
+        }
+        if(!isset($layoutIsDeleted)){
+            return false;
+        }
+        if($layoutIsDeleted==NULL){
+            return false;
         }
         if($layoutIsDeleted[0]->deleted == 'Y'){
             return true;

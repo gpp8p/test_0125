@@ -187,16 +187,33 @@ class LayoutController extends Controller
         } catch (\Exception $e) {
             abort(500, 'could not find all user group id');
         }
+        if(auth()->user()==null){
+            abort(401, 'Unauthorized action.');
+        }else{
+            $userId = auth()->user()->id;
+        }
         $userInstance = new User;
         $userFound = $userInstance->findUserByEmail('GuestUser@nomail.com');
         $guestUserId = $userFound[0]->id;
 
 
         $thisLayoutInstance = new Layout;
-        $returnedLayouts = $thisLayoutInstance->getPublishableLayoutsForOrg($orgId, $allUserGroupId);
-        $viewableLayouts=array();
+//        $returnedLayouts = $thisLayoutInstance->getPublishableLayoutsForOrg($orgId, $allUserGroupId);
+        $returnedLayouts = $thisLayoutInstance->getViewableLayoutIds($userId, $orgId);
+//        $viewableLayouts=array();
+        if(count($returnedLayouts)==0){
+            abort(500, 'no viewable layouts for this org');
+        }
+        $orgLayouts = '';
         foreach($returnedLayouts as $thisLayout){
-            array_push($viewableLayouts, $thisLayout->layout_id);
+//            array_push($viewableLayouts, $thisLayout->layout_id);
+            $orgLayouts = $orgLayouts.$thisLayout->id.',';
+        }
+        $orgLayouts = substr($orgLayouts,0,(strlen($orgLayouts)-1));
+        try {
+            $viewableLayouts = $thisLayoutInstance->getViewableOrgLayouts($orgLayouts, $allUserGroupId);
+        } catch (\Exception $e) {
+            abort(500, $e->getMessage()." while getting viewable org layouts");
         }
         $orgDirectory = '/published/'.$orgId;
         if(!Storage::exists($orgDirectory)) {
@@ -212,11 +229,12 @@ class LayoutController extends Controller
             $existingImageFiles = Storage::allFiles($orgImageDirectory);
             Storage::delete($existingImageFiles);
         }
+
         foreach($viewableLayouts as $thisViewableLayout){
-            if($thisViewableLayout==64){
+            if($thisViewableLayout->layout_id==64){
                 $a=0;
             }
-            if(!$thisLayoutInstance->isDeleted($thisViewableLayout)) continue;
+            if($thisLayoutInstance->isDeleted($thisViewableLayout)) continue;
             $layoutData = $thisLayoutInstance->publishThisLayout($thisViewableLayout, $orgId, $guestUserId, $orgImageDirectory);
             $height = $layoutData['layout']['height'];
             $width = $layoutData['layout']['width'];
@@ -250,7 +268,7 @@ class LayoutController extends Controller
             }
 */
             $viewHtml = view('layout', ['layoutId' => $thisViewableLayout, 'layoutCss'=>$thisLayoutCss, 'cards'=>$layoutData['cards']])->render();
-            $thisOutPutFile = 'published/'.$orgId.'/'.$thisViewableLayout.'.html';
+            $thisOutPutFile = 'published/'.$orgId.'/'.$thisViewableLayout->layout_id.'.html';
             Storage::put($thisOutPutFile, $viewHtml);
         }
         return 'Ok';
