@@ -6,7 +6,8 @@ namespace App\Classes;
 
 class SpCard
 {
-
+    const dynamicAddress = 'http://localhost:8080/target/';
+    const staticAddress = 'http://localhost/spaces/';
     public $thisCardCss = "";
     public $thisCardProperties = "";
     public $thisCardContent = array();

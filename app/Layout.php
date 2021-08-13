@@ -414,7 +414,7 @@ class Layout extends Model
     }
 
 
-    public function publishThisLayout($layoutId, $orgId, $userId, $imageDirectory)
+    public function publishThisLayout($layoutId, $orgId, $userId, $imageDirectory, $publishableLayouts)
     {
 //    public function getLayoutById(Request $request){
 //        $inData =  $request->all();

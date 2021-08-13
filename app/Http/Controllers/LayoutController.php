@@ -235,7 +235,7 @@ class LayoutController extends Controller
                 $a=0;
             }
             if($thisLayoutInstance->isDeleted($thisViewableLayout)) continue;
-            $layoutData = $thisLayoutInstance->publishThisLayout($thisViewableLayout, $orgId, $guestUserId, $orgImageDirectory);
+            $layoutData = $thisLayoutInstance->publishThisLayout($thisViewableLayout, $orgId, $guestUserId, $orgImageDirectory, $returnedLayouts);
             $height = $layoutData['layout']['height'];
             $width = $layoutData['layout']['width'];
             if(isset($layoutData['layout']['backgroundColor'])){
