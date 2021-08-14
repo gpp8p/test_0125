@@ -3,11 +3,9 @@
 
 namespace App\Classes;
 
-
+use App\Classes\SpRichTextCard;
 class SpCard
 {
-    const dynamicAddress = 'http://localhost:8080/target/';
-    const staticAddress = 'http://localhost/spaces/';
     public $thisCardCss = "";
     public $thisCardProperties = "";
     public $thisCardContent = array();
@@ -16,30 +14,41 @@ class SpCard
     public $thisCardHeight = 0;
     public $thisCardWidth = 0;
     public $thisCardId = 0;
+    public $thisCardPosition;
     private $orgId;
 
 
 
 
-    function __construct($thisCard, $orgId){
+    function __construct($thisCardArray, $orgId, $publishableLayouts){
         $thisCardCss = '';
         $thisCardProperties = '';
-        if ($thisCard[2] == 1) {
-            $thisCardCss = $thisCardCss . $thisCard[1];
-        } else {
-            $thisCardProperties = $thisCardProperties . $thisCard[1];
-            $thisCardContent[$thisCard[0]] = $thisCard[1];
-        }
-        $thisCardIsCss = $thisCard[2];
-        $thisCardParameterKey = $thisCard[0];
-        $thisCardComponent = $thisCard[3];
+        $thisCardContent = array();
+        foreach ($thisCardArray as $thisCard){
+            if ($thisCard[2] == 1) {
+                $thisCardCss = $thisCardCss . $thisCard[1];
+            } else {
+                $thisCardProperties = $thisCardProperties . $thisCard[1];
+                $thisCardContent[$thisCard[0]] = $thisCard[1];
+            }
+            $thisCardIsCss = $thisCard[2];
+            $thisCardParameterKey = $thisCard[0];
+            $thisCardComponent = $thisCard[3];
 
-        $thisCardCol = $thisCard[4];
-        $thisCardRow = $thisCard[5];
-        $thisCardHeight = $thisCard[6];
-        $thisCardWidth = $thisCard[7];
-        $thisCardId = $thisCard[8];
+            $this->thisCardCol = $thisCard[4];
+            $this->thisCardRow = $thisCard[5];
+            $this->thisCardHeight = $thisCard[6];
+            $this->thisCardWidth = $thisCard[7];
+            $this->thisCardId = $thisCard[8];
+        }
+        $thisCardPosition = array($this->thisCardRow, $this->thisCardCol, $this->thisCardHeight, $this->thisCardWidth);
         $this->orgId = $orgId;
+        switch($thisCardComponent){
+            case "RichText":{
+                $thisSpRichTextCard = new SpRichTextCard($this->thisCardId, $orgId, $publishableLayouts, $thisCardContent );
+                $this->thisCardContent = $thisSpRichTextCard->getCardContent();
+            }
+        }
 
     }
     public function getCssGridParams(){

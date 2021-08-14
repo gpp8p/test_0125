@@ -5,6 +5,8 @@ namespace App;
 use App\CardInstances;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use App\Classes\SpCard;
+use App\Classes\SpRichTextCard;
 use Storage;
 use File;
 
@@ -416,6 +418,9 @@ class Layout extends Model
 
     public function publishThisLayout($layoutId, $orgId, $userId, $imageDirectory, $publishableLayouts)
     {
+        $dynamicAddress = 'http://localhost:8080/target/';
+        $staticAddress = 'http://localhost/spaces/';
+
 //    public function getLayoutById(Request $request){
 //        $inData =  $request->all();
 //        $layoutId = $inData['layoutId'];
@@ -460,6 +465,8 @@ class Layout extends Model
             }
         }
         foreach ($cardsReadIn as $thisCardArray) {
+
+/*
             $thisCardCss = "";
             $thisCardProperties = "";
             $thisCardContent = array();
@@ -492,7 +499,19 @@ class Layout extends Model
                     $content = $thisCardContent['cardText'];
                     foreach($cardLinks as $thisCardLink){
                         if($thisCardLink->type=="U"){
-                            $newLink = 'http://localhost/spaces/'.$orgId.'/'.$thisCardLink->layout_link_to.'.html';
+                            $linkIsPublishable = false;
+                            foreach($publishableLayouts as $thisPublishableLayout){
+                                if($thisPublishableLayout->id == $thisCardLink->layout_link_to){
+                                    $linkIsPublishable = true;
+                                    break;
+                                }
+                            }
+                            if($linkIsPublishable){
+                                $newLink = $dynamicAddress.'/'.$thisCardLink->layout_link_to;
+
+                            }else{
+                                $newLink = $staticAddress.$orgId.'/'.$thisCardLink->layout_link_to.'.html';
+                            }
                             $content = str_replace($thisCardLink->link_url, $newLink, $content);
                         }else if($thisCardLink->type=="I"){
                             $imageLink = $thisCardLink->link_url;
@@ -521,6 +540,10 @@ class Layout extends Model
                 'properties' => $thisCardProperties,
                 'content' => $thisCardContent
             );
+
+
+
+
             $thisCardPosition = array($thisCardRow, $thisCardCol, $thisCardHeight, $thisCardWidth);
             $thisCardData = array(
                 'id' => $thisCardId,
@@ -528,6 +551,9 @@ class Layout extends Model
                 'card_parameters' => $thisCardParameters,
                 'card_position' => $thisCardPosition
             );
+*/
+            $thisSpCard = new SpCard($thisCardArray, $orgId, $publishableLayouts);
+            $thisCardData = $thisSpCard->getCardData();
             array_push($allCardInstances, $thisCardData);
         }
         $subElementStyles = array();

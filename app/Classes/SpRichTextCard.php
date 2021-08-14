@@ -6,22 +6,32 @@ namespace App\Classes;
 
 use App\link;
 
-class SpRichTextCard extends SpCard
+class SpRichTextCard
 {
-    function __construct($thisCard, $orgId, $publishableLayouts){
-        parent::__construct($thisCard, $orgId);
+    const DYNAMIC_ADDRESS = 'http://localhost:8080/target/';
+    const STATIC_ADDRESS = 'http://localhost/spaces/';
+
+    public $content;
+    function __construct($thisCardId, $orgId, $publishableLayouts, $thisCardContent ){
         $orgDirectory = '/images/'.$orgId;
         $thisLink = new link();
-        $cardLinks = $thisLink->getLinksForCardId($thisCard[8]);
+        $cardLinks = $thisLink->getLinksForCardId($thisCardId);
         if(isset($thisCardContent['cardText'])){
             $content = $thisCardContent['cardText'];
             foreach($cardLinks as $thisCardLink){
                 if($thisCardLink->type=="U"){
-                    if(!array_search($thisCardLink->layout_link_to, $publishableLayouts)){
-                        $newLink = $this->dynamicAddress.'/'.$thisCardLink->layout_link_to;
+                    $linkIsPublishable = false;
+                    foreach($publishableLayouts as $thisPublishableLayout){
+                        if($thisPublishableLayout->id == $thisCardLink->layout_link_to){
+                            $linkIsPublishable = true;
+                            break;
+                        }
+                    }
+                    if($linkIsPublishable){
+                        $newLink = self::DYNAMIC_ADDRESS.'/'.$thisCardLink->layout_link_to;
 
                     }else{
-                        $newLink = $this->staticAddress.$orgId.'/'.$thisCardLink->layout_link_to.'.html';
+                        $newLink = self::STATIC_ADDRESS.$orgId.'/'.$thisCardLink->layout_link_to.'.html';
                     }
                     $content = str_replace($thisCardLink->link_url, $newLink, $content);
                 }else if($thisCardLink->type=="I"){
@@ -38,11 +48,13 @@ class SpRichTextCard extends SpCard
 
                 }
             }
-            $thisCardContent['cardText']= $content;
 
         }else{
-            $thisCardContent['cardText']='';
+            $content='';
         }
+    }
+    public function getCardContent(){
+        return $this->thisCardContent['cardText'];
     }
 
 }
