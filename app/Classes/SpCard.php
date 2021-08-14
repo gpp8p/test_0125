@@ -51,6 +51,7 @@ class SpCard
         }
 
     }
+    
     public function getCssGridParams(){
         return $this->computeGridCss($this->thisCardRow, $this->thisCardCol, $this->thisCardHeight, $this->thisCardWidth) . ";";
     }
