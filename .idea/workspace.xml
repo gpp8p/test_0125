@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="" />
+    <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,7 +27,7 @@
   <component name="GithubDefaultAccount">
     <option name="defaultAccountId" value="16344490-6afc-492f-b0a2-ba6d9ba3f9b7" />
   </component>
-  <component name="PhpDebugGeneral" break_at_first_line="true" listening_started="true" show_user_defined_constants="false" />
+  <component name="PhpDebugGeneral" break_at_first_line="true" show_user_defined_constants="false" />
   <component name="PhpServers">
     <servers>
       <server host="localhost" id="c10bb1c5-894d-47ee-93ce-511a8f3c7051" name="Artisan" port="8000" />
@@ -339,14 +341,8 @@
       <workItem from="1628779522258" duration="16575000" />
       <workItem from="1628864322827" duration="9091000" />
       <workItem from="1628905568948" duration="4496000" />
-      <workItem from="1628910731691" duration="484000" />
-    </task>
-    <task id="LOCAL-00033" summary="link extraction in rtCards">
-      <created>1620252156929</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1620252156930</updated>
+      <workItem from="1628910731691" duration="706000" />
+      <workItem from="1628990130388" duration="382000" />
     </task>
     <task id="LOCAL-00034" summary="save all of the links in a rtCard so they can be checked to see if they point to a public layout when publishing">
       <created>1620580059117</created>
@@ -684,7 +680,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628911002616</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="more work on refactor of publish">
+      <created>1628911917230</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1628911917230</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -719,6 +722,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="more work on refactor of publish" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="700" y="371" key="#Notifications" timestamp="1628911934488">
+      <screen x="0" y="23" width="1920" height="1008" />
+    </state>
+    <state x="700" y="371" key="#Notifications/0.23.1920.1008@0.23.1920.1008" timestamp="1628911934488" />
     <state x="671" y="344" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1627353161900">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
@@ -742,11 +749,11 @@
     <state x="1181" y="469" key="#xdebugger.evaluate/0.23.1792.1051@0.23.1792.1051" timestamp="1625432447085" />
     <state x="1242" y="452" key="#xdebugger.evaluate/0.23.1920.1008@0.23.1920.1008" timestamp="1628909532372" />
     <state x="1265" y="452" key="#xdebugger.evaluate/0.23.1920.1010@0.23.1920.1010" timestamp="1628711688343" />
-    <state x="271" y="182" key="CommitChangelistDialog2" timestamp="1628911002526">
+    <state x="271" y="182" key="CommitChangelistDialog2" timestamp="1628911917138">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
     <state x="253" y="189" key="CommitChangelistDialog2/0.23.1792.1051@0.23.1792.1051" timestamp="1626549196358" />
-    <state x="271" y="182" key="CommitChangelistDialog2/0.23.1920.1008@0.23.1920.1008" timestamp="1628911002526" />
+    <state x="271" y="182" key="CommitChangelistDialog2/0.23.1920.1008@0.23.1920.1008" timestamp="1628911917138" />
     <state x="271" y="182" key="CommitChangelistDialog2/0.23.1920.1009@0.23.1920.1009" timestamp="1628806559539" />
     <state x="271" y="182" key="CommitChangelistDialog2/0.23.1920.1010@0.23.1920.1010" timestamp="1628718701450" />
     <state width="1558" height="212" key="GridCell.Tab.0.bottom" timestamp="1628910699990">
@@ -819,11 +826,11 @@
     <state x="460" y="165" key="SettingsEditor/0.23.1792.1051@0.23.1792.1051" timestamp="1625074699946" />
     <state x="493" y="159" key="SettingsEditor/0.23.1920.1008@0.23.1920.1008" timestamp="1628911894724" />
     <state x="493" y="159" key="SettingsEditor/0.23.1920.1010@0.23.1920.1010" timestamp="1628469589488" />
-    <state x="621" y="246" key="Vcs.Push.Dialog.v2" timestamp="1628911006959">
+    <state x="621" y="246" key="Vcs.Push.Dialog.v2" timestamp="1628911921240">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
     <state x="580" y="256" key="Vcs.Push.Dialog.v2/0.23.1792.1051@0.23.1792.1051" timestamp="1626549200773" />
-    <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1008@0.23.1920.1008" timestamp="1628911006959" />
+    <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1008@0.23.1920.1008" timestamp="1628911921240" />
     <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1009@0.23.1920.1009" timestamp="1628806562626" />
     <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1010@0.23.1920.1010" timestamp="1628718704571" />
     <state width="720" height="378" key="XDebugger.FullValuePopup" timestamp="1622943735586">

@@ -17,8 +17,7 @@ class SpCard
     public $thisCardPosition;
     private $orgId;
 
-
-
+    
 
     function __construct($thisCardArray, $orgId, $publishableLayouts){
         $thisCardCss = '';
