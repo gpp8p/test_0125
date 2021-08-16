@@ -47,6 +47,11 @@ class SpCard
             case "RichText":{
                 $thisSpRichTextCard = new SpRichTextCard($this->thisCardId, $orgId, $publishableLayouts, $thisCardContent );
                 $this->thisCardContent = $thisSpRichTextCard->getCardContent();
+                break;
+            }
+            case "Headline":{
+                $this->thisCardContent = $thisCardContent['title'];
+                break;
             }
         }
 

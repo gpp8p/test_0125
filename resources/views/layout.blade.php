@@ -363,7 +363,11 @@
         @foreach($cards as $thisCard)
             @switch($thisCard['card_component'])
                 @case('Headline')
-                    <div style="{{$thisCard['card_parameters']['style']}}"></div>
+                    <div style="{{$thisCard['card_parameters']['style']}}">
+                        <span class="cardBody">
+                                {!! $thisCard['card_parameters']['content'] !!}
+                        </span>
+                    </div>
                 @break
                 @case('RichText')
                     <div style="{{$thisCard['card_parameters']['style']}} padding: 5px; overflow: auto;" >
