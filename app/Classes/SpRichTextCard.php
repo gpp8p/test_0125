@@ -26,7 +26,7 @@ class SpRichTextCard
                 if($thisCardLink->type=="U"){
                     $linkIsPublishable = false;
                     foreach($publishableLayouts as $thisPublishableLayout){
-                        if($thisPublishableLayout->id == $thisCardLink->layout_link_to){
+                        if($thisPublishableLayout->layout_id == $thisCardLink->layout_link_to){
                             $linkIsPublishable = true;
                             break;
                         }
@@ -35,7 +35,7 @@ class SpRichTextCard
                         $newLink = self::STATIC_ADDRESS.$orgId.'/'.$thisCardLink->layout_link_to;
 
                     }else{
-                        $newLink = self::STATIC_ADDRESS.$orgId.'/'.$thisCardLink->layout_link_to.'.html';
+                        $newLink = self::DYNAMIC_ADDRESS.$orgId.'/'.$thisCardLink->layout_link_to.'.html';
                     }
                     $this->contentIn = str_replace($thisCardLink->link_url, $newLink, $this->contentIn);
                 }else if($thisCardLink->type=="I"){
@@ -53,7 +53,6 @@ class SpRichTextCard
 
 
                     }
-
                 }
             }
 
@@ -66,5 +65,5 @@ class SpRichTextCard
         return array('cardText'=>$this->content);
     }
 
-    
+
 }

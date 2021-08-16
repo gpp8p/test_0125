@@ -236,7 +236,7 @@ class LayoutController extends Controller
             }
             if($thisLayoutInstance->isDeleted($thisViewableLayout)) continue;
             try {
-                $layoutData = $thisLayoutInstance->publishThisLayout($thisViewableLayout, $orgId, $guestUserId, $orgImageDirectory, $returnedLayouts);
+                $layoutData = $thisLayoutInstance->publishThisLayout($thisViewableLayout, $orgId, $guestUserId, $orgImageDirectory, $viewableLayouts);
             } catch (\Exception $e) {
                 $error = $e->getMessage();
             }
