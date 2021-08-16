@@ -15,24 +15,25 @@ class SpCard
     public $thisCardWidth = 0;
     public $thisCardId = 0;
     public $thisCardPosition;
+    public $thisCardComponent;
     private $orgId;
 
-    
+
 
     function __construct($thisCardArray, $orgId, $publishableLayouts){
-        $thisCardCss = '';
-        $thisCardProperties = '';
+        $this->thisCardCss = '';
+        $this->thisCardProperties = '';
         $thisCardContent = array();
         foreach ($thisCardArray as $thisCard){
             if ($thisCard[2] == 1) {
-                $thisCardCss = $thisCardCss . $thisCard[1];
+                $this->thisCardCss = $this->thisCardCss . $thisCard[1];
             } else {
-                $thisCardProperties = $thisCardProperties . $thisCard[1];
+                $this->thisCardProperties = $this->thisCardProperties . $thisCard[1];
                 $thisCardContent[$thisCard[0]] = $thisCard[1];
             }
             $thisCardIsCss = $thisCard[2];
             $thisCardParameterKey = $thisCard[0];
-            $thisCardComponent = $thisCard[3];
+            $this->thisCardComponent = $thisCard[3];
 
             $this->thisCardCol = $thisCard[4];
             $this->thisCardRow = $thisCard[5];
@@ -42,7 +43,7 @@ class SpCard
         }
         $thisCardPosition = array($this->thisCardRow, $this->thisCardCol, $this->thisCardHeight, $this->thisCardWidth);
         $this->orgId = $orgId;
-        switch($thisCardComponent){
+        switch($this->thisCardComponent){
             case "RichText":{
                 $thisSpRichTextCard = new SpRichTextCard($this->thisCardId, $orgId, $publishableLayouts, $thisCardContent );
                 $this->thisCardContent = $thisSpRichTextCard->getCardContent();

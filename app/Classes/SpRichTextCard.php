@@ -5,6 +5,8 @@ namespace App\Classes;
 
 
 use App\link;
+use Storage;
+use File;
 
 class SpRichTextCard
 {
@@ -12,12 +14,14 @@ class SpRichTextCard
     const STATIC_ADDRESS = 'http://localhost/spaces/';
 
     public $content;
+    var $contentIn='';
     function __construct($thisCardId, $orgId, $publishableLayouts, $thisCardContent ){
+
         $orgDirectory = '/images/'.$orgId;
         $thisLink = new link();
         $cardLinks = $thisLink->getLinksForCardId($thisCardId);
         if(isset($thisCardContent['cardText'])){
-            $content = $thisCardContent['cardText'];
+            $this->contentIn = $thisCardContent['cardText'];
             foreach($cardLinks as $thisCardLink){
                 if($thisCardLink->type=="U"){
                     $linkIsPublishable = false;
@@ -28,12 +32,12 @@ class SpRichTextCard
                         }
                     }
                     if($linkIsPublishable){
-                        $newLink = self::DYNAMIC_ADDRESS.'/'.$thisCardLink->layout_link_to;
+                        $newLink = self::STATIC_ADDRESS.$orgId.'/'.$thisCardLink->layout_link_to;
 
                     }else{
                         $newLink = self::STATIC_ADDRESS.$orgId.'/'.$thisCardLink->layout_link_to.'.html';
                     }
-                    $content = str_replace($thisCardLink->link_url, $newLink, $content);
+                    $this->contentIn = str_replace($thisCardLink->link_url, $newLink, $this->contentIn);
                 }else if($thisCardLink->type=="I"){
                     $imageLink = $thisCardLink->link_url;
                     $imageFileNameAt = strpos($imageLink, 'images/'.$orgId.'/');
@@ -43,6 +47,10 @@ class SpRichTextCard
                         $imageSource = $orgDirectory.'/'.$imageFileName;
                         $copyToLocation = '/published/'.$orgId.'/images'.'/'.$imageFileName;
                         Storage::copy($imageSource, $copyToLocation);
+                        $newLink = self::STATIC_ADDRESS.$orgId.'/images/'.$imageFileName;
+                        $oldLink = 'http://localhost:8000/images/'.$orgId.'/'.$imageFileName;
+                        $this->contentIn = str_replace($oldLink, $newLink, $this->contentIn);
+
 
                     }
 
@@ -52,9 +60,11 @@ class SpRichTextCard
         }else{
             $content='';
         }
+        $this->content = $this->contentIn;
     }
     public function getCardContent(){
-        return $this->thisCardContent['cardText'];
+        return array('cardText'=>$this->content);
     }
 
+    
 }

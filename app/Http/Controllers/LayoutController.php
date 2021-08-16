@@ -235,7 +235,11 @@ class LayoutController extends Controller
                 $a=0;
             }
             if($thisLayoutInstance->isDeleted($thisViewableLayout)) continue;
-            $layoutData = $thisLayoutInstance->publishThisLayout($thisViewableLayout, $orgId, $guestUserId, $orgImageDirectory, $returnedLayouts);
+            try {
+                $layoutData = $thisLayoutInstance->publishThisLayout($thisViewableLayout, $orgId, $guestUserId, $orgImageDirectory, $returnedLayouts);
+            } catch (\Exception $e) {
+                $error = $e->getMessage();
+            }
             $height = $layoutData['layout']['height'];
             $width = $layoutData['layout']['width'];
             if(isset($layoutData['layout']['backgroundColor'])){
@@ -267,7 +271,11 @@ class LayoutController extends Controller
                 }
             }
 */
-            $viewHtml = view('layout', ['layoutId' => $thisViewableLayout, 'layoutCss'=>$thisLayoutCss, 'cards'=>$layoutData['cards']])->render();
+            try {
+                $viewHtml = view('layout', ['layoutId' => $thisViewableLayout, 'layoutCss' => $thisLayoutCss, 'cards' => $layoutData['cards']])->render();
+            } catch (\Throwable $e) {
+                $errorMsg = $e->getMessage();
+            }
             $thisOutPutFile = 'published/'.$orgId.'/'.$thisViewableLayout->layout_id.'.html';
             Storage::put($thisOutPutFile, $viewHtml);
         }
