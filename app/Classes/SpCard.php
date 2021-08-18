@@ -4,6 +4,7 @@
 namespace App\Classes;
 
 use App\Classes\SpRichTextCard;
+use App\Classes\SpLinkMenuCard;
 class SpCard
 {
     public $thisCardCss = "";
@@ -52,6 +53,10 @@ class SpCard
             case "Headline":{
                 $this->thisCardContent = $thisCardContent['title'];
                 break;
+            }
+            case "linkMenu":{
+                $thisSpLinkMenuCard = new SpLinkMenuCard($this->thisCardId, $orgId, $publishableLayouts, $thisCardContent);
+                $this->thisCardContent = $thisSpLinkMenuCard->getCardContent();
             }
         }
 
