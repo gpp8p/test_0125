@@ -36,7 +36,7 @@ class SpLinkMenuCard
                 $newLink = self::DYNAMIC_ADDRESS.$orgId.'/'.$thisCardLink->layout_link_to.'.html';
             }
             $fullLink = array($newLink, $thisCardLink->description);
-            array_push($cardLinks, $newLink);
+            array_push($cardLinks, $fullLink);
 
 
         }
@@ -50,7 +50,7 @@ class SpLinkMenuCard
         }else{
             $this->orientOut = 'veritcal';
         }
-        $content = array('links'=>$cardLinks, 'title'=>$this->titleOut, 'orient'=>$this->orientOut);
+        $this->content = array('links'=>$cardLinks, 'title'=>$this->titleOut, 'orient'=>$this->orientOut);
 
 
     }
