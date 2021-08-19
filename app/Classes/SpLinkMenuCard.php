@@ -40,15 +40,15 @@ class SpLinkMenuCard
 
 
         }
-        if(isset($thisCardContent->title)){
-            $this->titleOut=$thisCardContent->title;
+        if(isset($thisCardContent['linkMenuTitle'])){
+            $this->titleOut=$thisCardContent['linkMenuTitle'];
         }else{
             $this->titleOut='';
         }
-        if(isset($thisCardContent->orient)){
-            $this->orientOut = $thisCardContent->orient;
+        if(isset($thisCardContent['orient'])){
+            $this->orientOut = $thisCardContent['orient'];
         }else{
-            $this->orientOut = 'veritcal';
+            $this->orientOut = 'vertical';
         }
         $this->content = array('links'=>$cardLinks, 'title'=>$this->titleOut, 'orient'=>$this->orientOut);
 

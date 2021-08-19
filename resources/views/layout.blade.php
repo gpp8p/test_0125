@@ -27,6 +27,15 @@
             margin-right: auto;
             text-align: center
         }
+        .flex-container {
+            display: flex;
+            justify-content: space-evenly;
+            height: 100%;
+            width:100%;
+            align-items: baseline;
+            margin-top: 6px;
+
+        }
 
         :root {
             --ck-color-mention-background: hsla(341, 100%, 30%, 0.1);
@@ -380,7 +389,15 @@
                     </div>
                 @break
                 @case('linkMenu')
-                    <div style="{{$thisCard['card_parameters']['style']}}"></div>
+                    <div style="{{$thisCard['card_parameters']['style']}}">
+                        <span class="flex-container">
+                            {!! $thisCard['card_parameters']['content']['title'] !!}
+                        </span>
+                        <div>
+                            links go here...
+                        </div>
+
+                    </div>
                 @break
             @endswitch
         @endforeach
