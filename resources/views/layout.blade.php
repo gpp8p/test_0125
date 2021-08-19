@@ -30,7 +30,6 @@
         .flex-container {
             display: flex;
             justify-content: space-evenly;
-            height: 100%;
             width:100%;
             align-items: baseline;
             margin-top: 6px;
@@ -393,8 +392,20 @@
                         <span class="flex-container">
                             {!! $thisCard['card_parameters']['content']['title'] !!}
                         </span>
+
                         <div>
-                            links go here...
+                            <div style = "font-family:Geneva;font-size:12pt;font-weight:bold;font-style:normal;color:#2d36ff;">
+                                @if($thisCard['card_parameters']['content']['orient']=='vertical')
+                                    <ul>
+                                        @foreach($thisCard['card_parameters']['content']['links'] as $thisLink)
+                                            <li>
+                                                <a href="{!! $thisLink[0] !!}">{!! $thisLink[1] !!}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </div>
+
                         </div>
 
                     </div>
