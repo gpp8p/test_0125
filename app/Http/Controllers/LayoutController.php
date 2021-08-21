@@ -231,7 +231,7 @@ class LayoutController extends Controller
         }
 
         foreach($viewableLayouts as $thisViewableLayout){
-            if($thisViewableLayout->layout_id==64){
+            if($thisViewableLayout->layout_id==78){
                 $a=0;
             }
             if($thisLayoutInstance->isDeleted($thisViewableLayout)) continue;
@@ -275,6 +275,7 @@ class LayoutController extends Controller
                 $viewHtml = view('layout', ['layoutId' => $thisViewableLayout, 'layoutCss' => $thisLayoutCss, 'cards' => $layoutData['cards']])->render();
             } catch (\Throwable $e) {
                 $errorMsg = $e->getMessage();
+                continue;
             }
             $thisOutPutFile = 'published/'.$orgId.'/'.$thisViewableLayout->layout_id.'.html';
             Storage::put($thisOutPutFile, $viewHtml);

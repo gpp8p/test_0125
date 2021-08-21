@@ -456,12 +456,15 @@ class Layout extends Model
                     array_push($cardsReadIn[$thisId], $thisCardData);
                 }
             } else {
+//                $cardSubElementProperties[$thisId][$card->dom_element] = $thisCardData;
+
                 if (!array_key_exists($thisId, $cardSubElementProperties)) {
                     $cardSubElementProperties[$thisId][$card->dom_element] = array();
                     array_push($cardSubElementProperties[$thisId][$card->dom_element], $thisCardData);
                 } else {
                     array_push($cardSubElementProperties[$thisId][$card->dom_element], $thisCardData);
                 }
+
             }
         }
         foreach ($cardsReadIn as $thisCardArray) {
@@ -575,9 +578,11 @@ class Layout extends Model
         }
         foreach ($allCardInstances as $key => $value) {
             $thisCardId = $key;
-            foreach ($subElementStyles as $key => $value) {
-                if ($allCardInstances[$thisCardId]['id'] == $key) {
-                    $allCardInstances[$thisCardId]['elementStyles'] = $value;
+            foreach ($subElementStyles as $subKey => $subValue) {
+                if ($allCardInstances[$thisCardId]['id'] == $subKey) {
+                    $realValue = $this->extractElementStyles($subValue);
+                    $allCardInstances[$thisCardId]['elementStyles'] = $realValue;
+                    $test= $allCardInstances[$thisCardId]['elementStyles'];
                 }
             }
         }
@@ -585,6 +590,13 @@ class Layout extends Model
         $layoutProperties = array('description' => $thisLayoutDescription, 'menu_label' => $thisLayoutLabel, 'height' => $thisLayoutHeight, 'width' => $thisLayoutHeight, 'backgroundColor' => $thisLayoutBackgroundColor, 'backGroundImageUrl' => $thisLayoutImageUrl, 'backgroundType' => $thisLayoutBackgroundType);
         $returnData = array('cards' => $allCardInstances, 'layout' => $layoutProperties, 'perms' => $thisLayoutPerms);
         return $returnData;
+    }
+    private function extractElementStyles($val){
+        $result = array();
+        foreach($val as $key=>$value){
+            $result[$key]="style=\"".$value[0]."\"";
+        }
+        return $result;
     }
 
     public function setDelete($layoutId){

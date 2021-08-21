@@ -36,6 +36,7 @@
 
         }
 
+
         :root {
             --ck-color-mention-background: hsla(341, 100%, 30%, 0.1);
             --ck-color-mention-text: hsl(341, 100%, 30%);
@@ -388,13 +389,18 @@
                     </div>
                 @break
                 @case('linkMenu')
+                    <?php xdebug_break(); ?>
                     <div style="{{$thisCard['card_parameters']['style']}}">
                         <span class="flex-container">
                             {!! $thisCard['card_parameters']['content']['title'] !!}
                         </span>
 
                         <div>
-                            <div style = "font-family:Geneva;font-size:12pt;font-weight:bold;font-style:normal;color:#2d36ff;">
+                            @if(isset($thisCard['elementStyles']['sub']))
+                                <div {{$thisCard['elementStyles']['sub']}} >
+                            @else
+                                <div>
+                            @endif
                                 @if($thisCard['card_parameters']['content']['orient']=='vertical')
                                     <ul>
                                         @foreach($thisCard['card_parameters']['content']['links'] as $thisLink)
