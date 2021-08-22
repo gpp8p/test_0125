@@ -594,7 +594,7 @@ class Layout extends Model
     private function extractElementStyles($val){
         $result = array();
         foreach($val as $key=>$value){
-            $result[$key]="style=\"".$value[0]."\"";
+            $result[$key]=$value[0];
         }
         return $result;
     }

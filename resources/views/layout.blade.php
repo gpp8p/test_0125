@@ -397,7 +397,7 @@
 
                         <div>
                             @if(isset($thisCard['elementStyles']['sub']))
-                                <div {{$thisCard['elementStyles']['sub']}} >
+                                <div style="{{$thisCard['elementStyles']['sub']}}" >
                             @else
                                 <div>
                             @endif
@@ -405,10 +405,16 @@
                                     <ul>
                                         @foreach($thisCard['card_parameters']['content']['links'] as $thisLink)
                                             <li>
-                                                <a href="{!! $thisLink[0] !!}">{!! $thisLink[1] !!}</a>
+                                                <a style="text-decoration: none;" href="{!! $thisLink[0] !!}">{!! $thisLink[1] !!}</a>
                                             </li>
                                         @endforeach
                                     </ul>
+                                @else
+                                    <span class="flex-container">
+                                        @foreach($thisCard['card_parameters']['content']['links'] as $thisLink)
+                                            <a style="text-decoration: none;" href="{!! $thisLink[0] !!}">{!! $thisLink[1] !!}</a>
+                                        @endforeach
+                                    </span>
                                 @endif
                             </div>
 
