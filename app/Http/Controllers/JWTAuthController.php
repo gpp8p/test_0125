@@ -77,9 +77,15 @@ class JWTAuthController extends Controller
 
         $inData = $request->all();
         $defaultOrg = $inData['default_org'];
-//        $defaultOrg = 'root';
         $thisOrgInstance = new Org;
-        $orgInfo = $thisOrgInstance->getOrgHome($defaultOrg);
+        if(is_numeric($defaultOrg)){
+            $orgInfo = $thisOrgInstance->getOrgHomeFromOrgId($defaultOrg);
+        }else{
+            $orgInfo = $thisOrgInstance->getOrgHome($defaultOrg);
+        }
+//        $defaultOrg = 'root';
+
+
 
         $thisLayout = new Layout;
         $loginPerms = $thisLayout->summaryPermsForLayout($thisUserId,$orgInfo[0]->id,$orgInfo[0]->top_layout_id);
