@@ -35,7 +35,7 @@ class SpRichTextCard
                         $newLink = self::STATIC_ADDRESS.$orgId.'/'.$thisCardLink->layout_link_to;
 
                     }else{
-                        $newLink = self::DYNAMIC_ADDRESS.$orgId.'/'.$thisCardLink->layout_link_to.'.html';
+                        $newLink = self::DYNAMIC_ADDRESS.$orgId.'/'.$thisCardLink->layout_link_to;
                     }
                     $this->contentIn = str_replace($thisCardLink->link_url, $newLink, $this->contentIn);
                 }else if($thisCardLink->type=="I"){

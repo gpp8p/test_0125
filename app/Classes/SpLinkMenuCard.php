@@ -33,7 +33,7 @@ class SpLinkMenuCard
                 $newLink = self::STATIC_ADDRESS.$orgId.'/'.$thisCardLink->layout_link_to;
 
             }else{
-                $newLink = self::DYNAMIC_ADDRESS.$orgId.'/'.$thisCardLink->layout_link_to.'.html';
+                $newLink = self::DYNAMIC_ADDRESS.$orgId.'/'.$thisCardLink->layout_link_to;
             }
             $fullLink = array($newLink, $thisCardLink->description);
             array_push($cardLinks, $fullLink);
