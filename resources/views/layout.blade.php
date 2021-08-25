@@ -405,14 +405,14 @@
                                     <ul>
                                         @foreach($thisCard['card_parameters']['content']['links'] as $thisLink)
                                             <li>
-                                                <a style="text-decoration: none;" href="{!! $thisLink[0] !!}">{!! $thisLink[1] !!}</a>
+                                                <a style="text-decoration: none;" href="{!! $thisLink[0] !!}" target="_blank">{!! $thisLink[1] !!}</a>
                                             </li>
                                         @endforeach
                                     </ul>
                                 @else
                                     <span class="flex-container">
                                         @foreach($thisCard['card_parameters']['content']['links'] as $thisLink)
-                                            <a style="text-decoration: none;" href="{!! $thisLink[0] !!}">{!! $thisLink[1] !!}</a>
+                                            <a style="text-decoration: none;" href="{!! $thisLink[0] !!}" target="_blank">{!! $thisLink[1] !!}</a>
                                         @endforeach
                                     </span>
                                 @endif
