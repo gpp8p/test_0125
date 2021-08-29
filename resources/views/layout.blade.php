@@ -58,7 +58,7 @@
         }
         /* ckeditor5-image/theme/imageresize.css */
         .ck-content .image.image_resized img {
-            width: 100%;
+            width: 90%;
         }
         /* ckeditor5-image/theme/imageresize.css */
         .ck-content .image.image_resized > figcaption {
