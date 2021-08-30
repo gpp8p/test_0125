@@ -300,11 +300,11 @@ class LayoutController extends Controller
         }
         if($backgroundType=='C'){
             $gridCss =
-                "display: grid; grid-gap: 3px; background-color: ".$backgroundColor."; height: 90vh; color: #ffcd90; ".$gridHeightCss.";".$gridWidthCss.";";
+                "display: grid; grid-gap: 3px; background-color: ".$backgroundColor."; height: 98vh; color: #ffcd90; ".$gridHeightCss.";".$gridWidthCss.";";
 
         }else{
             $backgroundUrl = $imageBase.$backgroundImageUrl;
-            $gridCss = "display: grid; grid-gap: 3px; background-image:".$backgroundUrl."; background-size: cover; background-repeat: no-repeat; background-position: center; height: 90vh; color: #ffcd90; ". $gridHeightCss.";".$gridWidthCss.";";
+            $gridCss = "display: grid; grid-gap: 3px; background-image:".$backgroundUrl."; background-size: cover; background-repeat: no-repeat; background-position: center; height: 98vh; color: #ffcd90; ". $gridHeightCss.";".$gridWidthCss.";";
         }
         return $gridCss;
 

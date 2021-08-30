@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LayoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LayoutController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -387,14 +387,8 @@
       <workItem from="1630026379270" duration="531000" />
       <workItem from="1630069081123" duration="112000" />
       <workItem from="1630178336782" duration="2268000" />
-      <workItem from="1630250377186" duration="1104000" />
-    </task>
-    <task id="LOCAL-00048" summary="added orgMemberPerms api">
-      <created>1624380544243</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1624380544243</updated>
+      <workItem from="1630250377186" duration="1504000" />
+      <workItem from="1630349465094" duration="2314000" />
     </task>
     <task id="LOCAL-00049" summary="start on delete layout api">
       <created>1625071073051</created>
@@ -732,7 +726,14 @@
       <option name="project" value="LOCAL" />
       <updated>1630183490174</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="css tweaks on direct login and ckeditor image displays">
+      <created>1630256655026</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1630256655026</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -751,7 +752,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="mod getLayoutById to allow it to be called by the publishing function" />
     <MESSAGE value="more work on publish - setting up layout css" />
     <MESSAGE value="more work on publish" />
     <MESSAGE value="more work on publish - resolving links in RichText" />
@@ -776,7 +776,8 @@
     <MESSAGE value="work on SpMenuLinkCard to publish menuLink's" />
     <MESSAGE value="more work on menuLink publishing" />
     <MESSAGE value="work on direct logins" />
-    <option name="LAST_COMMIT_MESSAGE" value="work on direct logins" />
+    <MESSAGE value="css tweaks on direct login and ckeditor image displays" />
+    <option name="LAST_COMMIT_MESSAGE" value="css tweaks on direct login and ckeditor image displays" />
   </component>
   <component name="WindowStateProjectService">
     <state x="700" y="371" key="#Notifications" timestamp="1628911934488">
@@ -807,14 +808,14 @@
     <state x="1181" y="469" key="#xdebugger.evaluate/0.23.1792.1051@0.23.1792.1051" timestamp="1625432447085" />
     <state x="1242" y="452" key="#xdebugger.evaluate/0.23.1920.1008@0.23.1920.1008" timestamp="1629579492943" />
     <state x="1265" y="452" key="#xdebugger.evaluate/0.23.1920.1010@0.23.1920.1010" timestamp="1628711688343" />
-    <state x="271" y="183" key="CommitChangelistDialog2" timestamp="1630183490026">
+    <state x="271" y="183" key="CommitChangelistDialog2" timestamp="1630256654877">
       <screen x="0" y="25" width="1920" height="1000" />
     </state>
     <state x="253" y="189" key="CommitChangelistDialog2/0.23.1792.1051@0.23.1792.1051" timestamp="1626549196358" />
     <state x="271" y="182" key="CommitChangelistDialog2/0.23.1920.1008@0.23.1920.1008" timestamp="1629645186975" />
     <state x="271" y="182" key="CommitChangelistDialog2/0.23.1920.1009@0.23.1920.1009" timestamp="1628806559539" />
     <state x="271" y="182" key="CommitChangelistDialog2/0.23.1920.1010@0.23.1920.1010" timestamp="1628718701450" />
-    <state x="271" y="183" key="CommitChangelistDialog2/0.25.1920.1000@0.25.1920.1000" timestamp="1630183490026" />
+    <state x="271" y="183" key="CommitChangelistDialog2/0.25.1920.1000@0.25.1920.1000" timestamp="1630256654877" />
     <state width="1558" height="207" key="GridCell.Tab.0.bottom" timestamp="1630183497097">
       <screen x="0" y="25" width="1920" height="1000" />
     </state>
@@ -890,14 +891,14 @@
     <state x="460" y="165" key="SettingsEditor/0.23.1792.1051@0.23.1792.1051" timestamp="1625074699946" />
     <state x="493" y="159" key="SettingsEditor/0.23.1920.1008@0.23.1920.1008" timestamp="1629126899714" />
     <state x="493" y="159" key="SettingsEditor/0.23.1920.1010@0.23.1920.1010" timestamp="1628469589488" />
-    <state x="621" y="246" key="Vcs.Push.Dialog.v2" timestamp="1630183493408">
+    <state x="621" y="246" key="Vcs.Push.Dialog.v2" timestamp="1630256658186">
       <screen x="0" y="25" width="1920" height="1000" />
     </state>
     <state x="580" y="256" key="Vcs.Push.Dialog.v2/0.23.1792.1051@0.23.1792.1051" timestamp="1626549200773" />
     <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1008@0.23.1920.1008" timestamp="1629645190177" />
     <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1009@0.23.1920.1009" timestamp="1628806562626" />
     <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1010@0.23.1920.1010" timestamp="1628718704571" />
-    <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.25.1920.1000@0.25.1920.1000" timestamp="1630183493408" />
+    <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.25.1920.1000@0.25.1920.1000" timestamp="1630256658186" />
     <state width="720" height="378" key="XDebugger.FullValuePopup" timestamp="1629579490971">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
@@ -919,14 +920,14 @@
     <state x="540" y="448" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.23.1792.1051@0.23.1792.1051" timestamp="1625665687295" />
     <state x="579" y="431" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.23.1920.1008@0.23.1920.1008" timestamp="1629579094108" />
     <state x="579" y="430" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.23.1920.1009@0.23.1920.1009" timestamp="1629052048235" />
-    <state x="209" y="535" width="1507" height="490" key="find.popup" timestamp="1630182868566">
+    <state x="209" y="535" width="1507" height="490" key="find.popup" timestamp="1630350652759">
       <screen x="0" y="25" width="1920" height="1000" />
     </state>
     <state x="938" y="307" width="574" height="511" key="find.popup/0.23.1792.1051@0.23.1792.1051" timestamp="1625846352951" />
     <state x="209" y="541" width="1507" height="490" key="find.popup/0.23.1920.1008@0.23.1920.1008" timestamp="1629668667620" />
     <state x="194" y="375" width="1507" height="491" key="find.popup/0.23.1920.1009@0.23.1920.1009" timestamp="1628816567054" />
     <state x="194" y="375" width="1507" height="491" key="find.popup/0.23.1920.1010@0.23.1920.1010" timestamp="1628543051288" />
-    <state x="209" y="535" width="1507" height="490" key="find.popup/0.25.1920.1000@0.25.1920.1000" timestamp="1630182868566" />
+    <state x="209" y="535" width="1507" height="490" key="find.popup/0.25.1920.1000@0.25.1920.1000" timestamp="1630350652759" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
