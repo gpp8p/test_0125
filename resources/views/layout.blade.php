@@ -389,7 +389,7 @@
                     </div>
                 @break
                 @case('linkMenu')
-                    <?php xdebug_break(); ?>
+
                     <div style="{{$thisCard['card_parameters']['style']}}">
                         <span class="flex-container">
                             {!! $thisCard['card_parameters']['content']['title'] !!}
@@ -421,6 +421,13 @@
                         </div>
 
                     </div>
+                @break
+                @case('loginLink')
+                <div style="{{$thisCard['card_parameters']['style']}}">
+                <span class="cardBody">
+                        {!! $thisCard['card_parameters']['content'] !!}
+                </span>
+                </div>
                 @break
             @endswitch
         @endforeach

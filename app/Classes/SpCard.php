@@ -5,6 +5,7 @@ namespace App\Classes;
 
 use App\Classes\SpRichTextCard;
 use App\Classes\SpLinkMenuCard;
+use App\Org;
 class SpCard
 {
     public $thisCardCss = "";
@@ -19,7 +20,7 @@ class SpCard
     public $thisCardComponent;
     private $orgId;
 
-
+    const DYNAMIC_ADDRESS = 'http://localhost:8080/target/';
 
     function __construct($thisCardArray, $orgId, $publishableLayouts){
         $this->thisCardCss = '';
@@ -57,6 +58,13 @@ class SpCard
             case "linkMenu":{
                 $thisSpLinkMenuCard = new SpLinkMenuCard($this->thisCardId, $orgId, $publishableLayouts, $thisCardContent);
                 $this->thisCardContent = $thisSpLinkMenuCard->getCardContent();
+                break;
+            }
+            case "loginLink":{
+                $thisOrg = new Org();
+                $orgHome = $thisOrg->getOrgHomeFromOrgId($orgId);
+                $this->thisCardContent = "<a href='".self::DYNAMIC_ADDRESS.$orgId."/".$orgHome[0]->top_layout_id."'>Please Log In</a>";
+                break;
             }
         }
 
