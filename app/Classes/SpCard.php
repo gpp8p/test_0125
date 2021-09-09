@@ -66,6 +66,13 @@ class SpCard
                 $this->thisCardContent = "<a href='".self::DYNAMIC_ADDRESS.$orgId."/".$orgHome[0]->top_layout_id."'>Please Log In</a>";
                 break;
             }
+            case "youTube":{
+                $ytubeUrl = $thisCardContent['ytubeUrl'];
+                $ytubeUrl = str_replace('watch?v=', 'embed/', $ytubeUrl);
+                $spanHeight = intval($thisCardContent['spanHeight']*1.12);
+                $spanWidth = intval($thisCardContent['spanWidth']*1.04);
+                $this->thisCardContent = "<iframe src='".$ytubeUrl."' width='".$spanWidth."' height='".$spanHeight."' ></iframe>";
+            }
         }
 
     }
