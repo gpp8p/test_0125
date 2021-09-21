@@ -19,15 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="publishing youtube component">
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_09_21_000727_create_document_type.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_09_21_000742_create_comment_type.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_09_21_000756_create_document_status.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_09_21_001900_create_comment.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_09_21_001927_create_archive.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_09_21_005047_create_archive_access.php" afterDir="false" />
+    <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="new tables for archive features">
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_09_21_205413_create_card_in_layout.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_09_21_205701_create_links_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_21_163857_create_usergroup_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_21_163857_create_usergroup_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -417,14 +412,8 @@
       <workItem from="1631990584000" duration="110000" />
       <workItem from="1632068634568" duration="518000" />
       <workItem from="1632099866686" duration="559000" />
-      <workItem from="1632181628681" duration="3277000" />
-    </task>
-    <task id="LOCAL-00052" summary="start on delete layout api">
-      <created>1625072807614</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1625072807614</updated>
+      <workItem from="1632181628681" duration="5025000" />
+      <workItem from="1632257331880" duration="521000" />
     </task>
     <task id="LOCAL-00053" summary="start on delete layout api">
       <created>1625072968847</created>
@@ -762,7 +751,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631199733622</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="new tables for archive features">
+      <created>1632186539719</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1632186539719</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -782,7 +778,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="adding type to link records" />
     <MESSAGE value="further work on publishing and images" />
     <MESSAGE value="added orgMemberPerms api" />
     <MESSAGE value="start on delete layout api" />
@@ -807,7 +802,8 @@
     <MESSAGE value="css tweaks on publishing layouts" />
     <MESSAGE value="publishing loginLink component" />
     <MESSAGE value="publishing youtube component" />
-    <option name="LAST_COMMIT_MESSAGE" value="publishing youtube component" />
+    <MESSAGE value="new tables for archive features" />
+    <option name="LAST_COMMIT_MESSAGE" value="new tables for archive features" />
   </component>
   <component name="WindowStateProjectService">
     <state x="700" y="371" key="#Notifications" timestamp="1628911934488">
@@ -839,14 +835,14 @@
     <state x="1242" y="452" key="#xdebugger.evaluate/0.23.1920.1008@0.23.1920.1008" timestamp="1629579492943" />
     <state x="1265" y="452" key="#xdebugger.evaluate/0.23.1920.1010@0.23.1920.1010" timestamp="1628711688343" />
     <state x="1242" y="440" key="#xdebugger.evaluate/0.25.1920.1000@0.25.1920.1000" timestamp="1630963015486" />
-    <state x="271" y="183" key="CommitChangelistDialog2" timestamp="1631564259543">
+    <state x="271" y="183" key="CommitChangelistDialog2" timestamp="1632257701887">
       <screen x="0" y="25" width="1920" height="1000" />
     </state>
     <state x="253" y="189" key="CommitChangelistDialog2/0.23.1792.1051@0.23.1792.1051" timestamp="1626549196358" />
     <state x="271" y="182" key="CommitChangelistDialog2/0.23.1920.1008@0.23.1920.1008" timestamp="1629645186975" />
     <state x="271" y="182" key="CommitChangelistDialog2/0.23.1920.1009@0.23.1920.1009" timestamp="1628806559539" />
     <state x="271" y="182" key="CommitChangelistDialog2/0.23.1920.1010@0.23.1920.1010" timestamp="1628718701450" />
-    <state x="271" y="183" key="CommitChangelistDialog2/0.25.1920.1000@0.25.1920.1000" timestamp="1631564259543" />
+    <state x="271" y="183" key="CommitChangelistDialog2/0.25.1920.1000@0.25.1920.1000" timestamp="1632257701887" />
     <state width="1558" height="207" key="GridCell.Tab.0.bottom" timestamp="1632086327280">
       <screen x="0" y="25" width="1920" height="1000" />
     </state>
@@ -922,14 +918,14 @@
     <state x="460" y="165" key="SettingsEditor/0.23.1792.1051@0.23.1792.1051" timestamp="1625074699946" />
     <state x="493" y="159" key="SettingsEditor/0.23.1920.1008@0.23.1920.1008" timestamp="1629126899714" />
     <state x="493" y="159" key="SettingsEditor/0.23.1920.1010@0.23.1920.1010" timestamp="1628469589488" />
-    <state x="621" y="246" key="Vcs.Push.Dialog.v2" timestamp="1631199736914">
+    <state x="621" y="246" key="Vcs.Push.Dialog.v2" timestamp="1632186543083">
       <screen x="0" y="25" width="1920" height="1000" />
     </state>
     <state x="580" y="256" key="Vcs.Push.Dialog.v2/0.23.1792.1051@0.23.1792.1051" timestamp="1626549200773" />
     <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1008@0.23.1920.1008" timestamp="1629645190177" />
     <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1009@0.23.1920.1009" timestamp="1628806562626" />
     <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1010@0.23.1920.1010" timestamp="1628718704571" />
-    <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.25.1920.1000@0.25.1920.1000" timestamp="1631199736914" />
+    <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.25.1920.1000@0.25.1920.1000" timestamp="1632186543083" />
     <state width="720" height="378" key="XDebugger.FullValuePopup" timestamp="1629579490971">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
@@ -952,14 +948,14 @@
     <state x="579" y="431" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.23.1920.1008@0.23.1920.1008" timestamp="1629579094108" />
     <state x="579" y="430" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.23.1920.1009@0.23.1920.1009" timestamp="1629052048235" />
     <state x="579" y="430" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.25.1920.1000@0.25.1920.1000" timestamp="1630617538181" />
-    <state x="209" y="535" width="1507" height="490" key="find.popup" timestamp="1630617271498">
+    <state x="209" y="535" width="1507" height="490" key="find.popup" timestamp="1632257457861">
       <screen x="0" y="25" width="1920" height="1000" />
     </state>
     <state x="938" y="307" width="574" height="511" key="find.popup/0.23.1792.1051@0.23.1792.1051" timestamp="1625846352951" />
     <state x="209" y="541" width="1507" height="490" key="find.popup/0.23.1920.1008@0.23.1920.1008" timestamp="1629668667620" />
     <state x="194" y="375" width="1507" height="491" key="find.popup/0.23.1920.1009@0.23.1920.1009" timestamp="1628816567054" />
     <state x="194" y="375" width="1507" height="491" key="find.popup/0.23.1920.1010@0.23.1920.1010" timestamp="1628543051288" />
-    <state x="209" y="535" width="1507" height="490" key="find.popup/0.25.1920.1000@0.25.1920.1000" timestamp="1630617271498" />
+    <state x="209" y="535" width="1507" height="490" key="find.popup/0.25.1920.1000@0.25.1920.1000" timestamp="1632257457861" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
