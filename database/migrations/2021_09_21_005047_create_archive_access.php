@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsergroupTable extends Migration
+class CreateArchiveAccess extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateUsergroupTable extends Migration
      */
     public function up()
     {
-        Schema::create('usergroup', function (Blueprint $table) {
+        Schema::create('archive_access', function (Blueprint $table) {
+            $table->unsignedBigInteger('archive_id');
+            $table->string('access_type', 64);
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('group_id');
-            $table->char('is_admin', 1);
-            $table->string('title', 64);
-
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateUsergroupTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('usergroup');
+        Schema::dropIfExists('archive_access');
     }
 }
