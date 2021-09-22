@@ -14,7 +14,6 @@ class CreateDocumentType extends Migration
     public function up()
     {
         Schema::create('document_type', function (Blueprint $table) {
-            $table->unsignedBigInteger('archive_id');
             $table->string('document_type', 64);
             $table->id();
             $table->timestamps();

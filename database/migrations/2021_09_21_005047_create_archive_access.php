@@ -14,7 +14,6 @@ class CreateArchiveAccess extends Migration
     public function up()
     {
         Schema::create('archive_access', function (Blueprint $table) {
-            $table->unsignedBigInteger('archive_id');
             $table->string('access_type', 64);
             $table->id();
             $table->timestamps();
