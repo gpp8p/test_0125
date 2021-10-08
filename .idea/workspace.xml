@@ -20,11 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="seeds and migrations for archive feature">
-      <change afterPath="$PROJECT_DIR$/app/Archive.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ArchiveController.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/database/migrations/2021_10_08_174930_file_type.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/database/seeds/file_type.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/link.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/link.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_21_154928_create_layouts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_21_154928_create_layouts_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_21_163857_create_usergroup_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_21_163857_create_usergroup_table.php" afterDir="false" />
@@ -432,14 +429,7 @@
       <workItem from="1633557025493" duration="487000" />
       <workItem from="1633566520414" duration="2067000" />
       <workItem from="1633651296772" duration="2749000" />
-      <workItem from="1633702884248" duration="5752000" />
-    </task>
-    <task id="LOCAL-00055" summary="start on delete layout api">
-      <created>1625074166040</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1625074166040</updated>
+      <workItem from="1633702884248" duration="6129000" />
     </task>
     <task id="LOCAL-00056" summary="start on delete layout api">
       <created>1625277059673</created>
@@ -777,7 +767,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632351390042</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <task id="LOCAL-00104" summary="get document default labels">
+      <created>1633725782928</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1633725782928</updated>
+    </task>
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -797,7 +794,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="start on delete layout api" />
     <MESSAGE value="further link deletion work" />
     <MESSAGE value="start on adding card_in_layout table" />
     <MESSAGE value="further work adding card_in_layout table" />
@@ -822,7 +818,8 @@
     <MESSAGE value="new tables for archive features" />
     <MESSAGE value="migrations for links and cord_in_layout" />
     <MESSAGE value="seeds and migrations for archive feature" />
-    <option name="LAST_COMMIT_MESSAGE" value="seeds and migrations for archive feature" />
+    <MESSAGE value="get document default labels" />
+    <option name="LAST_COMMIT_MESSAGE" value="get document default labels" />
   </component>
   <component name="WindowStateProjectService">
     <state x="700" y="371" key="#Notifications" timestamp="1628911934488">
@@ -855,14 +852,14 @@
     <state x="1242" y="452" key="#xdebugger.evaluate/0.23.1920.1008@0.23.1920.1008" timestamp="1629579492943" />
     <state x="1265" y="452" key="#xdebugger.evaluate/0.23.1920.1010@0.23.1920.1010" timestamp="1628711688343" />
     <state x="1242" y="440" key="#xdebugger.evaluate/0.25.1920.1000@0.25.1920.1000" timestamp="1630963015486" />
-    <state x="271" y="183" key="CommitChangelistDialog2" timestamp="1633715411051">
+    <state x="271" y="183" key="CommitChangelistDialog2" timestamp="1633725782705">
       <screen x="0" y="25" width="1920" height="1000" />
     </state>
     <state x="253" y="189" key="CommitChangelistDialog2/0.23.1792.1051@0.23.1792.1051" timestamp="1626549196358" />
     <state x="271" y="182" key="CommitChangelistDialog2/0.23.1920.1008@0.23.1920.1008" timestamp="1629645186975" />
     <state x="271" y="182" key="CommitChangelistDialog2/0.23.1920.1009@0.23.1920.1009" timestamp="1628806559539" />
     <state x="271" y="182" key="CommitChangelistDialog2/0.23.1920.1010@0.23.1920.1010" timestamp="1628718701450" />
-    <state x="271" y="183" key="CommitChangelistDialog2/0.25.1920.1000@0.25.1920.1000" timestamp="1633715411051" />
+    <state x="271" y="183" key="CommitChangelistDialog2/0.25.1920.1000@0.25.1920.1000" timestamp="1633725782705" />
     <state width="1558" height="207" key="GridCell.Tab.0.bottom" timestamp="1633659795622">
       <screen x="0" y="25" width="1920" height="1000" />
     </state>
@@ -937,14 +934,14 @@
     </state>
     <state x="493" y="159" key="SettingsEditor/0.23.1920.1008@0.23.1920.1008" timestamp="1629126899714" />
     <state x="493" y="159" key="SettingsEditor/0.23.1920.1010@0.23.1920.1010" timestamp="1628469589488" />
-    <state x="621" y="246" key="Vcs.Push.Dialog.v2" timestamp="1632351392829">
+    <state x="621" y="246" key="Vcs.Push.Dialog.v2" timestamp="1633725794041">
       <screen x="0" y="25" width="1920" height="1000" />
     </state>
     <state x="580" y="256" key="Vcs.Push.Dialog.v2/0.23.1792.1051@0.23.1792.1051" timestamp="1626549200773" />
     <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1008@0.23.1920.1008" timestamp="1629645190177" />
     <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1009@0.23.1920.1009" timestamp="1628806562626" />
     <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1010@0.23.1920.1010" timestamp="1628718704571" />
-    <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.25.1920.1000@0.25.1920.1000" timestamp="1632351392829" />
+    <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.25.1920.1000@0.25.1920.1000" timestamp="1633725794041" />
     <state width="720" height="378" key="XDebugger.FullValuePopup" timestamp="1629579490971">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
