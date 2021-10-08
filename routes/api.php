@@ -80,6 +80,7 @@ Route::group([
     Route::get('deleteCard', 'layoutController@deleteCard');
     Route::get('cardList', 'cardInstanceController@getOrgCards');
     Route::post('cardInsert', 'cardInstanceController@cardInsert');
+    Route::get('documentDefaults', 'ArchiveController@getDocumentDefaults');
 
 
 
