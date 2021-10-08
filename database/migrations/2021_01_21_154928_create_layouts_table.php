@@ -20,7 +20,7 @@ class CreateLayoutsTable extends Migration
             $table->string('description', 255);
             $table->integer('height');
             $table->integer('width');
-            $table->unsignedBigInteger('orgId');
+            $table->unsignedBigInteger('org_id');
             $table->char('backgroundType', 1);
             $table->string('backgroundColor',10);
             $table->string('backgroundUrl', 80);

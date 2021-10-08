@@ -12,19 +12,29 @@ class archive_access extends Seeder
     public function run()
     {
         DB::table('archive_access')->insert([
-        'access_type'=>'Private'
+            'access_type'=>'Private',
+            'created_at'=>\Carbon\Carbon::now(),
+            'updated_at'=>\Carbon\Carbon::now()
         ]);
 
         DB::table('archive_access')->insert([
-            'access_type'=>'Layout Only'
+            'access_type'=>'Layout Only',
+            'created_at'=>\Carbon\Carbon::now(),
+            'updated_at'=>\Carbon\Carbon::now()
+
         ]);
 
         DB::table('archive_access')->insert([
-            'access_type'=>'Organization'
+            'access_type'=>'Organization',
+            'created_at'=>\Carbon\Carbon::now(),
+            'updated_at'=>\Carbon\Carbon::now()
+
         ]);
 
         DB::table('archive_access')->insert([
-            'access_type'=>'Public'
+            'access_type'=>'Public',
+            'created_at'=>\Carbon\Carbon::now(),
+            'updated_at'=>\Carbon\Carbon::now()
         ]);
     }
 }

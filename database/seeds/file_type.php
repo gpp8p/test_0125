@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class document_type extends Seeder
+class file_type extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,28 +11,34 @@ class document_type extends Seeder
      */
     public function run()
     {
-        DB::table('document_type')->insert([
-            'document_type'=>'Agenda',
-            'created_at'=>\Carbon\Carbon::now(),
-            'updated_at'=>\Carbon\Carbon::now()
-        ]);
-        DB::table('document_type')->insert([
-            'document_type'=>'Minutes',
+        DB::table('file_type')->insert([
+            'file_type'=>'Rich Text HTML',
             'created_at'=>\Carbon\Carbon::now(),
             'updated_at'=>\Carbon\Carbon::now()
 
         ]);
-        DB::table('document_type')->insert([
-            'document_type'=>'Letter',
+        DB::table('file_type')->insert([
+            'file_type'=>'Word Doc',
             'created_at'=>\Carbon\Carbon::now(),
             'updated_at'=>\Carbon\Carbon::now()
 
         ]);
-        DB::table('document_type')->insert([
-            'document_type'=>'Project Proposal',
+        DB::table('file_type')->insert([
+            'file_type'=>'Word Doc HTML',
+            'created_at'=>\Carbon\Carbon::now(),
+            'updated_at'=>\Carbon\Carbon::now()
+
+        ]);
+        DB::table('file_type')->insert([
+            'file_type'=>'PDF',
             'created_at'=>\Carbon\Carbon::now(),
             'updated_at'=>\Carbon\Carbon::now()
         ]);
+        DB::table('file_type')->insert([
+            'file_type'=>'Image',
+            'created_at'=>\Carbon\Carbon::now(),
+            'updated_at'=>\Carbon\Carbon::now()
 
+        ]);
     }
 }

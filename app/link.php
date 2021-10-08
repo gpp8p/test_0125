@@ -37,6 +37,7 @@ class link extends Model
                 'link_url' => $linkUrl,
                 'layout_link_to' => $layoutLinkTo,
                 'type'=>$linkType,
+                'layout_id'=>$layoutId,
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now()
             ]);

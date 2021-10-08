@@ -12,13 +12,22 @@ class comment_type extends Seeder
     public function run()
     {
         DB::table('comment_type')->insert([
-            'document_status'=>'Proposed Revision'
+            'comment_type'=>'Proposed Revision',
+            'created_at'=>\Carbon\Carbon::now(),
+            'updated_at'=>\Carbon\Carbon::now()
+
         ]);
         DB::table('comment_type')->insert([
-            'document_status'=>'Comment'
+            'comment_type'=>'Comment',
+            'created_at'=>\Carbon\Carbon::now(),
+            'updated_at'=>\Carbon\Carbon::now()
+
         ]);
         DB::table('comment_type')->insert([
-            'document_status'=>'Proposal'
+            'comment_type'=>'Proposal',
+            'created_at'=>\Carbon\Carbon::now(),
+            'updated_at'=>\Carbon\Carbon::now()
+
         ]);
     }
 }

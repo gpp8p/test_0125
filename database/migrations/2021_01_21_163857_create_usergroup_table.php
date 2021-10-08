@@ -18,7 +18,7 @@ class CreateUsergroupTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('group_id');
             $table->char('is_admin', 1);
-            $table->string('title', 64);
+            $table->string('title', 64)->default('usergroup title');
 
             $table->timestamps();
         });

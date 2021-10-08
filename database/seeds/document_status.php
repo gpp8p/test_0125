@@ -11,14 +11,22 @@ class document_status extends Seeder
      */
     public function run()
     {
-        DB::table('document_type')->insert([
-            'document_status'=>'Draft'
+        DB::table('document_status')->insert([
+            'document_status'=>'Draft',
+            'created_at'=>\Carbon\Carbon::now(),
+            'updated_at'=>\Carbon\Carbon::now()
+
         ]);
-        DB::table('document_type')->insert([
-            'document_status'=>'Approved'
+        DB::table('document_status')->insert([
+            'document_status'=>'Approved',
+            'created_at'=>\Carbon\Carbon::now(),
+            'updated_at'=>\Carbon\Carbon::now()
         ]);
-        DB::table('document_type')->insert([
-            'document_status'=>'Rejected'
+        DB::table('document_status')->insert([
+            'document_status'=>'Rejected',
+            'created_at'=>\Carbon\Carbon::now(),
+            'updated_at'=>\Carbon\Carbon::now()
+
         ]);
     }
 }

@@ -19,6 +19,7 @@ class CreateArchive extends Migration
             $table->unsignedBigInteger('card_id');
             $table->char('historical_date', 8);
             $table->unsignedBigInteger('document_type');
+            $table->unsignedBigInteger('file_type');
             $table->unsignedBigInteger('access_type');
             $table->boolean('index');
             $table->id();

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommentType extends Migration
+class FileType extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateCommentType extends Migration
      */
     public function up()
     {
-        Schema::create('comment_type', function (Blueprint $table) {
-            $table->string('comment_type', 64);
+        Schema::create('file_type', function (Blueprint $table) {
+            $table->string('file_type', 64);
             $table->id();
             $table->timestamps();
         });
@@ -27,6 +27,6 @@ class CreateCommentType extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comment_type');
+        Schema::dropIfExists('file_type');
     }
 }
