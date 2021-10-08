@@ -14,7 +14,6 @@ class CreateCommentType extends Migration
     public function up()
     {
         Schema::create('comment_type', function (Blueprint $table) {
-            $table->unsignedBigInteger('comment_id');
             $table->string('comment_type', 64);
             $table->id();
             $table->timestamps();

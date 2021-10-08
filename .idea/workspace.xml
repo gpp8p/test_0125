@@ -19,17 +19,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/database/seeds/archive.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/archive_access.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/comment.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/comment_type.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/document_status.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/document_type.php" afterDir="false" />
+    <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="seeds and migrations for archive feature">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_09_21_000727_create_document_type.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_09_21_000727_create_document_type.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_09_21_005047_create_archive_access.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_09_21_005047_create_archive_access.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_09_21_205701_create_links_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_09_21_205701_create_links_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/link.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/link.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_21_154928_create_layouts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_21_154928_create_layouts_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_21_163857_create_usergroup_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_21_163857_create_usergroup_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_09_21_000742_create_comment_type.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_09_21_000742_create_comment_type.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_09_21_000756_create_document_status.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_09_21_000756_create_document_status.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/Groups.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/Groups.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/comment_type.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/comment_type.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/document_status.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/document_status.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +182,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/database/seeds" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -200,10 +200,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/Http/Controllers" />
-      <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/database/seeds" />
       <recent name="$PROJECT_DIR$/database/migrations" />
+      <recent name="$PROJECT_DIR$/app/Http/Controllers" />
+      <recent name="$PROJECT_DIR$/app" />
     </key>
   </component>
   <component name="RunManager" selected="PHP Web Page.Unnamed">
@@ -421,14 +421,9 @@
       <workItem from="1632099866686" duration="559000" />
       <workItem from="1632181628681" duration="5025000" />
       <workItem from="1632257331880" duration="2400000" />
-      <workItem from="1632348634288" duration="689000" />
-    </task>
-    <task id="LOCAL-00054" summary="start on delete layout api">
-      <created>1625073759608</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1625073759608</updated>
+      <workItem from="1632348634288" duration="1285000" />
+      <workItem from="1633557025493" duration="544000" />
+      <workItem from="1633709431749" duration="1580000" />
     </task>
     <task id="LOCAL-00055" summary="start on delete layout api">
       <created>1625074166040</created>
@@ -766,7 +761,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632257890025</updated>
     </task>
-    <option name="localTasksCounter" value="103" />
+    <task id="LOCAL-00103" summary="seeds and migrations for archive feature">
+      <created>1632351390042</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1632351390042</updated>
+    </task>
+    <option name="localTasksCounter" value="104" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -786,7 +788,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="added orgMemberPerms api" />
     <MESSAGE value="start on delete layout api" />
     <MESSAGE value="further link deletion work" />
     <MESSAGE value="start on adding card_in_layout table" />
@@ -811,7 +812,8 @@
     <MESSAGE value="publishing youtube component" />
     <MESSAGE value="new tables for archive features" />
     <MESSAGE value="migrations for links and cord_in_layout" />
-    <option name="LAST_COMMIT_MESSAGE" value="migrations for links and cord_in_layout" />
+    <MESSAGE value="seeds and migrations for archive feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="seeds and migrations for archive feature" />
   </component>
   <component name="WindowStateProjectService">
     <state x="700" y="371" key="#Notifications" timestamp="1628911934488">
@@ -843,14 +845,14 @@
     <state x="1242" y="452" key="#xdebugger.evaluate/0.23.1920.1008@0.23.1920.1008" timestamp="1629579492943" />
     <state x="1265" y="452" key="#xdebugger.evaluate/0.23.1920.1010@0.23.1920.1010" timestamp="1628711688343" />
     <state x="1242" y="440" key="#xdebugger.evaluate/0.25.1920.1000@0.25.1920.1000" timestamp="1630963015486" />
-    <state x="271" y="183" key="CommitChangelistDialog2" timestamp="1632257889889">
+    <state x="271" y="183" key="CommitChangelistDialog2" timestamp="1633712601045">
       <screen x="0" y="25" width="1920" height="1000" />
     </state>
     <state x="253" y="189" key="CommitChangelistDialog2/0.23.1792.1051@0.23.1792.1051" timestamp="1626549196358" />
     <state x="271" y="182" key="CommitChangelistDialog2/0.23.1920.1008@0.23.1920.1008" timestamp="1629645186975" />
     <state x="271" y="182" key="CommitChangelistDialog2/0.23.1920.1009@0.23.1920.1009" timestamp="1628806559539" />
     <state x="271" y="182" key="CommitChangelistDialog2/0.23.1920.1010@0.23.1920.1010" timestamp="1628718701450" />
-    <state x="271" y="183" key="CommitChangelistDialog2/0.25.1920.1000@0.25.1920.1000" timestamp="1632257889889" />
+    <state x="271" y="183" key="CommitChangelistDialog2/0.25.1920.1000@0.25.1920.1000" timestamp="1633712601045" />
     <state width="1558" height="207" key="GridCell.Tab.0.bottom" timestamp="1632086327280">
       <screen x="0" y="25" width="1920" height="1000" />
     </state>
@@ -926,14 +928,14 @@
     <state x="460" y="165" key="SettingsEditor/0.23.1792.1051@0.23.1792.1051" timestamp="1625074699946" />
     <state x="493" y="159" key="SettingsEditor/0.23.1920.1008@0.23.1920.1008" timestamp="1629126899714" />
     <state x="493" y="159" key="SettingsEditor/0.23.1920.1010@0.23.1920.1010" timestamp="1628469589488" />
-    <state x="621" y="246" key="Vcs.Push.Dialog.v2" timestamp="1632257893640">
+    <state x="621" y="246" key="Vcs.Push.Dialog.v2" timestamp="1632351392829">
       <screen x="0" y="25" width="1920" height="1000" />
     </state>
     <state x="580" y="256" key="Vcs.Push.Dialog.v2/0.23.1792.1051@0.23.1792.1051" timestamp="1626549200773" />
     <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1008@0.23.1920.1008" timestamp="1629645190177" />
     <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1009@0.23.1920.1009" timestamp="1628806562626" />
     <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1010@0.23.1920.1010" timestamp="1628718704571" />
-    <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.25.1920.1000@0.25.1920.1000" timestamp="1632257893640" />
+    <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.25.1920.1000@0.25.1920.1000" timestamp="1632351392829" />
     <state width="720" height="378" key="XDebugger.FullValuePopup" timestamp="1629579490971">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>

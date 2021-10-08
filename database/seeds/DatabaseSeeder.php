@@ -18,5 +18,9 @@ class DatabaseSeeder extends Seeder
         $this->call(Org::class);
         $this->call(Groups::class);
         $this->call(Layouts::class);
+        $this->call(archive_access::class);
+        $this->call(comment_type::class);
+        $this->call(document_status::class);
+        $this->call(document_type::class);
     }
 }

@@ -12,13 +12,13 @@ class comment_type extends Seeder
     public function run()
     {
         DB::table('comment_type')->insert([
-            'document_status'=>'Proposed Revision'
+            'comment_type'=>'Proposed Revision'
         ]);
         DB::table('comment_type')->insert([
-            'document_status'=>'Comment'
+            'comment_type'=>'Comment'
         ]);
         DB::table('comment_type')->insert([
-            'document_status'=>'Proposal'
+            'comment_type'=>'Proposal'
         ]);
     }
 }

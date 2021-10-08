@@ -14,8 +14,7 @@ class CreateDocumentStatus extends Migration
     public function up()
     {
         Schema::create('document_status', function (Blueprint $table) {
-            $table->unsignedBigInteger('comment_id');
-            $table->string('comment_status', 64);
+            $table->string('document_status', 64);
             $table->id();
             $table->timestamps();
         });
