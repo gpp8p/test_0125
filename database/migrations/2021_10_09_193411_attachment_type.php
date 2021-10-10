@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateComment extends Migration
+class AttachmentType extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateComment extends Migration
      */
     public function up()
     {
-        Schema::create('comment', function (Blueprint $table) {
-            $table->char('historical_date', 8);
-            $table->unsignedBigInteger('comment_type');
-            $table->unsignedBigInteger('status');
-            $table->string('description',64);
+        Schema::create('attachment_type', function (Blueprint $table) {
+            $table->string('attachment_type', 64);
             $table->id();
             $table->timestamps();
         });
@@ -30,6 +27,6 @@ class CreateComment extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comment');
+        Schema::dropIfExists('attachment_type');
     }
 }

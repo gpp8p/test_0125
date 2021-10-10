@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(document_status::class);
         $this->call(document_type::class);
         $this->call(file_type::class);
+        $this->call(attachment_type::class);
 
 
     }

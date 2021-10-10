@@ -20,21 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="seeds and migrations for archive feature">
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_10_08_174930_file_type.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/file_type.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_10_09_193411_attachment_type.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/attachment_type.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/link.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/link.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_21_154928_create_layouts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_21_154928_create_layouts_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_21_163857_create_usergroup_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_21_163857_create_usergroup_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_09_21_000742_create_comment_type.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_09_21_000742_create_comment_type.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_09_21_000756_create_document_status.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_09_21_000756_create_document_status.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_09_21_001900_create_comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_09_21_001900_create_comment.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2021_09_21_001927_create_archive.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_09_21_001927_create_archive.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/Groups.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/Groups.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/archive_access.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/archive_access.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeds/comment_type.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/comment_type.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/document_status.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/document_status.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/document_type.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/document_type.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -430,14 +422,9 @@
       <workItem from="1633557025493" duration="487000" />
       <workItem from="1633566520414" duration="2067000" />
       <workItem from="1633651296772" duration="2749000" />
-      <workItem from="1633702884248" duration="7383000" />
-    </task>
-    <task id="LOCAL-00057" summary="start on delete layout api">
-      <created>1625432708366</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1625432708366</updated>
+      <workItem from="1633702884248" duration="7805000" />
+      <workItem from="1633743591828" duration="456000" />
+      <workItem from="1633789693864" duration="2072000" />
     </task>
     <task id="LOCAL-00058" summary="further link deletion work">
       <created>1625666836429</created>
@@ -775,7 +762,14 @@
       <option name="project" value="LOCAL" />
       <updated>1633725883755</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="seeds and migrations for archive feature">
+      <created>1633727533794</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1633727533794</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -853,78 +847,82 @@
     <state x="1242" y="452" key="#xdebugger.evaluate/0.23.1920.1008@0.23.1920.1008" timestamp="1629579492943" />
     <state x="1265" y="452" key="#xdebugger.evaluate/0.23.1920.1010@0.23.1920.1010" timestamp="1628711688343" />
     <state x="1242" y="440" key="#xdebugger.evaluate/0.25.1920.1000@0.25.1920.1000" timestamp="1630963015486" />
-    <state x="271" y="183" key="CommitChangelistDialog2" timestamp="1633725883633">
+    <state x="271" y="183" key="CommitChangelistDialog2" timestamp="1633745150517">
       <screen x="0" y="25" width="1920" height="1000" />
     </state>
     <state x="253" y="189" key="CommitChangelistDialog2/0.23.1792.1051@0.23.1792.1051" timestamp="1626549196358" />
     <state x="271" y="182" key="CommitChangelistDialog2/0.23.1920.1008@0.23.1920.1008" timestamp="1629645186975" />
     <state x="271" y="182" key="CommitChangelistDialog2/0.23.1920.1009@0.23.1920.1009" timestamp="1628806559539" />
     <state x="271" y="182" key="CommitChangelistDialog2/0.23.1920.1010@0.23.1920.1010" timestamp="1628718701450" />
-    <state x="271" y="183" key="CommitChangelistDialog2/0.25.1920.1000@0.25.1920.1000" timestamp="1633725883633" />
-    <state width="1558" height="207" key="GridCell.Tab.0.bottom" timestamp="1633727210506">
+    <state x="271" y="183" key="CommitChangelistDialog2/0.25.1920.1000@0.25.1920.1000" timestamp="1633745150517" />
+    <state width="1558" height="207" key="GridCell.Tab.0.bottom" timestamp="1633743241606">
       <screen x="0" y="25" width="1920" height="1000" />
     </state>
     <state width="1521" height="179" key="GridCell.Tab.0.bottom/0.23.1792.1051@0.23.1792.1051" timestamp="1625866459441" />
     <state width="1558" height="209" key="GridCell.Tab.0.bottom/0.23.1920.1008@0.23.1920.1008" timestamp="1629646051988" />
     <state width="1558" height="212" key="GridCell.Tab.0.bottom/0.23.1920.1009@0.23.1920.1009" timestamp="1629052121094" />
     <state width="1558" height="179" key="GridCell.Tab.0.bottom/0.23.1920.1010@0.23.1920.1010" timestamp="1628718712691" />
-    <state width="1558" height="207" key="GridCell.Tab.0.bottom/0.25.1920.1000@0.25.1920.1000" timestamp="1633727210506" />
-    <state width="1558" height="207" key="GridCell.Tab.0.center" timestamp="1633727210505">
+    <state width="1558" height="207" key="GridCell.Tab.0.bottom/0.25.1920.1000@0.25.1920.1000" timestamp="1633743241606" />
+    <state width="1558" height="207" key="GridCell.Tab.0.center" timestamp="1633743241606">
       <screen x="0" y="25" width="1920" height="1000" />
     </state>
     <state width="1521" height="179" key="GridCell.Tab.0.center/0.23.1792.1051@0.23.1792.1051" timestamp="1625866459440" />
     <state width="1558" height="209" key="GridCell.Tab.0.center/0.23.1920.1008@0.23.1920.1008" timestamp="1629646051988" />
     <state width="1558" height="212" key="GridCell.Tab.0.center/0.23.1920.1009@0.23.1920.1009" timestamp="1629052121094" />
     <state width="1558" height="179" key="GridCell.Tab.0.center/0.23.1920.1010@0.23.1920.1010" timestamp="1628718712691" />
-    <state width="1558" height="207" key="GridCell.Tab.0.center/0.25.1920.1000@0.25.1920.1000" timestamp="1633727210505" />
-    <state width="1558" height="207" key="GridCell.Tab.0.left" timestamp="1633727210505">
+    <state width="1558" height="207" key="GridCell.Tab.0.center/0.25.1920.1000@0.25.1920.1000" timestamp="1633743241606" />
+    <state width="1558" height="207" key="GridCell.Tab.0.left" timestamp="1633743241605">
       <screen x="0" y="25" width="1920" height="1000" />
     </state>
     <state width="1521" height="179" key="GridCell.Tab.0.left/0.23.1792.1051@0.23.1792.1051" timestamp="1625866459440" />
     <state width="1558" height="209" key="GridCell.Tab.0.left/0.23.1920.1008@0.23.1920.1008" timestamp="1629646051988" />
     <state width="1558" height="212" key="GridCell.Tab.0.left/0.23.1920.1009@0.23.1920.1009" timestamp="1629052121093" />
     <state width="1558" height="179" key="GridCell.Tab.0.left/0.23.1920.1010@0.23.1920.1010" timestamp="1628718712691" />
-    <state width="1558" height="207" key="GridCell.Tab.0.left/0.25.1920.1000@0.25.1920.1000" timestamp="1633727210505" />
-    <state width="1558" height="207" key="GridCell.Tab.0.right" timestamp="1633727210506">
+    <state width="1558" height="207" key="GridCell.Tab.0.left/0.25.1920.1000@0.25.1920.1000" timestamp="1633743241605" />
+    <state width="1558" height="207" key="GridCell.Tab.0.right" timestamp="1633743241606">
       <screen x="0" y="25" width="1920" height="1000" />
     </state>
     <state width="1521" height="179" key="GridCell.Tab.0.right/0.23.1792.1051@0.23.1792.1051" timestamp="1625866459441" />
     <state width="1558" height="209" key="GridCell.Tab.0.right/0.23.1920.1008@0.23.1920.1008" timestamp="1629646051988" />
     <state width="1558" height="212" key="GridCell.Tab.0.right/0.23.1920.1009@0.23.1920.1009" timestamp="1629052121094" />
     <state width="1558" height="179" key="GridCell.Tab.0.right/0.23.1920.1010@0.23.1920.1010" timestamp="1628718712691" />
-    <state width="1558" height="207" key="GridCell.Tab.0.right/0.25.1920.1000@0.25.1920.1000" timestamp="1633727210506" />
-    <state width="1558" height="207" key="GridCell.Tab.1.bottom" timestamp="1633727210506">
+    <state width="1558" height="207" key="GridCell.Tab.0.right/0.25.1920.1000@0.25.1920.1000" timestamp="1633743241606" />
+    <state width="1558" height="207" key="GridCell.Tab.1.bottom" timestamp="1633743241607">
       <screen x="0" y="25" width="1920" height="1000" />
     </state>
     <state width="1521" height="179" key="GridCell.Tab.1.bottom/0.23.1792.1051@0.23.1792.1051" timestamp="1625866459441" />
     <state width="1558" height="209" key="GridCell.Tab.1.bottom/0.23.1920.1008@0.23.1920.1008" timestamp="1629646051989" />
     <state width="1558" height="212" key="GridCell.Tab.1.bottom/0.23.1920.1009@0.23.1920.1009" timestamp="1629052121095" />
     <state width="1558" height="179" key="GridCell.Tab.1.bottom/0.23.1920.1010@0.23.1920.1010" timestamp="1628718712692" />
-    <state width="1558" height="207" key="GridCell.Tab.1.bottom/0.25.1920.1000@0.25.1920.1000" timestamp="1633727210506" />
-    <state width="1558" height="207" key="GridCell.Tab.1.center" timestamp="1633727210506">
+    <state width="1558" height="207" key="GridCell.Tab.1.bottom/0.25.1920.1000@0.25.1920.1000" timestamp="1633743241607" />
+    <state width="1558" height="207" key="GridCell.Tab.1.center" timestamp="1633743241607">
       <screen x="0" y="25" width="1920" height="1000" />
     </state>
     <state width="1521" height="179" key="GridCell.Tab.1.center/0.23.1792.1051@0.23.1792.1051" timestamp="1625866459441" />
     <state width="1558" height="209" key="GridCell.Tab.1.center/0.23.1920.1008@0.23.1920.1008" timestamp="1629646051989" />
     <state width="1558" height="212" key="GridCell.Tab.1.center/0.23.1920.1009@0.23.1920.1009" timestamp="1629052121094" />
     <state width="1558" height="179" key="GridCell.Tab.1.center/0.23.1920.1010@0.23.1920.1010" timestamp="1628718712692" />
-    <state width="1558" height="207" key="GridCell.Tab.1.center/0.25.1920.1000@0.25.1920.1000" timestamp="1633727210506" />
-    <state width="1558" height="207" key="GridCell.Tab.1.left" timestamp="1633727210506">
+    <state width="1558" height="207" key="GridCell.Tab.1.center/0.25.1920.1000@0.25.1920.1000" timestamp="1633743241607" />
+    <state width="1558" height="207" key="GridCell.Tab.1.left" timestamp="1633743241607">
       <screen x="0" y="25" width="1920" height="1000" />
     </state>
     <state width="1521" height="179" key="GridCell.Tab.1.left/0.23.1792.1051@0.23.1792.1051" timestamp="1625866459441" />
     <state width="1558" height="209" key="GridCell.Tab.1.left/0.23.1920.1008@0.23.1920.1008" timestamp="1629646051989" />
     <state width="1558" height="212" key="GridCell.Tab.1.left/0.23.1920.1009@0.23.1920.1009" timestamp="1629052121094" />
     <state width="1558" height="179" key="GridCell.Tab.1.left/0.23.1920.1010@0.23.1920.1010" timestamp="1628718712692" />
-    <state width="1558" height="207" key="GridCell.Tab.1.left/0.25.1920.1000@0.25.1920.1000" timestamp="1633727210506" />
-    <state width="1558" height="207" key="GridCell.Tab.1.right" timestamp="1633727210506">
+    <state width="1558" height="207" key="GridCell.Tab.1.left/0.25.1920.1000@0.25.1920.1000" timestamp="1633743241607" />
+    <state width="1558" height="207" key="GridCell.Tab.1.right" timestamp="1633743241607">
       <screen x="0" y="25" width="1920" height="1000" />
     </state>
     <state width="1521" height="179" key="GridCell.Tab.1.right/0.23.1792.1051@0.23.1792.1051" timestamp="1625866459441" />
     <state width="1558" height="209" key="GridCell.Tab.1.right/0.23.1920.1008@0.23.1920.1008" timestamp="1629646051989" />
     <state width="1558" height="212" key="GridCell.Tab.1.right/0.23.1920.1009@0.23.1920.1009" timestamp="1629052121095" />
     <state width="1558" height="179" key="GridCell.Tab.1.right/0.23.1920.1010@0.23.1920.1010" timestamp="1628718712692" />
-    <state width="1558" height="207" key="GridCell.Tab.1.right/0.25.1920.1000@0.25.1920.1000" timestamp="1633727210506" />
+    <state width="1558" height="207" key="GridCell.Tab.1.right/0.25.1920.1000@0.25.1920.1000" timestamp="1633743241607" />
+    <state x="647" y="334" key="MultipleFileMergeDialog" timestamp="1633727567804">
+      <screen x="0" y="25" width="1920" height="1000" />
+    </state>
+    <state x="647" y="334" key="MultipleFileMergeDialog/0.25.1920.1000@0.25.1920.1000" timestamp="1633727567804" />
     <state x="707" y="273" key="NewPhpClassDialog" timestamp="1629305357467">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
@@ -935,14 +933,14 @@
     </state>
     <state x="493" y="159" key="SettingsEditor/0.23.1920.1008@0.23.1920.1008" timestamp="1629126899714" />
     <state x="493" y="159" key="SettingsEditor/0.23.1920.1010@0.23.1920.1010" timestamp="1628469589488" />
-    <state x="621" y="246" key="Vcs.Push.Dialog.v2" timestamp="1633725885849">
+    <state x="621" y="246" key="Vcs.Push.Dialog.v2" timestamp="1633727882351">
       <screen x="0" y="25" width="1920" height="1000" />
     </state>
     <state x="580" y="256" key="Vcs.Push.Dialog.v2/0.23.1792.1051@0.23.1792.1051" timestamp="1626549200773" />
     <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1008@0.23.1920.1008" timestamp="1629645190177" />
     <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1009@0.23.1920.1009" timestamp="1628806562626" />
     <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.23.1920.1010@0.23.1920.1010" timestamp="1628718704571" />
-    <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.25.1920.1000@0.25.1920.1000" timestamp="1633725885849" />
+    <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.25.1920.1000@0.25.1920.1000" timestamp="1633727882351" />
     <state width="720" height="378" key="XDebugger.FullValuePopup" timestamp="1629579490971">
       <screen x="0" y="23" width="1920" height="1008" />
     </state>

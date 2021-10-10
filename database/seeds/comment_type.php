@@ -29,5 +29,11 @@ class comment_type extends Seeder
             'updated_at'=>\Carbon\Carbon::now()
 
         ]);
+        DB::table('comment_type')->insert([
+            'comment_type'=>'Version',
+            'created_at'=>\Carbon\Carbon::now(),
+            'updated_at'=>\Carbon\Carbon::now()
+
+        ]);
     }
 }
