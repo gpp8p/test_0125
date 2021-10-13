@@ -26,4 +26,13 @@ class Archive extends Model
             throw new Exception('error in getFileTypes'.$e->getMessage());
         }
     }
+    public function getAccessTypes(){
+        $query = "select id, access_type from archive_access";
+        try {
+            $accessTypes = DB::select($query);
+            return $accessTypes;
+        } catch (Exception $e) {
+            throw new Exception('error in getAccessTypes'.$e->getMessage());
+        }
+    }
 }

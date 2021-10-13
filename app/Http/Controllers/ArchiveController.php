@@ -13,7 +13,10 @@ class ArchiveController extends Controller
         try {
             $currentDocumentTypes = $thisArchive->getDocumentTypes();
             $currentFileTypes = $thisArchive->getFileTypes();
-            $allDocumentDefaults = array("documentTypes"=>$currentDocumentTypes, "fileTypes"=>$currentFileTypes);
+            $accessTypes = $thisArchive->getAccessTypes();
+            $allDocumentDefaults = array("documentTypes"=>$currentDocumentTypes,
+                "fileTypes"=>$currentFileTypes,
+                "accessTypes"=>$accessTypes);
             return json_encode($allDocumentDefaults);
         } catch (\Exception $e) {
             abort(500, $e);
