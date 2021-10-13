@@ -301,6 +301,7 @@ class cardInstanceController extends Controller
             $thisCardContent['availableLinks']=$cardLinks;
         }
 
+
         $returnData = [$configParameters, $contentParameters, $subElementArray,$thisCardContent];
         return json_encode($returnData);
 
