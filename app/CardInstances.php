@@ -79,6 +79,26 @@ class CardInstances extends Model
         }
     }
 
+    public function updateDocumentTitle($cardId, $newCardName){
+        $query = 'update card_instances set card_name = ? where id = ?';
+
+        try {
+            $affected = DB::select($query, [$newCardName, $cardId]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    public function getCardName($cardId){
+        $query = 'select card_name from card_instances where id = ?';
+        try {
+            $selectedCard = DB::select($query, [$cardId]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+        return $selectedCard[0]->card_name;
+    }
+
 
     public function createCardInstance($layoutId, $cardParams, $row, $column, $height, $width, $cardType, $cardName, $restricted){
 

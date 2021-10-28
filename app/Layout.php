@@ -370,12 +370,17 @@ class Layout extends Model
                 $thisCardId = $thisCard[8];
             }
             $cssGridParams = $this->computeGridCss($thisCardRow, $thisCardCol, $thisCardHeight, $thisCardWidth) . ";";
+            $thisCardInstance = new CardInstances();
+            $thisCardName = $thisCardInstance->getCardName($thisCardId);
+            $thisCardContent['card_name']=$thisCardName;
             $thisCardParameters = array(
                 'style' => $cssGridParams . $thisCardCss,
                 'properties' => $thisCardProperties,
                 'content' => $thisCardContent
             );
             $thisCardPosition = array($thisCardRow, $thisCardCol, $thisCardHeight, $thisCardWidth);
+
+
             $thisCardData = array(
                 'id' => $thisCardId,
                 'card_component' => $thisCardComponent,

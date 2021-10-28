@@ -421,58 +421,63 @@ class cardInstanceController extends Controller
         } catch (Exception $e) {
             throw new Exception('error - could not clean out existing params');
         }
+        $cardTitle='';
+        $cardType = '';
         try {
             foreach ($decodedPost[1] as $key => $value) {
-
-                if($key=='availableLinks'){
-
-                }
-                elseif($key=='cardText'){
+/*
+                if ($key == 'title') {
+                    $cardTitle = $value;
+                } elseif($key=='cardType'){
+                    $cardType = $value;
+                } else
+*/
+                if ($key == 'cardText') {
                     $pattern = "displayLayout/";
-                    $patternFoundAt=0;
-                    $documentLinks=array();
+                    $patternFoundAt = 0;
+                    $documentLinks = array();
                     $linkAt = strpos($value, $pattern, $patternFoundAt);
-                    if($linkAt!=false){
-                        $nextLink=$this->findNextLink($value,0, $pattern);
-                        array_push($documentLinks,$nextLink[0]);
-                        while($nextLink!=false){
-                            $nextLink=$this->findNextLink($value,$nextLink[1], $pattern);
-                            if($nextLink==false)break;
-                            array_push($documentLinks,$nextLink[0]);
+                    if ($linkAt != false) {
+                        $nextLink = $this->findNextLink($value, 0, $pattern);
+                        array_push($documentLinks, $nextLink[0]);
+                        while ($nextLink != false) {
+                            $nextLink = $this->findNextLink($value, $nextLink[1], $pattern);
+                            if ($nextLink == false) break;
+                            array_push($documentLinks, $nextLink[0]);
                         }
                     }
                     $thisLink = new Link;
                     $thisLink->removeLinksForCardId($cardId, 'U');
-                    foreach($documentLinks as $thisDocumentLink){
-                        $thisDescription = 'link from card:'.$cardId.' to card:'.$thisDocumentLink;
-                        $linkUrl = 'http://localhost:8080/displayLayout/'.$thisDocumentLink;
-                        $isExternal=0;
+                    foreach ($documentLinks as $thisDocumentLink) {
+                        $thisDescription = 'link from card:' . $cardId . ' to card:' . $thisDocumentLink;
+                        $linkUrl = 'http://localhost:8080/displayLayout/' . $thisDocumentLink;
+                        $isExternal = 0;
                         $layoutLinkTo = $thisDocumentLink;
                         $thisLink->saveLink($org, $layoutId, $cardId, $thisDescription, $linkUrl, $isExternal, $layoutLinkTo, 'U');
                     }
                     $pattern = "<img src=\"http://localhost:8000/storage/";
-                    $patternFoundAt=0;
+                    $patternFoundAt = 0;
                     $imageLinks = array();
                     $imageLinkAt = strpos($value, $pattern, $patternFoundAt);
-                    if($imageLinkAt!=false){
-                        $nextLink=$this->findNextLink($value,0, $pattern);
-                        array_push($imageLinks,$nextLink[0]);
-                        while($nextLink!=false){
-                            $nextLink=$this->findNextLink($value,$nextLink[1], $pattern);
-                            if($nextLink==false)break;
-                            array_push($imageLinks,$nextLink[0]);
+                    if ($imageLinkAt != false) {
+                        $nextLink = $this->findNextLink($value, 0, $pattern);
+                        array_push($imageLinks, $nextLink[0]);
+                        while ($nextLink != false) {
+                            $nextLink = $this->findNextLink($value, $nextLink[1], $pattern);
+                            if ($nextLink == false) break;
+                            array_push($imageLinks, $nextLink[0]);
                         }
                     }
-                    $orgDirectory = '/images/'.$org;
-                    if(!Storage::exists($orgDirectory)) {
+                    $orgDirectory = '/images/' . $org;
+                    if (!Storage::exists($orgDirectory)) {
                         Storage::makeDirectory($orgDirectory);
                     }
-                    foreach($imageLinks as $thisImageLink){
-                        $copyToLocation = $orgDirectory.'/'.$thisImageLink;
-                        Storage::copy('file/'.$thisImageLink, $copyToLocation);
-                        $tempFileReference = "http://localhost:8000/storage/".$thisImageLink;
-                        $newImageLink = "http://localhost:8000/images/".$org."/".$thisImageLink;
-                        $value = str_replace($tempFileReference,$newImageLink, $value );
+                    foreach ($imageLinks as $thisImageLink) {
+                        $copyToLocation = $orgDirectory . '/' . $thisImageLink;
+                        Storage::copy('file/' . $thisImageLink, $copyToLocation);
+                        $tempFileReference = "http://localhost:8000/storage/" . $thisImageLink;
+                        $newImageLink = "http://localhost:8000/images/" . $org . "/" . $thisImageLink;
+                        $value = str_replace($tempFileReference, $newImageLink, $value);
                         $imgDescription = "Link to image";
                         $linkUrl = $newImageLink;
                         $isExternal = false;
@@ -481,16 +486,12 @@ class cardInstanceController extends Controller
                     }
 
 
-
-
-
-
-                    $orgDirectory = '/spcontent/'.$org;
-                    if(!Storage::exists($orgDirectory)) {
+                    $orgDirectory = '/spcontent/' . $org;
+                    if (!Storage::exists($orgDirectory)) {
                         Storage::makeDirectory($orgDirectory);
-                        Storage::makeDirectory($orgDirectory.'/cardText');
+                        Storage::makeDirectory($orgDirectory . '/cardText');
                     }
-                    $contentFileName = '/spcontent/'.$org.'/cardText/rtcontent'.$decodedPost[0];
+                    $contentFileName = '/spcontent/' . $org . '/cardText/rtcontent' . $decodedPost[0];
                     Storage::disk('local')->put($contentFileName, $value);
                     $thisInstanceParams->createInstanceParam($key, $contentFileName, $decodedPost[0], false, $domElement);
                 }else {
@@ -502,6 +503,12 @@ class cardInstanceController extends Controller
         } catch (Exception $e) {
             DB::rollBack();
         }
+/*
+        if($cardType=='Document'){
+            $thisCardInstance = new CardInstances();
+            $thisCardInstance->updateDocumentTitle($cardId, $cardTitle);
+        }
+*/
         DB::commit();
 
         return "Ok";
