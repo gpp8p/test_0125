@@ -1,5 +1,7 @@
 <?php
 
+
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -8,11 +10,26 @@ use Illuminate\Support\Facades\Storage;
 
 class FileUploadController extends Controller
 {
+
+
     function recieveFile(Request $request){
         $inData =  $request->all();
-        $path = $request->file('file')->store('file');
-        $path = str_replace('file/', '', $path);
-        return $path;
+        $org = $inData['org'];
+        switch($inData['fileRole']){
+            case 'backgroundImage':{
+                $path = $request->file('file')->store('file');
+                $path = str_replace('file/', '', $path);
+                $orgDirectory = '/images/' . $org;
+                if (!Storage::exists($orgDirectory)) {
+                    Storage::makeDirectory($orgDirectory);
+                }
+                $copyToLocation = $orgDirectory . '/' . $path;
+                Storage::copy('file/' . $path, $copyToLocation);
+                $newImageLink = "http://localhost:8000/images/" . $org . "/" . $path;
+                break;
+            }
+        }
+        return $newImageLink;
     }
 
     function recieveFileCk(Request $request){
