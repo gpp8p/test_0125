@@ -25,11 +25,25 @@ class FileUploadController extends Controller
                 }
                 $copyToLocation = $orgDirectory . '/' . $path;
                 Storage::copy('file/' . $path, $copyToLocation);
-                $newImageLink = "http://localhost:8000/images/" . $org . "/" . $path;
+                $accessUrl = "http://localhost:8000/images/" . $org . "/" . $path;
+                break;
+            }
+            case 'PDF':{
+                $path = $request->file('file')->store('file');
+                $path = str_replace('file/', '', $path);
+                $orgDirectory = '/spcontent/' . $org.'/cardText';
+                if (!Storage::exists($orgDirectory)) {
+                    Storage::makeDirectory($orgDirectory);
+                }
+                $copyToLocation = $orgDirectory . '/' . $path;
+                Storage::copy('file/' . $path, $copyToLocation);
+                $accessUrl = "http://localhost:8000/spcontentShow/" . $org . "/" . $path;
+
+
                 break;
             }
         }
-        return $newImageLink;
+        return $accessUrl;
     }
 
     function recieveFileCk(Request $request){
