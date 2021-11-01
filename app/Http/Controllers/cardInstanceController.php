@@ -173,7 +173,8 @@ class cardInstanceController extends Controller
         $userId = $inData['userId'];
         $layoutInstance = new Layout;
         $thisLayoutData = $layoutInstance->getThisLayout($layoutId, $orgId, $userId);
-        return json_encode($thisLayoutData);
+        $encodedData = json_encode($thisLayoutData);
+        return $encodedData;
     }
     public function getOrgCards(Request $request){
         $inData = $request->all();

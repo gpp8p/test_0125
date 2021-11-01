@@ -373,9 +373,15 @@ class Layout extends Model
             $thisCardInstance = new CardInstances();
             $thisCardName = $thisCardInstance->getCardName($thisCardId);
             $thisCardContent['card_name']=$thisCardName;
+
+            if(isset($thisCardContent['fileType']) && $thisCardContent['fileType']=='PDF'){
+                $pdfFileLocation = base64_encode($thisCardContent['fileLocation']);
+                $thisCardContent['fileLocation']=$pdfFileLocation;
+            }
+
             $thisCardParameters = array(
                 'style' => $cssGridParams . $thisCardCss,
-                'properties' => $thisCardProperties,
+                'properties' => '',
                 'content' => $thisCardContent
             );
             $thisCardPosition = array($thisCardRow, $thisCardCol, $thisCardHeight, $thisCardWidth);

@@ -25,7 +25,7 @@ class FileUploadController extends Controller
                 }
                 $copyToLocation = $orgDirectory . '/' . $path;
                 Storage::copy('file/' . $path, $copyToLocation);
-                $accessUrl = "http://localhost:8000/images/" . $org . "/" . $path;
+                $accessLocation = "http://localhost:8000/images/" . $org . "/" . $path;
                 break;
             }
             case 'PDF':{
@@ -37,13 +37,13 @@ class FileUploadController extends Controller
                 }
                 $copyToLocation = $orgDirectory . '/' . $path;
                 Storage::copy('file/' . $path, $copyToLocation);
-                $accessUrl = "http://localhost:8000/spcontentShow/" . $org . "/" . $path;
+                $accessLocation = "/spcontent/" . $org . "/cardText/" . $path;
 
 
                 break;
             }
         }
-        return $accessUrl;
+        return $accessLocation;
     }
 
     function recieveFileCk(Request $request){
