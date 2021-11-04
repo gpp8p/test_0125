@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \File;
 use Illuminate\Support\Facades\Storage;
+use Response;
 
 class FileUploadController extends Controller
 {
@@ -61,5 +62,16 @@ $inData =  $request->all();
         File::copy($storageLocation, $publicFileName);
         $rval = json_encode($path);
         return $rval;
+    }
+
+    function sendFile(Request $request){
+        $inData =  $request->all();
+        $path = $inData['path'];
+        $fileContent = Storage::get($path);
+        $statusCode = "200";
+        $response = Response::make($fileContent, $statusCode);
+        $pdfType = 'application/pdf';
+        $response->header('Content-Type', $pdfType);
+        return $response;
     }
 }

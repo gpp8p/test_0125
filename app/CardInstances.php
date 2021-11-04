@@ -60,7 +60,7 @@ class CardInstances extends Model
 
         for($c=0;$c<count($retrievedCardInstances);$c++){
             $thisCardInstance = $retrievedCardInstances[$c];
-            if($thisCardInstance->parameter_key=='cardText' | $thisCardInstance->parameter_key=='fileLocation'){
+            if($thisCardInstance->parameter_key=='cardText'){
 
 
                 $orgDirectory = '/spcontent/'.$orgId;
