@@ -82,6 +82,7 @@ Route::group([
     Route::post('cardInsert', 'cardInstanceController@cardInsert');
     Route::get('documentDefaults', 'ArchiveController@getDocumentDefaults');
     Route::get('getFile','FileUploadController@sendFile')->name('getFile');
+    Route::get('removeUploadedFile', 'FileUploadController@removeUploadedFile')->name('removeUploadedFile');
 
 
 

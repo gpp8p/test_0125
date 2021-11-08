@@ -29,7 +29,7 @@ class FileUploadController extends Controller
                 $accessLocation = "http://localhost:8000/images/" . $org . "/" . $path;
                 break;
             }
-            case 'PDF':{
+            case 'document':{
                 $path = $request->file('file')->store('file');
                 $path = str_replace('file/', '', $path);
                 $orgDirectory = '/spcontent/' . $org.'/cardText';
@@ -70,8 +70,14 @@ $inData =  $request->all();
         $fileContent = Storage::get($path);
         $statusCode = "200";
         $response = Response::make($fileContent, $statusCode);
-        $pdfType = 'application/pdf';
-        $response->header('Content-Type', $pdfType);
+//        $pdfType = 'application/pdf';
+//        $response->header('Content-Type', $pdfType);
         return $response;
+    }
+    function removeUploadedFile(Request $request){
+        $inData =  $request->all();
+        $path = $inData['path'];
+        Storage::delete($path);
+        return 'ok';
     }
 }
