@@ -21,7 +21,7 @@ class Layout extends Model
         return $this->hasMany(CardInstances::class);
     }
 
-    public function createLayoutWithoutBlanks($layoutName, $layoutHeight, $layoutWidth, $layoutDescription, $backgroundColor, $backgroundImage, $backgroundType, $orgId){
+    public function createLayoutWithoutBlanks($layoutName, $layoutHeight, $layoutWidth, $layoutDescription, $backgroundColor, $backgroundImage, $backgroundType, $orgId, $backgroundDisplay){
         $newlayoutId =db::table('layouts')->insertgetid([
             'menu_label'=>$layoutName,
             'description'=>$layoutDescription,
@@ -30,6 +30,7 @@ class Layout extends Model
             'backgroundColor'=>$backgroundColor,
             'backgroundUrl'=>$backgroundImage,
             'backgroundType'=>$backgroundType,
+            'backgroundDisplay'=>$backgroundDisplay,
             'org_id'=>$orgId,
             'created_at'=>\carbon\carbon::now(),
             'updated_at'=>\carbon\carbon::now()
@@ -312,13 +313,14 @@ class Layout extends Model
         $thisLayoutWidth = $layoutInfo[0]->width;
         $thisLayoutHeight = $layoutInfo[0]->height;
         $thisLayoutBackgroundColor = $layoutInfo[0]->backgroundColor;
+        $thisBackgroundDisplay = $layoutInfo[0]->backgroundDisplay;
         $thisLayoutImageUrl = $layoutInfo[0]->backgroundUrl;
         $thisLayoutBackgroundType = $layoutInfo[0]->backgroundType;
         $thisLayoutLabel = $layoutInfo[0]->menu_label;
         $thisCardInstance = new CardInstances;
         $thisLayoutCardInstances = $thisCardInstance->getLayoutCardInstancesById($layoutId, $orgId);
         if ($thisLayoutCardInstances == null) {
-            $layoutProperties = array('description' => $thisLayoutDescription, 'menu_label' => $thisLayoutLabel, 'height' => $thisLayoutHeight, 'width' => $thisLayoutHeight, 'backgroundColor' => $thisLayoutBackgroundColor, 'backGroundImageUrl' => $thisLayoutImageUrl, 'backgroundType' => $thisLayoutBackgroundType);
+            $layoutProperties = array('description' => $thisLayoutDescription, 'menu_label' => $thisLayoutLabel, 'height' => $thisLayoutHeight, 'width' => $thisLayoutHeight, 'backgroundColor' => $thisLayoutBackgroundColor, 'backGroundImageUrl' => $thisLayoutImageUrl, 'backgroundType' => $thisLayoutBackgroundType, 'backgroundDisplay'=>$thisBackgroundDisplay);
             $thisLayoutPerms = $layoutInstance->summaryPermsForLayout($userId, $orgId, $layoutId);
             $returnData = array('cards' => [], 'layout' => $layoutProperties, 'perms' => $thisLayoutPerms);
             return $returnData;

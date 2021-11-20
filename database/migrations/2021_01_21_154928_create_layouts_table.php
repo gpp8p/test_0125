@@ -22,6 +22,7 @@ class CreateLayoutsTable extends Migration
             $table->integer('width');
             $table->unsignedBigInteger('org_id');
             $table->char('backgroundType', 1);
+            $table->char('backgroundDisplay', 10);
             $table->string('backgroundColor',10);
             $table->string('backgroundUrl', 80);
             $table->char('deleted',1)->nullable($value = true);

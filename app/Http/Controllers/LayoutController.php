@@ -62,13 +62,20 @@ class LayoutController extends Controller
         $backgroundType = $inData['backgroundType'];
         if($inData['backgroundType']=='I'){
             $backgroundImage = $inData['backgroundImage'];
+            if(isset($inData['backgroundDisplay'])){
+                $backgroundDisplay = $inData['backgroundDisplay'];
+            }else{
+                $backgroundDisplay = 'cover';
+            }
             $layoutBackgroundColor = '';
         }else{
             $backgroundImage = '';
             $layoutBackgroundColor = $inData['backgroundColor'];
+            $backgroundDisplay='';
         }
+
         $layoutInstance = new Layout;
-        $newLayoutId = $layoutInstance->createLayoutWithoutBlanks($layoutName, $layoutHeight, $layoutWidth, $layoutDescription, $layoutBackgroundColor, $backgroundImage, $backgroundType, $orgId);
+        $newLayoutId = $layoutInstance->createLayoutWithoutBlanks($layoutName, $layoutHeight, $layoutWidth, $layoutDescription, $layoutBackgroundColor, $backgroundImage, $backgroundType, $orgId, $backgroundDisplay);
 
         $thisGroup = new Group;
         try {
