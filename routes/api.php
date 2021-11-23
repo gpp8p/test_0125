@@ -83,6 +83,7 @@ Route::group([
     Route::get('documentDefaults', 'ArchiveController@getDocumentDefaults');
     Route::get('getFile','FileUploadController@sendFile')->name('getFile');
     Route::get('removeUploadedFile', 'FileUploadController@removeUploadedFile')->name('removeUploadedFile');
+    Route::get('getLayoutParams','layoutController@getLayoutParams')->name('getLayoutParams');
 
 
 
