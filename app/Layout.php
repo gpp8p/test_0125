@@ -299,7 +299,16 @@ class Layout extends Model
         }
         return $returnPerms;
     }
+    public function getParams($layoutId){
 
+        $query = "select menu_label, description, height, width, backgroundType, backgroundColor, backgroundUrl, backgroundDisplay, customcss from layouts where id = ?";
+        try {
+            $retrievedParams = DB::select($query, [$layoutId]);
+            return $retrievedParams;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
     public function getThisLayout($layoutId, $orgId, $userId)
     {
 //    public function getLayoutById(Request $request){

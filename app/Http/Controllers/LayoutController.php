@@ -131,7 +131,14 @@ class LayoutController extends Controller
         $inData =  $request->all();
         $layoutId = $inData['layoutId'];
         $layoutInstance = new Layout;
-        
+        try {
+            $layoutParams = $layoutInstance->getParams($layoutId);
+            return json_encode($layoutParams);
+
+        } catch (\Exception $e) {
+            abort(500, 'Server error: '.$e->getMessage());
+        }
+
 
     }
 
