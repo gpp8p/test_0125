@@ -141,6 +141,18 @@ class LayoutController extends Controller
 
 
     }
+    public function updateLayout(Request $request){
+        if(auth()->user()==null){
+            abort(401, 'Unauthorized action.');
+        }else{
+            $userId = auth()->user()->id;
+        }
+        $inData =  $request->all();
+        $layoutId = $inData['layoutId'];
+        $layoutInstance = new Layout;
+
+        return 'ok';
+    }
 
     public function removePerm(Request $request){
         if(auth()->user()==null){

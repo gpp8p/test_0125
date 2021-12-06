@@ -84,6 +84,7 @@ Route::group([
     Route::get('getFile','FileUploadController@sendFile')->name('getFile');
     Route::get('removeUploadedFile', 'FileUploadController@removeUploadedFile')->name('removeUploadedFile');
     Route::get('getLayoutParams','layoutController@getLayoutParams')->name('getLayoutParams');
+    Route::post('updateLayout', 'layoutController@updateLayout')->name('updateLayout');
 
 
 
