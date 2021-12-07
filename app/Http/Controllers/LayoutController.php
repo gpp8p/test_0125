@@ -148,8 +148,23 @@ class LayoutController extends Controller
             $userId = auth()->user()->id;
         }
         $inData =  $request->all();
+        if($inData['backgroundType']=='I'){
+            $backgroundColor='';
+            $backgroundImage = $inData['backgroundImage'];
+        }else{
+            $backgroundColor = $inData['backgroundColor'];
+            $backgroundImage = '';
+        }
+        $layoutName = $inData['name'];
+        $layoutHeight = $inData['height'];
+        $layoutWidth = $inData['width'];
+        $layoutDescription = $inData['description'];
+        $backgroundType = $inData['backgroundType'];
+        $orgId = $inData['orgId'];
         $layoutId = $inData['layoutId'];
+        $backgroundDisplay = $inData['backgroundDisplay'];
         $layoutInstance = new Layout;
+        $layoutInstance->updateLayout($layoutName, $layoutHeight, $layoutWidth, $layoutDescription, $backgroundColor, $backgroundImage, $backgroundType, $orgId, $backgroundDisplay, $layoutId);
 
         return 'ok';
     }

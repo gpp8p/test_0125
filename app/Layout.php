@@ -37,6 +37,22 @@ class Layout extends Model
         ]);
         return $newlayoutId;
     }
+    public function updateLayout($layoutName, $layoutHeight, $layoutWidth, $layoutDescription, $backgroundColor, $backgroundImage, $backgroundType, $orgId, $backgroundDisplay, $layoutId){
+        $affected = DB::table('layouts')
+            ->where('id', $layoutId)
+            ->update([
+                'menu_label'=>$layoutName,
+                'description'=>$layoutDescription,
+                'height'=>$layoutHeight,
+                'width'=>$layoutWidth,
+                'backgroundColor'=>$backgroundColor,
+                'backgroundUrl'=>$backgroundImage,
+                'backgroundType'=>$backgroundType,
+                'backgroundDisplay'=>$backgroundDisplay,
+                'org_id'=>$orgId,
+                'updated_at'=>\carbon\carbon::now()
+            ]);
+    }
 //($layoutName, $height, $width, $cardParams, $testLayoutDescription)
     public function createBlankLayout($layoutName, $layoutHeight, $layoutWidth, $cardParams, $layoutDescription)
     {
