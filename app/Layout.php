@@ -325,7 +325,7 @@ class Layout extends Model
             throw $e;
         }
     }
-    public function getThisLayout($layoutId, $orgId, $userId)
+    public function getThisLayout($layoutId, $orgId, $userId, $layoutBeingEdited)
     {
 //    public function getLayoutById(Request $request){
 //        $inData =  $request->all();
@@ -347,7 +347,7 @@ class Layout extends Model
         if ($thisLayoutCardInstances == null) {
             $layoutProperties = array('description' => $thisLayoutDescription, 'menu_label' => $thisLayoutLabel, 'height' => $thisLayoutHeight, 'width' => $thisLayoutHeight, 'backgroundColor' => $thisLayoutBackgroundColor, 'backGroundImageUrl' => $thisLayoutImageUrl, 'backgroundType' => $thisLayoutBackgroundType, 'backgroundDisplay'=>$thisBackgroundDisplay);
             $thisLayoutPerms = $layoutInstance->summaryPermsForLayout($userId, $orgId, $layoutId);
-            $returnData = array('cards' => [], 'layout' => $layoutProperties, 'perms' => $thisLayoutPerms);
+            $returnData = array('cards' => [], 'layout' => $layoutProperties, 'perms' => $thisLayoutPerms, 'layoutBeingEdited'=>$layoutBeingEdited);
             return $returnData;
         }
         $cardsReadIn = array();
@@ -449,7 +449,7 @@ class Layout extends Model
         }
         $thisLayoutPerms = $layoutInstance->summaryPermsForLayout($userId, $orgId, $layoutId);
         $layoutProperties = array('description' => $thisLayoutDescription, 'menu_label' => $thisLayoutLabel, 'height' => $thisLayoutHeight, 'width' => $thisLayoutHeight, 'backgroundColor' => $thisLayoutBackgroundColor, 'backGroundImageUrl' => $thisLayoutImageUrl, 'backgroundType' => $thisLayoutBackgroundType);
-        $returnData = array('cards' => $allCardInstances, 'layout' => $layoutProperties, 'perms' => $thisLayoutPerms);
+        $returnData = array('cards' => $allCardInstances, 'layout' => $layoutProperties, 'perms' => $thisLayoutPerms, 'layoutBeingEdited'=>$layoutBeingEdited);
         return $returnData;
     }
 

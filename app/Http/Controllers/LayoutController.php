@@ -435,7 +435,7 @@ class LayoutController extends Controller
         $layoutId = $inData['layoutId'];
         $orgId = $inData['orgId'];
         $thisLayout = new Layout;
-        $layoutInfo = $thisLayout->getThisLayout($layoutId,$orgId,$userId);
+        $layoutInfo = $thisLayout->getThisLayout($layoutId,$orgId,$userId, false);
         if(!$layoutInfo['perms']['admin']){
             return 'noAuth';
         }

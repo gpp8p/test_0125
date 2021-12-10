@@ -171,8 +171,13 @@ class cardInstanceController extends Controller
         $layoutId = $inData['layoutId'];
         $orgId = $inData['orgId'];
         $userId = $inData['userId'];
+        if(isset($inData['layoutBeingEdited'])){
+            $layoutBeingEdited = $inData['layoutBeingEdited'];
+        }else{
+            $layoutBeingEdited = false;
+        }
         $layoutInstance = new Layout;
-        $thisLayoutData = $layoutInstance->getThisLayout($layoutId, $orgId, $userId);
+        $thisLayoutData = $layoutInstance->getThisLayout($layoutId, $orgId, $userId, $layoutBeingEdited);
         $encodedData = json_encode($thisLayoutData);
         return $encodedData;
     }
