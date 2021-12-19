@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Layout;
 use Illuminate\Http\Request;
 use App\link;
+use Illuminate\Support\Facades\DB;
 
 class linkController extends Controller
 {
@@ -41,6 +42,43 @@ class linkController extends Controller
         $thisLinkInstance = new link;
         $thisLinkInstance->deleteLink($linkIdToDelete);
         return "ok";
+
+    }
+    public function updateCardLinks(Request $request){
+        $inData =  $request->all();
+        $allLinksJson = $inData['allLinks'];
+        $allLinks = json_decode($allLinksJson);
+        $thisCardId = $inData['card_instance_id'];
+        $thisOrgId = $inData['org_id'];
+        $thisLayoutId = $inData['layout_id'];
+        $thisLinkInstance = new link;
+
+        DB::beginTransaction();
+        try {
+            $thisLinkInstance->removeLinksForCardId($thisCardId, 'U');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            abort(500, 'Server error: '.$e->getMessage());
+        }
+        try {
+            foreach ($allLinks as $thisLink) {
+                $thisLinkInstance->saveLink(
+                    $thisOrgId,
+                    $thisLayoutId,
+                    $thisCardId,
+                    $thisLink->description,
+                    $thisLink->link_url,
+                    $thisLink->isExternal,
+                    $thisLink->layout_link_to,
+                    'U');
+            }
+        } catch (\Exception $e) {
+            DB::rollBack();
+            abort(500, 'Server error: '.$e->getMessage());
+        }
+        DB:commit();
+        return 'ok';
+
 
     }
 }
