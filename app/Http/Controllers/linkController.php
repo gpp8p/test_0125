@@ -76,7 +76,7 @@ class linkController extends Controller
             DB::rollBack();
             abort(500, 'Server error: '.$e->getMessage());
         }
-        DB:commit();
+        DB::commit();
         return 'ok';
 
 
