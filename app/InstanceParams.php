@@ -40,30 +40,33 @@ class InstanceParams extends Model
         }
     }
     function hasInstanceParam($cardId, $paramKey){
-        if(DB::table('instance_params')->where([
-            ['card_instance_id','=',$cardId]
-        ])->exists()
-        ){
-            $params =   DB::table('instance_params')->where([
-                ['card_instance_id','=',$cardId],
-                ['parameter_key', '=', $paramKey]
-            ])->get();
-            if(count($params)>0){
-                return $params[0]->id;
-            }else{
-                return -1;
-            }
+        $query = "select id from instance_params where card_instance_id = ? and parameter_key = ?";
+        try {
+            $paramIdsFound = DB::select($query, [$cardId, $paramKey]);
+        } catch (Exception $e) {
+            throw new Exception('error - could not delete an instance param');
+        }
+        if(count($paramIdsFound)>0){
+            return count($paramIdsFound);
         }else{
             return -1;
         }
     }
     function updateInstanceParam($paramId,$key, $value, $instanceId, $isCss, $domElement){
-        $query = 'update instanceParams set parameter_key = ?, parameter_value = ?, card_instance_id = ?, isCss=?, $domElement = ? where id = ?';
+        $query = 'update instance_params set parameter_key = ?, parameter_value = ?, card_instance_id = ?, isCss=?, dom_element = ? where id = ?';
 
         try {
             DB::select($query, [$key, $value, $instanceId, $isCss, $domElement, $paramId]);
         } catch (Exception $e) {
             throw new Exception('error - could not update an instance param');
+        }
+    }
+    function deleteInstanceParam($paramId){
+        $query = "delete from instance_params where id = ?";
+        try {
+            DB::select($query, [$paramId]);
+        } catch (Exception $e) {
+            throw new Exception('error - could not delete an instance param');
         }
     }
 }

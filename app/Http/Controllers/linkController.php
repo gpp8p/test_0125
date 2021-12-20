@@ -17,7 +17,7 @@ class linkController extends Controller
         return $thisLink->getLinksForCardId($thisCardId);
     }
 
-    
+
     public function createNewLink(Request $request){
         $inData =  $request->all();
         $thisCardId = $inData['card_instance_id'];
@@ -73,21 +73,25 @@ class linkController extends Controller
                 abort(500, 'Server error creating instance_param: '.$e->getMessage());
             }
         }
-        if($cardTitleId>0){
+        if($cardTitleId>0 && (strlen($thisCardTitle)>0)){
             try {
                 $thisInstanceParams->updateInstanceParam($orientId, 'linkMenuTitle', $thisCardTitle, $thisCardId, 0, 'main');
             } catch (\Exception $e) {
                 abort(500, 'Server error updating instance_param: '.$e->getMessage());
             }
-        }else{
+        }else if($cardTitleId<0 && (strlen($thisCardTitle)>0)){
             try {
                 $thisInstanceParams->createInstanceParam('linkMenuTitle', $thisCardTitle, $thisCardId, 0, 'main');
             } catch (\Exception $e) {
                 abort(500, 'Server error creating instance_param: '.$e->getMessage());
             }
+        }else if($cardTitleId>0 && (strlen($thisCardTitle)==0)){
+            try {
+                $thisInstanceParams->deleteInstanceParam($cardTitleId);
+            } catch (\Exception $e) {
+                abort(500, 'Server error deleting instance_param: '.$e->getMessage());
+            }
         }
-
-
         try {
             $thisLinkInstance->removeLinksForCardId($thisCardId, 'U');
         } catch (\Exception $e) {
