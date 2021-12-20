@@ -17,6 +17,7 @@ class linkController extends Controller
         return $thisLink->getLinksForCardId($thisCardId);
     }
 
+    
     public function createNewLink(Request $request){
         $inData =  $request->all();
         $thisCardId = $inData['card_instance_id'];
