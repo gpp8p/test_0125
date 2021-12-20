@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Layout;
 use Illuminate\Http\Request;
 use App\link;
+use App\InstanceParams;
 use Illuminate\Support\Facades\DB;
 
 class linkController extends Controller
@@ -51,9 +52,41 @@ class linkController extends Controller
         $thisCardId = $inData['card_instance_id'];
         $thisOrgId = $inData['org_id'];
         $thisLayoutId = $inData['layout_id'];
+        $thisOrient = $inData['orient'];
+        $thisCardTitle = $inData['cardTitle'];
         $thisLinkInstance = new link;
-
+        $thisInstanceParams = new InstanceParams;
+        $orientId = $thisInstanceParams->hasInstanceParam($thisCardId, 'orient');
+        $cardTitleId = $thisInstanceParams->hasInstanceParam($thisCardId, 'linkMenuTitle');
         DB::beginTransaction();
+        if($orientId>0){
+            try {
+                $thisInstanceParams->updateInstanceParam($orientId, 'orient', $thisOrient, $thisCardId, 0, 'main');
+            } catch (\Exception $e) {
+                abort(500, 'Server error updating instance_param: '.$e->getMessage());
+            }
+        }else{
+            try {
+                $thisInstanceParams->createInstanceParam('orient', $thisOrient, $thisCardId, 0, 'main');
+            } catch (\Exception $e) {
+                abort(500, 'Server error creating instance_param: '.$e->getMessage());
+            }
+        }
+        if($cardTitleId>0){
+            try {
+                $thisInstanceParams->updateInstanceParam($orientId, 'linkMenuTitle', $thisCardTitle, $thisCardId, 0, 'main');
+            } catch (\Exception $e) {
+                abort(500, 'Server error updating instance_param: '.$e->getMessage());
+            }
+        }else{
+            try {
+                $thisInstanceParams->createInstanceParam('linkMenuTitle', $thisCardTitle, $thisCardId, 0, 'main');
+            } catch (\Exception $e) {
+                abort(500, 'Server error creating instance_param: '.$e->getMessage());
+            }
+        }
+
+
         try {
             $thisLinkInstance->removeLinksForCardId($thisCardId, 'U');
         } catch (\Exception $e) {
