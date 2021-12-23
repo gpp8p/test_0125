@@ -449,6 +449,13 @@
                 </span>
                 </div>
                 @break
+                @case('pdf')
+                <div style="{{$thisCard['card_parameters']['style']}}">
+                <span class="cardBody">
+                        {!! $thisCard['card_parameters']['content'] !!}
+                </span>
+                </div>
+                @break
             @endswitch
         @endforeach
 </div>

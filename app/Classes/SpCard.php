@@ -5,6 +5,7 @@ namespace App\Classes;
 
 use App\Classes\SpRichTextCard;
 use App\Classes\SpLinkMenuCard;
+use Storage;
 use App\Org;
 class SpCard
 {
@@ -72,6 +73,22 @@ class SpCard
                 $spanHeight = intval($thisCardContent['spanHeight']*1.12);
                 $spanWidth = intval($thisCardContent['spanWidth']*1.04);
                 $this->thisCardContent = "<iframe src='".$ytubeUrl."' width='".$spanWidth."' height='".$spanHeight."' ></iframe>";
+                break;
+            }
+            case 'pdf':{
+                $pdfFileLocation = $thisCardContent['fileLocation'];
+                $pieces = explode("/", $pdfFileLocation);
+                $elCount = count($pieces);
+                $pdfFileName = $pieces[$elCount-1];
+                try {
+                    $contents = Storage::get($pdfFileLocation);
+                } catch (\Exception $e) {
+                    abort(500, 'pdf source file not found');
+                }
+                $copyToLocation = '/published/'.$orgId.'/'.$pdfFileName;
+                Storage::copy($pdfFileLocation, $copyToLocation);
+                $this->thisCardContent = "<iframe src='".$pdfFileName."' width='100%' height='100%' ></iframe>";
+                break;
             }
         }
 
