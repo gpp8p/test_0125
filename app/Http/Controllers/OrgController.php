@@ -145,6 +145,7 @@ class OrgController extends Controller
          $adminUserEmail = $inData['params']['adminUserEmail'];
          $adminUserName = $inData['params']['adminUserName'];
          $backgroundType = $inData['params']['backgroundType'];
+         $backgroundDisplay = $inData['params']['backgroundDisplay'];
          $userIsAdmin = 1;
          $userNotAdmin = 0;
          if($backgroundType=='I'){
@@ -157,7 +158,7 @@ class OrgController extends Controller
          $orgInstance = new Org;
          DB::beginTransaction();
          try {
-             $newLayoutId = $layoutInstance->createLayoutWithoutBlanks($name, $height, $width, $description, $backgroundColor, $backgroundImage, $backgroundType, 0);
+             $newLayoutId = $layoutInstance->createLayoutWithoutBlanks($name, $height, $width, $description, $backgroundColor, $backgroundImage, $backgroundType, 0, $backgroundDisplay);
              try {
                  $newOrgId = $orgInstance->createNewOrg($name, $description, $newLayoutId);
              } catch (\Exception $e) {
