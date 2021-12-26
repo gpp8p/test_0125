@@ -8,6 +8,7 @@ use App\Org;
 use App\Layout;
 use App\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class userController extends Controller
 {
@@ -176,6 +177,19 @@ class userController extends Controller
                 'result'=>'error',
                 'errorDescription'=>$e>getMessage()
             ]);
+        }
+    }
+    public function updatePassword(Request $request){
+        $inData = $request->all();
+        $userEmail = $inData['params']['email'];
+        $userPassword = $inData['params']['password'];
+        $encodedPassword = Hash::make($userPassword);
+        $userInstance = new User;
+        try {
+            $userInstance->updatePassword($userEmail, $encodedPassword);
+            return 'ok';
+        } catch (\Exception $e) {
+            abort(500, 'problem updating password');
         }
     }
 

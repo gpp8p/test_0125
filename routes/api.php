@@ -67,6 +67,7 @@ Route::group([
     Route::post('addAccess', 'LayoutController@addAccessForGroupToLayout');
     Route::post('setupNewUser', 'UserController@setupNewUser');
     Route::post('createUser', 'userController@createUser');
+    Route::post('updatePassword', 'userController@updatePassword');
     Route::post('addUserToOrg','userController@addUserToOrg' );
     Route::get('removeUserFromOrg', 'GroupsController@removeUserFromOrg');
     Route::get('getLinks', 'linkController@getLinksByCardId');

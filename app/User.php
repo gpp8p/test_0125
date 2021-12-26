@@ -66,14 +66,23 @@ class User extends Authenticatable implements JWTSubject
         $newUserId=DB::table('users')->insertGetId([
             'name'=>    $userName,
             'email'=>   $userEmail,
-//           'password'=> Hash::make($userPassword),
-            'password'=> Hash::make('n1tad0g'),
+            'password'=> Hash::make($userPassword),
+//            'password'=> Hash::make('n1tad0g'),
             'is_admin'=>false,
             'created_at'=>\Carbon\Carbon::now(),
             'updated_at'=>\Carbon\Carbon::now()
         ]);
         return $newUserId;
 
+
+    }
+    public function updatePassword($userEmail, $userPassword){
+        $query = 'update users set password = ? where email = ?';
+        try {
+            $success = DB::select($query, [$userPassword, $userEmail]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
 
     }
 
