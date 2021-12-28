@@ -357,7 +357,14 @@ class LayoutController extends Controller
                 "display: grid; grid-gap: 3px; background-color: ".$backgroundColor."; height: 98vh; color: #ffcd90; ".$gridHeightCss.";".$gridWidthCss.";";
 
         }else{
-            $backgroundUrl = $imageBase.$backgroundImageUrl;
+            $orgDirectory = '/images/'.$orgId;
+            $backgroundComponents = explode('/', $backgroundImageUrl);
+            $backgroundComponentsSize = count($backgroundComponents);
+            $imageFileName = $backgroundComponents[$backgroundComponentsSize-1];
+            $imageSource = $orgDirectory.'/'.$imageFileName;
+            $copyToLocation = '/published/'.$orgId.'/images'.'/'.$imageFileName;
+            Storage::copy($imageSource, $copyToLocation);
+            $backgroundUrl = 'url('.$imageBase.$backgroundComponents[$backgroundComponentsSize-1].')';
             $gridCss = "display: grid; grid-gap: 3px; background-image:".$backgroundUrl."; background-size: cover; background-repeat: no-repeat; background-position: center; height: 98vh; color: #ffcd90; ". $gridHeightCss.";".$gridWidthCss.";";
         }
         return $gridCss;
