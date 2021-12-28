@@ -47,6 +47,9 @@
             width: 100%;
             height: 100%;
         }
+        a:hover {
+            color:red;
+        }
 
 
 
@@ -416,11 +419,7 @@
                         </span>
 
                         <div>
-                            @if(isset($thisCard['elementStyles']['sub']))
-                                <div style="{{$thisCard['elementStyles']['sub']}}" >
-                            @else
                                 <div>
-                            @endif
                                 @if($thisCard['card_parameters']['content']['orient']=='vertical')
                                     <ul>
                                         @foreach($thisCard['card_parameters']['content']['links'] as $thisLink)
@@ -432,7 +431,7 @@
                                 @else
                                     <span class="flex-container">
                                         @foreach($thisCard['card_parameters']['content']['links'] as $thisLink)
-                                            <a style="text-decoration: none;" href="{!! $thisLink[0] !!}" target="_blank">{!! $thisLink[1] !!}</a>
+                                            <a style="text-decoration: none;{{$thisCard['elementStyles']['sub']}}" href="{!! $thisLink[0] !!}" class="mlhz">{!! $thisLink[1] !!}</a>
                                         @endforeach
                                     </span>
                                 @endif

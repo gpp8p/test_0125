@@ -593,7 +593,7 @@ class Layout extends Model
                 'card_position' => $thisCardPosition
             );
 */
-            $thisSpCard = new SpCard($thisCardArray, $orgId, $publishableLayouts);
+            $thisSpCard = new SpCard($thisCardArray, $orgId, $publishableLayouts, $cardSubElementProperties);
             $thisCardData = $thisSpCard->getCardData();
             array_push($allCardInstances, $thisCardData);
         }

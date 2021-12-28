@@ -23,7 +23,7 @@ class SpCard
 
     const DYNAMIC_ADDRESS = 'http://localhost:8080/target/';
 
-    function __construct($thisCardArray, $orgId, $publishableLayouts){
+    function __construct($thisCardArray, $orgId, $publishableLayouts, $cardSubElementProperties){
         $this->thisCardCss = '';
         $this->thisCardProperties = '';
         $thisCardContent = array();
@@ -57,7 +57,7 @@ class SpCard
                 break;
             }
             case "linkMenu":{
-                $thisSpLinkMenuCard = new SpLinkMenuCard($this->thisCardId, $orgId, $publishableLayouts, $thisCardContent);
+                $thisSpLinkMenuCard = new SpLinkMenuCard($this->thisCardId, $orgId, $publishableLayouts, $thisCardContent, $cardSubElementProperties);
                 $this->thisCardContent = $thisSpLinkMenuCard->getCardContent();
                 break;
             }

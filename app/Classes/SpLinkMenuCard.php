@@ -16,7 +16,7 @@ class SpLinkMenuCard
     private $titleOut='';
     private $orientOut='';
 
-    function __construct($thisCardId, $orgId, $publishableLayouts, $thisCardContent )
+    function __construct($thisCardId, $orgId, $publishableLayouts, $thisCardContent, $cardSubElementProperties )
     {
         $thisLink = new Link();
         $cardLinks = array();
@@ -50,6 +50,13 @@ class SpLinkMenuCard
         }else{
             $this->orientOut = 'vertical';
         }
+/*
+        $subProperties = $cardSubElementProperties[$thisCardId]['sub'];
+        $subCss = '';
+        foreach($subProperties as $thisSubProperty){
+            $subCss = $subCss.$thisSubProperty[1];
+        }
+*/
         $this->content = array('links'=>$cardLinks, 'title'=>$this->titleOut, 'orient'=>$this->orientOut);
 
 
