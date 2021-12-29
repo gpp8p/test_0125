@@ -306,6 +306,11 @@ class LayoutController extends Controller
             }else{
                 $backgroundImageUrl = '';
             }
+            if(isset($layoutData['layout']['hzLinkMenuColor'])){
+                $hzLinkMenuColor = $layoutData['layout']['hzLinkMenuColor'];
+            }else{
+                $hzLinkMenuColor = '';
+            }
 
             $backgroundType = $layoutData['layout']['backgroundType'];
             $thisLayoutCss = $this->layoutCss($height, $width, $backgroundColor, $backgroundImageUrl, $backgroundType, $orgId);
@@ -326,7 +331,7 @@ class LayoutController extends Controller
             }
 */
             try {
-                $viewHtml = view('layout', ['layoutId' => $thisViewableLayout, 'layoutCss' => $thisLayoutCss, 'cards' => $layoutData['cards']])->render();
+                $viewHtml = view('layout', ['layoutId' => $thisViewableLayout, 'layoutCss' => $thisLayoutCss, 'hzLinkMenuColor'=>$hzLinkMenuColor, 'cards' => $layoutData['cards']])->render();
             } catch (\Throwable $e) {
                 $errorMsg = $e->getMessage();
                 continue;

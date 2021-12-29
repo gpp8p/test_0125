@@ -473,6 +473,7 @@ class Layout extends Model
         $thisLayoutImageUrl = $layoutInfo[0]->backgroundUrl;
         $thisLayoutBackgroundType = $layoutInfo[0]->backgroundType;
         $thisLayoutLabel = $layoutInfo[0]->menu_label;
+        $hzLinkMenuColor='';
         $thisCardInstance = new CardInstances;
         $thisLayoutCardInstances = $thisCardInstance->getLayoutCardInstancesById($layoutId->layout_id, $orgId);
         if ($thisLayoutCardInstances == null) {
@@ -604,7 +605,12 @@ class Layout extends Model
             $thisSubElementStyle = '';
             foreach ($cardSubElement as $key => $value) {
                 foreach ($value as $styleElement) {
-                    $thisSubElementStyle = $thisSubElementStyle . $styleElement[1];
+                    if($styleElement[0]=='color' && $styleElement[3]=='linkMenu'){
+                        $hzLinkMenuColor=$styleElement[1];
+                    }else{
+                        $thisSubElementStyle = $thisSubElementStyle . $styleElement[1];
+                    }
+
                 }
                 if (!array_key_exists($cardId, $subElementStyles)) {
                     $subElementStyles[$cardId][$key] = array();
@@ -625,7 +631,7 @@ class Layout extends Model
             }
         }
         $thisLayoutPerms = $layoutInstance->summaryPermsForLayout($userId, $orgId, $layoutId->layout_id);
-        $layoutProperties = array('description' => $thisLayoutDescription, 'menu_label' => $thisLayoutLabel, 'height' => $thisLayoutHeight, 'width' => $thisLayoutHeight, 'backgroundColor' => $thisLayoutBackgroundColor, 'backGroundImageUrl' => $thisLayoutImageUrl, 'backgroundType' => $thisLayoutBackgroundType);
+        $layoutProperties = array('description' => $thisLayoutDescription, 'menu_label' => $thisLayoutLabel, 'height' => $thisLayoutHeight, 'width' => $thisLayoutHeight, 'backgroundColor' => $thisLayoutBackgroundColor, 'backGroundImageUrl' => $thisLayoutImageUrl, 'backgroundType' => $thisLayoutBackgroundType, 'hzLinkMenuColor'=>$hzLinkMenuColor);
         $returnData = array('cards' => $allCardInstances, 'layout' => $layoutProperties, 'perms' => $thisLayoutPerms);
         return $returnData;
     }

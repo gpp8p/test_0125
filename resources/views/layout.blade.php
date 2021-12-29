@@ -47,9 +47,13 @@
             width: 100%;
             height: 100%;
         }
-        a:hover {
+        .mlhz {
+            {{$hzLinkMenuColor}};
+        }
+        .mlhz:hover {
             color:red;
         }
+
 
 
 
@@ -424,7 +428,7 @@
                                     <ul>
                                         @foreach($thisCard['card_parameters']['content']['links'] as $thisLink)
                                             <li>
-                                                <a style="text-decoration: none;" href="{!! $thisLink[0] !!}">{!! $thisLink[1] !!}</a>
+                                                <a class="mlhz" style="text-decoration: none;" href="{!! $thisLink[0] !!}">{!! $thisLink[1] !!}</a>
                                             </li>
                                         @endforeach
                                     </ul>
