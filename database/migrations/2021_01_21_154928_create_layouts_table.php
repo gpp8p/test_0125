@@ -27,6 +27,7 @@ class CreateLayoutsTable extends Migration
             $table->string('backgroundUrl', 80);
             $table->char('deleted',1)->nullable($value = true);
             $table->string('customcss',512);
+            $table->char('template', 1)->default('N');
         });
     }
 

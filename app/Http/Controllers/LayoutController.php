@@ -52,6 +52,7 @@ class LayoutController extends Controller
         $layoutName = $inData['name'];
         $layoutHeight = $inData['height'];
         $layoutWidth = $inData['width'];
+        $template = $inData['template'];
         $userIsAdmin = 1;
         $userNotAdmin = 0;
 
@@ -73,9 +74,13 @@ class LayoutController extends Controller
             $layoutBackgroundColor = $inData['backgroundColor'];
             $backgroundDisplay='';
         }
-
+        if($template){
+            $isTemplate='Y';
+        }else{
+            $isTemplate='N';
+        }
         $layoutInstance = new Layout;
-        $newLayoutId = $layoutInstance->createLayoutWithoutBlanks($layoutName, $layoutHeight, $layoutWidth, $layoutDescription, $layoutBackgroundColor, $backgroundImage, $backgroundType, $orgId, $backgroundDisplay);
+        $newLayoutId = $layoutInstance->createLayoutWithoutBlanks($layoutName, $layoutHeight, $layoutWidth, $layoutDescription, $layoutBackgroundColor, $backgroundImage, $backgroundType, $orgId, $backgroundDisplay, $isTemplate);
 
         $thisGroup = new Group;
         try {

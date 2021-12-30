@@ -21,7 +21,7 @@ class Layout extends Model
         return $this->hasMany(CardInstances::class);
     }
 
-    public function createLayoutWithoutBlanks($layoutName, $layoutHeight, $layoutWidth, $layoutDescription, $backgroundColor, $backgroundImage, $backgroundType, $orgId, $backgroundDisplay){
+    public function createLayoutWithoutBlanks($layoutName, $layoutHeight, $layoutWidth, $layoutDescription, $backgroundColor, $backgroundImage, $backgroundType, $orgId, $backgroundDisplay, $isTemplate){
         $newlayoutId =db::table('layouts')->insertgetid([
             'menu_label'=>$layoutName,
             'description'=>$layoutDescription,
@@ -32,6 +32,7 @@ class Layout extends Model
             'backgroundType'=>$backgroundType,
             'backgroundDisplay'=>$backgroundDisplay,
             'org_id'=>$orgId,
+            'template'=>$isTemplate,
             'created_at'=>\carbon\carbon::now(),
             'updated_at'=>\carbon\carbon::now()
         ]);
@@ -317,7 +318,7 @@ class Layout extends Model
     }
     public function getParams($layoutId){
 
-        $query = "select menu_label, description, height, width, backgroundType, backgroundColor, backgroundUrl, backgroundDisplay, customcss from layouts where id = ?";
+        $query = "select menu_label, description, height, width, backgroundType, backgroundColor, backgroundUrl, backgroundDisplay, customcss, template from layouts where id = ?";
         try {
             $retrievedParams = DB::select($query, [$layoutId]);
             return $retrievedParams;
@@ -342,6 +343,7 @@ class Layout extends Model
         $thisLayoutImageUrl = $layoutInfo[0]->backgroundUrl;
         $thisLayoutBackgroundType = $layoutInfo[0]->backgroundType;
         $thisLayoutLabel = $layoutInfo[0]->menu_label;
+        $thisLayoutTemplate = $layoutInfo[0]->template;
         $thisCardInstance = new CardInstances;
         $thisLayoutCardInstances = $thisCardInstance->getLayoutCardInstancesById($layoutId, $orgId);
         if ($thisLayoutCardInstances == null) {
@@ -448,7 +450,7 @@ class Layout extends Model
             }
         }
         $thisLayoutPerms = $layoutInstance->summaryPermsForLayout($userId, $orgId, $layoutId);
-        $layoutProperties = array('description' => $thisLayoutDescription, 'menu_label' => $thisLayoutLabel, 'height' => $thisLayoutHeight, 'width' => $thisLayoutHeight, 'backgroundColor' => $thisLayoutBackgroundColor, 'backGroundImageUrl' => $thisLayoutImageUrl, 'backgroundType' => $thisLayoutBackgroundType);
+        $layoutProperties = array('description' => $thisLayoutDescription, 'menu_label' => $thisLayoutLabel, 'height' => $thisLayoutHeight, 'width' => $thisLayoutHeight, 'backgroundColor' => $thisLayoutBackgroundColor, 'backGroundImageUrl' => $thisLayoutImageUrl, 'backgroundType' => $thisLayoutBackgroundType, 'template'=>$thisLayoutTemplate );
         $returnData = array('cards' => $allCardInstances, 'layout' => $layoutProperties, 'perms' => $thisLayoutPerms);
         return $returnData;
     }
