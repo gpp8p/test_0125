@@ -160,6 +160,12 @@ class LayoutController extends Controller
             $backgroundColor = $inData['backgroundColor'];
             $backgroundImage = '';
         }
+        $template = $inData['template'];
+        if($template){
+            $isTemplate='Y';
+        }else{
+            $isTemplate='N';
+        }
         $layoutName = $inData['name'];
         $layoutHeight = $inData['height'];
         $layoutWidth = $inData['width'];
@@ -169,7 +175,7 @@ class LayoutController extends Controller
         $layoutId = $inData['layoutId'];
         $backgroundDisplay = $inData['backgroundDisplay'];
         $layoutInstance = new Layout;
-        $layoutInstance->updateLayout($layoutName, $layoutHeight, $layoutWidth, $layoutDescription, $backgroundColor, $backgroundImage, $backgroundType, $orgId, $backgroundDisplay, $layoutId);
+        $layoutInstance->updateLayout($layoutName, $layoutHeight, $layoutWidth, $layoutDescription, $backgroundColor, $backgroundImage, $backgroundType, $orgId, $backgroundDisplay, $layoutId, $isTemplate);
 
         return 'ok';
     }

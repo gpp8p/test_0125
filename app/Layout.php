@@ -38,7 +38,7 @@ class Layout extends Model
         ]);
         return $newlayoutId;
     }
-    public function updateLayout($layoutName, $layoutHeight, $layoutWidth, $layoutDescription, $backgroundColor, $backgroundImage, $backgroundType, $orgId, $backgroundDisplay, $layoutId){
+    public function updateLayout($layoutName, $layoutHeight, $layoutWidth, $layoutDescription, $backgroundColor, $backgroundImage, $backgroundType, $orgId, $backgroundDisplay, $layoutId, $isTemplate){
         $affected = DB::table('layouts')
             ->where('id', $layoutId)
             ->update([
@@ -49,6 +49,7 @@ class Layout extends Model
                 'backgroundColor'=>$backgroundColor,
                 'backgroundUrl'=>$backgroundImage,
                 'backgroundType'=>$backgroundType,
+                'template'=>$isTemplate,
                 'backgroundDisplay'=>$backgroundDisplay,
                 'org_id'=>$orgId,
                 'updated_at'=>\carbon\carbon::now()
