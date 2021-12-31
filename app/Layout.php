@@ -253,6 +253,19 @@ class Layout extends Model
         $retrievedLayouts  =  DB::select($query, [$orgId]);
         return $retrievedLayouts;
     }
+    public function getTemplateLayouts($orgId){
+        $query = "select distinct layouts.id, layouts.description from layouts, perms, groups, org, grouporg ".
+            "where layouts.id = perms.layout_id ".
+            "and perms.view=1 ".
+            "and perms.group_id = groups.id ".
+            "and grouporg.group_id = groups.id ".
+            "and layouts.template = 'Y'".
+            "and grouporg.org_id = ?";
+
+        $retrievedLayouts  =  DB::select($query, [$orgId]);
+        return $retrievedLayouts;
+
+    }
     public function getPublishableLayoutsForOrg($orgId, $allUserGroup){
         $query = "select perms.layout_id from perms, grouporg ".
             "where perms.group_id = grouporg.group_id ".
@@ -263,6 +276,7 @@ class Layout extends Model
         return $retrievedLayouts;
 
     }
+
 
     public function summaryPermsForLayout($userId, $orgId, $layoutId){
 /*

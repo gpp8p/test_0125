@@ -87,6 +87,7 @@ Route::group([
     Route::get('getLayoutParams','layoutController@getLayoutParams')->name('getLayoutParams');
     Route::post('updateLayout', 'layoutController@updateLayout')->name('updateLayout');
     Route::post('updateCardLinks','linkController@updateCardLinks')->name('updateCardLinks');
+    Route::get('availableTemplates', 'layoutController@getAvailableTemplates')->name('getAvailableTemplates');
 
 
 

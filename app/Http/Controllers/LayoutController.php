@@ -555,6 +555,18 @@ class LayoutController extends Controller
         $layoutInstance->updateCardInLayout();
         return 'ok';
     }
+    public function getAvailableTemplates(Request $request){
+        if(auth()->user()==null){
+            abort(401, 'Unauthorized action.');
+        }else{
+            $userId = auth()->user()->id;
+        }
+        $inData =  $request->all();
+        $orgId = $inData['orgId'];
+        $thisLayout = new Layout;
+        $templateLayouts = $thisLayout->getTemplateLayouts($orgId);
+        return json_encode($templateLayouts);
+    }
 
     private function removeLinkFromRichText($text, $link){
         $linkReferenceLocation = strpos($text, $link);
