@@ -88,6 +88,7 @@ Route::group([
     Route::post('updateLayout', 'layoutController@updateLayout')->name('updateLayout');
     Route::post('updateCardLinks','linkController@updateCardLinks')->name('updateCardLinks');
     Route::get('availableTemplates', 'layoutController@getAvailableTemplates')->name('getAvailableTemplates');
+    Route::post('cloneTemplate', 'layoutController@cloneTemplate')->name('cloneTemplate');
 
 
 

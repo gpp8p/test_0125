@@ -568,6 +568,57 @@ class LayoutController extends Controller
         return json_encode($templateLayouts);
     }
 
+    public function cloneTemplate(Request $request){
+        if(auth()->user()==null){
+            abort(401, 'Unauthorized action.');
+        }else{
+            $userId = auth()->user()->id;
+        }
+        $inData =  $request->all();
+        $orgId = $inData['params']['orgId'];
+        $templateId = $inData['params']['templateId'];
+        $description = $inData['params']['description'];
+        $menu_label = $inData['params']['menu_label'];
+        $permType = $inData['params']['permType'];
+        $layoutInstance = new Layout;
+        $thisLayoutData = $layoutInstance->getThisLayout($templateId, $orgId, $userId);
+        $height = $thisLayoutData['layout']['height'];
+        $width = $thisLayoutData['layout']['width'];
+        $backgroundColor = $thisLayoutData['layout']['backgroundColor'];
+        $backgroundImageUrl = $thisLayoutData['layout']['backgroundImageUrl'];
+        $backgroundType = $thisLayoutData['layout']['backgroundType'];
+        if(isset($thisLayoutData['layout']['backgroundDisplay'])){
+            $backgroundDisplay = $thisLayoutData['layout']['backgroundDisplay'];
+        }else{
+            $backgroundDisplay = '';
+        }
+        $newLayoutId = $layoutInstance->createLayoutWithoutBlanks($menu_label, $height, $width, $description, $backgroundColor, $backgroundImageUrl, $backgroundType, $orgId, $backgroundDisplay, 'N');
+        if($permType=='default'){
+            $thisGroup = new Group;
+            $userIsAdmin = 1;
+            $userNotAdmin = 0;
+            try {
+                $allUserGroupId = $thisGroup->returnAllUserGroupId();
+            } catch (\Exception $e) {
+                throw new \Exception('error identifying all user group');
+            }
+
+            $personalGroupId = $thisGroup->returnPersonalGroupId($userId);
+            $newLayoutGroupId = $thisGroup->addNewLayoutGroup($newLayoutId, $menu_label, $description);
+            $thisGroup->addOrgToGroup($orgId, $newLayoutGroupId);
+            $thisGroup->addUserToGroup($userId, $newLayoutGroupId,$userIsAdmin);
+            $layoutInstance->editPermForGroup($allUserGroupId, $newLayoutId, 'view', 1);
+            $layoutInstance->editPermForGroup($newLayoutGroupId, $newLayoutId, 'view', 1);
+            $userPersonalGroupId = $personalGroupId;
+            $layoutInstance->editPermForGroup($userPersonalGroupId, $newLayoutId, 'view', 1);
+            $layoutInstance->editPermForGroup($userPersonalGroupId, $newLayoutId, 'author', 1);
+            $layoutInstance->editPermForGroup($userPersonalGroupId, $newLayoutId, 'admin', 1);
+        }
+
+        return 'ok';
+
+    }
+
     private function removeLinkFromRichText($text, $link){
         $linkReferenceLocation = strpos($text, $link);
         $closingTagLocation = strpos($text, '</a>', $linkReferenceLocation);
