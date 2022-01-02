@@ -231,7 +231,7 @@ class Layout extends Model
                 "and users.id=? ".
                 "and perms.layout_id = ?";
 */
-        $query = "select groups.description, groups.id, perms.view, perms.author, perms.admin, perms.opt1, perms.opt2, perms.opt3 from groups,  perms ".
+        $query = "select groups.description, groups.id, perms.view, perms.author, perms.admin, perms.opt1, perms.opt2, perms.opt3, perms.group_id from groups,   perms  ".
                 "where groups.id = perms.group_id ".
                 "and perms.layout_id = ?";
 

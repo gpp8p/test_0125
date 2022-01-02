@@ -585,7 +585,12 @@ class LayoutController extends Controller
         $height = $thisLayoutData['layout']['height'];
         $width = $thisLayoutData['layout']['width'];
         $backgroundColor = $thisLayoutData['layout']['backgroundColor'];
-        $backgroundImageUrl = $thisLayoutData['layout']['backgroundImageUrl'];
+        if(isset($thisLayoutData['layout']['backgroundImageUrl'])){
+            $backgroundImageUrl = $thisLayoutData['layout']['backgroundImageUrl'];
+        }else{
+            $backgroundImageUrl = '';
+        }
+
         $backgroundType = $thisLayoutData['layout']['backgroundType'];
         if(isset($thisLayoutData['layout']['backgroundDisplay'])){
             $backgroundDisplay = $thisLayoutData['layout']['backgroundDisplay'];
@@ -594,6 +599,7 @@ class LayoutController extends Controller
         }
         $newLayoutId = $layoutInstance->createLayoutWithoutBlanks($menu_label, $height, $width, $description, $backgroundColor, $backgroundImageUrl, $backgroundType, $orgId, $backgroundDisplay, 'N');
         if($permType=='default'){
+/*
             $thisGroup = new Group;
             $userIsAdmin = 1;
             $userNotAdmin = 0;
@@ -613,9 +619,17 @@ class LayoutController extends Controller
             $layoutInstance->editPermForGroup($userPersonalGroupId, $newLayoutId, 'view', 1);
             $layoutInstance->editPermForGroup($userPersonalGroupId, $newLayoutId, 'author', 1);
             $layoutInstance->editPermForGroup($userPersonalGroupId, $newLayoutId, 'admin', 1);
+*/
+        }else{
+            $templateLayoutPerms = $layoutInstance->getUserPermsForLayout($templateId, $orgId, $userId);
+            foreach($templateLayoutPerms as $thisTemplateLayoutPerm){
+                $layoutInstance->editPermForGroup($thisTemplateLayoutPerm->group_id, $newLayoutId, 'view', $thisTemplateLayoutPerm->view);
+                $layoutInstance->editPermForGroup($thisTemplateLayoutPerm->group_id, $newLayoutId, 'author', $thisTemplateLayoutPerm->author);
+                $layoutInstance->editPermForGroup($thisTemplateLayoutPerm->group_id, $newLayoutId, 'admin', $thisTemplateLayoutPerm->admin);
+            }
         }
 
-        return 'ok';
+        return json_encode($newLayoutId);
 
     }
 
