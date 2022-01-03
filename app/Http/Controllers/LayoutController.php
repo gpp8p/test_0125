@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Layout;
 use Illuminate\Http\Request;
 use App\CardInstances;
+use App\InstanceParams;
 use App\Group;
 use App\Org;
 use Illuminate\Support\Facades\DB;
@@ -599,7 +600,7 @@ class LayoutController extends Controller
         }
         $newLayoutId = $layoutInstance->createLayoutWithoutBlanks($menu_label, $height, $width, $description, $backgroundColor, $backgroundImageUrl, $backgroundType, $orgId, $backgroundDisplay, 'N');
         if($permType=='default'){
-/*
+
             $thisGroup = new Group;
             $userIsAdmin = 1;
             $userNotAdmin = 0;
@@ -619,7 +620,7 @@ class LayoutController extends Controller
             $layoutInstance->editPermForGroup($userPersonalGroupId, $newLayoutId, 'view', 1);
             $layoutInstance->editPermForGroup($userPersonalGroupId, $newLayoutId, 'author', 1);
             $layoutInstance->editPermForGroup($userPersonalGroupId, $newLayoutId, 'admin', 1);
-*/
+
         }else{
             $templateLayoutPerms = $layoutInstance->getUserPermsForLayout($templateId, $orgId, $userId);
             foreach($templateLayoutPerms as $thisTemplateLayoutPerm){
@@ -629,6 +630,7 @@ class LayoutController extends Controller
             }
         }
         $cardInstance = new CardInstances;
+        $thisInstanceParams = new InstanceParams;
         foreach($thisLayoutData['cards'] as $thisCard){
             switch($thisCard['card_component']){
                 case 'linkMenu':{
@@ -643,6 +645,19 @@ class LayoutController extends Controller
                     break;
                 }
                 case 'RichText':{
+                    $cardInstanceParams = $thisInstanceParams->getCardInstanceParams($thisCard['id']);
+                    $textRemovedParams = array();
+                    $row = $thisCard['card_position'][0];
+                    $column = $thisCard['card_position'][1];
+                    $cardHeight = $thisCard['card_position'][2];
+                    $cardWidth = $thisCard['card_position'][3];
+                    foreach($cardInstanceParams as $thisParam){
+                        if($thisParam->parameter_key !='cardText'){
+                            $newParam = array($thisParam->parameter_key, $thisParam->parameter_value, $thisParam->isCss);
+                            $textRemovedParams[]=$newParam;
+                        }
+                    }
+                    $cardInstance->createCardInstance($newLayoutId, $textRemovedParams, $row, $column, $cardHeight, $cardWidth, 'RichText', $thisCard['card_parameters']['content']['card_name'], 'F');
                     break;
                 }
                 case 'Document':{
