@@ -628,6 +628,37 @@ class LayoutController extends Controller
                 $layoutInstance->editPermForGroup($thisTemplateLayoutPerm->group_id, $newLayoutId, 'admin', $thisTemplateLayoutPerm->admin);
             }
         }
+        $cardInstance = new CardInstances;
+        foreach($thisLayoutData['cards'] as $thisCard){
+            switch($thisCard['card_component']){
+                case 'linkMenu':{
+
+                    try {
+                        $cardInstance->insertCard($thisCard['id'], $newLayoutId);
+                    } catch (Exception $e) {
+                        $msg = 'Could not insert card:'.$e->getMessage();
+                        abort(500, $msg);
+                    }
+
+                    break;
+                }
+                case 'RichText':{
+                    break;
+                }
+                case 'Document':{
+                    break;
+                }
+                case 'Headline':{
+                    break;
+                }
+                case 'pdf':{
+                    break;
+                }
+                case 'youTube':{
+                    break;
+                }
+            }
+        }
 
         return json_encode($newLayoutId);
 
