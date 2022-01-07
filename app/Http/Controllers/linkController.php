@@ -99,6 +99,7 @@ class linkController extends Controller
             abort(500, 'Server error: '.$e->getMessage());
         }
         try {
+            $thisShowOrder=0;
             foreach ($allLinks as $thisLink) {
                 $thisLinkInstance->saveLink(
                     $thisOrgId,
@@ -108,7 +109,9 @@ class linkController extends Controller
                     $thisLink->link_url,
                     $thisLink->isExternal,
                     $thisLink->layout_link_to,
-                    'U');
+                    'U',
+                    $thisShowOrder);
+                $thisShowOrder++;
             }
         } catch (\Exception $e) {
             DB::rollBack();

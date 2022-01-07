@@ -22,6 +22,7 @@ class CreateLinksTable extends Migration
             $table->boolean('isExternal');
             $table->string('link_url', 255);
             $table->unsignedBigInteger("layout_link_to");
+            $table->unsignedBigInteger('show_order');
             $table->char('type');
             $table->timestamps();
         });

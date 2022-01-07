@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class link extends Model
 {
     public function getLinksForCardId($cardId){
-        $query = "select id, isExternal, link_url, layout_link_to, description, type from links where card_instance_id = ?";
+        $query = "select id, isExternal, link_url, layout_link_to, description, type from links where card_instance_id = ? order by show_order";
         try {
             $linkInfo = DB::select($query, [$cardId]);
             return $linkInfo;
@@ -25,7 +25,7 @@ class link extends Model
         }
     }
 
-    public function saveLink($orgId, $layoutId, $cardInstanceId, $description, $linkUrl, $isExternal, $layoutLinkTo, $linkType){
+    public function saveLink($orgId, $layoutId, $cardInstanceId, $description, $linkUrl, $isExternal, $layoutLinkTo, $linkType, $thisShowOrder){
         try {
             $thisLayout = new Layout;
             $thisOrgId = DB::table('links')->insertGetId([
@@ -39,7 +39,8 @@ class link extends Model
                 'type'=>$linkType,
                 'layout_id'=>$layoutId,
                 'created_at' => \Carbon\Carbon::now(),
-                'updated_at' => \Carbon\Carbon::now()
+                'updated_at' => \Carbon\Carbon::now(),
+                'show_order' => $thisShowOrder
             ]);
             $thisLayout->setUnDelete($layoutLinkTo);
         } catch (\Exception $e) {
