@@ -684,7 +684,7 @@ class LayoutController extends Controller
                 }
                 case 'youTube':{
                     $cardInstanceParams = $thisInstanceParams->getCardInstanceParams($thisCard['id']);
-                    $textRemovedParams = array();
+                    $cardInstanceParamArray = array();
                     $row = $thisCard['card_position'][0];
                     $column = $thisCard['card_position'][1];
                     $cardHeight = $thisCard['card_position'][2];
@@ -694,6 +694,21 @@ class LayoutController extends Controller
                             $cardInstanceParamArray[]=$newParam;
                     }
                     $cardInstance->createCardInstance($newLayoutId, $cardInstanceParamArray, $row, $column, $cardHeight, $cardWidth, 'youTube', $thisCard['card_parameters']['content']['card_name'], 'F');
+
+                    break;
+                }
+                case 'loginLink':{
+                    $cardInstanceParams = $thisInstanceParams->getCardInstanceParams($thisCard['id']);
+                    $cardInstanceParamArray = array();
+                    $row = $thisCard['card_position'][0];
+                    $column = $thisCard['card_position'][1];
+                    $cardHeight = $thisCard['card_position'][2];
+                    $cardWidth = $thisCard['card_position'][3];
+                    foreach($cardInstanceParams as $thisParam){
+                        $newParam = array($thisParam->parameter_key, $thisParam->parameter_value, $thisParam->isCss);
+                        $cardInstanceParamArray[]=$newParam;
+                    }
+                    $cardInstance->createCardInstance($newLayoutId, $cardInstanceParamArray, $row, $column, $cardHeight, $cardWidth, 'loginLink', $thisCard['card_parameters']['content']['card_name'], 'F');
 
                     break;
                 }
