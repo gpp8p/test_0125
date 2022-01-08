@@ -69,10 +69,25 @@ class SpCard
             }
             case "youTube":{
                 $ytubeUrl = $thisCardContent['ytubeUrl'];
-                $ytubeUrl = str_replace('watch?v=', 'embed/', $ytubeUrl);
+                $ytElements = explode(" ", $ytubeUrl);
+//                $ytubeUrl = str_replace('watch?v=', 'embed/', $ytubeUrl);
                 $spanHeight = intval($thisCardContent['spanHeight']*1.12);
                 $spanWidth = intval($thisCardContent['spanWidth']*1.04);
-                $this->thisCardContent = "<iframe src='".$ytubeUrl."' width='".$spanWidth."' height='".$spanHeight."' ></iframe>";
+                $elCount = 0;
+                $editedYt = '';
+                foreach($ytElements as $thisYtElement){
+                    if(str_contains($thisYtElement, 'width=')){
+                        $ytElements[$elCount]= 'width="'.$spanWidth.'"';
+                    }
+                    if(str_contains($thisYtElement, 'height=')){
+                        $ytElements[$elCount]= 'height="'.$spanHeight.'"';
+                    }
+                    $editedYt = $editedYt.$ytElements[$elCount]." ";
+                    $elCount++;
+                }
+
+                $this->thisCardContent=$editedYt;
+//                $this->thisCardContent = "<iframe src='".$ytubeUrl."' width='".$spanWidth."' height='".$spanHeight."' ></iframe>";
                 break;
             }
             case 'pdf':{
