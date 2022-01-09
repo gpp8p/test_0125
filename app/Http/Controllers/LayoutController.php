@@ -73,6 +73,7 @@ class LayoutController extends Controller
         }else{
             $backgroundImage = '';
             $layoutBackgroundColor = $inData['backgroundColor'];
+
             $backgroundDisplay='';
         }
         if($template){
