@@ -449,12 +449,14 @@ class cardInstanceController extends Controller
                     }
                     $thisLink = new Link;
                     $thisLink->removeLinksForCardId($cardId, 'U');
+                    $showOrder = 0;
                     foreach ($documentLinks as $thisDocumentLink) {
                         $thisDescription = 'link from card:' . $cardId . ' to card:' . $thisDocumentLink;
                         $linkUrl = 'http://localhost:8080/displayLayout/' . $thisDocumentLink;
                         $isExternal = 0;
                         $layoutLinkTo = $thisDocumentLink;
-                        $thisLink->saveLink($org, $layoutId, $cardId, $thisDescription, $linkUrl, $isExternal, $layoutLinkTo, 'U');
+                        $thisLink->saveLink($org, $layoutId, $cardId, $thisDescription, $linkUrl, $isExternal, $layoutLinkTo, 'U', $showOrder);
+                        $showOrder++;
                     }
                     $pattern = "<img src=\"http://localhost:8000/storage/";
                     $patternFoundAt = 0;
@@ -483,7 +485,8 @@ class cardInstanceController extends Controller
                         $linkUrl = $newImageLink;
                         $isExternal = false;
                         $layoutLinkTo = $layoutId;
-                        $thisLink->saveLink($org, $layoutId, $cardId, $imgDescription, $linkUrl, $isExternal, $layoutLinkTo, 'I');
+                        $thisLink->saveLink($org, $layoutId, $cardId, $imgDescription, $linkUrl, $isExternal, $layoutLinkTo, 'I', $showOrder);
+                        $showOrder++;
                     }
 
 
