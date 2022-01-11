@@ -75,4 +75,19 @@ class link extends Model
         }
 
     }
+    public function isLinkInCard($cardId, $layoutId){
+        $query = "select id from links where card_instance_id = ? and layout_id = ?";
+        try {
+            $selectedLinks = DB::select($query, [$cardId, $layoutId]);
+            if(count($selectedLinks)>0){
+                return true;
+            }else{
+                return false;
+            }
+        }catch (Exception $e){
+            throw new Exception('error '.$e.getMessage().'Checking existance of a link');
+        }
+
+    }
+
 }

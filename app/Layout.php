@@ -718,6 +718,15 @@ class Layout extends Model
         return $thisCss;
 
     }
+    public function getLayoutDescription($layoutId){
+        $query = "select description, menu_label, template from layouts where id = ?";
+        try {
+            $selectedLayouts = DB::select($query, [$layoutId]);
+        }catch (Exception $e){
+            throw new Exception('error '.$e.getMessage().' fetching layout description: '.$layoutId);
+        }
+
+    }
 
     public function updateCardInLayout(){
         return;   // don't want to run this again

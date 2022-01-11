@@ -38,6 +38,28 @@ class linkController extends Controller
         }
     }
 
+    public function addCurrentLayout(Request $request){
+        $inData =  $request->all();
+        $thisCardId = $inData['card_instance_id'];
+        $thisOrgId = $inData['org_id'];
+        $thisLayoutId = $inData['layout_id'];
+        $thisLinkInstance = new link;
+        if($thisLinkInstance->isLinkInCard($thisCardId, $thisLayoutId)){
+            return 'already linked';
+        }else{
+            $thisLayout = new Layout;
+            $layoutInfo = $thisLayout->getLayoutDescription($thisLayoutId);
+            $thisDescription = $layoutInfo[0]->description;
+            $thisLinkUrl = "http://localhost:8080/displayLayout/".$thisLayoutId;
+            try {
+                $thisLinkInstance->saveLink($thisOrgId, $thisLayoutId, $thisCardId, $thisDescription, $thisLinkUrl, 0, $thisLayoutId, 'U');
+                return "ok";
+            } catch (\Exception $e) {
+                return "Error ".$e;
+            }
+        }
+    }
+
     public function deleteLink(Request $request){
         $inData =  $request->all();
         $linkIdToDelete = $inData['linkId'];
