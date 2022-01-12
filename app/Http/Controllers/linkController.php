@@ -47,12 +47,14 @@ class linkController extends Controller
         if($thisLinkInstance->isLinkInCard($thisCardId, $thisLayoutId)){
             return 'already linked';
         }else{
+            $currrentLinks = $thisLinkInstance->getLinksForCardId($thisCardId);
+            $currentLinkCount = count($currrentLinks);
             $thisLayout = new Layout;
             $layoutInfo = $thisLayout->getLayoutDescription($thisLayoutId);
             $thisDescription = $layoutInfo[0]->description;
             $thisLinkUrl = "http://localhost:8080/displayLayout/".$thisLayoutId;
             try {
-                $thisLinkInstance->saveLink($thisOrgId, $thisLayoutId, $thisCardId, $thisDescription, $thisLinkUrl, 0, $thisLayoutId, 'U');
+                $thisLinkInstance->saveLink($thisOrgId, $thisLayoutId, $thisCardId, $thisDescription, $thisLinkUrl, 0, $thisLayoutId, 'U', $currentLinkCount);
                 return "ok";
             } catch (\Exception $e) {
                 return "Error ".$e;

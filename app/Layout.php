@@ -722,6 +722,7 @@ class Layout extends Model
         $query = "select description, menu_label, template from layouts where id = ?";
         try {
             $selectedLayouts = DB::select($query, [$layoutId]);
+            return $selectedLayouts;
         }catch (Exception $e){
             throw new Exception('error '.$e.getMessage().' fetching layout description: '.$layoutId);
         }
