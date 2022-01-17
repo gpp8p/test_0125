@@ -13,6 +13,7 @@ use Exception;
 use Storage;
 use File;
 
+
 class cardInstanceController extends Controller
 {
     public function getLayoutCardInstances(Request $request){
@@ -405,6 +406,10 @@ class cardInstanceController extends Controller
         $layoutId = $inData['layoutId'];
         $cardId = $decodedPost[0];
         $thisInstanceParams = new InstanceParams;
+        $cardType = '';
+        $indexFile = false;
+        $cardTextContent = '';
+        $keyWords = '';
         DB::beginTransaction();
         DB::table('instance_params')->where([
             ['card_instance_id', '=', $decodedPost[0]],
@@ -433,7 +438,15 @@ class cardInstanceController extends Controller
                     $cardType = $value;
                 } else
 */
+                if($key == 'keyWords'){
+                    $keyWords = $value;
+                }
+                if($key == 'indexFile'){
+                    $indexFile = $value;
+                }
                 if ($key == 'cardText') {
+                    $cardType = "richText";
+                    $cardTextContent = $value;
                     $pattern = "displayLayout/";
                     $patternFoundAt = 0;
                     $documentLinks = array();

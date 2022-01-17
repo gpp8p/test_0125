@@ -90,6 +90,7 @@ Route::group([
     Route::get('availableTemplates', 'layoutController@getAvailableTemplates')->name('getAvailableTemplates');
     Route::post('cloneTemplate', 'layoutController@cloneTemplate')->name('cloneTemplate');
     Route::post('addCurrentLayout', 'linkController@addCurrentLayout')->name('addCurrentLayout');
+    Route::get('solrSimpleQuery', 'solrSearchController@simpleQuery')->name('solrSimpleQuery');
 
 
 
