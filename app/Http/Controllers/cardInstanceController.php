@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\Constants;
 use Illuminate\Http\Request;
 use App\CardInstances;
 use App\InstanceParams;
 use App\layout;
 use App\link;
 use App\Org;
+use App\Solr;
 use Illuminate\Support\Facades\DB;
 use Exception;
 use Storage;
@@ -409,6 +411,7 @@ class cardInstanceController extends Controller
         $cardType = '';
         $indexFile = false;
         $cardTextContent = '';
+        $contentFileName = '';
         $keyWords = '';
         DB::beginTransaction();
         DB::table('instance_params')->where([
@@ -429,6 +432,9 @@ class cardInstanceController extends Controller
         }
         $cardTitle='';
         $cardType = '';
+        $contentFileName = '';
+        $accessType = '';
+        $documentType = '';
         try {
             foreach ($decodedPost[1] as $key => $value) {
 /*
@@ -443,6 +449,12 @@ class cardInstanceController extends Controller
                 }
                 if($key == 'indexFile'){
                     $indexFile = $value;
+                }
+                if($key == 'accessType'){
+                    $accessType = $value;
+                }
+                if($key == 'documentType'){
+                    $documentType = $value;
                 }
                 if ($key == 'cardText') {
                     $cardType = "richText";
@@ -514,8 +526,6 @@ class cardInstanceController extends Controller
                 }else {
                     $thisInstanceParams->createInstanceParam($key, $value, $decodedPost[0], false, $domElement);
                 }
-
-                //            print "$key => $value\n";
             }
         } catch (Exception $e) {
             DB::rollBack();
@@ -526,6 +536,12 @@ class cardInstanceController extends Controller
             $thisCardInstance->updateDocumentTitle($cardId, $cardTitle);
         }
 */
+        if($indexFile){
+            $thisSolr = new Solr;
+            $thisConstants = new Constants;
+
+            $thisSolr->addFileToCollection($thisConstants->Options['collection'], $layoutId, $cardId, $contentFileName, $keyWords, $accessType, $documentType  );
+        }
         DB::commit();
 
         return "Ok";
