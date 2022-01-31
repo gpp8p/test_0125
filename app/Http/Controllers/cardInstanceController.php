@@ -435,6 +435,7 @@ class cardInstanceController extends Controller
         $contentFileName = '';
         $accessType = '';
         $documentType = '';
+        $createDate = '';
         try {
             foreach ($decodedPost[1] as $key => $value) {
 /*
@@ -455,6 +456,9 @@ class cardInstanceController extends Controller
                 }
                 if($key == 'documentType'){
                     $documentType = $value;
+                }
+                if($key == 'createDate'){
+                    $createDate = $value;
                 }
                 if ($key == 'cardText') {
                     $cardType = "richText";
@@ -540,7 +544,7 @@ class cardInstanceController extends Controller
             $thisSolr = new Solr;
             $thisConstants = new Constants;
 
-            $thisSolr->addFileToCollection($thisConstants->Options['collection'], $layoutId, $cardId, $contentFileName, $keyWords, $accessType, $documentType  );
+            $thisSolr->addFileToCollection($thisConstants->Options['collection'], $layoutId, $cardId, $contentFileName, $keyWords, $accessType, $documentType, $createDate  );
         }
         DB::commit();
 

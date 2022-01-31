@@ -758,4 +758,14 @@ class Layout extends Model
         }
     }
 
+    public function getLayoutInfo($layoutIds){
+        $query = "select id, menu_label, description from layouts where id in (".$layoutIds.")";
+        try {
+            $selectedLayouts = DB::select($query);
+            return $selectedLayouts;
+        }catch (Exception $e){
+            throw new Exception('error '.$e.getMessage().' fetching layout description: '.$layoutIds);
+        }
+    }
+
 }
