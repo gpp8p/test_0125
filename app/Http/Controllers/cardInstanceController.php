@@ -412,6 +412,7 @@ class cardInstanceController extends Controller
         $indexFile = false;
         $cardTextContent = '';
         $contentFileName = '';
+        $fileLocation = '';
         $keyWords = '';
         DB::beginTransaction();
         DB::table('instance_params')->where([
@@ -436,6 +437,7 @@ class cardInstanceController extends Controller
         $accessType = '';
         $documentType = '';
         $createDate = '';
+        $cardType ='';
         try {
             foreach ($decodedPost[1] as $key => $value) {
 /*
@@ -459,6 +461,12 @@ class cardInstanceController extends Controller
                 }
                 if($key == 'createDate'){
                     $createDate = $value;
+                }
+                if($key=='cardType'){
+                    $cardType = $value;
+                }
+                if($key=='fileLocation'){
+                    $fileLocation = $value;
                 }
                 if ($key == 'cardText') {
                     $cardType = "richText";
@@ -527,6 +535,7 @@ class cardInstanceController extends Controller
                     $contentFileName = '/spcontent/' . $org . '/cardText/rtcontent' . $decodedPost[0];
                     Storage::disk('local')->put($contentFileName, $value);
                     $thisInstanceParams->createInstanceParam($key, $contentFileName, $decodedPost[0], false, $domElement);
+
                 }else {
                     $thisInstanceParams->createInstanceParam($key, $value, $decodedPost[0], false, $domElement);
                 }
@@ -543,6 +552,9 @@ class cardInstanceController extends Controller
         if($indexFile){
             $thisSolr = new Solr;
             $thisConstants = new Constants;
+            if($cardType == 'pdf'){
+                $contentFileName = $fileLocation;
+            }
 
             $thisSolr->addFileToCollection($thisConstants->Options['collection'], $layoutId, $cardId, $contentFileName, $keyWords, $accessType, $documentType, $createDate  );
         }
