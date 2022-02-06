@@ -91,6 +91,7 @@ Route::group([
     Route::post('cloneTemplate', 'layoutController@cloneTemplate')->name('cloneTemplate');
     Route::post('addCurrentLayout', 'linkController@addCurrentLayout')->name('addCurrentLayout');
     Route::get('solrSimpleQuery', 'solrSearchController@simpleQuery')->name('solrSimpleQuery');
+    Route::post('updateCardName', 'cardInstanceController@updateCardName');
 
 
 

@@ -20,7 +20,7 @@ class CreateCardInstancesTable extends Migration
             $table->integer('col');
             $table->integer('height');
             $table->integer('width');
-            $table->string('card_name', 40);
+            $table->string('card_name', 80);
             $table->char('restricted', 1);
             $table->unsignedBigInteger('layout_id')->nullable($value = true);
             $table->unsignedBigInteger('view_type_id');

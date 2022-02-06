@@ -142,7 +142,14 @@ class CardInstances extends Model
 
     }
 
-
+    public function updateCardName($cardId, $newCardName){
+        $query = "update card_instances set card_name = ? where id = ?";
+        try {
+            $cardData = DB::select($query, [$newCardName, $cardId]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
 
     public function updateCardSize($cardId, $row, $column, $height, $width, $layoutId){
         $query = "update card_in_layout set row = ?, col = ?, height = ?, width = ? where layout_id = ? and card_instance_id = ?";

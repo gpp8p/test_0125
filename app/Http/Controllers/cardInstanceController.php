@@ -399,6 +399,14 @@ class cardInstanceController extends Controller
 
         return "Ok";
     }
+    public function updateCardName(Request $request){
+        $inData =  $request->all();
+        $newCardName = $inData['newCardName'];
+        $cardId = $inData['cardId'];
+        $thisCardInstance = new CardInstances;
+        $thisCardInstance->updateCardName($cardId, $newCardName);
+        return "ok";
+    }
 
     public function saveCardContent(Request $request){
         $inData =  $request->all();
@@ -555,12 +563,25 @@ class cardInstanceController extends Controller
             if($cardType == 'pdf'){
                 $contentFileName = $fileLocation;
             }
+            if($cardType == 'youtube'){
+
+            }
 
             $thisSolr->addFileToCollection($thisConstants->Options['collection'], $layoutId, $cardId, $contentFileName, $keyWords, $accessType, $documentType, $createDate  );
         }
         DB::commit();
 
         return "Ok";
+    }
+
+    private function storeContent($org, $content, $cardId){
+        $orgDirectory = '/spcontent/' . $org;
+        if (!Storage::exists($orgDirectory)) {
+            Storage::makeDirectory($orgDirectory);
+            Storage::makeDirectory($orgDirectory . '/cardText');
+        }
+        $contentFileName = '/spcontent/' . $org . '/cardText/rtcontent' . $cardId;
+        Storage::disk('local')->put($contentFileName, $content);
     }
     private function findNextLink($content,$startingAt, $pattern){
 //        $pattern = "displayLayout/";

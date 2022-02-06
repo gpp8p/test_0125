@@ -22,12 +22,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="">
+    <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="work on solr search - advanced options - date ranges may still be a little but screwey">
+      <change afterPath="$PROJECT_DIR$/phpi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xdebug_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/CardInstances.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/CardInstances.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/solrSearchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/solrSearchController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Layout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Solr.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Solr.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_21_160953_create_card_instances_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_21_160953_create_card_instances_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,14 +55,20 @@
   <component name="GithubDefaultAccount">
     <option name="defaultAccountId" value="16344490-6afc-492f-b0a2-ba6d9ba3f9b7" />
   </component>
-  <component name="PhpDebugGeneral" break_at_first_line="true" show_user_defined_constants="false" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpDebugGeneral" xdebug_debug_port="9003" break_at_first_line="true" show_user_defined_constants="false">
+    <xdebug_debug_ports port="9003" />
+  </component>
   <component name="PhpServers">
     <servers>
       <server host="localhost" id="c10bb1c5-894d-47ee-93ce-511a8f3c7051" name="Artisan" port="8000" />
       <server host="127.0.0.1" id="5aa6220f-6296-4dcf-9224-4bda7b083f4b" name="127.0.0.1" port="8000" />
     </servers>
   </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="PhpWebServerValidation" deployment_server_id="7dc40e0d-8f6d-4181-a459-3d56515038f8" path_to_validation_script="$PROJECT_DIR$" selected_validation_type="LOCAL" web_path_to_validation_script="http://localhost:8000" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.4">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/scrivo/highlight.php" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
@@ -173,6 +182,7 @@
       <path value="$PROJECT_DIR$/vendor/guzzle/http" />
       <path value="$PROJECT_DIR$/vendor/guzzle/common" />
       <path value="$PROJECT_DIR$/vendor/guzzle/parser" />
+      <path value="/usr/local/Cellar/php@7.2/7.2.24/share/php@7.2/pear" />
     </include_path>
   </component>
   <component name="ProjectId" id="1nZuADZJCX4Kpk90Djfxrltkl0K" />
@@ -201,7 +211,7 @@
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -217,16 +227,25 @@
       <recent name="$PROJECT_DIR$/app" />
     </key>
   </component>
-  <component name="RunManager" selected="PHP Web Page.Unnamed">
+  <component name="RunManager" selected="PHP Web Page.xdebug">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
-    <configuration name="Unnamed" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" nameIsGenerated="true" server_name="Artisan">
+    <configuration name="built-in" type="PhpBuiltInWebServerConfigurationType" factoryName="PHP Built-in Web Server" document_root="$PROJECT_DIR$" port="8000" router_script="$PROJECT_DIR$/server.php" use_router_script="true">
+      <CommandLine parameters="-dxdebug.remote_enable=1 -dxdebug.remote_mode=req -dxdebug.remote_port=9000 -dxdebug.remote_host=127.0.0.1" />
+      <method v="2" />
+    </configuration>
+    <configuration name="http-request" type="PhpHttpRequestRunConfigurationType" factoryName="PHP HTTP Request" server_name="Artisan">
+      <method v="2" />
+    </configuration>
+    <configuration name="xdebug" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" browser="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" server_name="Artisan">
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="PHP Web Page.Unnamed" />
+      <item itemvalue="PHP Built-in Web Server.built-in" />
+      <item itemvalue="PHP HTTP Request.http-request" />
+      <item itemvalue="PHP Web Page.xdebug" />
       <item itemvalue="PHPUnit.phpunit.xml" />
     </list>
   </component>
@@ -560,21 +579,20 @@
       <workItem from="1643419480685" duration="465000" />
       <workItem from="1643466476542" duration="1400000" />
       <workItem from="1643551692545" duration="317000" />
-      <workItem from="1643637445962" duration="10987000" />
-    </task>
-    <task id="LOCAL-00102" summary="migrations for links and cord_in_layout">
-      <created>1632257890024</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1632257890025</updated>
-    </task>
-    <task id="LOCAL-00103" summary="seeds and migrations for archive feature">
-      <created>1632351390042</created>
-      <option name="number" value="00103" />
-      <option name="presentableId" value="LOCAL-00103" />
-      <option name="project" value="LOCAL" />
-      <updated>1632351390042</updated>
+      <workItem from="1643637445962" duration="12603000" />
+      <workItem from="1643745184251" duration="1244000" />
+      <workItem from="1643753365982" duration="3723000" />
+      <workItem from="1643818047766" duration="3759000" />
+      <workItem from="1643822279190" duration="4000" />
+      <workItem from="1643822441593" duration="3597000" />
+      <workItem from="1643827311550" duration="2115000" />
+      <workItem from="1643829863817" duration="3528000" />
+      <workItem from="1643853778255" duration="24000" />
+      <workItem from="1643853900052" duration="4000" />
+      <workItem from="1643895267994" duration="4669000" />
+      <workItem from="1643994334227" duration="2297000" />
+      <workItem from="1644086019801" duration="3430000" />
+      <workItem from="1644110536900" duration="2493000" />
     </task>
     <task id="LOCAL-00104" summary="get document default labels">
       <created>1633725782928</created>
@@ -905,7 +923,21 @@
       <option name="project" value="LOCAL" />
       <updated>1642815470406</updated>
     </task>
-    <option name="localTasksCounter" value="151" />
+    <task id="LOCAL-00151" summary="work on solr search - advanced options - date ranges may still be a little but screwey">
+      <created>1643666183156</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
+      <option name="project" value="LOCAL" />
+      <updated>1643666183156</updated>
+    </task>
+    <task id="LOCAL-00152" summary="fixed pdf's not being passed along to solr when saved">
+      <created>1643902109797</created>
+      <option name="number" value="00152" />
+      <option name="presentableId" value="LOCAL-00152" />
+      <option name="project" value="LOCAL" />
+      <updated>1643902109797</updated>
+    </task>
+    <option name="localTasksCounter" value="153" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -921,12 +953,9 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="start on editing of layout params" />
-    <MESSAGE value="more on editing of layout params" />
     <MESSAGE value="update layout" />
     <MESSAGE value="layoutBeingEdited passthru" />
     <MESSAGE value="saving a link menu" />
@@ -950,221 +979,32 @@
     <MESSAGE value="fix the link insert bug in textShow" />
     <MESSAGE value="add current layout" />
     <MESSAGE value="work on solr search" />
-    <option name="LAST_COMMIT_MESSAGE" value="work on solr search" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="1036" y="301" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1642711257742">
-      <screen x="0" y="25" width="1920" height="1001" />
-    </state>
-    <state x="1036" y="301" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.25.1920.1000@0.25.1920.1000" timestamp="1640535975236" />
-    <state x="1036" y="301" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.25.1920.1001@0.25.1920.1001" timestamp="1642711257742" />
-    <state x="1036" y="301" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.25.1920.999@0.25.1920.999" timestamp="1635385031804" />
-    <state x="1130" y="404" key="#xdebugger.evaluate" timestamp="1642868135299">
-      <screen x="0" y="25" width="1920" height="1000" />
-    </state>
-    <state x="1130" y="404" key="#xdebugger.evaluate/0.25.1920.1000@0.25.1920.1000" timestamp="1642868135299" />
-    <state x="271" y="183" key="CommitChangelistDialog2" timestamp="1642815470208">
-      <screen x="0" y="25" width="1920" height="1000" />
-    </state>
-    <state x="253" y="190" key="CommitChangelistDialog2/0.25.1792.1042@0.25.1792.1042" timestamp="1637774925018" />
-    <state x="271" y="183" key="CommitChangelistDialog2/0.25.1920.1000@0.25.1920.1000" timestamp="1642815470208" />
-    <state x="271" y="183" key="CommitChangelistDialog2/0.25.1920.1001@0.25.1920.1001" timestamp="1641090683597" />
-    <state x="271" y="183" key="CommitChangelistDialog2/0.25.1920.999@0.25.1920.999" timestamp="1638846052699" />
-    <state x="262" y="214" width="1400" height="710" key="DiffContextDialog" timestamp="1640743211109">
-      <screen x="0" y="25" width="1920" height="1000" />
-    </state>
-    <state x="262" y="214" width="1400" height="710" key="DiffContextDialog/0.25.1920.1000@0.25.1920.1000" timestamp="1640743211109" />
-    <state width="1558" height="210" key="GridCell.Tab.0.bottom" timestamp="1643665394241">
-      <screen x="0" y="25" width="1920" height="1000" />
-    </state>
-    <state width="1558" height="210" key="GridCell.Tab.0.bottom/0.25.1920.1000@0.25.1920.1000" timestamp="1643665394241" />
-    <state width="1558" height="210" key="GridCell.Tab.0.bottom/0.25.1920.1001@0.25.1920.1001" timestamp="1642729783504" />
-    <state width="1558" height="210" key="GridCell.Tab.0.bottom/0.25.1920.999@0.25.1920.999" timestamp="1643051089405" />
-    <state width="1558" height="210" key="GridCell.Tab.0.center" timestamp="1643665394241">
-      <screen x="0" y="25" width="1920" height="1000" />
-    </state>
-    <state width="1558" height="210" key="GridCell.Tab.0.center/0.25.1920.1000@0.25.1920.1000" timestamp="1643665394241" />
-    <state width="1558" height="210" key="GridCell.Tab.0.center/0.25.1920.1001@0.25.1920.1001" timestamp="1642729783503" />
-    <state width="1558" height="210" key="GridCell.Tab.0.center/0.25.1920.999@0.25.1920.999" timestamp="1643051089404" />
-    <state width="1558" height="210" key="GridCell.Tab.0.left" timestamp="1643665394241">
-      <screen x="0" y="25" width="1920" height="1000" />
-    </state>
-    <state width="1558" height="210" key="GridCell.Tab.0.left/0.25.1920.1000@0.25.1920.1000" timestamp="1643665394241" />
-    <state width="1558" height="210" key="GridCell.Tab.0.left/0.25.1920.1001@0.25.1920.1001" timestamp="1642729783503" />
-    <state width="1558" height="210" key="GridCell.Tab.0.left/0.25.1920.999@0.25.1920.999" timestamp="1643051089404" />
-    <state width="1558" height="210" key="GridCell.Tab.0.right" timestamp="1643665394241">
-      <screen x="0" y="25" width="1920" height="1000" />
-    </state>
-    <state width="1558" height="210" key="GridCell.Tab.0.right/0.25.1920.1000@0.25.1920.1000" timestamp="1643665394241" />
-    <state width="1558" height="210" key="GridCell.Tab.0.right/0.25.1920.1001@0.25.1920.1001" timestamp="1642729783503" />
-    <state width="1558" height="210" key="GridCell.Tab.0.right/0.25.1920.999@0.25.1920.999" timestamp="1643051089404" />
-    <state width="1558" height="210" key="GridCell.Tab.1.bottom" timestamp="1643665394242">
-      <screen x="0" y="25" width="1920" height="1000" />
-    </state>
-    <state width="1558" height="210" key="GridCell.Tab.1.bottom/0.25.1920.1000@0.25.1920.1000" timestamp="1643665394242" />
-    <state width="1558" height="210" key="GridCell.Tab.1.bottom/0.25.1920.1001@0.25.1920.1001" timestamp="1642729783505" />
-    <state width="1558" height="210" key="GridCell.Tab.1.bottom/0.25.1920.999@0.25.1920.999" timestamp="1643051089405" />
-    <state width="1558" height="210" key="GridCell.Tab.1.center" timestamp="1643665394242">
-      <screen x="0" y="25" width="1920" height="1000" />
-    </state>
-    <state width="1558" height="210" key="GridCell.Tab.1.center/0.25.1920.1000@0.25.1920.1000" timestamp="1643665394242" />
-    <state width="1558" height="210" key="GridCell.Tab.1.center/0.25.1920.1001@0.25.1920.1001" timestamp="1642729783504" />
-    <state width="1558" height="210" key="GridCell.Tab.1.center/0.25.1920.999@0.25.1920.999" timestamp="1643051089405" />
-    <state width="1558" height="210" key="GridCell.Tab.1.left" timestamp="1643665394242">
-      <screen x="0" y="25" width="1920" height="1000" />
-    </state>
-    <state width="1558" height="210" key="GridCell.Tab.1.left/0.25.1920.1000@0.25.1920.1000" timestamp="1643665394242" />
-    <state width="1558" height="210" key="GridCell.Tab.1.left/0.25.1920.1001@0.25.1920.1001" timestamp="1642729783504" />
-    <state width="1558" height="210" key="GridCell.Tab.1.left/0.25.1920.999@0.25.1920.999" timestamp="1643051089405" />
-    <state width="1558" height="210" key="GridCell.Tab.1.right" timestamp="1643665394242">
-      <screen x="0" y="25" width="1920" height="1000" />
-    </state>
-    <state width="1558" height="210" key="GridCell.Tab.1.right/0.25.1920.1000@0.25.1920.1000" timestamp="1643665394242" />
-    <state width="1558" height="210" key="GridCell.Tab.1.right/0.25.1920.1001@0.25.1920.1001" timestamp="1642729783504" />
-    <state width="1558" height="210" key="GridCell.Tab.1.right/0.25.1920.999@0.25.1920.999" timestamp="1643051089405" />
-    <state x="781" y="496" key="NewPhpFileDialog" timestamp="1642558572548">
-      <screen x="0" y="25" width="1920" height="1000" />
-    </state>
-    <state x="781" y="496" key="NewPhpFileDialog/0.25.1920.1000@0.25.1920.1000" timestamp="1642558572548" />
-    <state x="621" y="246" key="Vcs.Push.Dialog.v2" timestamp="1642815493316">
-      <screen x="0" y="25" width="1920" height="1000" />
-    </state>
-    <state x="580" y="256" key="Vcs.Push.Dialog.v2/0.25.1792.1042@0.25.1792.1042" timestamp="1637774928284" />
-    <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.25.1920.1000@0.25.1920.1000" timestamp="1642815493316" />
-    <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.25.1920.1001@0.25.1920.1001" timestamp="1641090686712" />
-    <state x="621" y="246" key="Vcs.Push.Dialog.v2/0.25.1920.999@0.25.1920.999" timestamp="1638846055421" />
-    <state width="720" height="375" key="XDebugger.FullValuePopup" timestamp="1642784568845">
-      <screen x="0" y="25" width="1920" height="1000" />
-    </state>
-    <state width="720" height="375" key="XDebugger.FullValuePopup/0.25.1920.1000@0.25.1920.1000" timestamp="1642784568845" />
-    <state x="262" y="214" width="1400" height="710" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1640743211110">
-      <screen x="0" y="25" width="1920" height="1000" />
-    </state>
-    <state x="262" y="214" width="1400" height="710" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.25.1920.1000@0.25.1920.1000" timestamp="1640743211110" />
-    <state x="377" y="435" width="1240" height="591" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1642724536554">
-      <screen x="0" y="25" width="1920" height="1001" />
-    </state>
-    <state x="377" y="435" width="1240" height="590" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.25.1920.1000@0.25.1920.1000" timestamp="1641139850267" />
-    <state x="377" y="435" width="1240" height="591" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.25.1920.1001@0.25.1920.1001" timestamp="1642724536554" />
-    <state x="377" y="435" width="1240" height="589" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.25.1920.999@0.25.1920.999" timestamp="1635471494936" />
-    <state x="579" y="430" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1641843254687">
-      <screen x="0" y="25" width="1920" height="1000" />
-    </state>
-    <state x="579" y="430" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.25.1920.1000@0.25.1920.1000" timestamp="1641843254687" />
-    <state x="209" y="535" width="1507" height="490" key="find.popup" timestamp="1643638176463">
-      <screen x="0" y="25" width="1920" height="1000" />
-    </state>
-    <state x="209" y="535" width="1507" height="490" key="find.popup/0.25.1920.1000@0.25.1920.1000" timestamp="1643638176463" />
-    <state x="209" y="535" width="1507" height="491" key="find.popup/0.25.1920.1001@0.25.1920.1001" timestamp="1642724026536" />
-    <state x="209" y="534" width="1507" height="490" key="find.popup/0.25.1920.999@0.25.1920.999" timestamp="1635987644957" />
-    <state x="715" y="292" width="670" height="677" key="search.everywhere.popup" timestamp="1641139924717">
-      <screen x="0" y="25" width="1920" height="1000" />
-    </state>
-    <state x="715" y="292" width="670" height="677" key="search.everywhere.popup/0.25.1920.1000@0.25.1920.1000" timestamp="1641139924717" />
-    <state x="715" y="292" width="670" height="676" key="search.everywhere.popup/0.25.1920.999@0.25.1920.999" timestamp="1635987489735" />
+    <MESSAGE value="work on solr search - advanced options - date ranges may still be a little but screwey" />
+    <MESSAGE value="fixed pdf's not being passed along to solr when saved" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed pdf's not being passed along to solr when saved" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Classes/SpCard.php</url>
-          <line>93</line>
-          <option name="timeStamp" value="53" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/linkController.php</url>
-          <line>41</line>
-          <option name="timeStamp" value="55" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/LayoutController.php</url>
-          <line>151</line>
-          <option name="timeStamp" value="56" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
-          <line>222</line>
-          <option name="timeStamp" value="68" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
-          <line>403</line>
-          <option name="timeStamp" value="69" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
-          <line>314</line>
-          <option name="timeStamp" value="70" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/vendor/cpliakas/psolr/src/PSolr/Client/SolrClient.php</url>
-          <line>160</line>
-          <option name="timeStamp" value="72" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/vendor/guzzle/http/Guzzle/Http/Client.php</url>
-          <line>200</line>
-          <option name="timeStamp" value="73" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
-          <line>542</line>
-          <option name="timeStamp" value="77" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
-          <line>546</line>
-          <option name="timeStamp" value="84" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
-          <line>448</line>
-          <option name="timeStamp" value="85" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/solrSearchController.php</url>
-          <line>74</line>
-          <option name="timeStamp" value="93" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Layout.php</url>
-          <line>761</line>
-          <option name="timeStamp" value="95" />
+          <line>350</line>
+          <option name="timeStamp" value="107" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/solrSearchController.php</url>
-          <line>11</line>
-          <option name="timeStamp" value="100" />
+          <url>file://$PROJECT_DIR$/app/CardInstances.php</url>
+          <line>145</line>
+          <option name="timeStamp" value="116" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/solrSearchController.php</url>
-          <line>63</line>
-          <option name="timeStamp" value="101" />
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
+          <line>560</line>
+          <option name="timeStamp" value="118" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/solrSearchController.php</url>
-          <line>24</line>
-          <option name="timeStamp" value="102" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/solrSearchController.php</url>
-          <line>45</line>
-          <option name="timeStamp" value="103" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Solr.php</url>
-          <line>69</line>
-          <option name="timeStamp" value="104" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Solr.php</url>
-          <line>53</line>
-          <option name="timeStamp" value="105" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/solrSearchController.php</url>
-          <line>60</line>
-          <option name="timeStamp" value="106" />
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
+          <line>478</line>
+          <option name="timeStamp" value="119" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
