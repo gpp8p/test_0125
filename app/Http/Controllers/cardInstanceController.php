@@ -447,6 +447,7 @@ class cardInstanceController extends Controller
         $createDate = '';
         $cardText ='';
         $createDate='';
+        $ytubeUrl = '';
         foreach ($decodedPost[1] as $key => $value) {
             if ($key == 'keyWords') {
                 $keyWords = $value;
@@ -474,6 +475,9 @@ class cardInstanceController extends Controller
             }
             if ($key == 'title') {
                 $cardTitle = $value;
+            }
+            if ($key == 'ytubeUrl'){
+                $ytubeUrl = $value;
             }
         }
 
@@ -507,15 +511,17 @@ class cardInstanceController extends Controller
                 $thisLink->saveLink($org, $layoutId, $cardId, $thisDescription, $linkUrl, $isExternal, $layoutLinkTo, 'U', $showOrder);
                 $showOrder++;
             }
-            $pattern = $thisConstants->Options['storageLinkPattern'];
+            $patternb = $thisConstants->Options['storageLinkPattern'];
+            $pattern = "<img src=\"http://localhost:8000/storage/";
             $patternFoundAt = 0;
             $imageLinks = array();
-            $imageLinkAt = strpos($value, $pattern, $patternFoundAt);
+            $imageLinkAt = strpos($cardText, $pattern, $patternFoundAt);
+            $ib = strpos($cardText, $patternb, $patternFoundAt);
             if ($imageLinkAt != false) {
-                $nextLink = $this->findNextLink($value, 0, $pattern);
+                $nextLink = $this->findNextLink($cardText, 0, $pattern);
                 array_push($imageLinks, $nextLink[0]);
                 while ($nextLink != false) {
-                    $nextLink = $this->findNextLink($value, $nextLink[1], $pattern);
+                    $nextLink = $this->findNextLink($cardText, $nextLink[1], $pattern);
                     if ($nextLink == false) break;
                     array_push($imageLinks, $nextLink[0]);
                 }
@@ -558,7 +564,7 @@ class cardInstanceController extends Controller
             $thisCardInstance = new CardInstances();
             $thisCardName = $thisCardInstance->getCardName($cardId);
             $contentFileName = $this->storeContent($org,$thisCardName, $cardId );
-            $thisInstanceParams->createInstanceParam('ytubeUrl', $contentFileName, $decodedPost[0], false, $domElement);
+            $thisInstanceParams->createInstanceParam('title', $thisCardName, $decodedPost[0], false, $domElement);
         }
 
 
@@ -673,7 +679,7 @@ class cardInstanceController extends Controller
                 $contentFileName = $fileLocation;
             }
             if($cardType == 'youtube'){
-
+                $contentFileName = $fileLocation;
             }
 
             $thisSolr->addFileToCollection($thisConstants->Options['collection'], $layoutId, $cardId, $contentFileName, $keyWords, $accessType, $documentType, $createDate  );
