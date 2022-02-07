@@ -416,12 +416,8 @@ class cardInstanceController extends Controller
         $layoutId = $inData['layoutId'];
         $cardId = $decodedPost[0];
         $thisInstanceParams = new InstanceParams;
-        $cardType = '';
-        $indexFile = false;
-        $cardTextContent = '';
-        $contentFileName = '';
-        $fileLocation = '';
-        $keyWords = '';
+        $thisConstants = new Constants;
+
         DB::beginTransaction();
         DB::table('instance_params')->where([
             ['card_instance_id', '=', $decodedPost[0]],
@@ -439,22 +435,136 @@ class cardInstanceController extends Controller
         } catch (Exception $e) {
             throw new Exception('error - could not clean out existing params');
         }
-        $cardTitle='';
         $cardType = '';
+        $indexFile = false;
+        $cardTextContent = '';
         $contentFileName = '';
+        $fileLocation = '';
+        $keyWords = '';
+        $cardTitle='';
         $accessType = '';
         $documentType = '';
         $createDate = '';
-        $cardType ='';
+        $cardText ='';
+        $createDate='';
+        foreach ($decodedPost[1] as $key => $value) {
+            if ($key == 'keyWords') {
+                $keyWords = $value;
+            }
+            if ($key == 'indexFile') {
+                $indexFile = $value;
+            }
+            if ($key == 'accessType') {
+                $accessType = $value;
+            }
+            if ($key == 'documentType') {
+                $documentType = $value;
+            }
+            if ($key == 'createDate') {
+                $createDate = $value;
+            }
+            if ($key == 'cardType') {
+                $cardType = $value;
+            }
+            if ($key == 'fileLocation') {
+                $fileLocation = $value;
+            }
+            if ($key == 'cardText') {
+                $cardText = $value;
+            }
+            if ($key == 'title') {
+                $cardTitle = $value;
+            }
+        }
+
+// a little fix-up here
+        if($cardText != '' and $cardType!='textShow'){
+            $cardType = 'textShow';
+        }
+        if($cardType == 'textShow'){
+            $cardTextContent = $cardText;
+            $pattern = "displayLayout/";
+            $patternFoundAt = 0;
+            $documentLinks = array();
+            $linkAt = strpos($value, $pattern, $patternFoundAt);
+            if ($linkAt != false) {
+                $nextLink = $this->findNextLink($value, 0, $pattern);
+                array_push($documentLinks, $nextLink[0]);
+                while ($nextLink != false) {
+                    $nextLink = $this->findNextLink($value, $nextLink[1], $pattern);
+                    if ($nextLink == false) break;
+                    array_push($documentLinks, $nextLink[0]);
+                }
+            }
+            $thisLink = new Link;
+            $thisLink->removeLinksForCardId($cardId, 'U');
+            $showOrder = 0;
+            foreach ($documentLinks as $thisDocumentLink) {
+                $thisDescription = 'link from card:' . $cardId . ' to card:' . $thisDocumentLink;
+                $linkUrl = $thisConstants->Options['linkUrlBase'] . $thisDocumentLink;
+                $isExternal = 0;
+                $layoutLinkTo = $thisDocumentLink;
+                $thisLink->saveLink($org, $layoutId, $cardId, $thisDescription, $linkUrl, $isExternal, $layoutLinkTo, 'U', $showOrder);
+                $showOrder++;
+            }
+            $pattern = $thisConstants->Options['storageLinkPattern'];
+            $patternFoundAt = 0;
+            $imageLinks = array();
+            $imageLinkAt = strpos($value, $pattern, $patternFoundAt);
+            if ($imageLinkAt != false) {
+                $nextLink = $this->findNextLink($value, 0, $pattern);
+                array_push($imageLinks, $nextLink[0]);
+                while ($nextLink != false) {
+                    $nextLink = $this->findNextLink($value, $nextLink[1], $pattern);
+                    if ($nextLink == false) break;
+                    array_push($imageLinks, $nextLink[0]);
+                }
+            }
+            $orgDirectory = '/images/' . $org;
+            if (!Storage::exists($orgDirectory)) {
+                Storage::makeDirectory($orgDirectory);
+            }
+            foreach ($imageLinks as $thisImageLink) {
+                $copyToLocation = $orgDirectory . '/' . $thisImageLink;
+                Storage::copy('file/' . $thisImageLink, $copyToLocation);
+                $tempFileReference = $thisConstants->Options['tempFileReference'] . $thisImageLink;
+                $newImageLink = $thisConstants->Options['newImageLink'] . $org . "/" . $thisImageLink;
+                $value = str_replace($tempFileReference, $newImageLink, $value);
+                $imgDescription = "Link to image";
+                $linkUrl = $newImageLink;
+                $isExternal = false;
+                $layoutLinkTo = $layoutId;
+                $thisLink->saveLink($org, $layoutId, $cardId, $imgDescription, $linkUrl, $isExternal, $layoutLinkTo, 'I', $showOrder);
+                $showOrder++;
+            }
+
+
+            $contentFileName = $this->storeContent($org,$cardText, $cardId );
+            foreach ($decodedPost[1] as $key => $value) {
+                if($key=='cardText'){
+                    $thisInstanceParams->createInstanceParam($key, $contentFileName, $decodedPost[0], false, $domElement);
+                }else{
+                    $thisInstanceParams->createInstanceParam($key, $value, $decodedPost[0], false, $domElement);
+                }
+            }
+        }else if($cardType=='pdf'){
+            foreach ($decodedPost[1] as $key => $value) {
+                $thisInstanceParams->createInstanceParam($key, $value, $decodedPost[0], false, $domElement);
+            }
+        }else if($cardType=='youTube'){
+            foreach ($decodedPost[1] as $key => $value) {
+                $thisInstanceParams->createInstanceParam($key, $value, $decodedPost[0], false, $domElement);
+            }
+            $thisCardInstance = new CardInstances();
+            $thisCardName = $thisCardInstance->getCardName($cardId);
+            $contentFileName = $this->storeContent($org,$thisCardName, $cardId );
+            $thisInstanceParams->createInstanceParam('ytubeUrl', $contentFileName, $decodedPost[0], false, $domElement);
+        }
+
+
+/*
         try {
             foreach ($decodedPost[1] as $key => $value) {
-/*
-                if ($key == 'title') {
-                    $cardTitle = $value;
-                } elseif($key=='cardType'){
-                    $cardType = $value;
-                } else
-*/
                 if($key == 'keyWords'){
                     $keyWords = $value;
                 }
@@ -559,7 +669,6 @@ class cardInstanceController extends Controller
 */
         if($indexFile){
             $thisSolr = new Solr;
-            $thisConstants = new Constants;
             if($cardType == 'pdf'){
                 $contentFileName = $fileLocation;
             }
@@ -582,6 +691,7 @@ class cardInstanceController extends Controller
         }
         $contentFileName = '/spcontent/' . $org . '/cardText/rtcontent' . $cardId;
         Storage::disk('local')->put($contentFileName, $content);
+        return $contentFileName;
     }
     private function findNextLink($content,$startingAt, $pattern){
 //        $pattern = "displayLayout/";

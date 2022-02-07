@@ -22,15 +22,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="work on solr search - advanced options - date ranges may still be a little but screwey">
-      <change afterPath="$PROJECT_DIR$/phpi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xdebug_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/CardInstances.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/CardInstances.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Classes/Constants.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Classes/Constants.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_21_160953_create_card_instances_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_21_160953_create_card_instances_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xdebug_log" beforeDir="false" afterPath="$PROJECT_DIR$/xdebug_log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -592,14 +589,9 @@
       <workItem from="1643895267994" duration="4669000" />
       <workItem from="1643994334227" duration="2297000" />
       <workItem from="1644086019801" duration="3430000" />
-      <workItem from="1644110536900" duration="2493000" />
-    </task>
-    <task id="LOCAL-00104" summary="get document default labels">
-      <created>1633725782928</created>
-      <option name="number" value="00104" />
-      <option name="presentableId" value="LOCAL-00104" />
-      <option name="project" value="LOCAL" />
-      <updated>1633725782928</updated>
+      <workItem from="1644110536900" duration="2533000" />
+      <workItem from="1644113310766" duration="26000" />
+      <workItem from="1644160670740" duration="11821000" />
     </task>
     <task id="LOCAL-00105" summary="seeds and migrations for archive feature">
       <created>1633725883755</created>
@@ -937,7 +929,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643902109797</updated>
     </task>
-    <option name="localTasksCounter" value="153" />
+    <task id="LOCAL-00153" summary="card_name change - not finished yet">
+      <created>1644113245877</created>
+      <option name="number" value="00153" />
+      <option name="presentableId" value="LOCAL-00153" />
+      <option name="project" value="LOCAL" />
+      <updated>1644113245878</updated>
+    </task>
+    <option name="localTasksCounter" value="154" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -956,7 +955,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="update layout" />
     <MESSAGE value="layoutBeingEdited passthru" />
     <MESSAGE value="saving a link menu" />
     <MESSAGE value="saving a link menu - title and orient" />
@@ -981,30 +979,26 @@
     <MESSAGE value="work on solr search" />
     <MESSAGE value="work on solr search - advanced options - date ranges may still be a little but screwey" />
     <MESSAGE value="fixed pdf's not being passed along to solr when saved" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed pdf's not being passed along to solr when saved" />
+    <MESSAGE value="card_name change - not finished yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="card_name change - not finished yet" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Layout.php</url>
-          <line>350</line>
-          <option name="timeStamp" value="107" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/CardInstances.php</url>
-          <line>145</line>
-          <option name="timeStamp" value="116" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
-          <line>560</line>
+          <line>670</line>
           <option name="timeStamp" value="118" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
-          <line>478</line>
-          <option name="timeStamp" value="119" />
+          <line>411</line>
+          <option name="timeStamp" value="123" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
+          <line>557</line>
+          <option name="timeStamp" value="124" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

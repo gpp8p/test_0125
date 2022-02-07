@@ -142,6 +142,16 @@ class CardInstances extends Model
 
     }
 
+    public function getCardNameFromId($cardId){
+        $query = "select card_name from card_instances where id = ?";
+
+        try {
+            $cardData = DB::select($query, [$cardId]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
     public function updateCardName($cardId, $newCardName){
         $query = "update card_instances set card_name = ? where id = ?";
         try {
