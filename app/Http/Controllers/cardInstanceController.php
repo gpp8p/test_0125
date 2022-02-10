@@ -490,12 +490,12 @@ class cardInstanceController extends Controller
             $pattern = "displayLayout/";
             $patternFoundAt = 0;
             $documentLinks = array();
-            $linkAt = strpos($value, $pattern, $patternFoundAt);
+            $linkAt = strpos($cardText, $pattern, $patternFoundAt);
             if ($linkAt != false) {
-                $nextLink = $this->findNextLink($value, 0, $pattern);
+                $nextLink = $this->findNextLink($cardText, 0, $pattern);
                 array_push($documentLinks, $nextLink[0]);
                 while ($nextLink != false) {
-                    $nextLink = $this->findNextLink($value, $nextLink[1], $pattern);
+                    $nextLink = $this->findNextLink($cardText, $nextLink[1], $pattern);
                     if ($nextLink == false) break;
                     array_push($documentLinks, $nextLink[0]);
                 }
@@ -530,12 +530,13 @@ class cardInstanceController extends Controller
             if (!Storage::exists($orgDirectory)) {
                 Storage::makeDirectory($orgDirectory);
             }
+
             foreach ($imageLinks as $thisImageLink) {
                 $copyToLocation = $orgDirectory . '/' . $thisImageLink;
                 Storage::copy('file/' . $thisImageLink, $copyToLocation);
                 $tempFileReference = $thisConstants->Options['tempFileReference'] . $thisImageLink;
                 $newImageLink = $thisConstants->Options['newImageLink'] . $org . "/" . $thisImageLink;
-                $value = str_replace($tempFileReference, $newImageLink, $value);
+                $cardText = str_replace($tempFileReference, $newImageLink, $cardText);
                 $imgDescription = "Link to image";
                 $linkUrl = $newImageLink;
                 $isExternal = false;

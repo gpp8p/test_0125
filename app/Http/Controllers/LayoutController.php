@@ -61,6 +61,7 @@ class LayoutController extends Controller
         $layoutDescription = $inData['description'];
         $userId = $inData['userId'];
         $orgId = $inData['orgId'];
+        $currentLayoutId = $inData['layoutId'];
         $backgroundType = $inData['backgroundType'];
         if($inData['backgroundType']=='I'){
             $backgroundImage = $inData['backgroundImage'];
@@ -81,6 +82,7 @@ class LayoutController extends Controller
         }else{
             $isTemplate='N';
         }
+        $child = $inData['child'];
         $layoutInstance = new Layout;
         $newLayoutId = $layoutInstance->createLayoutWithoutBlanks($layoutName, $layoutHeight, $layoutWidth, $layoutDescription, $layoutBackgroundColor, $backgroundImage, $backgroundType, $orgId, $backgroundDisplay, $isTemplate);
 
@@ -301,7 +303,7 @@ class LayoutController extends Controller
             if($thisViewableLayout->layout_id==81){
                 $a=0;
             }
-            if($thisLayoutInstance->isDeleted($thisViewableLayout)) continue;
+            if($thisLayoutInstance->isDeleted($thisViewableLayout->layout_id)) continue;
             try {
                 $layoutData = $thisLayoutInstance->publishThisLayout($thisViewableLayout, $orgId, $guestUserId, $orgImageDirectory, $viewableLayouts);
             } catch (\Exception $e) {
