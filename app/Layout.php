@@ -820,7 +820,13 @@ class Layout extends Model
         $query = "select id, menu_label, description from layouts where id in (".$layoutIds.")";
         try {
             $selectedLayouts = DB::select($query);
-            return $selectedLayouts;
+            $accessableSelectedLayouts = array();
+            foreach($selectedLayouts as $thisSelectedLayout){
+                if(in_array($thisSelectedLayout->id, $allViewableLayouts)){
+                    array_push($accessableSelectedLayouts, $thisSelectedLayout);
+                }
+            }
+            return $accessableSelectedLayouts;
         }catch (Exception $f){
             throw new Exception('error '.$f.getMessage().' fetching layout descriptions');
         }

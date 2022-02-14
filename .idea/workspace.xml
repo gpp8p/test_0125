@@ -24,10 +24,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LayoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LayoutController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/solrSearchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/solrSearchController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Layout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/Groups.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/Groups.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xdebug_log" beforeDir="false" afterPath="$PROJECT_DIR$/xdebug_log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +53,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="PhpDebugGeneral" xdebug_debug_port="9003" break_at_first_line="true" listening_started="true" show_user_defined_constants="false">
+  <component name="PhpDebugGeneral" xdebug_debug_port="9003" break_at_first_line="true" show_user_defined_constants="false">
     <xdebug_debug_ports port="9003" />
   </component>
   <component name="PhpServers">
@@ -599,14 +596,8 @@
       <workItem from="1644414542958" duration="8102000" />
       <workItem from="1644460067974" duration="90000" />
       <workItem from="1644506917536" duration="709000" />
-      <workItem from="1644761041508" duration="8177000" />
-    </task>
-    <task id="LOCAL-00108" summary="further work on Document">
-      <created>1634088643293</created>
-      <option name="number" value="00108" />
-      <option name="presentableId" value="LOCAL-00108" />
-      <option name="project" value="LOCAL" />
-      <updated>1634088643293</updated>
+      <workItem from="1644761041508" duration="8599000" />
+      <workItem from="1644852995296" duration="1178000" />
     </task>
     <task id="LOCAL-00109" summary="further work on Document">
       <created>1634159606774</created>
@@ -944,7 +935,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644460145444</updated>
     </task>
-    <option name="localTasksCounter" value="157" />
+    <task id="LOCAL-00157" summary="work on my spaces also start on  adding perm filter for search results - not finished yet.  ome fixes in database related to including spaces_admin in all users.  Also included check on is_admin in user record (implying super-user status) to let that user do anything">
+      <created>1644806378044</created>
+      <option name="number" value="00157" />
+      <option name="presentableId" value="LOCAL-00157" />
+      <option name="project" value="LOCAL" />
+      <updated>1644806378045</updated>
+    </task>
+    <option name="localTasksCounter" value="158" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -963,7 +961,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="adding pdf file type to publish" />
     <MESSAGE value="fixed bugs in new organization" />
     <MESSAGE value="update password" />
     <MESSAGE value="fix background-image bug in publish" />
@@ -988,7 +985,8 @@
     <MESSAGE value="refactor of saveCardContent - not finished yet and certainly not tested" />
     <MESSAGE value="refactor of saveCardContent - all three types now indexing" />
     <MESSAGE value="fixes on saveCardContent's link mechanics&#10;start on permissions cloning stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixes on saveCardContent's link mechanics&#10;start on permissions cloning stuff" />
+    <MESSAGE value="work on my spaces also start on  adding perm filter for search results - not finished yet.  ome fixes in database related to including spaces_admin in all users.  Also included check on is_admin in user record (implying super-user status) to let that user do anything" />
+    <option name="LAST_COMMIT_MESSAGE" value="work on my spaces also start on  adding perm filter for search results - not finished yet.  ome fixes in database related to including spaces_admin in all users.  Also included check on is_admin in user record (implying super-user status) to let that user do anything" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1047,6 +1045,16 @@
           <url>file://$PROJECT_DIR$/app/Http/Controllers/solrSearchController.php</url>
           <line>11</line>
           <option name="timeStamp" value="161" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/solrSearchController.php</url>
+          <line>69</line>
+          <option name="timeStamp" value="162" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Layout.php</url>
+          <line>819</line>
+          <option name="timeStamp" value="163" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
