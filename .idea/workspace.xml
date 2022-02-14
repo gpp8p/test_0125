@@ -22,10 +22,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="refactor of saveCardContent - all three types now indexing">
+    <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LayoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LayoutController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/solrSearchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/solrSearchController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Layout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/Groups.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/Groups.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xdebug_log" beforeDir="false" afterPath="$PROJECT_DIR$/xdebug_log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +56,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="PhpDebugGeneral" xdebug_debug_port="9003" break_at_first_line="true" show_user_defined_constants="false">
+  <component name="PhpDebugGeneral" xdebug_debug_port="9003" break_at_first_line="true" listening_started="true" show_user_defined_constants="false">
     <xdebug_debug_ports port="9003" />
   </component>
   <component name="PhpServers">
@@ -595,13 +597,9 @@
       <workItem from="1644243398275" duration="8670000" />
       <workItem from="1644365961766" duration="542000" />
       <workItem from="1644414542958" duration="8102000" />
-    </task>
-    <task id="LOCAL-00107" summary="seeds and migrations for archive feature">
-      <created>1633831821272</created>
-      <option name="number" value="00107" />
-      <option name="presentableId" value="LOCAL-00107" />
-      <option name="project" value="LOCAL" />
-      <updated>1633831821272</updated>
+      <workItem from="1644460067974" duration="90000" />
+      <workItem from="1644506917536" duration="709000" />
+      <workItem from="1644761041508" duration="8177000" />
     </task>
     <task id="LOCAL-00108" summary="further work on Document">
       <created>1634088643293</created>
@@ -939,7 +937,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644265389477</updated>
     </task>
-    <option name="localTasksCounter" value="156" />
+    <task id="LOCAL-00156" summary="fixes on saveCardContent's link mechanics&#10;start on permissions cloning stuff">
+      <created>1644460145444</created>
+      <option name="number" value="00156" />
+      <option name="presentableId" value="LOCAL-00156" />
+      <option name="project" value="LOCAL" />
+      <updated>1644460145444</updated>
+    </task>
+    <option name="localTasksCounter" value="157" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -958,7 +963,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="saving a link menu - title and orient" />
     <MESSAGE value="adding pdf file type to publish" />
     <MESSAGE value="fixed bugs in new organization" />
     <MESSAGE value="update password" />
@@ -983,7 +987,8 @@
     <MESSAGE value="card_name change - not finished yet" />
     <MESSAGE value="refactor of saveCardContent - not finished yet and certainly not tested" />
     <MESSAGE value="refactor of saveCardContent - all three types now indexing" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor of saveCardContent - all three types now indexing" />
+    <MESSAGE value="fixes on saveCardContent's link mechanics&#10;start on permissions cloning stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixes on saveCardContent's link mechanics&#10;start on permissions cloning stuff" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1007,6 +1012,41 @@
           <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
           <line>513</line>
           <option name="timeStamp" value="149" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/LayoutController.php</url>
+          <line>394</line>
+          <option name="timeStamp" value="150" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
+          <line>172</line>
+          <option name="timeStamp" value="151" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Layout.php</url>
+          <line>492</line>
+          <option name="timeStamp" value="152" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Layout.php</url>
+          <line>365</line>
+          <option name="timeStamp" value="153" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Layout.php</url>
+          <line>206</line>
+          <option name="timeStamp" value="159" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Layout.php</url>
+          <line>798</line>
+          <option name="timeStamp" value="160" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/solrSearchController.php</url>
+          <line>11</line>
+          <option name="timeStamp" value="161" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

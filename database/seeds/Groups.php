@@ -17,6 +17,7 @@ class Groups extends Seeder
             'created_at'=>\Carbon\Carbon::now(),
             'updated_at'=>\Carbon\Carbon::now()
         ]);
+        $allUserGroupId = $thisGroupId;
         $thisUserId = DB::table('users')->where('name', 'GuestUser')->first()->id;
         DB::table('usergroup')->insert([
             'user_id'=>$thisUserId,
@@ -40,6 +41,14 @@ class Groups extends Seeder
             'updated_at'=>\Carbon\Carbon::now(),
             'is_admin'=>true,
             'title'=>'spaces_admin in own personal group'
+        ]);
+        DB::table('usergroup')->insert([
+            'user_id'=>$thisUserId,
+            'group_id'=>$allUserGroupId,
+            'created_at'=>\Carbon\Carbon::now(),
+            'updated_at'=>\Carbon\Carbon::now(),
+            'is_admin'=>true,
+            'title'=>'spaces_admin in all users group'
         ]);
 
 

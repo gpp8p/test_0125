@@ -174,7 +174,7 @@ class Layout extends Model
     }
 
     public function getViewableLayoutIds($userId, $orgId){
-
+/*
         $query = "select distinct layouts.description, layouts.id, layouts.menu_label, layouts.height, layouts.width from layouts, perms where layouts.id in ( ".
             "select distinct layouts.id from layouts, groups, usergroup, users, userorg, org, perms ".
             "where perms.layout_id = layouts.id ".
@@ -188,8 +188,23 @@ class Layout extends Model
             "and users.id = ? ".
             "and org.id = ?) ".
             "and perms.view=1 ";
+*/
 
-        $retrievedLayouts  =  DB::select($query, [$userId, $orgId]);
+        $query = "select layouts.id, layouts.menu_label, layouts.description, layouts.menu_label, layouts.height, layouts.width from layouts ".
+            "where layouts.id in ( ".
+	            "select distinct layouts.id from layouts, groups, usergroup, users, userorg, org, perms ".
+	            "where perms.layout_id = layouts.id ".
+	            "and perms.group_id = groups.id ".
+	            "and usergroup.group_id = groups.id ".
+	            "and usergroup.user_id = users.id ".
+	            "and userorg.user_id = users.id ".
+	            "and userorg.org_id = org.id ".
+	            "and perms.view=1 ".
+	            "and org.id = ? ".
+	            "and users.id=? ".
+                ")";
+
+        $retrievedLayouts  =  DB::select($query, [$orgId, $userId]);
         return $retrievedLayouts;
 
     }
@@ -363,7 +378,12 @@ class Layout extends Model
         $thisLayoutCardInstances = $thisCardInstance->getLayoutCardInstancesById($layoutId, $orgId);
         if ($thisLayoutCardInstances == null) {
             $layoutProperties = array('description' => $thisLayoutDescription, 'menu_label' => $thisLayoutLabel, 'height' => $thisLayoutHeight, 'width' => $thisLayoutHeight, 'backgroundColor' => $thisLayoutBackgroundColor, 'backGroundImageUrl' => $thisLayoutImageUrl, 'backgroundType' => $thisLayoutBackgroundType, 'backgroundDisplay'=>$thisBackgroundDisplay);
-            $thisLayoutPerms = $layoutInstance->summaryPermsForLayout($userId, $orgId, $layoutId);
+            $isAdmin = $this->isUserSuperAdmin($userId);
+            if($isAdmin==0){
+                $thisLayoutPerms = $layoutInstance->summaryPermsForLayout($userId, $orgId, $layoutId);
+            }else{
+                $thisLayoutPerms = array('view'=>true, 'author'=>true, 'admin'=>true, 'opt1'=>true, 'opt2'=>true, 'opt3'=>true);
+            }
             $returnData = array('cards' => [], 'layout' => $layoutProperties, 'perms' => $thisLayoutPerms);
             return $returnData;
         }
@@ -463,6 +483,12 @@ class Layout extends Model
                     $allCardInstances[$thisCardId]['elementStyles'] = $value;
                 }
             }
+        }
+        $isAdmin = $this->isUserSuperAdmin($userId);
+        if($isAdmin==0){
+            $thisLayoutPerms = $layoutInstance->summaryPermsForLayout($userId, $orgId, $layoutId);
+        }else{
+            $thisLayoutPerms = array('view'=>true, 'author'=>true, 'admin'=>true, 'opt1'=>true, 'opt2'=>true, 'opt3'=>true);
         }
         $thisLayoutPerms = $layoutInstance->summaryPermsForLayout($userId, $orgId, $layoutId);
         $layoutProperties = array('description' => $thisLayoutDescription, 'menu_label' => $thisLayoutLabel, 'height' => $thisLayoutHeight, 'width' => $thisLayoutHeight, 'backgroundColor' => $thisLayoutBackgroundColor, 'backGroundImageUrl' => $thisLayoutImageUrl, 'backgroundType' => $thisLayoutBackgroundType, 'template'=>$thisLayoutTemplate );
@@ -652,6 +678,17 @@ class Layout extends Model
         $returnData = array('cards' => $allCardInstances, 'layout' => $layoutProperties, 'perms' => $thisLayoutPerms);
         return $returnData;
     }
+    private function isUserSuperAdmin($userId){
+        $query = 'select is_admin from users where id = ? and is_admin=1';
+        try {
+            $isAdminValues = DB::select($query, [$userId]);
+            return count($isAdminValues);
+        } catch (\Exception $e) {
+
+        }
+
+
+    }
     private function extractElementStyles($val){
         $result = array();
         foreach($val as $key=>$value){
@@ -758,13 +795,34 @@ class Layout extends Model
         }
     }
 
-    public function getLayoutInfo($layoutIds){
+    public function getLayoutInfo($layoutIds, $orgId, $userId){
+        $query ="select distinct layouts.id from layouts, groups, usergroup, users, userorg, org, perms ".
+	        "where perms.layout_id = layouts.id ".
+	        "and perms.group_id = groups.id ".
+	        "and usergroup.group_id = groups.id ".
+	        "and usergroup.user_id = users.id ".
+	        "and userorg.user_id = users.id ".
+	        "and userorg.org_id = org.id ".
+	        "and perms.view=1 ".
+	        "and org.id = ? ".
+	        "and users.id=?	";
+        try {
+            $viewableLayouts = DB::select($query, [$orgId, $userId]);
+            $allViewableLayouts = array();
+            foreach($viewableLayouts as $thisViewableLayout){
+                array_push($allViewableLayouts, $thisViewableLayout->id);
+            }
+        }catch (Exception $e){
+            throw new Exception('error '.$e.getMessage().' fetching viewableLayouts');
+        }
+
+
         $query = "select id, menu_label, description from layouts where id in (".$layoutIds.")";
         try {
             $selectedLayouts = DB::select($query);
             return $selectedLayouts;
-        }catch (Exception $e){
-            throw new Exception('error '.$e.getMessage().' fetching layout description: '.$layoutIds);
+        }catch (Exception $f){
+            throw new Exception('error '.$f.getMessage().' fetching layout descriptions');
         }
     }
 

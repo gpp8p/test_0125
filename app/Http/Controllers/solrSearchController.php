@@ -67,7 +67,7 @@ class solrSearchController extends Controller
             }
             $allResults = substr($allResults, 0, -1);
             $thisLayout = new Layout;
-            $selectedLayouts = $thisLayout->getLayoutInfo($allResults);
+            $selectedLayouts = $thisLayout->getLayoutInfo($allResults, $orgId, $userId);
         }else{
             $selectedLayouts = [];
         }

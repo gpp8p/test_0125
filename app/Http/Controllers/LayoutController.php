@@ -82,7 +82,7 @@ class LayoutController extends Controller
         }else{
             $isTemplate='N';
         }
-        $child = $inData['child'];
+
         $layoutInstance = new Layout;
         $newLayoutId = $layoutInstance->createLayoutWithoutBlanks($layoutName, $layoutHeight, $layoutWidth, $layoutDescription, $layoutBackgroundColor, $backgroundImage, $backgroundType, $orgId, $backgroundDisplay, $isTemplate);
 
