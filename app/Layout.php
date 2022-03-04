@@ -233,6 +233,19 @@ class Layout extends Model
         return $retrievedGroups;
 
     }
+    public function getLayoutGroupPerms($layoutId, $layoutGroupId){
+        $query = "select perms.view, perms.author, perms.admin from perms where group_id = ? and layout_id = ?";
+        try {
+            $queryResult = DB::select($query, [$layoutGroupId, $layoutId]);
+            if(count($queryResult)>0){
+                return $queryResult[0];
+            }else{
+                return -1;
+            }
+        } catch (\Exception $e) {
+            throw e;
+        }
+    }
 
     public function getUserPermsForLayout($layoutId, $orgId, $userId){
 /*

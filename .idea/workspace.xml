@@ -22,8 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="">
+    <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="filtering search results to excluse pages that are inaccessible to the current user">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Group.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Group.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LayoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LayoutController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Layout.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xdebug_log" beforeDir="false" afterPath="$PROJECT_DIR$/xdebug_log" afterDir="false" />
     </list>
@@ -597,14 +599,16 @@
       <workItem from="1644460067974" duration="90000" />
       <workItem from="1644506917536" duration="709000" />
       <workItem from="1644761041508" duration="8599000" />
-      <workItem from="1644852995296" duration="1178000" />
-    </task>
-    <task id="LOCAL-00109" summary="further work on Document">
-      <created>1634159606774</created>
-      <option name="number" value="00109" />
-      <option name="presentableId" value="LOCAL-00109" />
-      <option name="project" value="LOCAL" />
-      <updated>1634159606774</updated>
+      <workItem from="1644852995296" duration="2086000" />
+      <workItem from="1644944886078" duration="505000" />
+      <workItem from="1645027539922" duration="1060000" />
+      <workItem from="1645202344374" duration="489000" />
+      <workItem from="1645373731100" duration="960000" />
+      <workItem from="1645580195560" duration="646000" />
+      <workItem from="1645974818527" duration="524000" />
+      <workItem from="1646159911521" duration="1269000" />
+      <workItem from="1646263279302" duration="3551000" />
+      <workItem from="1646354813738" duration="7466000" />
     </task>
     <task id="LOCAL-00110" summary="fix for images in ckeditor">
       <created>1634584879113</created>
@@ -942,7 +946,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644806378045</updated>
     </task>
-    <option name="localTasksCounter" value="158" />
+    <task id="LOCAL-00158" summary="filtering search results to excluse pages that are inaccessible to the current user">
+      <created>1644854283422</created>
+      <option name="number" value="00158" />
+      <option name="presentableId" value="LOCAL-00158" />
+      <option name="project" value="LOCAL" />
+      <updated>1644854283423</updated>
+    </task>
+    <option name="localTasksCounter" value="159" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -961,7 +972,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fixed bugs in new organization" />
     <MESSAGE value="update password" />
     <MESSAGE value="fix background-image bug in publish" />
     <MESSAGE value="fix css issue with hz menuLinks" />
@@ -986,75 +996,36 @@
     <MESSAGE value="refactor of saveCardContent - all three types now indexing" />
     <MESSAGE value="fixes on saveCardContent's link mechanics&#10;start on permissions cloning stuff" />
     <MESSAGE value="work on my spaces also start on  adding perm filter for search results - not finished yet.  ome fixes in database related to including spaces_admin in all users.  Also included check on is_admin in user record (implying super-user status) to let that user do anything" />
-    <option name="LAST_COMMIT_MESSAGE" value="work on my spaces also start on  adding perm filter for search results - not finished yet.  ome fixes in database related to including spaces_admin in all users.  Also included check on is_admin in user record (implying super-user status) to let that user do anything" />
+    <MESSAGE value="filtering search results to excluse pages that are inaccessible to the current user" />
+    <option name="LAST_COMMIT_MESSAGE" value="filtering search results to excluse pages that are inaccessible to the current user" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
-          <line>411</line>
-          <option name="timeStamp" value="146" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
-          <line>505</line>
-          <option name="timeStamp" value="147" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
-          <line>492</line>
-          <option name="timeStamp" value="148" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
-          <line>513</line>
-          <option name="timeStamp" value="149" />
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/LayoutController.php</url>
+          <line>576</line>
+          <option name="timeStamp" value="167" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/LayoutController.php</url>
-          <line>394</line>
-          <option name="timeStamp" value="150" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
-          <line>172</line>
-          <option name="timeStamp" value="151" />
+          <line>629</line>
+          <option name="timeStamp" value="169" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Layout.php</url>
-          <line>492</line>
-          <option name="timeStamp" value="152" />
+          <line>378</line>
+          <option name="timeStamp" value="170" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Layout.php</url>
-          <line>365</line>
-          <option name="timeStamp" value="153" />
+          <line>505</line>
+          <option name="timeStamp" value="171" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Layout.php</url>
-          <line>206</line>
-          <option name="timeStamp" value="159" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Layout.php</url>
-          <line>798</line>
-          <option name="timeStamp" value="160" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/solrSearchController.php</url>
-          <line>11</line>
-          <option name="timeStamp" value="161" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/solrSearchController.php</url>
-          <line>69</line>
-          <option name="timeStamp" value="162" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Layout.php</url>
-          <line>819</line>
-          <option name="timeStamp" value="163" />
+          <line>390</line>
+          <option name="timeStamp" value="172" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

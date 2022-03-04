@@ -99,6 +99,7 @@ class LayoutController extends Controller
         $layoutInstance->editPermForGroup($allUserGroupId, $newLayoutId, 'view', 1);
         $layoutInstance->editPermForGroup($newLayoutGroupId, $newLayoutId, 'view', 1);
         $userPersonalGroupId = $personalGroupId;
+        $thisGroup->addOrgToGroup($orgId, $userPersonalGroupId);
         $layoutInstance->editPermForGroup($userPersonalGroupId, $newLayoutId, 'view', 1);
         $layoutInstance->editPermForGroup($userPersonalGroupId, $newLayoutId, 'author', 1);
         $layoutInstance->editPermForGroup($userPersonalGroupId, $newLayoutId, 'admin', 1);
@@ -602,18 +603,20 @@ class LayoutController extends Controller
             $backgroundDisplay = '';
         }
         $newLayoutId = $layoutInstance->createLayoutWithoutBlanks($menu_label, $height, $width, $description, $backgroundColor, $backgroundImageUrl, $backgroundType, $orgId, $backgroundDisplay, 'N');
+        $thisGroup = new Group;
+        try {
+            $allUserGroupId = $thisGroup->returnAllUserGroupId();
+        } catch (\Exception $e) {
+            throw new \Exception('error identifying all user group');
+        }
+
+        $personalGroupId = $thisGroup->returnPersonalGroupId($userId);
         if($permType=='default'){
 
-            $thisGroup = new Group;
+
             $userIsAdmin = 1;
             $userNotAdmin = 0;
-            try {
-                $allUserGroupId = $thisGroup->returnAllUserGroupId();
-            } catch (\Exception $e) {
-                throw new \Exception('error identifying all user group');
-            }
 
-            $personalGroupId = $thisGroup->returnPersonalGroupId($userId);
             $newLayoutGroupId = $thisGroup->addNewLayoutGroup($newLayoutId, $menu_label, $description);
             $thisGroup->addOrgToGroup($orgId, $newLayoutGroupId);
             $thisGroup->addUserToGroup($userId, $newLayoutGroupId,$userIsAdmin);
@@ -623,14 +626,17 @@ class LayoutController extends Controller
             $layoutInstance->editPermForGroup($userPersonalGroupId, $newLayoutId, 'view', 1);
             $layoutInstance->editPermForGroup($userPersonalGroupId, $newLayoutId, 'author', 1);
             $layoutInstance->editPermForGroup($userPersonalGroupId, $newLayoutId, 'admin', 1);
-
         }else{
-            $templateLayoutPerms = $layoutInstance->getUserPermsForLayout($templateId, $orgId, $userId);
-            foreach($templateLayoutPerms as $thisTemplateLayoutPerm){
-                $layoutInstance->editPermForGroup($thisTemplateLayoutPerm->group_id, $newLayoutId, 'view', $thisTemplateLayoutPerm->view);
-                $layoutInstance->editPermForGroup($thisTemplateLayoutPerm->group_id, $newLayoutId, 'author', $thisTemplateLayoutPerm->author);
-                $layoutInstance->editPermForGroup($thisTemplateLayoutPerm->group_id, $newLayoutId, 'admin', $thisTemplateLayoutPerm->admin);
-            }
+            $thisGroup = new Group;
+            $parentLayoutGroupId = $thisGroup->getLayoutGroupId($templateId);
+            $layoutGroupPerms = $layoutInstance->getLayoutGroupPerms($templateId, $parentLayoutGroupId);
+            $layoutInstance->editPermForGroup($parentLayoutGroupId, $newLayoutId, 'view', $layoutGroupPerms->view);
+            $layoutInstance->editPermForGroup($parentLayoutGroupId, $newLayoutId, 'author', $layoutGroupPerms->author);
+            $layoutInstance->editPermForGroup($parentLayoutGroupId, $newLayoutId, 'admin', $layoutGroupPerms->admin);
+            $layoutInstance->editPermForGroup($allUserGroupId, $newLayoutId, 'view', 1);
+            $layoutInstance->editPermForGroup($personalGroupId, $newLayoutId, 'view', 1);
+            $layoutInstance->editPermForGroup($personalGroupId, $newLayoutId, 'author', 1);
+            $layoutInstance->editPermForGroup($personalGroupId, $newLayoutId, 'admin', 1);
         }
         $cardInstance = new CardInstances;
         $thisInstanceParams = new InstanceParams;

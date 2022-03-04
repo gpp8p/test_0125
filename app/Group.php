@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class Group extends Model
 {
     public function addNewLayoutGroup($layoutId, $layoutLabel, $layoutDescription){
-        $thisGroupDescription = "Permitted into ".$layoutLabel;
+        $thisGroupDescription = "Layout Group for ".$layoutLabel;
         $thisGroupLabel = $layoutLabel;
         $thisGroupId = DB::table('groups')->insertGetId([
             'group_label'=>$thisGroupLabel,
@@ -16,9 +16,22 @@ class Group extends Model
             'created_at'=>\Carbon\Carbon::now(),
             'updated_at'=>\Carbon\Carbon::now()
         ]);
+// add new perms here!!!
         return $thisGroupId;
     }
-
+    public function getLayoutGroupId($layoutId){
+        $query = "select group_id from perms where layout_id = ? and isLayoutGroup = 1";
+        try {
+            $queryResult = DB::select($query, [$layoutId]);
+            if(count($queryResult)>0){
+                return $queryResult[0];
+            }else{
+                return -1;
+            }
+        } catch (\Exception $e) {
+            throw e;
+        }
+    }
     public function returnPersonalGroupId($userId){
         $query = "select groups.id from groups, users, usergroup ".
                 "where groups.group_label = users.email ".
