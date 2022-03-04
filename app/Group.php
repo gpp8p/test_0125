@@ -24,7 +24,7 @@ class Group extends Model
         try {
             $queryResult = DB::select($query, [$layoutId]);
             if(count($queryResult)>0){
-                return $queryResult[0];
+                return $queryResult[0]->group_id;
             }else{
                 return -1;
             }

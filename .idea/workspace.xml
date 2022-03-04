@@ -22,11 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="filtering search results to excluse pages that are inaccessible to the current user">
+    <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Group.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Group.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LayoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LayoutController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Layout.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xdebug_log" beforeDir="false" afterPath="$PROJECT_DIR$/xdebug_log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -609,13 +607,8 @@
       <workItem from="1646159911521" duration="1269000" />
       <workItem from="1646263279302" duration="3551000" />
       <workItem from="1646354813738" duration="7466000" />
-    </task>
-    <task id="LOCAL-00110" summary="fix for images in ckeditor">
-      <created>1634584879113</created>
-      <option name="number" value="00110" />
-      <option name="presentableId" value="LOCAL-00110" />
-      <option name="project" value="LOCAL" />
-      <updated>1634584879113</updated>
+      <workItem from="1646364962133" duration="127000" />
+      <workItem from="1646406796190" duration="2239000" />
     </task>
     <task id="LOCAL-00111" summary="getting card_name into Document2 setup">
       <created>1635387680086</created>
@@ -953,7 +946,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644854283423</updated>
     </task>
-    <option name="localTasksCounter" value="159" />
+    <task id="LOCAL-00159" summary="fix bug related to grouporg not having personal group added which causes bad perms to come back in recently created layout &#10;&#10;start on layout cloning - needs more testing">
+      <created>1646365082021</created>
+      <option name="number" value="00159" />
+      <option name="presentableId" value="LOCAL-00159" />
+      <option name="project" value="LOCAL" />
+      <updated>1646365082022</updated>
+    </task>
+    <option name="localTasksCounter" value="160" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -972,7 +972,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="update password" />
     <MESSAGE value="fix background-image bug in publish" />
     <MESSAGE value="fix css issue with hz menuLinks" />
     <MESSAGE value="fixed the hover bug in publish hz menus" />
@@ -997,7 +996,8 @@
     <MESSAGE value="fixes on saveCardContent's link mechanics&#10;start on permissions cloning stuff" />
     <MESSAGE value="work on my spaces also start on  adding perm filter for search results - not finished yet.  ome fixes in database related to including spaces_admin in all users.  Also included check on is_admin in user record (implying super-user status) to let that user do anything" />
     <MESSAGE value="filtering search results to excluse pages that are inaccessible to the current user" />
-    <option name="LAST_COMMIT_MESSAGE" value="filtering search results to excluse pages that are inaccessible to the current user" />
+    <MESSAGE value="fix bug related to grouporg not having personal group added which causes bad perms to come back in recently created layout &#10;&#10;start on layout cloning - needs more testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix bug related to grouporg not having personal group added which causes bad perms to come back in recently created layout &#10;&#10;start on layout cloning - needs more testing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1005,27 +1005,12 @@
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/LayoutController.php</url>
           <line>576</line>
-          <option name="timeStamp" value="167" />
+          <option name="timeStamp" value="173" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/LayoutController.php</url>
-          <line>629</line>
-          <option name="timeStamp" value="169" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Layout.php</url>
-          <line>378</line>
-          <option name="timeStamp" value="170" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Layout.php</url>
-          <line>505</line>
-          <option name="timeStamp" value="171" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Layout.php</url>
-          <line>390</line>
-          <option name="timeStamp" value="172" />
+          <line>612</line>
+          <option name="timeStamp" value="174" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
