@@ -301,7 +301,7 @@ class LayoutController extends Controller
         }
 
         foreach($viewableLayouts as $thisViewableLayout){
-            if($thisViewableLayout->layout_id==81){
+            if($thisViewableLayout->layout_id==38){
                 $a=0;
             }
             if($thisLayoutInstance->isDeleted($thisViewableLayout->layout_id)) continue;
@@ -609,8 +609,14 @@ class LayoutController extends Controller
         } catch (\Exception $e) {
             throw new \Exception('error identifying all user group');
         }
-
+        $setTopLayout = 0;
         $personalGroupId = $thisGroup->returnPersonalGroupId($userId);
+        $parentLayoutGroupId = $thisGroup->getLayoutGroupId($templateId);
+        if($parentLayoutGroupId<0){
+            $permType = 'default';
+            $setTopLayout = 1;
+        }
+
         if($permType=='default'){
 
 
@@ -618,6 +624,9 @@ class LayoutController extends Controller
             $userNotAdmin = 0;
 
             $newLayoutGroupId = $thisGroup->addNewLayoutGroup($newLayoutId, $menu_label, $description);
+            if($setTopLayout>0){
+                $thisGroup->setGroupLayout($newLayoutGroupId, $newLayoutId);
+            }
             $thisGroup->addOrgToGroup($orgId, $newLayoutGroupId);
             $thisGroup->addUserToGroup($userId, $newLayoutGroupId,$userIsAdmin);
             $layoutInstance->editPermForGroup($allUserGroupId, $newLayoutId, 'view', 1);
@@ -628,7 +637,7 @@ class LayoutController extends Controller
             $layoutInstance->editPermForGroup($userPersonalGroupId, $newLayoutId, 'admin', 1);
         }else{
             $thisGroup = new Group;
-            $parentLayoutGroupId = $thisGroup->getLayoutGroupId($templateId);
+//            $parentLayoutGroupId = $thisGroup->getLayoutGroupId($templateId);
             $layoutGroupPerms = $layoutInstance->getLayoutGroupPerms($templateId, $parentLayoutGroupId);
             $layoutInstance->editPermForGroup($parentLayoutGroupId, $newLayoutId, 'view', $layoutGroupPerms->view);
             $layoutInstance->editPermForGroup($parentLayoutGroupId, $newLayoutId, 'author', $layoutGroupPerms->author);

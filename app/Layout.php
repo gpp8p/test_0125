@@ -196,6 +196,7 @@ class Layout extends Model
 	            "where perms.layout_id = layouts.id ".
 	            "and perms.group_id = groups.id ".
 	            "and usergroup.group_id = groups.id ".
+                "and groups.id!=1 ".
 	            "and usergroup.user_id = users.id ".
 	            "and userorg.user_id = users.id ".
 	            "and userorg.org_id = org.id ".

@@ -20,7 +20,8 @@ class Group extends Model
         return $thisGroupId;
     }
     public function getLayoutGroupId($layoutId){
-        $query = "select group_id from perms where layout_id = ? and isLayoutGroup = 1";
+        $query = "select group_id from perms where group_id in (select group_id from perms where isLayoutGroup=1) and layout_id = ?";
+//        $query = "select group_id from perms where layout_id = ? and isLayoutGroup = 1";
         try {
             $queryResult = DB::select($query, [$layoutId]);
             if(count($queryResult)>0){
@@ -31,6 +32,15 @@ class Group extends Model
         } catch (\Exception $e) {
             throw e;
         }
+    }
+    public function setGroupLayout($groupId, $layoutId){
+        $query = "update perms set isLayoutGroup=1 where group_id = 1 and layout_id = ? ";
+        try {
+            $queryResult = DB::select($query, [$groupId, $layoutId]);
+        } catch (\Exception $e) {
+            throw e;
+        }
+
     }
     public function returnPersonalGroupId($userId){
         $query = "select groups.id from groups, users, usergroup ".

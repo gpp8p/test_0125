@@ -25,6 +25,8 @@
     <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Group.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Group.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LayoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LayoutController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Layout.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xdebug_log" beforeDir="false" afterPath="$PROJECT_DIR$/xdebug_log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -608,14 +610,14 @@
       <workItem from="1646263279302" duration="3551000" />
       <workItem from="1646354813738" duration="7466000" />
       <workItem from="1646364962133" duration="127000" />
-      <workItem from="1646406796190" duration="2239000" />
-    </task>
-    <task id="LOCAL-00111" summary="getting card_name into Document2 setup">
-      <created>1635387680086</created>
-      <option name="number" value="00111" />
-      <option name="presentableId" value="LOCAL-00111" />
-      <option name="project" value="LOCAL" />
-      <updated>1635387680086</updated>
+      <workItem from="1646406796190" duration="2311000" />
+      <workItem from="1646437058617" duration="505000" />
+      <workItem from="1646579648954" duration="4548000" />
+      <workItem from="1647272107313" duration="1522000" />
+      <workItem from="1647304991505" duration="166000" />
+      <workItem from="1647305192728" duration="551000" />
+      <workItem from="1647397961328" duration="511000" />
+      <workItem from="1647436550830" duration="3044000" />
     </task>
     <task id="LOCAL-00112" summary="work on file uploads">
       <created>1635473263628</created>
@@ -953,7 +955,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646365082022</updated>
     </task>
-    <option name="localTasksCounter" value="160" />
+    <task id="LOCAL-00160" summary="fixed problems with copied pages permissions. layout group is now properly the parent.">
+      <created>1646412402669</created>
+      <option name="number" value="00160" />
+      <option name="presentableId" value="LOCAL-00160" />
+      <option name="project" value="LOCAL" />
+      <updated>1646412402669</updated>
+    </task>
+    <option name="localTasksCounter" value="161" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -972,7 +981,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fix background-image bug in publish" />
     <MESSAGE value="fix css issue with hz menuLinks" />
     <MESSAGE value="fixed the hover bug in publish hz menus" />
     <MESSAGE value="added template property to layout" />
@@ -997,20 +1005,46 @@
     <MESSAGE value="work on my spaces also start on  adding perm filter for search results - not finished yet.  ome fixes in database related to including spaces_admin in all users.  Also included check on is_admin in user record (implying super-user status) to let that user do anything" />
     <MESSAGE value="filtering search results to excluse pages that are inaccessible to the current user" />
     <MESSAGE value="fix bug related to grouporg not having personal group added which causes bad perms to come back in recently created layout &#10;&#10;start on layout cloning - needs more testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bug related to grouporg not having personal group added which causes bad perms to come back in recently created layout &#10;&#10;start on layout cloning - needs more testing" />
+    <MESSAGE value="fixed problems with copied pages permissions. layout group is now properly the parent." />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed problems with copied pages permissions. layout group is now properly the parent." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/LayoutController.php</url>
-          <line>576</line>
-          <option name="timeStamp" value="173" />
+          <line>251</line>
+          <option name="timeStamp" value="176" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/LayoutController.php</url>
-          <line>612</line>
-          <option name="timeStamp" value="174" />
+          <line>304</line>
+          <option name="timeStamp" value="179" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/LayoutController.php</url>
+          <line>331</line>
+          <option name="timeStamp" value="181" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/LayoutController.php</url>
+          <line>375</line>
+          <option name="timeStamp" value="182" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Layout.php</url>
+          <line>268</line>
+          <option name="timeStamp" value="183" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/LayoutController.php</url>
+          <line>271</line>
+          <option name="timeStamp" value="184" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Layout.php</url>
+          <line>207</line>
+          <option name="timeStamp" value="185" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
