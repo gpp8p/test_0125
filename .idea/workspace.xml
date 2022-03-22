@@ -24,9 +24,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Group.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Group.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LayoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LayoutController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Layout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/InstanceParams.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/InstanceParams.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xdebug_log" beforeDir="false" afterPath="$PROJECT_DIR$/xdebug_log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -617,14 +615,11 @@
       <workItem from="1647304991505" duration="166000" />
       <workItem from="1647305192728" duration="551000" />
       <workItem from="1647397961328" duration="511000" />
-      <workItem from="1647436550830" duration="3044000" />
-    </task>
-    <task id="LOCAL-00112" summary="work on file uploads">
-      <created>1635473263628</created>
-      <option name="number" value="00112" />
-      <option name="presentableId" value="LOCAL-00112" />
-      <option name="project" value="LOCAL" />
-      <updated>1635473263629</updated>
+      <workItem from="1647436550830" duration="3364000" />
+      <workItem from="1647521788897" duration="479000" />
+      <workItem from="1647615698338" duration="1061000" />
+      <workItem from="1647954884884" duration="801000" />
+      <workItem from="1647978668980" duration="2508000" />
     </task>
     <task id="LOCAL-00113" summary="work on file uploads in pdf's">
       <created>1635609112248</created>
@@ -962,7 +957,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646412402669</updated>
     </task>
-    <option name="localTasksCounter" value="161" />
+    <task id="LOCAL-00161" summary="fixed the query that returns all layouts for a particular user - was screwing up publish by in all cases returning all viewable layouts for all orgs.  Now it reurns the right one for a specific org because it was breaking trhough as a result of the all users group.  May be trouble on this score in other areas">
+      <created>1647446924001</created>
+      <option name="number" value="00161" />
+      <option name="presentableId" value="LOCAL-00161" />
+      <option name="project" value="LOCAL" />
+      <updated>1647446924001</updated>
+    </task>
+    <option name="localTasksCounter" value="162" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -981,7 +983,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fix css issue with hz menuLinks" />
     <MESSAGE value="fixed the hover bug in publish hz menus" />
     <MESSAGE value="added template property to layout" />
     <MESSAGE value="available templates api" />
@@ -1006,7 +1007,8 @@
     <MESSAGE value="filtering search results to excluse pages that are inaccessible to the current user" />
     <MESSAGE value="fix bug related to grouporg not having personal group added which causes bad perms to come back in recently created layout &#10;&#10;start on layout cloning - needs more testing" />
     <MESSAGE value="fixed problems with copied pages permissions. layout group is now properly the parent." />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed problems with copied pages permissions. layout group is now properly the parent." />
+    <MESSAGE value="fixed the query that returns all layouts for a particular user - was screwing up publish by in all cases returning all viewable layouts for all orgs.  Now it reurns the right one for a specific org because it was breaking trhough as a result of the all users group.  May be trouble on this score in other areas" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed the query that returns all layouts for a particular user - was screwing up publish by in all cases returning all viewable layouts for all orgs.  Now it reurns the right one for a specific org because it was breaking trhough as a result of the all users group.  May be trouble on this score in other areas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1046,7 +1048,42 @@
           <line>207</line>
           <option name="timeStamp" value="185" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php</url>
+          <line>350</line>
+          <option name="timeStamp" value="186" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/linkController.php</url>
+          <line>73</line>
+          <option name="timeStamp" value="187" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/linkController.php</url>
+          <line>99</line>
+          <option name="timeStamp" value="188" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/linkController.php</url>
+          <line>84</line>
+          <option name="timeStamp" value="189" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/InstanceParams.php</url>
+          <line>42</line>
+          <option name="timeStamp" value="190" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/linkController.php</url>
+          <line>143</line>
+          <option name="timeStamp" value="191" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="server.php">
+        <watch expression="$thisInstanceParams" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

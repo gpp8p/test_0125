@@ -47,7 +47,8 @@ class InstanceParams extends Model
             throw new Exception('error - could not delete an instance param');
         }
         if(count($paramIdsFound)>0){
-            return count($paramIdsFound);
+            return $paramIdsFound[0]->id;
+//            return count($paramIdsFound);
         }else{
             return -1;
         }
