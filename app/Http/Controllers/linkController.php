@@ -99,7 +99,8 @@ class linkController extends Controller
         }
         if($cardTitleId>0 && (strlen($thisCardTitle)>0)){
             try {
-                $thisInstanceParams->updateInstanceParam($orientId, 'linkMenuTitle', $thisCardTitle, $thisCardId, 0, 'main');
+                $thisInstanceParams->updateInstanceParam($cardTitleId, 'linkMenuTitle', $thisCardTitle, $thisCardId, 0, 'main');
+     //           $thisInstanceParams->updateInstanceParam($orientId, 'linkMenuTitle', $thisCardTitle, $thisCardId, 0, 'main');
             } catch (\Exception $e) {
                 abort(500, 'Server error updating instance_param: '.$e->getMessage());
             }

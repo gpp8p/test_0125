@@ -408,6 +408,38 @@ class cardInstanceController extends Controller
         return "ok";
     }
 
+    public function updateCardTitle(Request $request){
+
+        $inData =  $request->all();
+        $thisCardTitle = $inData['cardTitle'];
+        $thisCardId = $inData['card_instance_id'];
+        $thisOrgId = $inData['org_id'];
+        $thisLayoutId = $inData['layout_id'];
+        $thisInstanceParams = new InstanceParams;
+        $cardTitleId = $thisInstanceParams->hasInstanceParam($thisCardId, 'linkMenuTitle');
+        if($cardTitleId>0 && (strlen($thisCardTitle)>0)){
+            try {
+                $thisInstanceParams->updateInstanceParam($cardTitleId, 'linkMenuTitle', $thisCardTitle, $thisCardId, 0, 'main');
+            } catch (\Exception $e) {
+                abort(500, 'Server error updating instance_param: '.$e->getMessage());
+            }
+        }else if($cardTitleId<0 && (strlen($thisCardTitle)>0)){
+            try {
+                $thisInstanceParams->createInstanceParam('linkMenuTitle', $thisCardTitle, $thisCardId, 0, 'main');
+            } catch (\Exception $e) {
+                abort(500, 'Server error creating instance_param: '.$e->getMessage());
+            }
+        }else if($cardTitleId>0 && (strlen($thisCardTitle)==0)){
+            try {
+                $thisInstanceParams->deleteInstanceParam($cardTitleId);
+            } catch (\Exception $e) {
+                abort(500, 'Server error deleting instance_param: '.$e->getMessage());
+            }
+        }
+        return "ok";
+
+    }
+
     public function saveCardContent(Request $request){
         $inData =  $request->all();
         $decodedPost = json_decode($inData['cardParams']);
