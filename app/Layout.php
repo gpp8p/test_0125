@@ -436,7 +436,7 @@ class Layout extends Model
                 $thisCardIsCss = $thisCard[2];
                 $thisCardParameterKey = $thisCard[0];
                 $thisCardComponent = $thisCard[3];
-                if ($thisCardComponent == "linkMenu") {
+                if ($thisCardComponent == "linkMenu" | $thisCardComponent == "Headline" | $thisCardComponent == "NavigationMenu") {
                     $thisLink = new link();
                     $cardLinks = $thisLink->getLinksForCardId($thisCard[8]);
                     $thisCardContent['availableLinks'] = $cardLinks;
