@@ -392,11 +392,22 @@
         @foreach($cards as $thisCard)
             @switch($thisCard['card_component'])
                 @case('Headline')
-                    <div style="{{$thisCard['card_parameters']['style']}}">
-                        <span class="cardBody">
-                                {!! $thisCard['card_parameters']['content'] !!}
+                   <div style="{{$thisCard['card_parameters']['style']}}">
+                        <span class="flex-container">
+                            {!! $thisCard['card_parameters']['content']['title'] !!}
+                        </span>
+                    <div>
+                    <div>
+                        <span class="flex-container">
+                                    @foreach($thisCard['card_parameters']['content']['links'] as $thisLink)
+                                <a style="text-decoration: none;{{$thisCard['elementStyles']['sub']}}" href="{!! $thisLink[0] !!}" class="mlhz">{!! $thisLink[1] !!}</a>
+                            @endforeach
                         </span>
                     </div>
+                </div>
+
+            </div>
+
                 @break
                 @case('youTube')
                     <div style="{{$thisCard['card_parameters']['style']}}" class="video-container">
@@ -445,6 +456,42 @@
 
                     </div>
                 @break
+            @case('NavigationMenu')
+
+            <div style="{{$thisCard['card_parameters']['style']}}">
+                            <span class="flex-container">
+                                {!! $thisCard['card_parameters']['content']['title'] !!}
+
+                            </span>
+
+                <div>
+                    <div>
+                        @if($thisCard['card_parameters']['content']['orient']=='vertical')
+                            <span class=""flex-container>
+                                <a href="{{$thisCard['card_parameters']['content']['searchLink']}}" target="_blank">Click Here to Search</a>
+                            </span>
+
+                            <ul>
+                                @foreach($thisCard['card_parameters']['content']['links'] as $thisLink)
+                                    <li>
+                                        <a class="mlhz" style="text-decoration: none;" href="{!! $thisLink[0] !!}">{!! $thisLink[1] !!}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @else
+                            <span class="flex-container">
+                                            @foreach($thisCard['card_parameters']['content']['links'] as $thisLink)
+                                    <a style="text-decoration: none;{{$thisCard['elementStyles']['sub']}}" href="{!! $thisLink[0] !!}" class="mlhz">{!! $thisLink[1] !!}</a>
+                                @endforeach
+                                        </span>
+                        @endif
+                    </div>
+
+                </div>
+
+            </div>
+            @break
+
                 @case('loginLink')
                 <div style="{{$thisCard['card_parameters']['style']}}">
                 <span class="cardBody">

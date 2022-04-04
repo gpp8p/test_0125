@@ -3,8 +3,9 @@
 
 namespace App\Classes;
 
-use App\Classes\SpRichTextCard;
 use App\Classes\SpLinkMenuCard;
+use App\Classes\SpRichTextCard;
+use App\Classes\SpHeadlineCard;
 use Storage;
 use App\Org;
 class SpCard
@@ -23,7 +24,7 @@ class SpCard
 
     const DYNAMIC_ADDRESS = 'http://localhost:8080/target/';
 
-    function __construct($thisCardArray, $orgId, $publishableLayouts, $cardSubElementProperties){
+    function __construct($thisCardArray, $orgId, $publishableLayouts, $cardSubElementProperties, $layoutId){
         $this->thisCardCss = '';
         $this->thisCardProperties = '';
         $thisCardContent = array();
@@ -53,14 +54,21 @@ class SpCard
                 break;
             }
             case "Headline":{
-                $this->thisCardContent = $thisCardContent['title'];
+                $thisSpHeadlineCard = new SpHeadlineCard($this->thisCardId, $orgId, $publishableLayouts, $thisCardContent, $cardSubElementProperties);
+                $this->thisCardContent = $thisSpHeadlineCard->getCardContent();
                 break;
             }
             case "linkMenu":{
-                $thisSpLinkMenuCard = new SpLinkMenuCard($this->thisCardId, $orgId, $publishableLayouts, $thisCardContent, $cardSubElementProperties);
+                $thisSpLinkMenuCard = new SpLinkMenuCard($this->thisCardId, $orgId, $publishableLayouts, $thisCardContent, $cardSubElementProperties, $layoutId->layout_id);
                 $this->thisCardContent = $thisSpLinkMenuCard->getCardContent();
                 break;
             }
+            case "NavigationMenu":{
+                $thisSpLinkMenuCard = new SpLinkMenuCard($this->thisCardId, $orgId, $publishableLayouts, $thisCardContent, $cardSubElementProperties, $layoutId->layout_id);
+                $this->thisCardContent = $thisSpLinkMenuCard->getCardContent();
+                break;
+            }
+
             case "loginLink":{
                 $thisOrg = new Org();
                 $orgHome = $thisOrg->getOrgHomeFromOrgId($orgId);

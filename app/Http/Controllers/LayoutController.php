@@ -301,7 +301,7 @@ class LayoutController extends Controller
         }
 
         foreach($viewableLayouts as $thisViewableLayout){
-            if($thisViewableLayout->layout_id==38){
+            if($thisViewableLayout->layout_id==176){
                 $a=0;
             }
             if($thisLayoutInstance->isDeleted($thisViewableLayout->layout_id)) continue;
@@ -347,7 +347,7 @@ class LayoutController extends Controller
             }
 */
             try {
-                $viewHtml = view('layout', ['layoutId' => $thisViewableLayout, 'layoutCss' => $thisLayoutCss, 'hzLinkMenuColor'=>$hzLinkMenuColor, 'cards' => $layoutData['cards']])->render();
+                $viewHtml = view('layout', ['layoutId' => $thisViewableLayout, 'layoutCss' => $thisLayoutCss, 'hzLinkMenuColor'=>$hzLinkMenuColor, 'orgId'=>$orgId, 'cards' => $layoutData['cards']])->render();
             } catch (\Throwable $e) {
                 $errorMsg = $e->getMessage();
                 continue;

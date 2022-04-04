@@ -1,13 +1,10 @@
 <?php
 
-
 namespace App\Classes;
 
 use App\link;
 
-
-
-class SpLinkMenuCard
+class SpHeadlineCard
 {
     const DYNAMIC_ADDRESS = 'http://localhost:8080/target/';
     const STATIC_ADDRESS = 'http://localhost/spaces/';
@@ -16,8 +13,7 @@ class SpLinkMenuCard
     private $titleOut='';
     private $orientOut='';
 
-    function __construct($thisCardId, $orgId, $publishableLayouts, $thisCardContent, $cardSubElementProperties, $layoutId )
-    {
+    function __construct($thisCardId, $orgId, $publishableLayouts, $thisCardContent, $cardSubElementProperties ){
         $thisLink = new Link();
         $cardLinks = array();
         $linksForThisCard = $thisLink->getLinksForCardId($thisCardId);
@@ -37,28 +33,16 @@ class SpLinkMenuCard
             }
             $fullLink = array($newLink, $thisCardLink->description);
             array_push($cardLinks, $fullLink);
-
-
         }
-        if(isset($thisCardContent['linkMenuTitle'])){
-            $this->titleOut=$thisCardContent['linkMenuTitle'];
-        }else{
+        if(isset($thisCardContent['linkMenuTitle'])) {
+            $this->titleOut = $thisCardContent['linkMenuTitle'];
+        }elseif(isset($thisCardContent['title'])){
+            $this->thisCardContent = $thisCardContent['title'];
+        } else {
             $this->titleOut='';
         }
-        if(isset($thisCardContent['orient'])){
-            $this->orientOut = $thisCardContent['orient'];
-        }else{
-            $this->orientOut = 'vertical';
-        }
-/*
-        $subProperties = $cardSubElementProperties[$thisCardId]['sub'];
-        $subCss = '';
-        foreach($subProperties as $thisSubProperty){
-            $subCss = $subCss.$thisSubProperty[1];
-        }
-*/
-        $searchLink = self::DYNAMIC_ADDRESS.$orgId.'/'.$layoutId;
-        $this->content = array('links'=>$cardLinks, 'title'=>$this->titleOut, 'orient'=>$this->orientOut, 'searchLink'=>$searchLink);
+        $this->orientOut = "horozontal";
+        $this->content = array('links'=>$cardLinks, 'title'=>$this->titleOut, 'orient'=>$this->orientOut);
 
 
     }

@@ -25,7 +25,9 @@ class Layouts extends Seeder
         $layoutInstance = new Layout;
         $thisUserId = DB::table('users')->where('name', 'spaces_admin')->first()->id;
         $rootOrgId =  DB::table('org')->where('org_label', 'root')->first()->id;
-        $newLayoutId = $layoutInstance->createLayoutWithoutBlanks($layoutName, $layoutHeight, $layoutWidth, $layoutDescription, $layoutBackgroundColor, $backgroundImage, $backgroundType, $rootOrgId);
+        $backgroundDisplay = '';
+        $isTemplate = false;
+        $newLayoutId = $layoutInstance->createLayoutWithoutBlanks($layoutName, $layoutHeight, $layoutWidth, $layoutDescription, $layoutBackgroundColor, $backgroundImage, $backgroundType, $rootOrgId, $backgroundDisplay, $isTemplate);
 
         $thisGroup = new Group;
         $personalGroupId = $thisGroup->returnPersonalGroupId($thisUserId);
