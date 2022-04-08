@@ -49,6 +49,8 @@ Route::group([
     Route::get('/getCardDataById', 'cardInstanceController@getCardDataById')->name('getCardDataById');
     Route::post('/createLayoutNoBlanks', 'LayoutController@createNewLayoutNoBlanks')->name('newlayoutNoBlanks');
     Route::get('getMySpaces', 'LayoutController@getMySpaces');
+    Route::get('getMyDeletedSpaces', 'LayoutController@getMyDeletedSpaces')->name('getMyDeletedSpaces');
+    Route::get('undeleteThisSpace', 'LayoutController@undeleteThisSpace')->name('undeleteThisSpace');
     Route::get('orgList', 'OrgController@getOrgList');
     Route::get('orgUsers', 'OrgController@getOrgUsers');
     Route::get('availableOrgUsers', 'OrgController@getAvailableOrgUsers');

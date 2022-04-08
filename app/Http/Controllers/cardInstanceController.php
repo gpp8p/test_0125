@@ -543,12 +543,12 @@ class cardInstanceController extends Controller
                 $thisLink->saveLink($org, $layoutId, $cardId, $thisDescription, $linkUrl, $isExternal, $layoutLinkTo, 'U', $showOrder);
                 $showOrder++;
             }
-            $patternb = $thisConstants->Options['storageLinkPattern'];
-            $pattern = "<img src=\"http://localhost:8000/storage/";
+            $pattern = $thisConstants->Options['storageLinkPattern'];
+//            $pattern = "<img src=\"http://localhost:8000/storage/";
             $patternFoundAt = 0;
             $imageLinks = array();
             $imageLinkAt = strpos($cardText, $pattern, $patternFoundAt);
-            $ib = strpos($cardText, $patternb, $patternFoundAt);
+            $ib = strpos($cardText, $pattern, $patternFoundAt);
             if ($imageLinkAt != false) {
                 $nextLink = $this->findNextLink($cardText, 0, $pattern);
                 array_push($imageLinks, $nextLink[0]);

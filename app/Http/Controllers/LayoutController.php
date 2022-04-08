@@ -14,6 +14,8 @@ use File;
 use App\User;
 use App\link;
 use App\Card;
+use App\Classes\Constants;
+
 
 class LayoutController extends Controller
 {
@@ -236,6 +238,38 @@ class LayoutController extends Controller
         $viewableLayouts = $thisLayout->getViewableLayoutIds($userId, $orgId);
         return json_encode($viewableLayouts);
     }
+
+    public function getMyDeletedSpaces(Request $request){
+
+        if(auth()->user()==null){
+            abort(401, 'Unauthorized action.');
+        }else{
+            $userId = auth()->user()->id;
+        }
+
+        $inData =  $request->all();
+        $orgId = $inData['orgId'];
+//        $userId = $inData['userId'];
+        $thisLayout = new Layout;
+        $viewableLayouts = $thisLayout->getDeletedLayoutIds($userId, $orgId);
+        return json_encode($viewableLayouts);
+    }
+    public function undeleteThisSpace(Request $request){
+        if(auth()->user()==null){
+            abort(401, 'Unauthorized action.');
+        }else{
+            $userId = auth()->user()->id;
+        }
+
+        $inData =  $request->all();
+        $layoutId = $inData['layoutId'];
+        $thisLayout = new Layout;
+        try {
+            $thisLayout->undeleteThisSpace($layoutId);
+        } catch (\Exception $e) {
+            abort(500, 'Undelete failed'.$e);
+        }
+    }
     public function getViewableLayoutList(Request $request){
         if(auth()->user()==null){
             abort(401, 'Unauthorized action.');
@@ -359,7 +393,9 @@ class LayoutController extends Controller
 
     }
     private function layoutCss($height, $width, $backgroundColor, $backgroundImageUrl, $backgroundType, $orgId){
-        $urlBase = "http://localhost/spaces/".$orgId;
+        $thisConstants = new Constants;
+//        $urlBase = "http://localhost/spaces/".$orgId;
+        $urlBase = $thisConstants->Options['spacesBase'].$orgId;
         $imageBase = $urlBase."/images/";
         $contentBase = $urlBase."/content/";
         $heightSize = number_format((100 / $height) ,2);
@@ -662,6 +698,15 @@ class LayoutController extends Controller
 
                     break;
                 }
+                case 'Headline':{
+                    try {
+                        $cardInstance->insertCard($thisCard['id'], $newLayoutId);
+                    } catch (Exception $e) {
+                        $msg = 'Could not insert card:'.$e->getMessage();
+                        abort(500, $msg);
+                    }
+                    break;
+                }
                 case 'RichText':{
                     $cardInstanceParams = $thisInstanceParams->getCardInstanceParams($thisCard['id']);
                     $textRemovedParams = array();
@@ -676,12 +721,6 @@ class LayoutController extends Controller
                         }
                     }
                     $cardInstance->createCardInstance($newLayoutId, $textRemovedParams, $row, $column, $cardHeight, $cardWidth, 'RichText', $thisCard['card_parameters']['content']['card_name'], 'F');
-                    break;
-                }
-                case 'Document':{
-                    break;
-                }
-                case 'Headline':{
                     break;
                 }
                 case 'pdf':{

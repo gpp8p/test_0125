@@ -9,6 +9,7 @@ use App\Classes\SpCard;
 use App\Classes\SpRichTextCard;
 use Storage;
 use File;
+use App\Classes\Constants;
 
 
 
@@ -33,6 +34,7 @@ class Layout extends Model
             'backgroundDisplay'=>$backgroundDisplay,
             'org_id'=>$orgId,
             'template'=>$isTemplate,
+            'deleted'=>'N',
             'created_at'=>\carbon\carbon::now(),
             'updated_at'=>\carbon\carbon::now()
         ]);
@@ -54,6 +56,14 @@ class Layout extends Model
                 'org_id'=>$orgId,
                 'updated_at'=>\carbon\carbon::now()
             ]);
+    }
+    public function undeleteThisSpace($layoutId){
+        $query = "update layouts set deleted = 'N' where id = ?";
+        try {
+            DB::select($query, [$layoutId]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
     }
 //($layoutName, $height, $width, $cardParams, $testLayoutDescription)
     public function createBlankLayout($layoutName, $layoutHeight, $layoutWidth, $cardParams, $layoutDescription)
@@ -174,26 +184,13 @@ class Layout extends Model
     }
 
     public function getViewableLayoutIds($userId, $orgId){
-/*
-        $query = "select distinct layouts.description, layouts.id, layouts.menu_label, layouts.height, layouts.width from layouts, perms where layouts.id in ( ".
-            "select distinct layouts.id from layouts, groups, usergroup, users, userorg, org, perms ".
-            "where perms.layout_id = layouts.id ".
-            "and perms.group_id = groups.id ".
-            "and groups.id > 1 ".
-            "and usergroup.group_id = groups.id ".
-            "and usergroup.user_id = users.id ".
-            "and userorg.user_id = users.id ".
-            "and userorg.org_id = org.id ".
-            "and perms.view=1 ".
-            "and users.id = ? ".
-            "and org.id = ?) ".
-            "and perms.view=1 ";
-*/
+
 
         $query = "select layouts.id, layouts.menu_label, layouts.description, layouts.menu_label, layouts.height, layouts.width from layouts ".
             "where layouts.id in ( ".
 	            "select distinct layouts.id from layouts, groups, usergroup, users, userorg, org, perms ".
 	            "where perms.layout_id = layouts.id ".
+                "and layouts.deleted != 'Y'".
 	            "and perms.group_id = groups.id ".
 	            "and usergroup.group_id = groups.id ".
                 "and groups.id!=1 ".
@@ -204,6 +201,29 @@ class Layout extends Model
 	            "and org.id = ? ".
 	            "and users.id=? ".
                 ")";
+
+        $retrievedLayouts  =  DB::select($query, [$orgId, $userId]);
+        return $retrievedLayouts;
+
+    }
+    public function getDeletedLayoutIds($userId, $orgId){
+
+
+        $query = "select layouts.id, layouts.menu_label, layouts.description, layouts.menu_label, layouts.height, layouts.width from layouts ".
+            "where layouts.id in ( ".
+            "select distinct layouts.id from layouts, groups, usergroup, users, userorg, org, perms ".
+            "where perms.layout_id = layouts.id ".
+            "and layouts.deleted = 'Y'".
+            "and perms.group_id = groups.id ".
+            "and usergroup.group_id = groups.id ".
+            "and groups.id!=1 ".
+            "and usergroup.user_id = users.id ".
+            "and userorg.user_id = users.id ".
+            "and userorg.org_id = org.id ".
+            "and perms.view=1 ".
+            "and org.id = ? ".
+            "and users.id=? ".
+            ")";
 
         $retrievedLayouts  =  DB::select($query, [$orgId, $userId]);
         return $retrievedLayouts;
@@ -513,8 +533,13 @@ class Layout extends Model
 
     public function publishThisLayout($layoutId, $orgId, $userId, $imageDirectory, $publishableLayouts)
     {
-        $dynamicAddress = 'http://localhost:8080/target/';
-        $staticAddress = 'http://localhost/spaces/';
+
+//        $dynamicAddress = 'http://localhost:8080/target/';
+//        $staticAddress = 'http://localhost/spaces/';
+        $thisConstants = new Constants;
+        $dynamicAddress = $thisConstants->Options['dynamicAddress'];
+        $staticAddress = $thisConstants->Options['staticAddress'];
+
 
 //    public function getLayoutById(Request $request){
 //        $inData =  $request->all();

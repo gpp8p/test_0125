@@ -3,6 +3,7 @@
 
 namespace App\Classes;
 
+use App\Classes\Constants;
 use App\Classes\SpLinkMenuCard;
 use App\Classes\SpRichTextCard;
 use App\Classes\SpHeadlineCard;
@@ -22,12 +23,13 @@ class SpCard
     public $thisCardComponent;
     private $orgId;
 
-    const DYNAMIC_ADDRESS = 'http://localhost:8080/target/';
+//    const DYNAMIC_ADDRESS = 'http://localhost:8080/target/';
 
     function __construct($thisCardArray, $orgId, $publishableLayouts, $cardSubElementProperties, $layoutId){
         $this->thisCardCss = '';
         $this->thisCardProperties = '';
         $thisCardContent = array();
+        $thisConstants = new Constants;
         foreach ($thisCardArray as $thisCard){
             if ($thisCard[2] == 1) {
                 $this->thisCardCss = $this->thisCardCss . $thisCard[1];
@@ -72,7 +74,8 @@ class SpCard
             case "loginLink":{
                 $thisOrg = new Org();
                 $orgHome = $thisOrg->getOrgHomeFromOrgId($orgId);
-                $this->thisCardContent = "<a href='".self::DYNAMIC_ADDRESS.$orgId."/".$orgHome[0]->top_layout_id."'>Please Log In</a>";
+//                $this->thisCardContent = "<a href='".self::DYNAMIC_ADDRESS.$orgId."/".$orgHome[0]->top_layout_id."'>Please Log In</a>";
+                $this->thisCardContent = "<a href='".$thisConstants->Options['dynamicAddress'].$orgId."/".$orgHome[0]->top_layout_id."'>Please Log In</a>";
                 break;
             }
             case "youTube":{

@@ -4,13 +4,14 @@
 namespace App\Classes;
 
 use App\link;
+use App\Classes\Constants;
 
 
 
 class SpLinkMenuCard
 {
-    const DYNAMIC_ADDRESS = 'http://localhost:8080/target/';
-    const STATIC_ADDRESS = 'http://localhost/spaces/';
+//    const DYNAMIC_ADDRESS = 'http://localhost:8080/target/';
+//    const STATIC_ADDRESS = 'http://localhost/spaces/';
 
     public $content = array();
     private $titleOut='';
@@ -21,6 +22,7 @@ class SpLinkMenuCard
         $thisLink = new Link();
         $cardLinks = array();
         $linksForThisCard = $thisLink->getLinksForCardId($thisCardId);
+        $thisConstants = new Constants;
         foreach($linksForThisCard as $thisCardLink){
             $linkIsPublishable = false;
             foreach($publishableLayouts as $thisPublishableLayout){
@@ -30,10 +32,12 @@ class SpLinkMenuCard
                 }
             }
             if($linkIsPublishable){
-                $newLink = self::STATIC_ADDRESS.$orgId.'/'.$thisCardLink->layout_link_to;
+//                $newLink = self::STATIC_ADDRESS.$orgId.'/'.$thisCardLink->layout_link_to;
+                $newLink = $thisConstants->Options['staticAddress'].$orgId.'/'.$thisCardLink->layout_link_to;
 
             }else{
-                $newLink = self::DYNAMIC_ADDRESS.$orgId.'/'.$thisCardLink->layout_link_to;
+//                $newLink = self::DYNAMIC_ADDRESS.$orgId.'/'.$thisCardLink->layout_link_to;
+                $newLink = $thisConstants->Options['dynamicAddress'].'/'.$thisCardLink->layout_link_to;
             }
             $fullLink = array($newLink, $thisCardLink->description);
             array_push($cardLinks, $fullLink);
@@ -57,7 +61,7 @@ class SpLinkMenuCard
             $subCss = $subCss.$thisSubProperty[1];
         }
 */
-        $searchLink = self::DYNAMIC_ADDRESS.$orgId.'/'.$layoutId;
+        $searchLink = $thisConstants->Options['dynamicAddress'].$orgId.'/'.$layoutId;
         $this->content = array('links'=>$cardLinks, 'title'=>$this->titleOut, 'orient'=>$this->orientOut, 'searchLink'=>$searchLink);
 
 

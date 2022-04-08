@@ -8,12 +8,14 @@ use Illuminate\Http\Request;
 use \File;
 use Illuminate\Support\Facades\Storage;
 use Response;
+use App\Classes\Constants;
 
 class FileUploadController extends Controller
 {
 
 
     function recieveFile(Request $request){
+        $thisConstants = new Constants;
         $inData =  $request->all();
         $org = $inData['org'];
         switch($inData['fileRole']){
@@ -26,7 +28,8 @@ class FileUploadController extends Controller
                 }
                 $copyToLocation = $orgDirectory . '/' . $path;
                 Storage::copy('file/' . $path, $copyToLocation);
-                $accessLocation = "http://localhost:8000/images/" . $org . "/" . $path;
+//                $accessLocation = "http://localhost:8000/images/" . $org . "/" . $path;
+                $accessLocation = $thisConstants->Options['imageLink'] . $org . "/" . $path;
                 break;
             }
             case 'document':{
@@ -48,8 +51,10 @@ class FileUploadController extends Controller
     }
 
     function recieveFileCk(Request $request){
-$inData =  $request->all();
-        $urlBase = 'http://localhost:8000/';
+        $inData =  $request->all();
+        $thisConstants = new Constants;
+//        $urlBase = 'http://localhost:8000/';
+        $urlBase = $thisConstants->Options['urlBase'];
         $pth = $urlBase.'storage/'.$request->file('upload')->store('file');
         $pth = str_replace('/file', '', $pth);
         $path['url'] = $pth;

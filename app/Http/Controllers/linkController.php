@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\link;
 use App\InstanceParams;
 use Illuminate\Support\Facades\DB;
+use App\Classes\Constants;
 
 class linkController extends Controller
 {
@@ -44,6 +45,7 @@ class linkController extends Controller
         $thisOrgId = $inData['org_id'];
         $thisLayoutId = $inData['layout_id'];
         $thisLinkInstance = new link;
+        $thisConstants = new Constants;
         if($thisLinkInstance->isLinkInCard($thisCardId, $thisLayoutId)){
             return 'already linked';
         }else{
@@ -52,7 +54,8 @@ class linkController extends Controller
             $thisLayout = new Layout;
             $layoutInfo = $thisLayout->getLayoutDescription($thisLayoutId);
             $thisDescription = $layoutInfo[0]->description;
-            $thisLinkUrl = "http://localhost:8080/displayLayout/".$thisLayoutId;
+//            $thisLinkUrl = "http://localhost:8080/displayLayout/".$thisLayoutId;
+            $thisLinkUrl = $thisConstants->Options['linkUrlBase'].$thisLayoutId;
             try {
                 $thisLinkInstance->saveLink($thisOrgId, $thisLayoutId, $thisCardId, $thisDescription, $thisLinkUrl, 0, $thisLayoutId, 'U', $currentLinkCount);
                 return "ok";

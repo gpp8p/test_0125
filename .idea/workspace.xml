@@ -22,16 +22,21 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Classes/SpHeadlineCard.php" afterDir="false" />
+    <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="Work on publish">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Classes/Constants.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Classes/Constants.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Classes/SpCard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Classes/SpCard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Classes/SpHeadlineCard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Classes/SpHeadlineCard.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Classes/SpLinkMenuCard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Classes/SpLinkMenuCard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Classes/SpRichTextCard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Classes/SpRichTextCard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FileUploadController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FileUploadController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/JWTAuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/JWTAuthController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LayoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LayoutController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/cardInstanceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/linkController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/linkController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Layout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_21_154928_create_layouts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_21_154928_create_layouts_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/Layouts.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/Layouts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/jwt.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/jwt.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xdebug_log" beforeDir="false" afterPath="$PROJECT_DIR$/xdebug_log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -647,14 +652,15 @@
       <workItem from="1648997610568" duration="469000" />
       <workItem from="1649013326958" duration="648000" />
       <workItem from="1649014005636" duration="2183000" />
-      <workItem from="1649030254040" duration="469000" />
-    </task>
-    <task id="LOCAL-00116" summary="saving source documents">
-      <created>1636336292829</created>
-      <option name="number" value="00116" />
-      <option name="presentableId" value="LOCAL-00116" />
-      <option name="project" value="LOCAL" />
-      <updated>1636336292830</updated>
+      <workItem from="1649030254040" duration="510000" />
+      <workItem from="1649095968796" duration="5285000" />
+      <workItem from="1649164168446" duration="3460000" />
+      <workItem from="1649189337516" duration="1140000" />
+      <workItem from="1649206709158" duration="871000" />
+      <workItem from="1649251030125" duration="523000" />
+      <workItem from="1649384908423" duration="753000" />
+      <workItem from="1649386664446" duration="27000" />
+      <workItem from="1649429317863" duration="3766000" />
     </task>
     <task id="LOCAL-00117" summary="adding backgroundDisplay column to laouts">
       <created>1637377924186</created>
@@ -992,7 +998,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648655704145</updated>
     </task>
-    <option name="localTasksCounter" value="165" />
+    <task id="LOCAL-00165" summary="Work on publish">
+      <created>1649038464142</created>
+      <option name="number" value="00165" />
+      <option name="presentableId" value="LOCAL-00165" />
+      <option name="project" value="LOCAL" />
+      <updated>1649038464142</updated>
+    </task>
+    <option name="localTasksCounter" value="166" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1011,7 +1024,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="cloneTemplate api" />
     <MESSAGE value="cloneTemplate api - permissions" />
     <MESSAGE value="clone layout - link menu from template" />
     <MESSAGE value="clone layout - handles rt's and linkMenu's now" />
@@ -1036,20 +1048,36 @@
     <MESSAGE value="fixed bug in changing titles of linkMenu's" />
     <MESSAGE value="new Headline Card - supports the functionality previously supported by horozontal linkMenu's" />
     <MESSAGE value="new NavigationMenu card type to replace vertical linkMenu's" />
-    <option name="LAST_COMMIT_MESSAGE" value="new NavigationMenu card type to replace vertical linkMenu's" />
+    <MESSAGE value="Work on publish" />
+    <option name="LAST_COMMIT_MESSAGE" value="Work on publish" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/LayoutController.php</url>
-          <line>304</line>
+          <line>338</line>
           <option name="timeStamp" value="208" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/LayoutController.php</url>
-          <line>349</line>
+          <line>383</line>
           <option name="timeStamp" value="214" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/LayoutController.php</url>
+          <line>612</line>
+          <option name="timeStamp" value="215" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/LayoutController.php</url>
+          <line>243</line>
+          <option name="timeStamp" value="216" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/LayoutController.php</url>
+          <line>257</line>
+          <option name="timeStamp" value="217" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

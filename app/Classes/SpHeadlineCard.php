@@ -3,11 +3,12 @@
 namespace App\Classes;
 
 use App\link;
+use App\Classes\Constants;
 
 class SpHeadlineCard
 {
-    const DYNAMIC_ADDRESS = 'http://localhost:8080/target/';
-    const STATIC_ADDRESS = 'http://localhost/spaces/';
+//    const DYNAMIC_ADDRESS = 'http://localhost:8080/target/';
+//    const STATIC_ADDRESS = 'http://localhost/spaces/';
 
     public $content = array();
     private $titleOut='';
@@ -16,6 +17,7 @@ class SpHeadlineCard
     function __construct($thisCardId, $orgId, $publishableLayouts, $thisCardContent, $cardSubElementProperties ){
         $thisLink = new Link();
         $cardLinks = array();
+        $thisConstants = new Constants;
         $linksForThisCard = $thisLink->getLinksForCardId($thisCardId);
         foreach($linksForThisCard as $thisCardLink){
             $linkIsPublishable = false;
@@ -26,10 +28,12 @@ class SpHeadlineCard
                 }
             }
             if($linkIsPublishable){
-                $newLink = self::STATIC_ADDRESS.$orgId.'/'.$thisCardLink->layout_link_to;
+//                $newLink = self::STATIC_ADDRESS.$orgId.'/'.$thisCardLink->layout_link_to;
+                $newLink = $thisConstants->Options['staticAddress'].'/'.$thisCardLink->layout_link_to;
 
             }else{
-                $newLink = self::DYNAMIC_ADDRESS.$orgId.'/'.$thisCardLink->layout_link_to;
+//                $newLink = self::DYNAMIC_ADDRESS.$orgId.'/'.$thisCardLink->layout_link_to;
+                $newLink = $thisConstants->Options['dynamicAddress'].'/'.$thisCardLink->layout_link_to;
             }
             $fullLink = array($newLink, $thisCardLink->description);
             array_push($cardLinks, $fullLink);
