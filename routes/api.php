@@ -95,6 +95,7 @@ Route::group([
     Route::get('solrSimpleQuery', 'solrSearchController@simpleQuery')->name('solrSimpleQuery');
     Route::post('updateCardName', 'cardInstanceController@updateCardName');
     Route::post('updateCardTitle', 'cardInstanceController@updateCardTitle')->name('updateCardTitle');
+    Route::get('getOrgHome','orgController@getOrgHome')->name('getOrgHome');
 
 
 

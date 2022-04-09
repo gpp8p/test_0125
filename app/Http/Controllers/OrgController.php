@@ -28,6 +28,18 @@ class OrgController extends Controller
             ]);
         }
     }
+    public function getOrgHome(Request $request){
+        $inData = $request->all();
+        $orgId = $inData['orgId'];
+        $thisOrg = new Org();
+        try {
+            $orgHomeId = $thisOrg->getOrgHomeFromOrgId($orgId);
+            return $orgHomeId[0]->top_layout_id;
+        } catch (\Exception $e) {
+            abort(500, 'org home id error'.$e);
+        }
+    }
+
     public function getOrgHomeFromName(Request $request){
         $inData = $request->all();
         $orgName = $inData['orgName'];
