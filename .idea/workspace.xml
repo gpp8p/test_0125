@@ -24,7 +24,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0b0c2ef7-7e0b-43c1-8807-af0746a2d14b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrgController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrgController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LayoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LayoutController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Layout.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xdebug_log" beforeDir="false" afterPath="$PROJECT_DIR$/xdebug_log" afterDir="false" />
     </list>
@@ -650,14 +651,12 @@
       <workItem from="1649384908423" duration="753000" />
       <workItem from="1649386664446" duration="27000" />
       <workItem from="1649429317863" duration="3872000" />
-      <workItem from="1649518058342" duration="2427000" />
-    </task>
-    <task id="LOCAL-00118" summary="start on editing of layout params">
-      <created>1637708607182</created>
-      <option name="number" value="00118" />
-      <option name="presentableId" value="LOCAL-00118" />
-      <option name="project" value="LOCAL" />
-      <updated>1637708607182</updated>
+      <workItem from="1649518058342" duration="2458000" />
+      <workItem from="1649555580921" duration="540000" />
+      <workItem from="1649602757954" duration="513000" />
+      <workItem from="1649641489299" duration="227000" />
+      <workItem from="1649774775431" duration="920000" />
+      <workItem from="1649815365272" duration="1612000" />
     </task>
     <task id="LOCAL-00119" summary="more on editing of layout params">
       <created>1637774925266</created>
@@ -995,7 +994,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649455661813</updated>
     </task>
-    <option name="localTasksCounter" value="167" />
+    <task id="LOCAL-00167" summary="further fork on layout delete">
+      <created>1649533259268</created>
+      <option name="number" value="00167" />
+      <option name="presentableId" value="LOCAL-00167" />
+      <option name="project" value="LOCAL" />
+      <updated>1649533259268</updated>
+    </task>
+    <option name="localTasksCounter" value="168" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1014,7 +1020,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="clone layout - link menu from template" />
     <MESSAGE value="clone layout - handles rt's and linkMenu's now" />
     <MESSAGE value="clone layout - handles pdf's and youtubes now" />
     <MESSAGE value="added loginLink to clonable cards" />
@@ -1039,24 +1044,25 @@
     <MESSAGE value="new NavigationMenu card type to replace vertical linkMenu's" />
     <MESSAGE value="Work on publish" />
     <MESSAGE value="making url's dynamic and enhancements on delete - undelete" />
-    <option name="LAST_COMMIT_MESSAGE" value="making url's dynamic and enhancements on delete - undelete" />
+    <MESSAGE value="further fork on layout delete" />
+    <option name="LAST_COMMIT_MESSAGE" value="further fork on layout delete" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/LayoutController.php</url>
-          <line>338</line>
+          <line>355</line>
           <option name="timeStamp" value="208" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/LayoutController.php</url>
-          <line>383</line>
+          <line>400</line>
           <option name="timeStamp" value="214" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/LayoutController.php</url>
-          <line>612</line>
+          <line>629</line>
           <option name="timeStamp" value="215" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">

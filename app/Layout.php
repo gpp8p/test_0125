@@ -833,6 +833,19 @@ class Layout extends Model
 
         }
     }
+    public function getLayoutInfoById($layoutId){
+        $query = "select description, menu_label, height, width from layouts where id = ?";
+        try {
+            $layoutSpecs = DB::select($query, [$layoutId]);
+            if(count($layoutSpecs==0)){
+                throw new Exception('not found');
+            }else{
+                return $layoutSpecs[0];
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
 
     public function getLayoutInfo($layoutIds, $orgId, $userId){
         $query ="select distinct layouts.id from layouts, groups, usergroup, users, userorg, org, perms ".

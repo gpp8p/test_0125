@@ -96,6 +96,8 @@ Route::group([
     Route::post('updateCardName', 'cardInstanceController@updateCardName');
     Route::post('updateCardTitle', 'cardInstanceController@updateCardTitle')->name('updateCardTitle');
     Route::get('getOrgHome','orgController@getOrgHome')->name('getOrgHome');
+    Route::get('layoutInfo','layoutController@getLayoutInfoById')->name('getLayoutInfo');
+
 
 
 

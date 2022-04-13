@@ -270,6 +270,23 @@ class LayoutController extends Controller
             abort(500, 'Undelete failed'.$e);
         }
     }
+    public function getLayoutInfoById(Request $request){
+        if(auth()->user()==null){
+            abort(401, 'Unauthorized action.');
+        }else{
+            $userId = auth()->user()->id;
+        }
+
+        $inData =  $request->all();
+        $layoutId = $inData['layoutId'];
+        $thisLayout = new Layout;
+        try {
+            $thisLayoutInfo = $thisLayout->getLayoutInfoById($layoutId);
+            return json_encode($thisLayoutInfo);
+        } catch (\Exception $e) {
+            abort(500, 'layoutInfo failed'.$e);
+        }
+    }
     public function getViewableLayoutList(Request $request){
         if(auth()->user()==null){
             abort(401, 'Unauthorized action.');
